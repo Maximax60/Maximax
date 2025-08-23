@@ -1,6 +1,0 @@
-<a href="/unemployment" style={{ padding:"10px 16px", border:"1px solid orange", borderRadius:8 }}>
-  Unemployment (Info)
-</a>
-<a href="/unemployment-pdf" style={{ padding:"10px 16px", border:"1px solid orange", borderRadius:8 }}>
-  Download Unemployment PDF
-</a>
