@@ -1,1 +1,8 @@
-module.exports = {};
+export default function Home() {
+  return (
+    <div style={{ textAlign: "center", padding: "50px" }}>
+      <h1>MAXIMAX MULTI SERVICES</h1>
+      <p>MAXIMAX ALWAYS STAY MAXIMIZED</p>
+    </div>
+  );
+} = {};
