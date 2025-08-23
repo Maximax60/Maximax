@@ -1,0 +1,16 @@
+export default function Home() {
+  return (
+    <div style={{ 
+      display: "flex", 
+      flexDirection: "column", 
+      alignItems: "center", 
+      justifyContent: "center", 
+      height: "100vh", 
+      backgroundColor: "black", 
+      color: "#FFB347"  // koulè jon abrikot ou
+    }}>
+      <h1>MAXIMAX MULTI SERVICES</h1>
+      <p>MAXIMAX ALWAYS MAXIMIZED</p>
+    </div>
+  );
+}
