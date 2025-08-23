@@ -1,0 +1,21 @@
+export default function Home() {
+  return (
+    <div style={{
+      backgroundColor: "#000",
+      color: "#ff8c00",
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "12px",
+      fontFamily: "system-ui, Arial, sans-serif",
+      textAlign: "center",
+      padding: "24px"
+    }}>
+      <h1 style={{letterSpacing:1}}>MAXIMAX MULTI SERVICES</h1>
+      <p>Immigration • Taxes • Translations • Multi-Services</p>
+      <strong>MAXIMAX ALWAYS STAY MAXIMIZED</strong>
+    </div>
+  );
+}
