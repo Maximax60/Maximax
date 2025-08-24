@@ -1,0 +1,8 @@
+export default function Home() {
+  return (
+    <div style={{minHeight:"100vh",display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",background:"#000",color:"#FFA500",fontFamily:"Arial, sans-serif"}}>
+      <h1>briyantsoleysigno1815.com</h1>
+      <p>Site online. Content coming next.</p>
+    </div>
+  );
+}
