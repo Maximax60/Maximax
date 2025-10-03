@@ -1,4 +1,5 @@
-<main className="min-h-screen bg-gradient-to-b from-brand-orange to-brand-black text-white">
+const msg = encodeURIComponent("Hello MAXIMAX — I'd like help with my immigration case.");
+<a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`}>Start on WhatsApp</a><main className="min-h-screen bg-gradient-to-b from-brand-orange to-brand-black text-white">
   {/* Kontni paj la */}
 </main><div style={{ marginTop: 24, display: "flex", gap: 12, flexWrap: "wrap" }}>
   <a href="/immigration"
