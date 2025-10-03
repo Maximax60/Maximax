@@ -1,4 +1,31 @@
-export const metadata = { title: "MAXIMAX — Downloading Forms (Tax Services)" };
+export const metadata = { title: "MAXIMAX — Tax Services" };
+
+export default function TaxPage() {
+  return (
+    <main className="min-h-screen bg-gradient-to-b from-brand-orange to-brand-black text-white">
+      <section className="mx-auto max-w-5xl px-6 py-12">
+        <h1 className="text-3xl font-semibold">Tax Services</h1>
+        <p className="mt-2 text-white/85">
+          Personal & Business tax prep san tèt chaje. Nou gide w etap pa etap, klè e rapid.
+        </p>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <a href="/tax/forms" className="rounded-xl bg-brand-orange text-black px-5 py-3 font-medium hover:opacity-90 text-center">
+            Download IRS Forms
+          </a>
+          <a href="/contact" className="rounded-xl border border-brand-orange text-brand-orange px-5 py-3 font-medium hover:border-brand-orange/70 text-center">
+            Upload Your Documents
+          </a>
+        </div>
+
+        <div className="mt-10 space-y-2 text-sm text-white/80">
+          <p>Common items: W-2, 1099-NEC/MISC, Schedule C, Form 8888, ID & proof of address.</p>
+          <p>Bezwen èd chwazi fòm yo? Vizite paj “Downloading Forms” oswa ekri nou sou WhatsApp.</p>
+        </div>
+      </section>
+    </main>
+  );
+}export const metadata = { title: "MAXIMAX — Downloading Forms (Tax Services)" };
 import Image from "next/image";
 
 export const metadata = { title: "MAXIMAX — Dakò" };
