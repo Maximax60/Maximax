@@ -1,3 +1,56 @@
+/**
+ * MAXIMAX WhatsApp Auto-Reply via Twilio
+ * Triggers on every Google Form submission.
+ */
+function onFormSubmit(e) {
+  try {
+    // 1) Read form values safely
+    // e.namedValues is a map: { "Full Name": ["John"], "Phone": ["(317) 538-1150"], ... }
+    const nv = e && e.namedValues ? e.namedValues : {};
+    const fullName = getFirst(nv["Name"]) || getFirst(nv["Full Name"]) || getFirst(nv["Non"]) || "Client";
+    let phoneRaw = getFirst(nv["Phone"]) || getFirst(nv["Telephone"]) || getFirst(nv["Nimewo"]) || "";
+    const service = getFirst(nv["Service"]) || getFirst(nv["Type of Service"]) || "";
+
+    // 2) Normalize phone (US default; adjust if needed)
+    // keep digits only
+    let digits = (phoneRaw + "").replace(/[^\d]/g, "");
+    if (digits.length === 10) digits = "1" + digits; // add US country code if 10 digits
+    if (!digits.startsWith("1") && digits.length < 11) {
+      // If most clients are US, you can force "1" here, else handle per-country
+      // digits = "1" + digits;
+    }
+    const TO = "whatsapp:+" + digits;
+
+    // 3) Build bilingual message (Kreyòl + English)
+    const msg = [
+      `Bonjou ${fullName}, mèsi paske ou ranpli fòm MAXIMAX.`,
+      service ? `Sèvis w chwazi: ${service}.` : ``,
+      `Nou resevwa demann ou an. N ap tounen rapid. ✅`,
+      ``,
+      `Hi ${fullName}, thanks for completing the MAXIMAX form.`,
+      service ? `Selected service: ${service}.` : ``,
+      `We received your request and will follow up shortly. ✅`,
+      ``,
+      `— MAXIMAX MULTI SERVICES | "MAXIMAX ALWAY MAXIMIZED"`
+    ].filter(Boolean).join("\n");
+
+    // 4) Secrets (set these in Script Properties)
+    const props = PropertiesService.getScriptProperties();
+    const SID  = props.getProperty("TWILIO_SID");      // ACxxxxxxxxxxxxxxxxxxxx
+    const AUTH = props.getProperty("TWILIO_AUTH");     // your auth token
+    const FROM = props.getProperty("TWILIO_FROM");     // e.g., whatsapp:+14155238886 (sandbox) or your prod number
+
+    if (!SID || !AUTH || !FROM) {
+      throw new Error("Missing TWILIO_SID / TWILIO_AUTH / TWILIO_FROM in Script Properties.");
+    }
+
+    // 5) Send via Twilio REST API
+    const url = `https://api.twilio.com/2010-04-01/Accounts/${SID}/Messages.json`;
+    const payload = { From: FROM, To: TO, Body: msg };
+    const options = {
+      method: "post",
+      payload,
+      headers: { Authorization: "Basic " + Util
 /** Google Form → WhatsApp via Twilio (Maximax)
  * Set Script Properties (Project Settings):
  *  - TWILIO_SID               e.g. ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
