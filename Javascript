@@ -1,4 +1,74 @@
 /**
+ * MAXIMAX — WhatsApp auto-reply (multilingual + fallback)
+ */
+function onFormSubmit(e) {
+  try {
+    const nv = e?.namedValues || {};
+
+    // --- Match your exact form labels ---
+    const PHONE_LABEL = "ENTER YOUR WHATSAPP NUMBER (COUNTRY CODE) EX: +1 234-789-2788";
+    const LANG_LABEL  = "CHOOSE YOUR LANGUAGE / CHWAZI LANG OU / ELIGE SU IDIOMA";
+
+    const name =
+      first(nv["Name"]) ||
+      first(nv["Full Name"]) ||
+      first(nv["Non"]) ||
+      first(nv["Nom"]) ||
+      "Client";
+
+    let phone = first(nv[PHONE_LABEL]) || "";
+    let lang  = first(nv[LANG_LABEL]) || ""; // may be empty
+
+    // Normalize phone (keep digits, default to US if 10 digits)
+    phone = (phone + "").replace(/[^\d]/g, "");
+    if (phone.length === 10) phone = "1" + phone;
+    const TO = "whatsapp:+" + phone;
+
+    // Canonicalize language + fallback to English
+    const allowed = new Set(["Kreyòl Ayisyen", "English", "Español"]);
+    if (!allowed.has(lang)) lang = "English";
+
+    const messages = {
+      "Kreyòl Ayisyen":
+        `Bonjou ${name}, mèsi paske ou ranpli fòm MAXIMAX.\n` +
+        `Nou resevwa demann ou an. N ap tounen vit. ✅\n` +
+        `— MAXIMAX MULTI SERVICES | MAXIMAX ALWAY MAXIMIZED`,
+      "English":
+        `Hi ${name}, thanks for completing the MAXIMAX form.\n` +
+        `We received your request and will follow up shortly. ✅\n` +
+        `— MAXIMAX MULTI SERVICES | MAXIMAX ALWAY MAXIMIZED`,
+      "Español":
+        `Hola ${name}, gracias por completar el formulario de MAXIMAX.\n` +
+        `Hemos recibido su solicitud y le responderemos en breve. ✅\n` +
+        `— MAXIMAX MULTI SERVICES | MAXIMAX ALWAY MAXIMIZED`,
+    };
+    const Body = messages[lang];
+
+    // Secrets (Project Settings → Script properties)
+    const props = PropertiesService.getScriptProperties();
+    const SID  = props.getProperty("TWILIO_SID");
+    const AUTH = props.getProperty("TWILIO_AUTH");
+    const FROM = props.getProperty("TWILIO_FROM"); // e.g., whatsapp:+14155238886
+
+    if (!SID || !AUTH || !FROM) throw new Error("Missing TWILIO_SID / TWILIO_AUTH / TWILIO_FROM");
+
+    const url = `https://api.twilio.com/2010-04-01/Accounts/${SID}/Messages.json`;
+    const payload = { From: FROM, To: TO, Body };
+    const options = {
+      method: "post",
+      payload,
+      headers: { Authorization: "Basic " + Utilities.base64Encode(SID + ":" + AUTH) },
+      muteHttpExceptions: true,
+    };
+
+    const res = UrlFetchApp.fetch(url, options);
+    Logger.log(res.getResponseCode() + " " + res.getContentText());
+  } catch (err) {
+    Logger.log("onFormSubmit error: " + err);
+  }
+}
+
+function first(v){ return Array.isArray(v) ? (v[0] || "").toString().trim() : (v || "").toString().trim(); }/**
  * MAXIMAX WhatsApp auto-reply via Twilio
  * Triggers every time the form is submitted.
  */
