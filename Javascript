@@ -6,7 +6,60 @@ function onFormSubmit(e) {
   try {
     // 1) Read form values safely
     // e.namedValues is a map: { "Full Name": ["John"], "Phone": ["(317) 538-1150"], ... }
-    const nv = e && e.namedValues ? e.namedValues : {};
+    const nv = e && e.namedValues ? e.namedValues : {};function onFormSubmit(e) {
+  try {
+    const nv = e?.namedValues || {};
+    const fullName = pick(nv, ["Name","Full Name","Non","Nom"]) || "Client";
+    let phone = pick(nv, ["Phone","Telephone","Nimewo","Téléphone"]) || "";
+    const service = pick(nv, ["Service","Type of Service","Sèvis"]) || "";
+
+    // Normalize (US default). Adjust prefix if most clients are not US.
+    phone = (phone+"").replace(/[^\d]/g,"");
+    if (phone.length === 10) phone = "1"+phone; // +1 area
+    const TO = "whatsapp:+"+phone;
+
+    const msg = [
+      `Bonjou ${fullName}, mèsi paske ou ranpli fòm MAXIMAX.`,
+      service ? `Sèvis: ${service}` : ``,
+      `Nou resevwa demann ou an. N ap tounen rapid. ✅`,
+      ``,
+      `Hi ${fullName}, thanks for completing the MAXIMAX form.`,
+      service ? `Service: ${service}` : ``,
+      `We received your request. We’ll follow up shortly. ✅`,
+      `— MAXIMAX MULTI SERVICES | MAXIMAX ALWAY MAXIMIZED`
+    ].filter(Boolean).join("\n");
+
+    const props = PropertiesService.getScriptProperties();
+    const SID  = props.getProperty("TWILIO_SID");
+    const AUTH = props.getProperty("TWILIO_AUTH");
+    const FROM = props.getProperty("TWILIO_FROM"); // e.g. whatsapp:+14155238886
+    if (!SID || !AUTH || !FROM) throw new Error("Missing TWILIO_* properties");
+
+    const url = `https://api.twilio.com/2010-04-01/Accounts/${SID}/Messages.json`;
+    const payload = { From: FROM, To: TO, Body: msg };
+    const options = {
+      method: "post",
+      payload,
+      headers: { Authorization: "Basic "+Utilities.base64Encode(SID+":"+AUTH) },
+      muteHttpExceptions: true
+    };
+
+    const res = UrlFetchApp.fetch(url, options);
+    const ok = res.getResponseCode();
+    Logger.log(ok+" "+res.getContentText());
+  } catch (err) {
+    Logger.log("Error: "+err);
+  }
+}
+
+function pick(nv, keys){
+  for (const k of keys){
+    const v = nv[k];
+    if (v && v[0] !== undefined) return (v[0]||"").toString().trim();
+  }
+  return "";
+}
+
     const fullName = getFirst(nv["Name"]) || getFirst(nv["Full Name"]) || getFirst(nv["Non"]) || "Client";
     let phoneRaw = getFirst(nv["Phone"]) || getFirst(nv["Telephone"]) || getFirst(nv["Nimewo"]) || "";
     const service = getFirst(nv["Service"]) || getFirst(nv["Type of Service"]) || "";
