@@ -1,4 +1,55 @@
 /**
+ * MAXIMAX WhatsApp auto-reply via Twilio
+ * Triggers every time the form is submitted.
+ */
+function onFormSubmit(e) {
+  try {
+    const nv = e?.namedValues || {};
+
+    // === Match EXACT question labels from your form ===
+    const phoneLabel = "ENTER YOUR WHATSAPP NUMBER (COUNTRY CODE) EX: +1 347-892-7288";
+    const name = first(nv["Name"]) || first(nv["Full Name"]) || "Client";
+    let phone = first(nv[phoneLabel]) || "";
+
+    // Normalize phone -> digits only, keep country code
+    phone = (phone + "").replace(/[^\d]/g, "");
+    if (phone.length === 10) phone = "1" + phone; // default to US if 10 digits
+    const TO = "whatsapp:+" + phone;
+
+    const msg = [
+      `Bonjou ${name}, mèsi paske ou ranpli fòm MAXIMAX.`,
+      `Nou resevwa demann ou an. N ap tounen vit. ✅`,
+      ``,
+      `Hi ${name}, thanks for completing the MAXIMAX form.`,
+      `We received your request and will follow up shortly. ✅`,
+      `— MAXIMAX MULTI SERVICES | MAXIMAX ALWAY MAXIMIZED`
+    ].join("\n");
+
+    // Secrets from Script Properties
+    const props = PropertiesService.getScriptProperties();
+    const SID  = props.getProperty("TWILIO_SID");      // ACxxxxxxxx...
+    const AUTH = props.getProperty("TWILIO_AUTH");     // Auth Token
+    const FROM = props.getProperty("TWILIO_FROM");     // whatsapp:+14155238886 (sandbox) or prod
+
+    if (!SID || !AUTH || !FROM) throw new Error("Missing TWILIO_SID / TWILIO_AUTH / TWILIO_FROM");
+
+    const url = `https://api.twilio.com/2010-04-01/Accounts/${SID}/Messages.json`;
+    const payload = { From: FROM, To: TO, Body: msg };
+    const options = {
+      method: "post",
+      payload,
+      headers: { Authorization: "Basic " + Utilities.base64Encode(SID + ":" + AUTH) },
+      muteHttpExceptions: true
+    };
+
+    const res = UrlFetchApp.fetch(url, options);
+    Logger.log(res.getResponseCode() + " " + res.getContentText());
+  } catch (err) {
+    Logger.log("onFormSubmit error: " + err);
+  }
+}
+
+function first(v){ return Array.isArray(v) ? (v[0] || "").toString().trim() : (v || "").toString().trim(); }/**
  * MAXIMAX WhatsApp Auto-Reply via Twilio
  * Triggers on every Google Form submission.
  */
