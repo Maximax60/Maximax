@@ -1,4 +1,8 @@
-{/* Start Now CTAs */}
+import ImmigrationUpdates from "@/components/ImmigrationUpdates";
+// ...
+<div className="mt-8">
+  <ImmigrationUpdates asModal /> {/* or without asModal to show inline */}
+</div>{/* Start Now CTAs */}
 <div className="mt-6 grid gap-3 sm:grid-cols-2">
   <a
     href="/contact"
