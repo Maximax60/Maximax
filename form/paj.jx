@@ -1,0 +1,21 @@
+export default function ClientForm() {
+  return (
+    <div className="min-h-screen flex items-start justify-center p-4">
+      <div className="w-full max-w-4xl">
+        <h1 className="text-2xl font-semibold mb-4">Fòm Demann</h1>
+        <div className="relative" style={{paddingTop: '150%'}}>
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLScJi6AbRPK5Rxnk71bJgAL8vGO2cD8S3k8IfcXjTi-Ojz_DPg/viewform?embedded=true"
+            className="absolute top-0 left-0 w-full h-full rounded-xl border"
+            frameBorder="0"
+            marginHeight="0"
+            marginWidth="0"
+            title="MAXIMAX Form"
+          >
+            Loading…
+          </iframe>
+        </div>
+      </div>
+    </div>
+  );
+}
