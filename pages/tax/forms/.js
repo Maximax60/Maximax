@@ -1,4 +1,24 @@
-const forms = [
+export default function Tax() {
+  return (
+    <main className="min-h-screen bg-gradient-to-b from-brand-orange to-brand-black text-white">
+      <section className="mx-auto max-w-5xl px-6 py-12">
+        <h1 className="text-3xl font-semibold">Tax Services</h1>
+        <p className="mt-2 text-white/85">Personal & Business tax prep san tèt chaje.</p>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <a href="/tax/forms" className="rounded-xl bg-brand-orange text-black px-5 py-3 font-medium hover:opacity-90 text-center">
+            Download IRS Forms
+          </a>
+          <a href="/contact" className="rounded-xl border border-brand-orange text-brand-orange px-5 py-3 font-medium hover:border-brand-orange/70 text-center">
+            Upload Your Documents
+          </a>
+        </div>
+
+        <p className="mt-10 text-sm text-white/80">W-2, 1099, Schedule C, Form 8888, ID, prèv adrès, elatriye.</p>
+      </section>
+    </main>
+  );
+}const forms = [
   { name: "W-2 — Wage and Tax Statement", url: "https://www.irs.gov/forms-pubs/about-form-w-2" },
   { name: "1099-MISC — Miscellaneous Income", url: "https://www.irs.gov/forms-pubs/about-form-1099-misc" },
   { name: "W-4 — Employee’s Withholding Certificate", url: "https://www.irs.gov/forms-pubs/about-form-w-4" },
