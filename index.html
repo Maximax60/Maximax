@@ -1,67 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Maximax Multiservices</title>
-</head>
-<body>
-  <h1>Maximax Multiservices</h1>
-  <p>Under construction — static site served by Netlify.</p>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maximax Multi Services</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #000;
-      color: #fff;
-      text-align: center;
-    }
-    header {
-      background: #ff914d; /* apricot orange */
-      padding: 20px;
-    }
-    h1 {
-      margin: 0;
-    }
-    section {
-      margin: 40px auto;
-      max-width: 800px;
-    }
-    .btn {
-      display: inline-block;
-      margin: 20px;
-      padding: 12px 24px;
-      background: #ff914d;
-      color: #000;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>MAXIMAX MULTI SERVICES</h1>
-    <p><strong>MAXIMAX ALWAYS STAY MAXIMIZED</strong></p>
-  </header>
-
-  <section>
-    <h2>🚧 Site Under Construction 🚧</h2>
-    <p>We’re preparing something amazing for you.</p>
-  </section>
-
-  <section>
-    <h2>Google Form</h2>
-    <!-- Replace YOUR_GOOGLE_FORM_LINK with your real form link -->
-    <iframe src="YOUR_GOOGLE_FORM_LINK" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
   </section>
 
   <section>
@@ -69,5 +6,44 @@
     <!-- Replace phone number with your WhatsApp/Twilio number -->
     <a class="btn" href="https://wa.me/13175381150" target="_blank">Chat on WhatsApp</a>
   </section>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MAXIMAX Multi Services</title>
+  <meta name="description" content="Immigration • Tax • Forms • Upload • Appointments." />
+  <link rel="icon" href="/favicon.svg" />
+  <script src="/assets/i18n.js"></script>
+  <script src="/assets/memo.js"></script>
+  <script src="/assets/forms.js"></script>
+  <style>
+    body{font-family:system-ui,Arial,sans-serif;margin:0;padding:2rem}
+    .bar{display:flex;gap:1rem;align-items:center;justify-content:space-between}
+    .lang a{margin-left:.5rem;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <div><strong>MAXIMAX</strong> — <span data-i18n="slogan">MAXIMAX ALWAYS MAXIMIZE</span></div>
+    <div class="lang">Language:
+      <a href="#" data-lang="en">ENGLISH</a> |
+      <a href="#" data-lang="ht">CREOLE</a> |
+      <a href="#" data-lang="es">SPANISH</a>
+    </div>
+  </div>
+
+  <h1 data-i18n="hero_title">MAXIMAX Multi Services</h1>
+  <p><a href="/alerte.html" data-i18n="nav_alerts">Alerte</a> • <a href="/memo.html" data-i18n="nav_memo">Memo</a> •
+     <a href="/upload.html" data-i18n="nav_upload">Upload</a> •
+     <a href="/appointments.html" data-i18n="nav_appointments">Appointments</a></p>
+
+  <!-- Version check -->
+  <p>Version: <code id="ver">loading…</code></p>
+  <script>
+    fetch('/assets/version.json').then(r=>r.json()).then(j=>{document.getElementById('ver').textContent=j.version||'n/a'}).catch(()=>{});
+  </script>
 </body>
 </html>
