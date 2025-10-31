@@ -1,3 +1,46 @@
+<style>
+  #language-toggle {
+    transition: opacity .25s ease, transform .25s ease;
+    opacity: 1;
+  }
+  /* hidden state: slide up a bit + fade */
+  #language-toggle.is-hidden {
+    opacity: 0;
+    transform: translate(-50%, -12px);
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  (function(){
+    const bar = document.getElementById('language-toggle');
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    function onScroll(){
+      const y = window.scrollY;
+      const goingDown = y > lastY;
+      // show when scrolling up or near top; hide when scrolling down
+      if (y < 40 || !goingDown) {
+        bar.classList.remove('is-hidden');
+      } else {
+        bar.classList.add('is-hidden');
+      }
+      lastY = y;
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Ensure visible on load
+    onScroll();
+  })();
+</script>
 <!-- 🌍 Fixed Maximax Language Toggle -->
 <div id="language-toggle"
   style="position:fixed;top:0;left:50%;transform:translateX(-50%);
