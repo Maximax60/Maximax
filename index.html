@@ -1,3 +1,126 @@
+<!-- Maximax FM – Auto-rotating Spotify Playlists (Apricot + Black) with i18n -->
+<section id="maximax-fm"
+  style="background:#000;color:#F59E0B;padding:40px 20px;text-align:center;border-radius:20px;max-width:900px;margin:60px auto;box-shadow:0 0 15px rgba(245,158,11,.4);">
+  <h2 style="font-size:2em;font-weight:800;margin-bottom:10px;text-transform:uppercase;">
+    🎶 <span data-i18n-mmxfm="title">Maximax FM</span>
+  </h2>
+  <p style="font-size:1.05em;margin:0 0 20px;letter-spacing:.4px;">
+    <strong data-i18n-mmxfm="slogan">MAXIMAX ALWAYS MAXIMIZE</strong><br>
+    <span data-i18n-mmxfm="subtitle">
+      Official <span style="color:#F59E0B;">Spotify playlists</span> curated by <b>Stratèj Vizyonè</b>.
+    </span>
+  </p>
+
+  <!-- Player -->
+  <div style="display:grid;place-items:center;">
+    <iframe id="mmxFmPlayer" title="Maximax FM Spotify"
+      style="border-radius:12px;width:100%;max-width:800px;height:380px;border:none;"
+      src="https://open.spotify.com/embed/playlist/308YNfQZkdCp43orc8W12G?utm_source=generator"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+
+  <!-- Dots / controls (click to switch) -->
+  <div id="mmxFmDots" style="margin-top:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;"></div>
+
+  <p style="margin-top:16px;font-size:.85em;opacity:.75;">
+    <span data-i18n-mmxfm="powered">Powered by Spotify</span> | © <span id="mmxYear"></span> Maximax Multi Services
+  </p>
+</section>
+
+<script>
+  // ✅ Your playlists (add/remove IDs as you like)
+  const MMX_PLAYLISTS = [
+    "308YNfQZkdCp43orc8W12G",
+    "23GbLlMeyqkPXalamTHj3H",
+    "3YjfopTrtqQEcAKNghhp8p",
+    "04onHpehSzxHB87Eq8b63m"
+  ];
+  const MMX_ROTATE_MS = 30000; // 30s
+
+  // 🔤 Local i18n for this section, synced with your site’s data-lang buttons
+  const MMX_I18N = {
+    en: {
+      title: "Maximax FM",
+      slogan: "MAXIMAX ALWAYS MAXIMIZE",
+      subtitle: "Official <span style='color:#F59E0B;'>Spotify playlists</span> curated by <b>Stratèj Vizyonè</b>.",
+      powered: "Powered by Spotify"
+    },
+    ht: {
+      title: "Maximax FM",
+      slogan: "MAXIMAX ALWAYS MAXIMIZE",
+      subtitle: "Playlis <span style='color:#F59E0B;'>Spotify</span> ofisyèl yo, prepare pa <b>Stratèj Vizyonè</b>.",
+      powered: "Pwograme pa Spotify"
+    },
+    es: {
+      title: "Maximax FM",
+      slogan: "MAXIMAX ALWAYS MAXIMIZE",
+      subtitle: "Listas de reproducción <span style='color:#F59E0B;'>de Spotify</span> curadas por <b>Stratèj Vizyonè</b>.",
+      powered: "Desarrollado por Spotify"
+    }
+  };
+
+  (function initMaximaxFM(){
+    const frame = document.getElementById("mmxFmPlayer");
+    const dotsWrap = document.getElementById("mmxFmDots");
+    const yearEl = document.getElementById("mmxYear");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // --- Rotation ---
+    let i = 0, timer = null;
+    function setPlaylist(idx){
+      i = idx % MMX_PLAYLISTS.length;
+      const id = MMX_PLAYLISTS[i];
+      frame.src = `https://open.spotify.com/embed/playlist/${id}?utm_source=generator`;
+      [...dotsWrap.children].forEach((b, n) => {
+        b.style.background = n === i ? "#F59E0B" : "transparent";
+        b.style.color = n === i ? "#000" : "#F59E0B";
+        b.style.borderColor = "#F59E0B";
+      });
+    }
+    function startRotation(){ stopRotation(); timer = setInterval(() => setPlaylist(i + 1), Math.max(5000, MMX_ROTATE_MS)); }
+    function stopRotation(){ if (timer) clearInterval(timer); }
+
+    // Build dots
+    MMX_PLAYLISTS.forEach((id, idx) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = String(idx + 1);
+      b.setAttribute("aria-label", "Switch playlist " + (idx + 1));
+      b.style.cssText = "border:2px solid #F59E0B;border-radius:999px;padding:6px 10px;background:transparent;color:#F59E0B;cursor:pointer;font-weight:700;";
+      b.onclick = () => { setPlaylist(idx); startRotation(); };
+      dotsWrap.appendChild(b);
+    });
+
+    frame.addEventListener("mouseenter", stopRotation);
+    frame.addEventListener("mouseleave", startRotation);
+
+    setPlaylist(0);
+    startRotation();
+
+    // --- i18n sync with your [data-lang] buttons (ENGLISH | CREOLE | SPANISH) ---
+    function applyLang(lang){
+      const t = MMX_I18N[lang] || MMX_I18N.en;
+      document.querySelectorAll("[data-i18n-mmxfm]").forEach(el => {
+        const key = el.getAttribute("data-i18n-mmxfm");
+        if (!t[key]) return;
+        // some fields contain HTML (subtitle), so handle safely:
+        if (/(subtitle)/.test(key)) { el.innerHTML = t[key]; } else { el.textContent = t[key]; }
+      });
+    }
+    // Pick up your site’s saved language if present
+    const saved = localStorage.getItem("maximax_lang") || "ht";
+    applyLang(saved);
+
+    // Listen for clicks on your existing language buttons
+    document.querySelectorAll("[data-lang]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const lang = btn.getAttribute("data-lang");
+        localStorage.setItem("maximax_lang", lang);
+        applyLang(lang);
+      });
+    });
+  })();
+</script>
 " width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
   </section>
 
