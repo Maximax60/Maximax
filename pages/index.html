@@ -1,0 +1,111 @@
+import React from "react";
+
+/**
+ * Maximax FM – Spotify Playlist Section
+ * Brand: Apricot Orange (#F59E0B) + Black (#0B0B0B)
+ * Usage (Next.js / React):
+ *   <MaximaxFMSection playlistId="308YNfQZkdCp43orc8W12G" />
+ * Optional auto-rotation:
+ *   <MaximaxFMSection rotatePlaylists={["308YNfQZkdCp43orc8W12G","23GbLlMeyqkPXalamTHj3H","3YjfopTrtqQEcAKNghhp8p"]} intervalMs={20000} />
+ */
+
+export default function MaximaxFMSection({
+  title = "Maximax FM",
+  slogan = "MAXIMAX ALWAYS MAXIMIZE",
+  curator = "Stratèj Vizyonè",
+  playlistId = "308YNfQZkdCp43orc8W12G",
+  height = 380,
+  rotatePlaylists,
+  intervalMs = 20000,
+}: {
+  title?: string;
+  slogan?: string;
+  curator?: string;
+  playlistId?: string;
+  height?: number;
+  /** If provided, cycles through these playlist IDs. */
+  rotatePlaylists?: string[];
+  /** Rotation interval in milliseconds. */
+  intervalMs?: number;
+}) {
+  const [activeId, setActiveId] = React.useState(
+    rotatePlaylists?.[0] || playlistId
+  );
+
+  // Auto-rotate playlists if a list is provided
+  React.useEffect(() => {
+    if (!rotatePlaylists || rotatePlaylists.length === 0) return;
+    let i = 0;
+    const timer = setInterval(() => {
+      i = (i + 1) % rotatePlaylists.length;
+      setActiveId(rotatePlaylists[i]);
+    }, Math.max(5000, intervalMs));
+    return () => clearInterval(timer);
+  }, [rotatePlaylists, intervalMs]);
+
+  const iframeSrc = `https://open.spotify.com/embed/playlist/${activeId}?utm_source=generator`;
+
+  return (
+    <section
+      className="w-full px-4 py-10"
+      style={{ backgroundColor: "#0B0B0B", color: "#F59E0B" }}
+      aria-label="Maximax FM Spotify Playlist"
+    >
+      <div
+        className="mx-auto max-w-4xl rounded-3xl p-6 md:p-10 text-center"
+        style={{
+          boxShadow: "0 0 15px rgba(245, 158, 11, 0.4)",
+          background: "#0B0B0B",
+        }}
+      >
+        <h2 className="text-2xl md:text-3xl font-extrabold uppercase tracking-tight">
+          🎶 {title}
+        </h2>
+        <p className="mt-2 text-sm md:text-base opacity-90">
+          <strong>{slogan}</strong>
+          <br />
+          <span className="opacity-90">
+            Enjoy the official <span style={{ color: "#F59E0B" }}>Spotify Playlist</span>{" "}
+            curated by <b>{curator}</b>.
+          </span>
+        </p>
+
+        <div className="mt-6 grid place-items-center">
+          <iframe
+            key={activeId}
+            title={`Spotify playlist ${activeId}`}
+            style={{ borderRadius: 12 }}
+            src={iframeSrc}
+            width="100%"
+            height={height}
+            frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          />
+        </div>
+
+        {rotatePlaylists?.length ? (
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs md:text-sm opacity-80">
+            <span>Now playing:</span>
+            {rotatePlaylists.map((id) => (
+              <button
+                key={id}
+                onClick={() => setActiveId(id)}
+                className={`rounded-full px-3 py-1 border transition ${
+                  activeId === id
+                    ? "bg-[#F59E0B] text-black border-transparent"
+                    : "border-[#F59E0B] hover:bg-[#F59E0B]/10"
+                }`}
+                aria-label={`Switch to playlist ${id}`}
+              >
+                {id.slice(0, 6)}…
+              </button>
+            ))}
+          </div>
+        ) : null}
+
+        <p className="mt-6 text-xs opacity-70">Powered by Spotify | © {new Date().getFullYear()} Maximax Multi Services</p>
+      </div>
+    </section>
+  );
+}
