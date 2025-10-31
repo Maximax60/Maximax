@@ -1,3 +1,68 @@
+<!-- 🌍 Fixed Maximax Language Toggle -->
+<div id="language-toggle"
+  style="position:fixed;top:0;left:50%;transform:translateX(-50%);
+         display:flex;justify-content:center;gap:12px;align-items:center;
+         background:#000;color:#F59E0B;padding:10px 20px;border-radius:30px;
+         box-shadow:0 0 10px rgba(245,158,11,.6);z-index:9999;">
+  <button data-lang="en"
+    style="cursor:pointer;background:transparent;color:#F59E0B;border:2px solid #F59E0B;
+           border-radius:25px;padding:6px 15px;font-weight:600;transition:.3s;">
+    English
+  </button>
+  <button data-lang="ht"
+    style="cursor:pointer;background:transparent;color:#F59E0B;border:2px solid #F59E0B;
+           border-radius:25px;padding:6px 15px;font-weight:600;transition:.3s;">
+    Kreyòl
+  </button>
+  <button data-lang="es"
+    style="cursor:pointer;background:transparent;color:#F59E0B;border:2px solid #F59E0B;
+           border-radius:25px;padding:6px 15px;font-weight:600;transition:.3s;">
+    Español
+  </button>
+</div>
+
+<!-- add a top padding to prevent overlap -->
+<style>
+  body {
+    padding-top: 70px;
+  }
+</style>
+
+<script>
+  // 🔁 Highlight active language & connect with FM section
+  (function(){
+    const langButtons = document.querySelectorAll("#language-toggle [data-lang]");
+    const activeColor = "#F59E0B", inactiveBg = "transparent";
+    const activeBg = "#F59E0B", inactiveColor = "#F59E0B";
+
+    function applyHighlight(lang){
+      langButtons.forEach(btn=>{
+        if(btn.getAttribute("data-lang") === lang){
+          btn.style.background = activeBg;
+          btn.style.color = "#000";
+          btn.style.borderColor = activeBg;
+        } else {
+          btn.style.background = inactiveBg;
+          btn.style.color = inactiveColor;
+          btn.style.borderColor = activeColor;
+        }
+      });
+    }
+
+    // Restore saved language or default to Kreyòl
+    const savedLang = localStorage.getItem("maximax_lang") || "ht";
+    applyHighlight(savedLang);
+
+    langButtons.forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        const lang = btn.getAttribute("data-lang");
+        localStorage.setItem("maximax_lang", lang);
+        applyHighlight(lang);
+        document.dispatchEvent(new CustomEvent("maximaxLangChange",{detail:{lang}}));
+      });
+    });
+  })();
+</script>
 <!-- 🌍 Language Toggle Bar -->
 <div id="language-toggle"
   style="display:flex;justify-content:center;gap:12px;align-items:center;
