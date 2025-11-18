@@ -1,9 +1,0 @@
-import ImmigrationUpdates from "@/components/ImmigrationUpdates";
-
-{/* Inline section */}
-<div className="mt-8">
-  <ImmigrationUpdates />
-</div>
-
-{/* Or modal button style */}
-{/* <ImmigrationUpdates asModal /> */}
