@@ -1,0 +1,11 @@
+.services-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* keeps buttons at top */
+  align-items: center;
+}
+
+.bottom-text {
+  margin-top: 20px; /* adjust as needed */
+  text-align: center;
+}
