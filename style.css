@@ -1,20 +1,14 @@
-.welcome p,
-.hint {
-  color: #f8a24e;         /* orange */
-  font-style: italic;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-}
-/* Base styling */
+/* BASIC RESET */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: system-ui, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+/* PAGE BACKGROUND */
 body {
-  background: #111;
+  background: #000;
   color: #fff;
 }
 
@@ -84,7 +78,7 @@ body {
   border-radius: 12px;
   cursor: pointer;
   width: 80%;
-  max-width: 220px;
+  max-width: 230px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
 }
@@ -107,7 +101,7 @@ body {
 /* RIGHT PANEL */
 .right-panel {
   width: 60%;
-  background: linear-gradient(135deg, #f8a24e, #f2a043);
+  background: linear-gradient(135deg, #f8a24e, #000000);
   color: #000;
   padding: 40px 50px;
   display: flex;
@@ -115,6 +109,7 @@ body {
   justify-content: center;
 }
 
+/* HEADER WITH LOGO + TEXT */
 .brand-header {
   display: flex;
   align-items: center;
@@ -122,19 +117,23 @@ body {
   margin-bottom: 20px;
 }
 
-/* Simple logo placeholder */
+/* LOGO CIRCLE USING YOUR PHOTO */
 .logo-circle {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   border: 3px solid #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  font-size: 22px;
-  background: #fbd0a0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
+
+  /* 🔥 YOUR PHOTO HERE (FILE MUST BE NAMED maximax-logo.png) */
+  background-image: url("maximax-logo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Hide the text "MAXIMAX" inside */
+  text-indent: -9999px;
+  overflow: hidden;
 }
 
 .brand-text h1 {
@@ -148,7 +147,7 @@ body {
   letter-spacing: 1px;
 }
 
-/* Welcome text */
+/* WELCOME TEXT */
 .welcome {
   margin-top: 20px;
   max-width: 520px;
@@ -164,7 +163,7 @@ body {
   opacity: 0.85;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE FOR PHONE/TABLET */
 @media (max-width: 900px) {
   .page {
     flex-direction: column;
@@ -188,4 +187,4 @@ body {
   .welcome {
     max-width: 100%;
   }
-  }
+}
