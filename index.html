@@ -1,4 +1,50 @@
+<style>
+  .hero {
+    background: linear-gradient(to right, #000 0%, #000 50%, #ffa135 100%);
+    padding: 60px 40px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
+  .content-box {
+    max-width: 500px;
+    margin-right: 40px;
+  }
+
+  .content-box h1 {
+    font-size: 42px;
+    font-weight: bold;
+    line-height: 1.3em;
+    margin-bottom: 10px;        /* FIX: tighter spacing */
+    color: #ffffff;
+  }
+
+  .content-box .highlight {
+    color: #ffa135;
+  }
+
+  .content-box p {
+    font-size: 19px;
+    line-height: 1.5em;
+    margin-top: 10px;            /* FIX: closer to header */
+    max-width: 420px;            /* FIX: narrower paragraph */
+  }
+
+  .photo-box img {
+    width: 360px;
+    border: 6px solid #ffa135;
+    border-radius: 20px;
+  }
+
+  .main-wrap {
+    display: flex;
+    align-items: center;        /* perfect vertical alignment */
+    justify-content: center;
+    gap: 40px;
+  }
+</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
