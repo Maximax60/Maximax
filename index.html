@@ -1,188 +1,212 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MAXIMAX MULTI SERVICES</title>
-
+  <title>Maximax Multiservices – MAXIMAX ALWAY MAXIMIZED</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      font-family: Arial, sans-serif;
-      color: #ffb244;
+    :root {
+      --orange: #ffb347;
+      --orange-deep: #ff9800;
+      --black: #000;
+      --text-light: #fff;
+      --bg-dark: #0a0a0a;
     }
 
-    .hero {
-      background: linear-gradient(to bottom, #ffa135 0%, #000 70%);
-      padding: 50px 20px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #1a1a1a, #000);
+      color: var(--text-light);
       min-height: 100vh;
     }
 
     .container {
-      max-width: 900px;
-      margin: auto;
-      background: #000;
-      border: 2px solid #ffa135;
-      padding: 40px;
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 20px;
     }
 
-    .title {
-      font-size: 40px;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 20px;
-      color: #ffb244;
-      letter-spacing: 0.1em;
-    }
-
-    .nav {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .nav a {
-      color: #ffa135;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 0 10px;
-      font-size: 16px;
-    }
-
-    .nav a:hover {
-      text-decoration: underline;
-    }
-
-    .lang-toggle {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .lang-toggle a {
-      color: #ffb244;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 0 10px;
-      font-size: 18px;
-    }
-
-    h2 {
-      font-size: 30px;
-      margin-bottom: 15px;
-      color: #ffb244;
-    }
-
-    p {
-      font-size: 18px;
-      margin-bottom: 10px;
-      line-height: 1.6em;
-    }
-
-    ul {
-      font-size: 18px;
-      margin-bottom: 20px;
-      padding-left: 20px;
-    }
-
-    .buttons {
+    header {
       display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin-top: 30px;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    .btn {
-      padding: 13px 25px;
-      border-radius: 40px;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn-orange {
-      background: #ffa135;
-      color: #000;
-    }
-
-    .btn-outline {
-      background: #000;
-      color: #ffa135;
-      border: 2px solid #ffa135;
+    .brand-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--orange);
     }
 
     .slogan {
-      margin-top: 30px;
-      text-align: center;
-      font-style: italic;
-      font-size: 20px;
+      font-size: 0.85rem;
+      color: #ddd;
+      margin-top: -4px;
     }
 
-    .contact {
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      margin-left: 14px;
+      font-size: 0.85rem;
+      padding: 6px 10px;
+      border-radius: 20px;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      background: rgba(255, 179, 71, 0.25);
+      color: var(--orange);
+    }
+
+    /* HERO */
+    .hero {
       margin-top: 40px;
+      display: grid;
+      grid-template-columns: 2fr 1.5fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .hero h1 span {
+      color: var(--orange);
+    }
+
+    .hero p {
+      margin: 14px 0;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #ccc;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--orange), var(--orange-deep));
+      color: var(--black);
+      padding: 12px 22px;
+      border-radius: 30px;
+      margin-right: 10px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      padding: 12px 22px;
+      border-radius: 30px;
+      text-decoration: none;
+    }
+
+    /* IMAGE CARD */
+    .photo-card {
+      position: relative;
+      padding: 14px;
+      border-radius: 24px;
+      background: radial-gradient(circle at top, rgba(255,140,0,0.55), #0a0a0a);
+      border: 1px solid rgba(255, 179, 71, 0.4);
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0,0,0,0.7);
+    }
+
+    .photo-card img {
+      width: 100%;
+      border-radius: 20px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .photo-tag {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      background: rgba(0,0,0,0.7);
+      padding: 6px 16px;
+      border-radius: 20px;
+      color: var(--orange);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      font-size: 0.85rem;
       text-align: center;
-      font-size: 18px;
-      line-height: 1.6em;
+      color: #aaa;
+      border-top: 1px solid rgba(255,255,255,0.1);
     }
   </style>
 </head>
 
 <body>
-  <div class="hero">
-    <div class="container">
+  <div class="container">
 
-      <div class="title">MAXIMAX MULTI SERVICES</div>
+    <!-- HEADER -->
+    <header>
+      <div>
+        <div class="brand-title">MAXIMAX MULTISERVICES</div>
+        <div class="slogan">MAXIMAX ALWAY MAXIMIZED</div>
+      </div>
 
-      <div class="nav">
+      <nav>
         <a href="index.html">Home</a>
-        <a href="immigration.html">Immigration</a>
-        <a href="tax.html">Tax</a>
-        <a href="unemployment.html">Unemployment</a>
-        <a href="housing.html">Housing</a>
-        <a href="snap.html">SNAP</a>
-        <a href="socialsecurity.html">Social Security</a>
-        <a href="alerte.html">Alerte</a>
-        <a href="maximaxfm.html">MAXIMAX FM</a>
-        <a href="contact.html">Contact</a>
+        <a href="#">Immigration</a>
+        <a href="#">Tax</a>
+        <a href="#">Forms</a>
+        <a href="#">Alerts</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>
+          Immigration, Tax &amp; <span>Multi Services</span>  
+          for the Haitian Community.
+        </h1>
+
+        <p>
+          MAXIMAX Multiservices provides trusted support with immigration documents,  
+          taxes, government forms, translations, and more — in English, Creole, and Spanish.
+        </p>
+
+        <a class="btn-primary" href="#">Book Appointment</a>
+        <a class="btn-secondary" href="#">WhatsApp / Call Now</a>
       </div>
 
-      <div class="lang-toggle">
-        <a href="#">English</a> |
-        <a href="#">Kreyòl</a> |
-        <a href="#">Español</a>
+      <div class="photo-card">
+        <img src="maximax-owner.png" alt="Maximax Owner" />
+        <div class="photo-tag">Stratèj Vizyonè</div>
       </div>
+    </section>
 
-      <h2>Immigration, Tax & Multi Services<br>for the Haitian Community</h2>
-
-      <p>
-        MAXIMAX Multiservices prepares documents with clarity, respect, and professionalism.
-        Services available in English, Kreyòl and Español.
-      </p>
-
-      <ul>
-        <li>Immigration forms and family petitions</li>
-        <li>Tax preparation – federal and state</li>
-        <li>Unemployment and benefits support</li>
-        <li>SNAP, Social Security & housing forms</li>
-      </ul>
-
-      <div class="buttons">
-        <a href="contact.html" class="btn btn-orange">Book an Appointment</a>
-        <a href="https://wa.me/13175381150" class="btn btn-outline">Call / WhatsApp Now</a>
-      </div>
-
-      <div class="slogan">MAXIMAX ALWAYS MAXIMIZED</div>
-
-      <div class="contact">
-        <div>📞 (317) 538-1150</div>
-        <div>📞 (516) 216-8494</div>
-        <div>📍 6934 Coral Cove Drive, Orlando, Florida 32818</div>
-        <div>📧 maximaxmultiservices.com</div>
-      </div>
-
-    </div>
+    <!-- FOOTER -->
+    <footer>
+      © <span id="year"></span> Maximax Multiservices — All Rights Reserved.
+    </footer>
   </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
