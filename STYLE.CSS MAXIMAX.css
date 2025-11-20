@@ -1,5 +1,11 @@
 /* Base styling */
-* {
+* {<div class="contact">
+  <div>📞 (317) 538-1150</div>
+  <div>📞 (516) 216-8494</div>
+  <div>📍 6934 Coral Cove Drive, Orlando, Florida 32818</div>
+  <div>📧 maximaxmultiservices@gmail.com</div>
+</div>
+
   box-sizing: border-box;
   margin: 0;
   padding: 0;
