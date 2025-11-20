@@ -1,4 +1,7 @@
-/* BASIC RESET */
+/* Force hero text to gold (no white) */
+    .hero, .hero * {
+      color: #ffb347 !important;
+    }/* BASIC RESET */
 * {
   box-sizing: border-box;
   margin: 0;
