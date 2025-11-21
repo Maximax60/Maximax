@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Maximax Multiservices – MAXIMAX ALWAYS MAXIMIZED</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --orange: #ffb347;
+      --orange-deep: #ff9800;
+      --bg-dark: #000000;
+      --panel-bg: #070709;
+      --text-main: #fce3b8;
+      --text-soft: #f6d9a5;
+      --border-glow: rgba(255, 152, 0, 0.55);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #1a0c02 0%, #000 55%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1200px;
+      background: radial-gradient(circle at top left, #1c0f03 0%, #050506 55%, #000 100%);
+      border-radius: 28px;
+      border: 1px solid var(--border-glow);
+      box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.9),
+        0 0 35px rgba(255, 152, 0, 0.35);
+      padding: 22px 22px 32px;
+    }
+
+    /* TOP BAR */
+
+    header.top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 2px solid var(--orange-deep);
+      object-fit: cover;
+      box-shadow:
+        0 0 10px rgba(255, 152, 0, 0.55),
+        0 0 25px rgba(0, 0, 0, 0.9);
+    }
+
+    .brand-text h2 {
+      font-size: 1.05rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .brand-text p {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--text-soft);
+      opacity: 0.9;
+    }
+
+    nav.top-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    nav.top-nav a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: rgba(10, 10, 10, 0.6);
+      transition: all 0.18s ease-out;
+    }
+
+    nav.top-nav a:hover {
+      border-color: var(--orange);
+      background: rgba(255, 152, 0, 0.18);
+      color: #ffffff;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 34px;
+      align-items: center;
+      padding-top: 6px;
+    }
+
+    .hero-title {
+      font-size: 2.15rem;
+      line-height: 1.18;
+      font-weight: 800;
+      text-transform: none;
+    }
+
+    .hero-title span {
+      color: var(--orange-deep);
+    }
+
+    .hero-text {
+      margin-top: 16px;
+      font-size: 0.94rem;
+      line-height: 1.6;
+      color: var(--text-soft);
+      max-width: 430px;
+    }
+
+    .hero-text strong {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .hero-buttons {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 9px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--orange-deep);
+      transition: all 0.18s ease-out;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--orange-deep), var(--orange));
+      color: #000;
+      box-shadow: 0 0 15px rgba(255, 152, 0, 0.45);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-soft);
+      border-color: rgba(255, 152, 0, 0.5);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 152, 0, 0.18);
+      color: #fff;
+    }
+
+    .info-strip {
+      margin-top: 24px;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      opacity: 0.9;
+    }
+
+    .info-strip span {
+      white-space: nowrap;
+    }
+
+    .info-strip strong {
+      color: var(--orange-deep);
+      font-weight: 600;
+    }
+
+    /* PHOTO CARD */
+
+    .hero-photo-area {
+      display: flex;
+      justify-content: center;
+    }
+
+    .photo-card {
+      border-radius: 26px;
+      padding: 4px;
+      background: linear-gradient(145deg, #ff9800, #7a3300);
+      box-shadow:
+        0 0 20px rgba(255, 152, 0, 0.45),
+        0 0 35px rgba(0, 0, 0, 0.95);
+      max-width: 360px;
+      width: 100%;
+    }
+
+    .photo-inner {
+      border-radius: 22px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .photo-inner img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 28px;
+      border-top: 1px solid rgba(255, 184, 71, 0.4);
+      padding-top: 14px;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      justify-content: space-between;
+    }
+
+    footer span strong {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .page {
+        padding: 16px 16px 26px;
+        border-radius: 20px;
+      }
+
+      header.top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav.top-nav {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .hero-photo-area {
+        justify-content: flex-start;
+      }
+
+      .hero-title {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 1.6rem;
+      }
+
+      .brand-text h2 {
+        font-size: 0.95rem;
+      }
+
+      .brand-text p {
+        font-size: 0.7rem;
+      }
+
+      nav.top-nav a {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 6px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <!-- TOP BAR -->
+    <header class="top-bar">
+      <div class="brand">
+        <img src="maximax-owner.png" alt="Maximax Owner" class="brand-logo" />
+        <div class="brand-text">
+          <h2>MAXIMAX MULTISERVICES</h2>
+          <p>MAXIMAX ALWAYS MAXIMIZED</p>
+        </div>
+      </div>
+
+      <nav class="top-nav">
+        <a href="index.html">Home</a>
+        <a href="immigration.html">Immigration</a>
+        <a href="tax.html">Tax</a>
+        <a href="forms.html">Forms</a>
+        <a href="alerts.html">Alerts</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div>
+        <div class="hero-title">
+          Immigration, Tax &amp; <span>Multi Services</span><br />
+          for the Haitian Community.
+        </div>
+
+        <div class="hero-text">
+          Support with immigration documents, taxes, government forms,
+          translations, and more – in <strong>English, Kreyòl, and Español</strong>.
+        </div>
+
+        <div class="hero-buttons">
+          <a href="appointments.html" class="btn-primary">Book an Appointment</a>
+          <a href="maximaxfm.html" class="btn-secondary">Listen to MAXIMAX FM</a>
+        </div>
+
+        <div class="info-strip">
+          <span><strong>Phone:</strong> (317) 538-1150 • (516) 216-8494</span>
+          <span><strong>Address:</strong> Opalocka, Florida</span>
+          <span><strong>Email:</strong> louismaxauto600@gmail.com</span>
+        </div>
+      </div>
+
+      <div class="hero-photo-area">
+        <div class="photo-card">
+          <div class="photo-inner">
+            <img src="maximax-owner.png" alt="Maximax – Stratèj Vizyonè" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <span><strong>MAXIMAX MULTISERVICES</strong> • Immigration, Tax &amp; Multi Services</span>
+      <span>Serving the Haitian community with clarity, respect, and professionalism.</span>
+    </footer>
+  </div>
+</body>
+</html>
