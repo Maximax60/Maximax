@@ -1,4 +1,18 @@
-/* Force hero text to gold (no white) */
+ul, li {
+  background: #050608 !important;
+}
+
+.forms-list {
+  background: #050608 !important;
+}
+
+.forms-columns {
+  background: #050608 !important;
+}
+
+.card, .card-inner {
+  background: #050608 !important;
+}/* Force hero text to gold (no white) */
     .hero, .hero * {
       color: #ffb347 !important;
     }/* BASIC RESET */
