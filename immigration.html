@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Maximax Multi Services – Immigration Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Maximax Multi Services helps the Haitian community with immigration forms, family petitions, USCIS documents and more – in English, Kreyòl and Español."
+  />
+  <style>
+    :root {
+      --orange: #ffb347;
+      --orange-deep: #ff9800;
+      --bg-dark: #000000;
+      --card-border: #ffb347;
+      --text-main: #ffb347;
+      --text-soft: #ffc978;
+      --pill-bg: rgba(10, 10, 10, 0.96);
+      --pill-border: #ffb347;
+      --shadow-soft: 0 0 40px rgba(255, 152, 0, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
+      background: radial-gradient(circle at top left, #1a1a1a 0, #000000 55%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1200px;
+      border-radius: 32px;
+      border: 1px solid rgba(255, 152, 0, 0.4);
+      box-shadow: var(--shadow-soft);
+      background: radial-gradient(circle at top left, #1e1308 0%, #050505 60%);
+      padding: 22px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* TOP BAR */
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--orange);
+      box-shadow: 0 0 18px rgba(255, 152, 0, 0.6);
+      flex-shrink: 0;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .brand-text h2 {
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .brand-text p {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .pill {
+      border-radius: 999px;
+      border: 1px solid var(--pill-border);
+      padding: 6px 18px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      color: var(--text-main);
+      background: var(--pill-bg);
+      box-shadow: 0 0 12px rgba(255, 152, 0, 0.4);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.18s ease-out;
+      white-space: nowrap;
+    }
+
+    .pill:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px rgba(255, 152, 0, 0.65);
+      border-color: var(--orange-deep);
+    }
+
+    .pill-primary {
+      background: linear-gradient(135deg, var(--orange-deep), var(--orange));
+      color: #000000;
+      font-weight: 600;
+    }
+
+    .pill-lang {
+      border-color: rgba(255, 255, 255, 0.35);
+      color: var(--text-soft);
+    }
+
+    .pill-lang-active {
+      border-color: var(--orange);
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    /* LAYOUT */
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    /* HERO TEXT */
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .hero-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--orange);
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-text {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      max-width: 480px;
+    }
+
+    .hero-text strong {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .service-list {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    .service-list span::before {
+      content: "• ";
+      color: var(--orange);
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      opacity: 0.9;
+    }
+
+    .download-section {
+      margin-top: 16px;
+    }
+
+    /* PHOTO CARD */
+
+    .photo-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .photo-card {
+      border-radius: 28px;
+      padding: 10px;
+      background: radial-gradient(circle at top, #ffb347 0%, #3b1b07 60%, #000 100%);
+      box-shadow: 0 0 48px rgba(255, 152, 0, 0.8);
+      max-width: 360px;
+      width: 100%;
+    }
+
+    .photo-card-inner {
+      border-radius: 24px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .photo-card-inner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: rgba(255, 185, 120, 0.9);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-left,
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    footer strong {
+      color: var(--orange);
+      letter-spacing: 0.08em;
+    }
+
+    footer a {
+      color: var(--orange);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 840px) {
+      .page {
+        padding: 18px 16px;
+        border-radius: 24px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+      }
+
+      .hero-title {
+        font-size: 1.85rem;
+      }
+
+      .photo-wrap {
+        justify-content: flex-start;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-title {
+        font-size: 1.55rem;
+      }
+
+      .hero-text {
+        font-size: 0.9rem;
+      }
+
+      .pill {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- TOP BAR -->
+    <header>
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="maximax-owner.png" alt="Maximax portrait" />
+        </div>
+        <div class="brand-text">
+          <h2>MAXIMAX MULTI SERVICES</h2>
+          <p>MAXIMAX ALWAYS MAXIMIZED</p>
+        </div>
+      </div>
+
+      <!-- MAIN NAV -->
+      <nav>
+        <!-- Main pages -->
+        <a href="index.html" class="pill">Home</a>
+        <a href="immigration.html" class="pill pill-primary">Immigration</a>
+        <a href="tax.html" class="pill">Tax</a>
+        <a href="forms.html" class="pill">Forms</a>
+        <a href="alerts.html" class="pill">Alerts</a>
+        <a href="contact.html" class="pill">Contact</a>
+
+        <!-- Languages (now link to future language pages) -->
+        <a href="immigration.html" class="pill pill-lang pill-lang-active">English</a>
+        <a href="immigration-kreyol.html" class="pill pill-lang">Kreyòl</a>
+        <a href="immigration-es.html" class="pill pill-lang">Español</a>
+      </nav>
+    </header>
+
+    <!-- MAIN LAYOUT -->
+    <div class="layout">
+      <!-- LEFT: IMMIGRATION CONTENT -->
+      <section class="hero">
+        <div class="hero-title">
+          <span>Immigration Services</span>
+          <span>for the Haitian Community.</span>
+        </div>
+
+        <div class="hero-text">
+          Nou ede w ak tout <strong>dokiman imigrasyon</strong> ou yo pou ou pa konbat
+          sistèm nan pou kont ou. Sèvis yo disponib an
+          <strong>English</strong>, <strong>Kreyòl</strong>, ak <strong>Español</strong>.
+        </div>
+
+        <div class="service-list">
+          <span>Ranpli fòm USCIS (I-130, I-485, N-400, elatriye)</span>
+          <span>Petisyon pou fanmi (maryaj, timoun, paran, frè & sè)</span>
+          <span>Renouvèlman green card &amp; work permit</span>
+          <span>Preparasyon pou entèvyou imigrasyon</span>
+          <span>Tradiksyon sètifika nesans, maryaj, divòs, elatriye</span>
+        </div>
+
+        <div class="hero-note">
+          Chak ka trete ak respè, pasyans, ak konfidansyalite.  
+          <br />Pran randevou ou jodi a pou w pa rate delè imigrasyon yo.
+        </div>
+
+        <!-- DOWNLOAD BUTTON -->
+        <div class="download-section">
+          <a href="files/immigration-packet.pdf" class="pill pill-primary" download>
+            Download Immigration Packet (PDF)
+          </a>
+        </div>
+      </section>
+
+      <!-- RIGHT: PHOTO -->
+      <div class="photo-wrap">
+        <div class="photo-card">
+          <div class="photo-card-inner">
+            <img src="maximax-owner.png" alt="Maximax Multi Services – Immigration specialist portrait" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-left">
+        <span><strong>MAXIMAX MULTI SERVICES</strong> – Immigration • Tax • Multi Services</span>
+        <span>Serving the Haitian community with professionalism and clarity.</span>
+      </div>
+
+      <div class="footer-right">
+        <span>Address: 6934 Coral Cove Drive, Orlando, FL 32818</span>
+        <span>Tel: (317) 538-1150 · (516) 216-8494</span>
+        <span>Email: <a href="mailto:maximaxmultiservices@gmail.com">maximaxmultiservices@gmail.com</a></span>
+        <span>Website: <a href="https://www.maximaxmultiservices.com" target="_blank">maximaxmultiservices.com</a></span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
