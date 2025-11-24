@@ -1,12 +1,143 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ALERT TEST</title>
+  <meta charset="UTF-8" />
+  <title>MAXIMAX Immigration Alert</title>
+
+  <!-- Pran menm style jeneral sit la si style.css egziste -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Ti backup style pou si style.css pa chaje -->
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+    .alert-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 16px 80px;
+    }
+    .alert-card {
+      border: 2px solid #ff9500;
+      border-radius: 20px;
+      padding: 32px 24px;
+      background: radial-gradient(circle at top, #333 0, #000 55%);
+    }
+    .alert-heading {
+      text-align: center;
+      color: #ffb02e;
+      font-size: 28px;
+      letter-spacing: 2px;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+    .alert-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    h2 {
+      font-size: 18px;
+      color: #ffb02e;
+      margin-bottom: 8px;
+    }
+    h3 {
+      font-size: 16px;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+    p, li {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    ul {
+      padding-left: 16px;
+      margin: 0 0 8px;
+    }
+    .alert-footer {
+      margin-top: 28px;
+      font-size: 13px;
+      color: #ffb02e;
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      .alert-columns {
+        grid-template-columns: 1fr;
+      }
+      .alert-heading {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1 style="color: red;">✅ ALERT PAGE IS WORKING</h1>
-    <p>If you see this, alerts.html is finally in the correct location.</p>
+  <div class="alert-wrapper">
+    <div class="alert-card">
+      <div class="alert-heading">
+        MAXIMAX IMMIGRATION ALERT<br />
+        <span style="font-size:16px;">TPS, Asylum &amp; Work Permit – FRAUD WARNING</span>
+      </div>
+
+      <div class="alert-columns">
+        <!-- ENGLISH SIDE -->
+        <section>
+          <h2>Fraud Warning (English)</h2>
+          <p>
+            MAXIMAX is warning the Haitian community about fake immigration “services”
+            on WhatsApp, Facebook, and text messages.
+          </p>
+
+          <h3>Red flags to watch for:</h3>
+          <ul>
+            <li>People who promise “same day” TPS, Work Permit, or Asylum approval.</li>
+            <li>Anyone who tells you to send money by Zelle, Cash App, gift card, or Bitcoin.</li>
+            <li>People who fill out forms using false addresses, fake sponsors, or fake employers.</li>
+            <li>Anyone who refuses to give you a copy of the forms they submit in your name.</li>
+          </ul>
+
+          <h3>How MAXIMAX helps</h3>
+          <ul>
+            <li>We review USCIS letters and notices with you.</li>
+            <li>We help you file or renew TPS &amp; Work Permit properly.</li>
+            <li>We help you understand deadlines so you don’t lose your case.</li>
+          </ul>
+        </section>
+
+        <!-- KREYÒL SIDE -->
+        <section>
+          <h2>Alèt Fwòd Imigrasyon (Kreyòl)</h2>
+          <p>
+            MAXIMAX ap avèti kominote Ayisyen an sou fo “ajans imigrasyon”
+            ki voye mesaj sou WhatsApp, Facebook, ak SMS.
+          </p>
+
+          <h3>Si ou wè sa yo, pran prekosyon:</h3>
+          <ul>
+            <li>Moun k ap pwomèt ou TPS, Work Permit, oswa Azil “menm jou a”.</li>
+            <li>Moun k ap mande w peye sèlman pa Zelle, Cash App, kat kado oubyen Bitcoin.</li>
+            <li>Moun k ap ranpli fòm ak fo adrès, fo sponsor, oswa fo patron.</li>
+            <li>Moun ki pa vle ba w kopi fòm yo ranpli sou non w.</li>
+          </ul>
+
+          <h3>Kijan MAXIMAX ka ede w</h3>
+          <ul>
+            <li>Nou revize lèt USCIS, TPS, Asil, ak Work Permit ansanm avè w.</li>
+            <li>Nou ede w ranpli oswa renouvle Work Permit san pran risk ak fo enfòmasyon.</li>
+            <li>Nou esplike dat limit yo pou ou pa pèdi dosye w san w pa konnen.</li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="alert-footer">
+        MAXIMAX MULTI SERVICES – Immigration • Translation • Forms<br />
+        Email: maximaxmultiservices@gmail.com – Tel: (317) 538-1150 / (516) 216-8494
+      </div>
+    </div>
+  </div>
 </body>
 </html>
