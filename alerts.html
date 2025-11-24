@@ -1,216 +1,96 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MAXIMAX Immigration Alert</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAXIMAX Immigration Alerts</title>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      font-family: Arial, sans-serif;
-      color: #ffa726;
-    }
+    <style>
+        body {
+            background: #000;
+            color: #ffa726;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
 
-    .page-wrapper {
-      padding: 48px 12px 40px;
-    }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #111;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #ffa726;
+        }
 
-    .card {
-      max-width: 980px;
-      margin: 0 auto;
-      background: radial-gradient(circle at top, #222 0, #000 55%);
-      border-radius: 18px;
-      border: 1px solid #ffa726;
-      padding: 28px 26px 30px;
-      box-sizing: border-box;
-    }
+        h1 {
+            color: #ffa726;
+            text-align: center;
+            margin-bottom: 25px;
+        }
 
-    .card-header {
-      text-align: center;
-      margin-bottom: 18px;
-    }
+        h2 {
+            color: white;
+            margin-top: 20px;
+        }
 
-    .alert-label {
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #ffd28a;
-    }
+        p, li {
+            color: #ddd;
+            line-height: 1.6;
+        }
 
-    .alert-title {
-      margin: 6px 0 0;
-      font-size: 28px;
-      font-weight: bold;
-      color: #ffa726;
-    }
+        ul {
+            margin-left: 20px;
+        }
 
-    .divider {
-      margin: 18px auto 24px;
-      height: 2px;
-      width: 70%;
-      background: linear-gradient(to right, transparent, #ffa726, transparent);
-    }
-
-    .columns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-
-    .col {
-      flex: 1 1 280px;
-      min-width: 0;
-    }
-
-    h2 {
-      color: #ffa726;
-      font-size: 18px;
-      margin: 0 0 10px;
-    }
-
-    p {
-      color: #f5f5f5;
-      font-size: 14px;
-      line-height: 1.6;
-      margin: 0 0 10px;
-    }
-
-    ul {
-      margin: 0 0 12px 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    li {
-      color: #f5f5f5;
-      font-size: 14px;
-      line-height: 1.5;
-      margin-bottom: 4px;
-      position: relative;
-      padding-left: 16px;
-    }
-
-    li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #ffa726;
-    }
-
-    .services {
-      margin-top: 20px;
-      border-top: 1px solid #ffa72644;
-      padding-top: 14px;
-    }
-
-    .services-title {
-      font-weight: bold;
-      color: #ffa726;
-      margin-bottom: 6px;
-    }
-
-    .services ul li::before {
-      content: "✔";
-      font-size: 12px;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 22px;
-      font-size: 13px;
-      color: #ffa726;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 600px) {
-      .card {
-        padding: 22px 16px 24px;
-        border-radius: 14px;
-      }
-      .alert-title {
-        font-size: 24px;
-      }
-      h2 {
-        font-size: 16px;
-      }
-      p, li {
-        font-size: 13px;
-      }
-      .divider {
-        width: 90%;
-      }
-    }
-  </style>
+        .footer {
+            text-align: center;
+            margin-top: 35px;
+            color: #ffa726;
+            font-size: 14px;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="page-wrapper">
-    <div class="card">
-      <div class="card-header">
-        <div class="alert-label">MAXIMAX MULTI SERVICES</div>
-        <h1 class="alert-title">IMMIGRATION ALERT</h1>
-      </div>
 
-      <div class="divider"></div>
+<div class="container">
 
-      <div class="columns">
-        <!-- ENGLISH -->
-        <div class="col">
-          <h2>Federal Register Update (English)</h2>
-          <p>
-            USCIS has released a major immigration fee update under H.R. 1
-            for FY 2025 &amp; FY 2026.
-          </p>
-          <ul>
-            <li>New first-time EAD fee (TPS/Asylum): <strong>$550</strong></li>
-            <li>Automatic EAD extensions will end after <strong>October 30, 2025</strong></li>
-          </ul>
-          <p>
-            <strong>What this means:</strong><br />
-            If you are on TPS, renewing a Work Permit, or in an asylum
-            process, your filings must be updated quickly to avoid delay or
-            rejection.
-          </p>
-        </div>
+    <h1>MAXIMAX IMMIGRATION ALERT</h1>
 
-        <!-- KREYÒL -->
-        <div class="col">
-          <h2>Mizajou Federal Register (Kreyòl)</h2>
-          <p>
-            USCIS pibliye yon nouvo lis frè imigrasyon anba H.R. 1 pou
-            FY 2025 &amp; FY 2026.
-          </p>
-          <ul>
-            <li>Premye aplikasyon pou Work Permit (TPS/Azil): <strong>$550</strong></li>
-            <li>Ekstansyon otomatik Work Permit yo ap fini apre <strong>30 Oktòb 2025</strong></li>
-          </ul>
-          <p>
-            <strong>Sak sa vle di:</strong><br />
-            Tout moun ki sou TPS, k ap renouvle Work Permit, oswa ki
-            nan pwosesis Azil dwe mete dosye yo ajou rapid pou evite
-            reta oswa rejè.
-          </p>
-        </div>
-      </div>
+    <h2>Federal Register Update (English)</h2>
 
-      <div class="services">
-        <p class="services-title">Sèvis MAXIMAX:</p>
-        <ul>
-          <li>Revizyon dokiman (USCIS, TPS, Azil, NVC, elatriye)</li>
-          <li>Ranpli nouvo fòm imigrasyon &amp; Work Permit</li>
-          <li>Tradiksyon sètifye (Kreyòl, Angle, Panyòl)</li>
-        </ul>
-      </div>
+    <p>USCIS has released a major fee update under H.R. 1 for FY 2025 & FY 2026.</p>
 
-      <div class="footer">
-        MAXIMAX MULTI SERVICES • IMMIGRATION • TAX • TRANSLATION • FORMS<br />
-        Email: maximaxmultiservices@gmail.com • Tel: (317) 538-1150 • (516) 216-8494
-      </div>
+    <ul>
+        <li>New first-time EAD fee (TPS/Asylum): <strong>$550</strong></li>
+        <li>Automatic EAD extensions end after <strong>October 30, 2025</strong></li>
+    </ul>
+
+    <h2>Mizajou Federal Register (Kreyòl)</h2>
+
+    <p>USCIS pibliye nouvo frè anba H.R. 1 pou FY 2025 & FY 2026.</p>
+
+    <ul>
+        <li>Premye aplikasyon Work Permit (TPS/Azil): <strong>$550</strong></li>
+        <li>Ekstansyon otomatik fini apre: <strong>30 Oktòb 2025</strong></li>
+    </ul>
+
+    <p>Sèvis MAXIMAX:</p>
+    <ul>
+        <li>Revizyon dokiman</li>
+        <li>Ranpli nouvo fòm</li>
+        <li>Tradiksyon sètifye</li>
+    </ul>
+
+    <div class="footer">
+        MAXIMAX MULTI SERVICES • Immigration • Tax • Forms  
+        <br>Email: maximaxmultiservices@gmail.com  
+        <br>Phone: (317) 538-1150 • (516) 216-8494
     </div>
-  </div>
+
+</div>
+
 </body>
 </html>
