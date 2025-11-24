@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MAXIMAX Immigration Alert</title>
 
   <style>
@@ -15,7 +15,7 @@
     }
 
     .page-wrapper {
-      padding: 32px 12px;
+      padding: 48px 12px 40px;
     }
 
     .card {
@@ -24,7 +24,7 @@
       background: radial-gradient(circle at top, #222 0, #000 55%);
       border-radius: 18px;
       border: 1px solid #ffa726;
-      padding: 26px 24px 30px;
+      padding: 28px 26px 30px;
       box-sizing: border-box;
     }
 
@@ -42,15 +42,15 @@
 
     .alert-title {
       margin: 6px 0 0;
-      font-size: 26px;
+      font-size: 28px;
       font-weight: bold;
       color: #ffa726;
     }
 
     .divider {
-      margin: 18px auto 22px;
+      margin: 18px auto 24px;
       height: 2px;
-      width: 60%;
+      width: 70%;
       background: linear-gradient(to right, transparent, #ffa726, transparent);
     }
 
@@ -67,8 +67,8 @@
 
     h2 {
       color: #ffa726;
-      font-size: 17px;
-      margin: 0 0 8px;
+      font-size: 18px;
+      margin: 0 0 10px;
     }
 
     p {
@@ -79,8 +79,9 @@
     }
 
     ul {
-      margin: 0 0 12px 18px;
+      margin: 0 0 12px 0;
       padding: 0;
+      list-style: none;
     }
 
     li {
@@ -88,10 +89,20 @@
       font-size: 14px;
       line-height: 1.5;
       margin-bottom: 4px;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #ffa726;
     }
 
     .services {
-      margin-top: 18px;
+      margin-top: 20px;
       border-top: 1px solid #ffa72644;
       padding-top: 14px;
     }
@@ -102,27 +113,35 @@
       margin-bottom: 6px;
     }
 
+    .services ul li::before {
+      content: "✔";
+      font-size: 12px;
+    }
+
     .footer {
       text-align: center;
       margin-top: 22px;
       font-size: 13px;
       color: #ffa726;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     @media (max-width: 600px) {
       .card {
-        padding: 20px 16px 24px;
+        padding: 22px 16px 24px;
         border-radius: 14px;
       }
       .alert-title {
-        font-size: 22px;
+        font-size: 24px;
       }
       h2 {
         font-size: 16px;
       }
       p, li {
         font-size: 13px;
+      }
+      .divider {
+        width: 90%;
       }
     }
   </style>
@@ -139,28 +158,42 @@
       <div class="divider"></div>
 
       <div class="columns">
-        <!-- ENGLISH SIDE -->
+        <!-- ENGLISH -->
         <div class="col">
           <h2>Federal Register Update (English)</h2>
-          <p>USCIS has released a major immigration fee update under H.R. 1 for FY 2025 &amp; FY 2026.</p>
+          <p>
+            USCIS has released a major immigration fee update under H.R. 1
+            for FY 2025 &amp; FY 2026.
+          </p>
           <ul>
             <li>New first-time EAD fee (TPS/Asylum): <strong>$550</strong></li>
             <li>Automatic EAD extensions will end after <strong>October 30, 2025</strong></li>
           </ul>
-          <p><strong>What this means:</strong><br>
-          If you are on TPS, renewing a Work Permit, or in an asylum process, your filings must be updated quickly to avoid delay or rejection.</p>
+          <p>
+            <strong>What this means:</strong><br />
+            If you are on TPS, renewing a Work Permit, or in an asylum
+            process, your filings must be updated quickly to avoid delay or
+            rejection.
+          </p>
         </div>
 
-        <!-- KREYÒL SIDE -->
+        <!-- KREYÒL -->
         <div class="col">
           <h2>Mizajou Federal Register (Kreyòl)</h2>
-          <p>USCIS pibliye yon nouvo lis frè imigrasyon anba H.R. 1 pou FY 2025 &amp; FY 2026.</p>
+          <p>
+            USCIS pibliye yon nouvo lis frè imigrasyon anba H.R. 1 pou
+            FY 2025 &amp; FY 2026.
+          </p>
           <ul>
             <li>Premye aplikasyon pou Work Permit (TPS/Azil): <strong>$550</strong></li>
             <li>Ekstansyon otomatik Work Permit yo ap fini apre <strong>30 Oktòb 2025</strong></li>
           </ul>
-          <p><strong>Sak sa vle di:</strong><br>
-          Tout moun ki sou TPS, k ap renouvle Work Permit, oswa ki nan pwosesis Azil dwe mete dosye yo ajou rapid pou evite reta oswa rejè.</p>
+          <p>
+            <strong>Sak sa vle di:</strong><br />
+            Tout moun ki sou TPS, k ap renouvle Work Permit, oswa ki
+            nan pwosesis Azil dwe mete dosye yo ajou rapid pou evite
+            reta oswa rejè.
+          </p>
         </div>
       </div>
 
@@ -174,7 +207,7 @@
       </div>
 
       <div class="footer">
-        MAXIMAX MULTI SERVICES • IMMIGRATION • TAX • TRANSLATION • FORMS<br>
+        MAXIMAX MULTI SERVICES • IMMIGRATION • TAX • TRANSLATION • FORMS<br />
         Email: maximaxmultiservices@gmail.com • Tel: (317) 538-1150 • (516) 216-8494
       </div>
     </div>
