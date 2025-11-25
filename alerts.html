@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MAXIMAX – Alerts Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #050608;
+      color: #fcefe1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: radial-gradient(circle at top left, #f7931e22, #000);
+      border-bottom: 1px solid #f7931e55;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px solid #f7931e;
+      background: #f7931e33;
+    }
+
+    .brand-text-title {
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: #f9a53b;
+    }
+
+    .brand-text-sub {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #fcefe1aa;
+    }
+
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .nav-btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid #f7931e55;
+      background: #111014;
+      color: #fcefe1;
+      font-size: 13px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .nav-btn:hover {
+      background: #f7931e;
+      color: #000;
+      box-shadow: 0 0 18px #f7931e66;
+    }
+
+    .nav-btn.active {
+      background: #f7931e;
+      color: #000;
+      box-shadow: 0 0 18px #f7931eaa;
+    }
+
+    /* MAIN LAYOUT */
+    .page {
+      max-width: 1100px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+    }
+
+    .title-block {
+      margin-bottom: 24px;
+    }
+
+    .title-main {
+      font-size: 26px;
+      font-weight: 900;
+      color: #f9a53b;
+      text-transform: uppercase;
+    }
+
+    .title-sub {
+      font-size: 14px;
+      color: #fcefe1bb;
+      max-width: 780px;
+      margin-top: 6px;
+    }
+
+    /* CARDS */
+    .card {
+      background: #050608;
+      border-radius: 18px;
+      border: 1px solid #f7931e77;
+      box-shadow: 0 0 25px #000;
+      padding: 24px 26px 28px;
+      margin-bottom: 28px;
+    }
+
+    .card-inner {
+      border-radius: 16px;
+      border: 1px solid #f7931e77;
+      padding: 20px 22px 22px;
+      background: radial-gradient(circle at top, #f7931e11, #050608);
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #f9a53b;
+      text-transform: uppercase;
+    }
+
+    .section-intro {
+      font-size: 13px;
+      color: #fcefe1cc;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #f7931e88;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #fcefe1cc;
+      margin-bottom: 8px;
+    }
+
+    .links-list {
+      list-style: disc;
+      margin: 0;
+      padding-left: 20px;
+      font-size: 13px;
+    }
+
+    .links-list li {
+      margin-bottom: 10px;
+      color: #fcefe1dd;
+    }
+
+    .links-list a {
+      color: #ffd28b;
+      font-weight: 700;
+    }
+
+    .links-list a:hover {
+      text-decoration: underline;
+      color: #ffe6b3;
+    }
+
+    .disclaimer {
+      margin-top: 16px;
+      font-size: 11px;
+      color: #fcefe199;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    @media (max-width: 720px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 16px 18px;
+      }
+      .nav-buttons {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="brand">
+      <div class="brand-logo"></div>
+      <div>
+        <div class="brand-text-title">MAXIMAX MULTI SERVICES</div>
+        <div class="brand-text-sub">MAXIMAX ALWAYS MAXIMIZED</div>
+      </div>
+    </div>
+
+    <nav class="nav-buttons">
+      <a href="index.html"><button class="nav-btn">Home</button></a>
+      <a href="immigration.html"><button class="nav-btn">Immigration</button></a>
+      <a href="tax.html"><button class="nav-btn">Tax</button></a>
+      <a href="forms.html"><button class="nav-btn">Forms</button></a>
+      <a href="alerts.html"><button class="nav-btn active">Alerts</button></a>
+      <a href="contact.html"><button class="nav-btn">Contact</button></a>
+    </nav>
+  </header>
+
+  <!-- PAGE CONTENT -->
+  <main class="page">
+    <div class="title-block">
+      <div class="title-main">ALERTS &amp; FEDERAL REGISTER UPDATES</div>
+      <div class="title-sub">
+        Paj sa a se kote MAXIMAX suiv tout gwo nouvèl ofisyèl yo: chanjman nan
+        <strong>Federal Register</strong>, anons <strong>White House / DHS</strong>,
+        ak <strong>USCIS alerts</strong>. Nou pa bay konsèy legal, men nou ede w
+        konprann ki sa nouvo règ yo ka vle di pou dosye w.
+      </div>
+    </div>
+
+    <!-- HOW MAXIMAX USES ALERTS -->
+    <section class="card">
+      <div class="card-inner">
+        <span class="badge">Kòman paj sa a mache</span>
+        <h2 class="section-title">Ki sa MAXIMAX fè lè gen nouvo règ?</h2>
+        <p class="section-intro">
+          Chak fwa gen nouvo règleman imigrasyon, nouvo pwogram, oswa chanjman nan
+          benefis piblik, MAXIMAX verifye sous ofisyèl yo epi prepare
+          <strong>eksplikasyon an Kreyòl &amp; Anglè</strong> pou kliyan yo.
+        </p>
+        <ul class="links-list">
+          <li>Nou tcheke nouvèl nan <strong>Federal Register</strong> pou lwa / règ ki pibliye.</li>
+          <li>Nou gade <strong>WhiteHouse.gov</strong> ak <strong>DHS.gov</strong> pou anons politik.</li>
+          <li>Nou suiv paj <strong>USCIS News / Alerts</strong> pou rapèl fòm, frè, delè elatriye.</li>
+        </ul>
+        <p class="disclaimer">
+          MAXIMAX MULTI SERVICES pa se yon biwo avoka. Nou pa entèprete lwa a pou ou,
+          men nou ka ede w li, konprann, epi prepare dokiman ou yo
+          pou w travay ak avoka ou oswa ajans gouvènman an.
+        </p>
+      </div>
+    </section>
+
+    <!-- FEDERAL REGISTER / WHITE HOUSE / USCIS -->
+    <section class="card">
+      <div class="card-inner">
+        <span class="badge">Sous ofisyèl</span>
+        <h2 class="section-title">Federal Register, White House &amp; USCIS</h2>
+        <p class="section-intro">
+          Klike sou lyen ki anba yo pou ouvri paj ofisyèl yo. Sa yo se sous prensipal
+          MAXIMAX itilize pou verifye nouvèl yo.
+        </p>
+
+        <div class="grid-2">
+          <!-- Federal Register -->
+          <div>
+            <div class="section-intro" style="font-weight:700;">Federal Register – Règ &amp; Règleman</div>
+            <ul class="links-list">
+              <li>
+                <a href="https://www.federalregister.gov/agencies/u-s-citizenship-and-immigration-services" target="_blank">
+                  USCIS Rules – Federal Register
+                </a>
+              </li>
+              <li>
+                <a href="https://www.federalregister.gov/" target="_blank">
+                  Main Federal Register Website
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- White House / DHS -->
+          <div>
+            <div class="section-intro" style="font-weight:700;">White House &amp; Department of Homeland Security</div>
+            <ul class="links-list">
+              <li>
+                <a href="https://www.whitehouse.gov/briefing-room/" target="_blank">
+                  White House – Briefing Room &amp; Statements
+                </a>
+              </li>
+              <li>
+                <a href="https://www.dhs.gov/news-releases" target="_blank">
+                  DHS – News Releases
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:20px;">
+          <!-- USCIS Alerts -->
+          <div>
+            <div class="section-intro" style="font-weight:700;">USCIS Alerts &amp; Nouvèl Imigrasyon</div>
+            <ul class="links-list">
+              <li>
+                <a href="https://www.uscis.gov/newsroom" target="_blank">
+                  USCIS Newsroom (All Updates)
+                </a>
+              </li>
+              <li>
+                <a href="https://www.uscis.gov/newsroom/all-news" target="_blank">
+                  View All USCIS News
+                </a>
+              </li>
+              <li>
+                <a href="https://www.uscis.gov/forms" target="_blank">
+                  USCIS Forms – Official Portal
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Coming soon block -->
+          <div>
+            <div class="section-intro" style="font-weight:700;">ALÈT MAXIMAX – BYEN VIT</div>
+            <p class="section-intro">
+              Bientôt, MAXIMAX pral mete ti kare <strong>ALÈT RAPID</strong> isit la
+              pou:
+            </p>
+            <ul class="links-list">
+              <li>Avètisman sou frè USCIS ki chanje.</li>
+              <li>Nouvo pwogram TPS oswa ranouvèlman dat limit.</li>
+              <li>Nouvèl sou regleman “public charge”, elatriye.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="disclaimer">
+          Tout lyen ki anwo yo mennen sou sit ofisyèl gouvènman ameriken an.
+          MAXIMAX itilize yo pou rete ajou, men sèlman avoka oswa ajans lakapab
+          di w egzakteman kijan lwa yo aplike sou ka w.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
