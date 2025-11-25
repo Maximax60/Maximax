@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MAXIMAX MULTI SERVICES – Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #050608;
+      color: #fcefe1;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 26px;
+      background: radial-gradient(circle at top left, #f7931e33, #000);
+      border-bottom: 1px solid #f7931e55;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid #f7931e;
+      background: #f7931e33;
+    }
+
+    .brand-text-title {
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 0.05em;
+      color: #f9a53b;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #fcefe1aa;
+    }
+
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .nav-btn {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid #f7931e55;
+      background: #111014;
+      color: #fcefe1;
+      font-size: 13px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .nav-btn:hover {
+      background: #f7931e;
+      color: #000;
+      box-shadow: 0 0 18px #f7931e66;
+    }
+
+    .nav-btn.active {
+      background: #f7931e;
+      color: #000;
+      box-shadow: 0 0 18px #f7931eaa;
+    }
+
+    /* PAGE */
+
+    .page {
+      max-width: 1100px;
+      margin: 30px auto 60px;
+      padding: 0 20px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.6fr);
+      gap: 26px;
+      margin-bottom: 28px;
+    }
+
+    .hero-main {
+      background: radial-gradient(circle at top, #f7931e11, #050608);
+      border-radius: 18px;
+      border: 1px solid #f7931e77;
+      padding: 22px 22px 24px;
+      box-shadow: 0 0 25px #000;
+    }
+
+    .hero-title {
+      font-size: 24px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #f9a53b;
+      margin-bottom: 8px;
+    }
+
+    .hero-sub {
+      font-size: 13px;
+      color: #fcefe1bb;
+      margin-bottom: 16px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #f7931e55;
+      background: #111014;
+      color: #ffd9a6;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .btn-primary {
+      background: #f7931e;
+      color: #000;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 20px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      box-shadow: 0 0 22px #f7931e66;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #fcefe1;
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 13px;
+      border: 1px dashed #f7931e77;
+      cursor: pointer;
+    }
+
+    .hero-side {
+      background: #050608;
+      border-radius: 18px;
+      border: 1px solid #f7931e77;
+      padding: 18px 18px 20px;
+      box-shadow: 0 0 25px #000;
+    }
+
+    .side-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #f9a53b;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .side-item {
+      font-size: 13px;
+      margin-bottom: 6px;
+      color: #fcefe1cc;
+    }
+
+    .side-label {
+      font-weight: 700;
+      color: #ffd28b;
+    }
+
+    /* GRID SECTIONS */
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: #050608;
+      border-radius: 16px;
+      border: 1px solid #f7931e55;
+      padding: 18px 18px 20px;
+      box-shadow: 0 0 20px #000;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #f9a53b;
+      margin-bottom: 8px;
+    }
+
+    .card-text {
+      font-size: 13px;
+      color: #fcefe1cc;
+      margin-bottom: 10px;
+    }
+
+    ul.card-list {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 13px;
+      color: #fcefe1dd;
+    }
+
+    ul.card-list li {
+      margin-bottom: 5px;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      border-top: 1px solid #f7931e55;
+      padding: 16px 20px 24px;
+      text-align: center;
+      font-size: 11px;
+      color: #fcefe199;
+      background: #000;
+    }
+
+    @media (max-width: 780px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .nav-buttons {
+        justify-content: flex-start;
+      }
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="brand">
+      <div class="brand-logo"></div>
+      <div>
+        <div class="brand-text-title">MAXIMAX MULTI SERVICES</div>
+        <div class="brand-text-sub">MAXIMAX ALWAYS MAXIMIZED</div>
+      </div>
+    </div>
+
+    <nav class="nav-buttons">
+      <a href="index.html"><button class="nav-btn active">Home</button></a>
+      <a href="immigration.html"><button class="nav-btn">Immigration</button></a>
+      <a href="tax.html"><button class="nav-btn">Tax</button></a>
+      <a href="forms.html"><button class="nav-btn">Forms</button></a>
+      <!-- Nou PA mete Alerts la pou kounya pou evite 404 -->
+      <a href="contact.html"><button class="nav-btn">Contact</button></a>
+    </nav>
+  </header>
+
+  <!-- PAGE -->
+  <main class="page">
+
+    <section class="hero">
+      <div class="hero-main">
+        <div class="hero-title">Immigration • Tax • & More</div>
+        <div class="hero-sub">
+          TPS • Work Permit • Immigration Forms • Tax Preparation • Unemployment Assistance • Housing • SNAP.  
+          MAXIMAX MULTI SERVICES ede w konprann pwosesis yo, ranpli fòm yo byen, epi evite erè.
+        </div>
+
+        <div class="hero-badges">
+          <div class="badge">TPS & Work Permit</div>
+          <div class="badge">Immigration Forms</div>
+          <div class="badge">Tax & IRS</div>
+          <div class="badge">SNAP & Housing</div>
+          <div class="badge">Certified Translation</div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="forms.html"><button class="btn-primary">Open Forms Center</button></a>
+          <a href="immigration.html"><button class="btn-secondary">Immigration Services</button></a>
+        </div>
+
+      </div>
+
+      <aside class="hero-side">
+        <div class="side-title">Contact Information</div>
+        <div class="side-item"><span class="side-label">Phone:</span> (317) 538-1150</div>
+        <div class="side-item"><span class="side-label">Phone:</span> (516) 216-8494</div>
+        <div class="side-item"><span class="side-label">Email:</span> maximaxmultiservices@gmail.com</div>
+        <div class="side-item"><span class="side-label">Address:</span> 6934 Coral Cove Drive, Orlando, FL 32818</div>
+      </aside>
+    </section>
+
+    <!-- QUICK SERVICES GRID -->
+    <section class="section-grid">
+      <div class="card">
+        <div class="card-title">Immigration Services</div>
+        <p class="card-text">
+          Nou ede w ak fòm imigrasyon yo, etap pa etap, an Kreyòl ak Anglè.
+        </p>
+        <ul class="card-list">
+          <li>Family Petition (I-130, I-130A)</li>
+          <li>Green Card (I-485)</li>
+          <li>Travel Document (I-131)</li>
+          <li>Work Permit (I-765)</li>
+          <li>Naturalization (N-400)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Tax &amp; Benefits</div>
+        <p class="card-text">
+          MAXIMAX ka oryante w pou w evite erè ak pwoblèm nan deklarasyon w yo.
+        </p>
+        <ul class="card-list">
+          <li>IRS Forms (1040, W-2, W-4, 1099, elatriye)</li>
+          <li>Unemployment / Reemployment Assistance</li>
+          <li>SNAP / Food Stamps (MyACCESS Florida)</li>
+          <li>Housing &amp; Rental Assistance Resources</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Certified Translation</div>
+        <p class="card-text">
+          Nou tradui dokiman w yo an Anglè ofisyèl pou USCIS, Tribinal, Lekòl ak Lopital.
+        </p>
+        <ul class="card-list">
+          <li>Batistè, Mariyaj, Divòs, Lanmò</li>
+          <li>Dosye Lekòl &amp; Diplòm</li>
+          <li>Dosye Polis &amp; Medikal</li>
+          <li>Afidavi &amp; Lèt Notè</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    MAXIMAX MULTI SERVICES – We assist with forms and documentation. We are not a law firm and do not provide legal advice.
+  </footer>
+
+</body>
+</html>
