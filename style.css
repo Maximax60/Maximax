@@ -1,4 +1,33 @@
-:root {
+.maximax-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: #000000;            /* no white bar on top */
+  border-bottom: 1px solid #f49b22;
+}
+
+.maximax-logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;             /* circular logo */
+  object-fit: cover;
+  border: 2px solid #f49b22;      /* apricot outline */
+  box-shadow: 0 0 12px rgba(244, 155, 34, 0.8);
+}
+
+.maximax-title h1 {
+  margin: 0;
+  color: #f49b22;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.maximax-title p {
+  margin: 0;
+  color: #f5f5f5;
+  font-size: 0.85rem;
+}:root {
   --mx-black: #050505;
   --mx-black-2: #111111;
   --mx-orange: #ff8a1f; /* apricot/orange */
