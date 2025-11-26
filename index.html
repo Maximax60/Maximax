@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MAXIMAX MULTI SERVICES – Always Maximized</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Maximax Multi Services – Immigration, Tax, Benefits & Community Support in English, Kreyòl & Español." />
+
+  <style>
+    /* GLOBAL RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #f9f4ec;
+    }
+
+    body {
+      /* Black fading into orange */
+      background:
+        radial-gradient(circle at top left, #ff9b33 0%, #000000 45%, #000000 100%);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px;
+    }
+
+    a {
+      color: #ffb347;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* MAIN CARD */
+    .page {
+      width: 100%;
+      max-width: 1180px;
+      background: rgba(0, 0, 0, 0.92);
+      border-radius: 28px;
+      border: 1px solid rgba(255, 165, 70, 0.7);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+      padding: 28px 30px 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* TOP BAR */
+    .top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 3px solid #ffb347;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .logo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-text h1 {
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      color: #ffb347;
+    }
+
+    .brand-text .tagline {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: #f2eee7;
+      opacity: 0.9;
+    }
+
+    .brand-text .slogan {
+      margin-top: 2px;
+      font-size: 0.75rem;
+      color: #ffd08a;
+      letter-spacing: 0.08em;
+    }
+
+    /* LANGUAGE INDICATOR (static – all 3 on same page) */
+    .lang-info {
+      text-align: right;
+      font-size: 0.78rem;
+      line-height: 1.4;
+    }
+
+    .lang-badges {
+      margin-top: 4px;
+      display: inline-flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .lang-pill {
+      padding: 2px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 179, 71, 0.7);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #ffcf8a;
+    }
+
+    .lang-pill.main {
+      background: #ff9b33;
+      color: #1a1107;
+      border-color: #ff9b33;
+    }
+
+    /* MAIN CONTENT LAYOUT */
+    .main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    /* HERO AREA */
+    .hero {
+      padding-right: 10px;
+    }
+
+    .hero-title {
+      font-size: 1.7rem;
+      line-height: 1.25;
+      text-transform: uppercase;
+      color: #ffb347;
+      margin-bottom: 6px;
+    }
+
+    .hero-sub {
+      font-size: 0.88rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #d2c5b5;
+      margin-bottom: 10px;
+    }
+
+    .hero-text {
+      font-size: 0.9rem;
+      color: #f6efe4;
+      max-width: 600px;
+    }
+
+    .hero-text span.emphasis {
+      color: #ffb347;
+      font-weight: 600;
+    }
+
+    /* STATUS PANEL */
+    .status-panel {
+      border-radius: 18px;
+      border: 1px solid rgba(255, 179, 71, 0.7);
+      background: radial-gradient(circle at top right, rgba(255, 155, 51, 0.25), #050507);
+      padding: 14px 16px 14px;
+      font-size: 0.82rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .status-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #ffcf8a;
+      margin-bottom: 2px;
+    }
+
+    .status-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .status-label {
+      font-size: 0.78rem;
+      opacity: 0.9;
+    }
+
+    .flag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: #072e12;
+      color: #b2f0bf;
+      font-size: 0.75rem;
+    }
+
+    .flag-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #1dd15d;
+      box-shadow: 0 0 6px rgba(29, 209, 93, 0.7);
+    }
+
+    .status-buttons {
+      display: grid;
+      grid-template-columns: 1.4fr 1.4fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.8rem;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff9b33, #ffcf8a);
+      color: #1a120b;
+      font-weight: 600;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #ffd29c;
+      border: 1px solid rgba(255, 179, 71, 0.7);
+    }
+
+    .btn-emergency {
+      grid-column: 1 / -1;
+      background: #b62328;
+      background-image: linear-gradient(135deg, #ff4b3a, #b62328);
+      color: #ffe9e6;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .btn-emergency span {
+      font-weight: 600;
+    }
+
+    /* SECTIONS ROW 2 */
+    .sections {
+      display: grid;
+      grid-template-columns: 2fr 1.4fr;
+      gap: 20px;
+      font-size: 0.86rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .card {
+      border-radius: 16px;
+      padding: 10px 11px;
+      background: #090909;
+      border: 1px solid rgba(255, 179, 71, 0.6);
+    }
+
+    .card h3 {
+      font-size: 0.9rem;
+      color: #ffb347;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .card .subline {
+      font-size: 0.72rem;
+      color: #f1e2ce;
+      opacity: 0.94;
+      margin-bottom: 6px;
+    }
+
+    .card ul {
+      list-style: none;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: #f7efe3;
+    }
+
+    .card ul li::before {
+      content: "• ";
+      color: #ffb347;
+    }
+
+    .small-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #d9c9b6;
+      margin-bottom: 4px;
+    }
+
+    /* FORMS COLUMN */
+    .forms-column {
+      border-radius: 16px;
+      padding: 10px 12px;
+      background: #050507;
+      border: 1px solid rgba(255, 179, 71, 0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .forms-column h3 {
+      font-size: 0.9rem;
+      color: #ffb347;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .forms-column p {
+      font-size: 0.8rem;
+      color: #f3e8d8;
+      margin-top: 2px;
+    }
+
+    .form-list {
+      list-style: none;
+      margin-top: 6px;
+      font-size: 0.8rem;
+    }
+
+    .form-list li + li {
+      margin-top: 3px;
+    }
+
+    .form-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #ffe1b5;
+      display: block;
+    }
+
+    /* CONTACT BLOCK */
+    .contact-block {
+      margin-top: 10px;
+      border-radius: 16px;
+      padding: 10px 12px;
+      background: radial-gradient(circle at bottom left, rgba(255, 155, 51, 0.22), #040304);
+      border: 1px solid rgba(255, 179, 71, 0.6);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 14px;
+      font-size: 0.8rem;
+    }
+
+    .contact-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #ffcf8a;
+      margin-bottom: 1px;
+    }
+
+    .contact-value {
+      color: #f7efe3;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 10px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255, 179, 71, 0.45);
+      font-size: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: #e5d4c1;
+    }
+
+    .footer span strong {
+      color: #ffcf8a;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      body {
+        padding: 16px;
+      }
+      .page {
+        padding: 20px 18px 18px;
+        border-radius: 22px;
+      }
+      .main-grid,
+      .sections {
+        grid-template-columns: 1fr;
+      }
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .status-buttons {
+        grid-template-columns: 1fr;
+      }
+      .contact-block {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 1.45rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- TOP BAR -->
+    <div class="top-row">
+      <div class="brand-block">
+        <div class="logo-circle">
+          <!-- make sure this file exists in the same folder as index.html -->
+          <img src="dont-try-max.jpg" alt="Maximax – Strategic Immigration & Tax Support" />
+        </div>
+        <div class="brand-text">
+          <div class="tagline">COMMUNITY • IMMIGRATION • TAX • BENEFITS</div>
+          <h1>MAXIMAX MULTI SERVICES</h1>
+          <div class="slogan">MAXIMAX ALWAYS MAXIMIZED</div>
+        </div>
+      </div>
+
+      <div class="lang-info">
+        Page content: <strong>English</strong><br />
+        Also available on this page:<br />
+        <div class="lang-badges">
+          <span class="lang-pill main">EN</span>
+          <span class="lang-pill">KREYÒL</span>
+          <span class="lang-pill">ESPAÑOL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN GRID: HERO + STATUS -->
+    <div class="main-grid">
+      <section class="hero">
+        <div class="hero-sub">Your documents, your future.</div>
+        <div class="hero-title">ALWAYS MAXIMIZED.</div>
+
+        <p class="hero-text">
+          At <span class="emphasis">MAXIMAX Multi Services</span>, we help you stay on top of
+          immigration, taxes, and government benefits — with clear explanations and honest support
+          in <span class="emphasis">English, Kreyòl &amp; Español</span>.
+        </p>
+      </section>
+
+      <!-- STATUS PANEL -->
+      <aside class="status-panel">
+        <div class="status-title">MAXIMAX STATUS PANEL</div>
+
+        <div class="status-line">
+          <div class="status-label">If you see this page, MAXIMAX is live &amp; ready.</div>
+          <div class="flag-pill"><span class="flag-dot"></span> LIVE – NOU LA</div>
+        </div>
+
+        <div class="status-buttons">
+          <a href="#forms-center" class="btn btn-primary">Open Forms Center</a>
+          <a href="#immigration" class="btn btn-outline">Start Immigration Help</a>
+          <a href="tel:+13175381150" class="btn btn-emergency">
+            EMERGENCY CALL (317) <span>538-1150</span>
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- SECOND ROW: SERVICES + FORMS / CONTACT -->
+    <div class="sections">
+      <!-- LEFT: SERVICE CARDS -->
+      <div>
+        <div class="small-label">Main Services • Sèvis Prensipal • Servicios Principales</div>
+
+        <div class="cards-grid">
+          <!-- IMMIGRATION SUPPORT -->
+          <div class="card" id="immigration">
+            <h3>Immigration Support</h3>
+            <div class="subline">
+              EN: USCIS forms • Family petitions • Green Card • Citizenship<br />
+              KREYÒL: Fòm USCIS • Petisyon fanmi • Green Card • Sitwayènte<br />
+              ESPAÑOL: Formularios de USCIS • Petición familiar • Green Card • Ciudadanía
+            </div>
+            <ul>
+              <li>Family petitions (I-130) &amp; adjustment of status.</li>
+              <li>Green Card renewals &amp; work permits.</li>
+              <li>Citizenship (N-400) and naturalization package.</li>
+              <li>Case follow-up and letter translations.</li>
+            </ul>
+          </div>
+
+          <!-- TAX & ITIN HELP -->
+          <div class="card">
+            <h3>Tax &amp; ITIN Help</h3>
+            <div class="subline">
+              EN: W-2, 1099, self-employed &amp; ITIN<br />
+              KREYÒL: W-2, 1099, travayè endepandan &amp; ITIN<br />
+              ESPAÑOL: W-2, 1099, por cuenta propia &amp; ITIN
+            </div>
+            <ul>
+              <li>Personal &amp; small business tax preparation.</li>
+              <li>ITIN applications &amp; renewals.</li>
+              <li>Back tax review and simple payment plans.</li>
+              <li>Education about credits &amp; deductions.</li>
+            </ul>
+          </div>
+
+          <!-- BENEFITS & APPLICATIONS -->
+          <div class="card">
+            <h3>Benefits &amp; Applications</h3>
+            <div class="subline">
+              EN: SNAP • Medical • Housing • Unemployment<br />
+              KREYÒL: Ede pou SNAP • Medikal • Lojman • Chomaj<br />
+              ESPAÑOL: Ayuda con SNAP • Médico • Vivienda • Desempleo
+            </div>
+            <ul>
+              <li>SNAP / Food Stamps, Medicaid / Medical.</li>
+              <li>Unemployment &amp; Social Security forms.</li>
+              <li>Housing applications &amp; waiting-list follow-up.</li>
+              <li>Case management with clear explanations.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: FORMS & CONTACT -->
+      <div>
+        <!-- FORMS CENTER -->
+        <section class="forms-column" id="forms-center">
+          <h3>Forms Center – Fòm &amp; Kèk Dosye – Centro de Formularios</h3>
+          <p>
+            Download official packets prepared by MAXIMAX. Bring them filled out or call us for help.
+          </p>
+
+          <ul class="form-list">
+            <li>
+              <span class="form-tag">IMMIGRATION PACKETS</span>
+              <a href="forms/maximax-uscis-family-packet-en.pdf">USCIS Family Petition Packet (EN)</a><br />
+              <a href="forms/maximax-uscis-family-packet-ht.pdf">Pake Petisyon Fanmi USCIS (KREYÒL)</a><br />
+              <a href="forms/maximax-uscis-family-packet-es.pdf">Paquete Petición Familiar USCIS (ES)</a>
+            </li>
+
+            <li>
+              <span class="form-tag">FEDERAL &amp; STATE FORMS</span>
+              <a href="forms/maximax-federal-forms-en.pdf">Federal &amp; State Forms Checklist (EN)</a><br />
+              <a href="forms/maximax-federal-forms-ht.pdf">Lis Fòm Federal &amp; Eta (KREYÒL)</a><br />
+              <a href="forms/maximax-federal-forms-es.pdf">Lista Formularios Federales y Estatales (ES)</a>
+            </li>
+
+            <li>
+              <span class="form-tag">TAX / ITIN</span>
+              <a href="forms/maximax-tax-intake-en.pdf">Tax &amp; ITIN Intake Sheet (EN)</a><br />
+              <a href="forms/maximax-tax-intake-ht.pdf">Fòm Antre Taks &amp; ITIN (KREYÒL)</a><br />
+              <a href="forms/maximax-tax-intake-es.pdf">Hoja de Ingreso de Taxes &amp; ITIN (ES)</a>
+            </li>
+          </ul>
+        </section>
+
+        <!-- CONTACT INFO -->
+        <section class="contact-block">
+          <div>
+            <div class="contact-label">Phone / Telefòn</div>
+            <div class="contact-value">
+              (317) 538-1150<br />
+              WhatsApp &amp; Zangi available
+            </div>
+          </div>
+
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">
+              <a href="mailto:maximaxmultiservices@gmail.com">maximaxmultiservices@gmail.com</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="contact-label">Office Address</div>
+            <div class="contact-value">
+              6934 Coral Cove Drive<br />
+              Orlando, Florida 32818
+            </div>
+          </div>
+
+          <div>
+            <div class="contact-label">Languages</div>
+            <div class="contact-value">
+              English • Kreyòl Ayisyen • Español
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <span>© 2025 <strong>MAXIMAX MULTI SERVICES</strong>. All Rights Reserved.</span>
+      <span><strong>MAXIMAX ALWAYS MAXIMIZED.</strong></span>
+    </footer>
+  </div>
+</body>
+</html>
