@@ -1,4 +1,11 @@
-.maximax-header {
+.maximax-logo {
+  width: 70px;  /* Or even 50px if you want it smaller */
+  height: 70px; /* Keep it a circle */
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #f49b22; /* Apricot border */
+  box-shadow: 0 0 8px rgba(244, 155, 34, 0.7); /* Softer glow */
+}.maximax-header {
   display: flex;
   align-items: center;
   gap: 12px;
