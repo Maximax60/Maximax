@@ -1,4 +1,23 @@
-/* RESET */
+.lang-switch {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.lang-switch a {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #222;
+  color: #ffa230;
+  text-decoration: none;
+  border: 1px solid #ffa230;
+  font-weight: bold;
+}
+
+.lang-switch a.active {
+  background: #ffa230;
+  color: #000;
+}/* RESET */
 *,
 *::before,
 *::after {
