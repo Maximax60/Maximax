@@ -1,65 +1,488 @@
-<ul class="forms-list">
-  <li>
-    I-130 – Petition for Alien Relative <br>
-    <a href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf" target="_blank">
-      Download I-130 (PDF)
-    </a>
-  </li>
 
-  <li>
-    I-130A – Supplemental Information for Spouse Beneficiary <br>
-    <a href="https://www.uscis.gov/sites/default/files/document/forms/i-130a.pdf" target="_blank">
-      Download I-130A (PDF)
-    </a>
-  </li>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAXIMAX – Forms Center</title>
+  <style>
+    * { box-sizing: border-box; }
 
-  <li>
-    I-485 – Adjustment of Status <br>
-    <a href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf" target="_blank">
-      Download I-485 (PDF)
-    </a>
-  </li>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #050608;
+      color: #fcefe1;
+    }
 
-  <li>
-    I-131 – Travel Document <br>
-    <a href="https://www.uscis.gov/sites/default/files/document/forms/i-131.pdf" target="_blank">
-      Download I-131 (PDF)
-    </a>
-  </li>
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-  <li>
-    I-765 – Work Permit (EAD) <br>
-    <a href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf" target="_blank">
-      Download I-765 (PDF)
-    </a>
-  </li>
+    .page {
+      max-width: 1100px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+    }
 
-  <li>
-    I-864 – Affidavit of Support <br>
-    <a href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf" target="_blank">
-      Download I-864 (PDF)
-    </a>
-  </li>
-</ul><div class="section">
-    <h2>📘 PASSPORT FORMS – U.S. DEPARTMENT OF STATE</h2>
+    /* HEADER */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      background: radial-gradient(circle at top left, #f7931e22, #000);
+      border-bottom: 1px solid #f7931e55;
+    }
 
-    <a class="btn" href="https://eforms.state.gov/Forms/ds11_pdf.PDF" target="_blank">
-        ⬇️ DS-11 – FIRST-TIME PASSPORT (PDF)
-    </a>
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-    <a class="btn" href="https://eforms.state.gov/Forms/ds82_pdf.PDF" target="_blank">
-        ⬇️ DS-82 – PASSPORT RENEWAL (PDF)
-    </a>
+    .brand-logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 2px solid #f7931e;
+      background: #f7931e33;
+    }
 
-    <a class="btn" href="https://eforms.state.gov/Forms/ds5504_pdf.PDF" target="_blank">
-        ⬇️ DS-5504 – DATA CORRECTION / NAME CHANGE (PDF)
-    </a>
+    .brand-text-title {
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: 1px;
+      color: #f9a53b;
+    }
 
-    <a class="btn" href="https://travel.state.gov/content/travel/en/passports/how-apply/forms.html" target="_blank">
-        ⬇️ DS-64 – LOST / STOLEN PASSPORT (LINK)
-    </a>
+    .brand-text-sub {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #fcefe1aa;
+    }
 
-    <a class="btn" href="https://travel.state.gov/content/travel/en/passports/how-apply/forms.html" target="_blank">
-        🌐 PASSPORT FORM FILLER – ONLINE APPLICATION
-    </a>
-</div>
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .nav-btn {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid #f7931e55;
+      background: #111014;
+      color: #fcefe1;
+      font-size: 12px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .nav-btn:hover {
+      background: #f7931e;
+      color: #000;
+      box-shadow: 0 0 14px #f7931e66;
+    }
+
+    .nav-btn.active {
+      background: #f7931e;
+      color: #000;
+      box-shadow: 0 0 18px #f7931eaa;
+    }
+
+    /* TITLES & LAYOUT */
+
+    .title-block {
+      margin-bottom: 24px;
+    }
+
+    .title-main {
+      font-size: 24px;
+      font-weight: 900;
+      color: #f9a53b;
+      text-transform: uppercase;
+    }
+
+    .title-sub {
+      font-size: 13px;
+      color: #fcefe1bb;
+      max-width: 680px;
+      margin-top: 6px;
+    }
+
+    .card {
+      background: #050608;
+      border-radius: 18px;
+      border: 1px solid #f7931e77;
+      box-shadow: 0 0 25px #000;
+      padding: 22px 22px 26px;
+      margin-bottom: 26px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: #f9a53b;
+      text-transform: uppercase;
+    }
+
+    .section-intro {
+      font-size: 13px;
+      color: #fcefe1cc;
+      margin-bottom: 16px;
+    }
+
+    .forms-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .forms-group-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #f9a53b;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .btn-link {
+      display: block;
+      margin-bottom: 10px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      border: 1px solid #f7931e77;
+      background: #111014;
+      font-size: 13px;
+      color: #fcefe1;
+      line-height: 1.4;
+      transition: 0.25s;
+    }
+
+    .btn-link span {
+      display: block;
+      font-size: 11px;
+      color: #ffd9a6;
+    }
+
+    .btn-link:hover {
+      background: #f7931e;
+      color: #000;
+      box-shadow: 0 0 16px #f7931e88;
+    }
+
+    .download-all {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .download-all button {
+      background: #f7931e;
+      color: #000;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: default;
+      box-shadow: 0 0 18px #f7931e77;
+    }
+
+    .download-all small {
+      display: block;
+      margin-top: 6px;
+      font-size: 11px;
+      color: #fcefe1aa;
+    }
+
+    .disclaimer {
+      margin-top: 18px;
+      font-size: 11px;
+      color: #fcefe199;
+    }
+
+    @media (max-width: 720px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .nav-buttons {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="brand">
+      <div class="brand-logo"></div>
+      <div>
+        <div class="brand-text-title">MAXIMAX MULTI SERVICES</div>
+        <div class="brand-text-sub">MAXIMAX ALWAYS MAXIMIZED</div>
+      </div>
+    </div>
+
+    <nav class="nav-buttons">
+      <a href="index.html"><button class="nav-btn">Home</button></a>
+      <a href="immigration.html"><button class="nav-btn">Immigration</button></a>
+      <a href="tax.html"><button class="nav-btn">Tax</button></a>
+      <a href="forms.html"><button class="nav-btn active">Forms Center</button></a>
+      <a href="alerts.html"><button class="nav-btn">Alerts</button></a>
+      <a href="contact.html"><button class="nav-btn">Contact</button></a>
+    </nav>
+  </header>
+
+  <!-- PAGE -->
+  <main class="page">
+
+    <div class="title-block">
+      <div class="title-main">FORMS CENTER – IMMIGRATION, TAX & SERVICES</div>
+      <div class="title-sub">
+        All links below go directly to the official government websites (USCIS, IRS, SSA, Florida Jobs, travel.state.gov, Florida Courts).
+        MAXIMAX helps you choose which forms match your situation.
+      </div>
+    </div>
+
+    <!-- DOWNLOAD ALL PACKET (COMING SOON) -->
+    <section class="card">
+      <div class="download-all">
+        <button>⬇️ DOWNLOAD ALL FORMS PACKET (COMING SOON)</button>
+        <small>
+          This will download one combined packet after MAXIMAX creates the official PDF bundle.
+        </small>
+      </div>
+    </section>
+
+    <!-- IMMIGRATION FORMS -->
+    <section class="card">
+      <h2 class="section-title">📑 IMMIGRATION – USCIS FORMS</h2>
+      <p class="section-intro">
+        These links open directly from <strong>USCIS.gov</strong>. You can download, print or save each form.
+      </p>
+
+      <div class="forms-columns">
+        <div>
+          <div class="forms-group-title">Family & Residency</div>
+
+          <a class="btn-link" href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf" target="_blank" rel="noopener">
+            I-130 – Petition for Alien Relative
+            <span>Family petition – spouse, child, parent, sibling</span>
+          </a>
+
+          <a class="btn-link" href="https://www.uscis.gov/sites/default/files/document/forms/i-130a.pdf" target="_blank" rel="noopener">
+            I-130A – Supplemental Info for Spouse
+            <span>Extra information required for spouse beneficiary</span>
+          </a>
+
+          <a class="btn-link" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf" target="_blank" rel="noopener">
+            I-485 – Application to Register Permanent Residence
+            <span>Adjustment of Status – Green Card from inside the U.S.</span>
+          </a>
+
+          <a class="btn-link" href="https://www.uscis.gov/sites/default/files/document/forms/i-131.pdf" target="_blank" rel="noopener">
+            I-131 – Application for Travel Document
+            <span>Advance Parole / Re-entry permit</span>
+          </a>
+        </div>
+
+        <div>
+          <div class="forms-group-title">Work, Support & Citizenship</div>
+
+          <a class="btn-link" href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf" target="_blank" rel="noopener">
+            I-765 – Application for Employment Authorization
+            <span>Work Permit (EAD)</span>
+          </a>
+
+          <a class="btn-link" href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf" target="_blank" rel="noopener">
+            I-864 – Affidavit of Support
+            <span>Sponsor income form for family petitions</span>
+          </a>
+
+          <a class="btn-link" href="https://www.uscis.gov/sites/default/files/document/forms/n-400.pdf" target="_blank" rel="noopener">
+            N-400 – Application for Naturalization
+            <span>U.S. Citizenship application</span>
+          </a>
+
+          <a class="btn-link" href="https://www.uscis.gov/forms/all-forms" target="_blank" rel="noopener">
+            All USCIS Forms – Online List
+            <span>Full USCIS forms list & instructions</span>
+          </a>
+        </div>
+      </div>
+
+      <p class="disclaimer">
+        MAXIMAX pa bay konsèy legal; nou ede w ranpli fòm yo, men desizyon final la rete ak USCIS ak avoka w.
+      </p>
+    </section>
+
+    <!-- TAX – IRS -->
+    <section class="card">
+      <h2 class="section-title">💲 TAX – IRS FORMS</h2>
+      <p class="section-intro">
+        Official forms from <strong>IRS.gov</strong> for personal taxes and basic withholding.
+      </p>
+
+      <div class="forms-columns">
+        <div>
+          <div class="forms-group-title">Main Tax Forms</div>
+
+          <a class="btn-link" href="https://www.irs.gov/pub/irs-pdf/f1040.pdf" target="_blank" rel="noopener">
+            Form 1040 – U.S. Individual Income Tax Return
+            <span>Main income tax form for individuals</span>
+          </a>
+
+          <a class="btn-link" href="https://www.irs.gov/pub/irs-pdf/f1040s.pdf" target="_blank" rel="noopener">
+            Form 1040-SR – Tax Return for Seniors
+            <span>For taxpayers age 65 and older</span>
+          </a>
+
+          <a class="btn-link" href="https://www.irs.gov/pub/irs-pdf/f1040es.pdf" target="_blank" rel="noopener">
+            Form 1040-ES – Estimated Tax for Individuals
+            <span>Quarterly estimated payments</span>
+          </a>
+
+          <a class="btn-link" href="https://www.irs.gov/pub/irs-pdf/f1040x.pdf" target="_blank" rel="noopener">
+            Form 1040-X – Amended Return
+            <span>Used to fix a return already filed</span>
+          </a>
+        </div>
+
+        <div>
+          <div class="forms-group-title">Withholding & ID</div>
+
+          <a class="btn-link" href="https://www.irs.gov/pub/irs-pdf/fw4.pdf" target="_blank" rel="noopener">
+            Form W-4 – Employee’s Withholding Certificate
+            <span>Adjust taxes taken from your paycheck</span>
+          </a>
+
+          <a class="btn-link" href="https://www.irs.gov/pub/irs-pdf/fw9.pdf" target="_blank" rel="noopener">
+            Form W-9 – Request for Taxpayer Identification
+            <span>Used for independent contractors / 1099</span>
+          </a>
+
+          <a class="btn-link" href="https://www.irs.gov/forms-instructions" target="_blank" rel="noopener">
+            IRS Forms & Instructions – Full List
+            <span>All IRS forms & instructions in one place</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PASSPORT – TRAVEL.STATE.GOV -->
+    <section class="card">
+      <h2 class="section-title">🛂 U.S. PASSPORT – DEPARTMENT OF STATE</h2>
+      <p class="section-intro">
+        Official forms from <strong>travel.state.gov</strong> for first-time passports, renewals and corrections.
+      </p>
+
+      <div class="forms-columns">
+        <div>
+          <div class="forms-group-title">Main Passport Forms</div>
+
+          <a class="btn-link" href="https://eforms.state.gov/Forms/ds11_pdf.PDF" target="_blank" rel="noopener">
+            DS-11 – Application for U.S. Passport
+            <span>First-time passport or child under 16</span>
+          </a>
+
+          <a class="btn-link" href="https://eforms.state.gov/Forms/ds82_pdf.PDF" target="_blank" rel="noopener">
+            DS-82 – Passport Renewal by Mail
+            <span>For adult renewals that qualify</span>
+          </a>
+
+          <a class="btn-link" href="https://eforms.state.gov/Forms/ds5504_pdf.PDF" target="_blank" rel="noopener">
+            DS-5504 – Name/Data Correction / Limited Passport
+            <span>For corrections & certain changes</span>
+          </a>
+        </div>
+
+        <div>
+          <div class="forms-group-title">Lost, Stolen & Online Help</div>
+
+          <a class="btn-link" href="https://travel.state.gov/content/travel/en/passports/how-apply/forms.html" target="_blank" rel="noopener">
+            DS-64 – Statement for Lost/Stolen Passport
+            <span>Find the DS-64 form on the official page</span>
+          </a>
+
+          <a class="btn-link" href="https://travel.state.gov/content/travel/en/passports/how-apply/forms.html" target="_blank" rel="noopener">
+            Passport Forms – Online Form Filler
+            <span>Fill out passport forms online & print</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNEMPLOYMENT / SNAP / HOUSING / SSA -->
+    <section class="card">
+      <h2 class="section-title">🏛 OTHER BENEFITS – FLORIDA & FEDERAL</h2>
+      <p class="section-intro">
+        Quick links for unemployment, food stamps (SNAP), housing, and Social Security.
+      </p>
+
+      <div class="forms-columns">
+        <div>
+          <div class="forms-group-title">Florida – Unemployment (Reemployment Assistance)</div>
+
+          <a class="btn-link" href="https://www.floridajobs.org/reemployment-assistance-service-center/reemployment-assistance/claimants/apply-for-benefits"
+             target="_blank" rel="noopener">
+            Apply for Benefits – Online Application
+            <span>Official Florida Reemployment Assistance site</span>
+          </a>
+
+          <a class="btn-link" href="https://www.floridajobs.org/Reemployment-Assistance-Service-Center/reemployment-assistance/claimants/account-login-and-idme"
+             target="_blank" rel="noopener">
+            Claimant Account Login / ID.me
+            <span>Access your unemployment account</span>
+          </a>
+
+          <a class="btn-link" href="https://www.floridajobs.org/office-directory/division-of-workforce-services/reemployment-assistance-programs/reemployment-assistance-forms-directory"
+             target="_blank" rel="noopener">
+            Reemployment Assistance Forms Directory
+            <span>All official Florida unemployment PDF forms</span>
+          </a>
+        </div>
+
+        <div>
+          <div class="forms-group-title">SNAP / Housing / Social Security</div>
+
+          <a class="btn-link" href="https://myaccess.myflfamilies.com" target="_blank" rel="noopener">
+            MyACCESS Florida – SNAP / Cash / Medicaid
+            <span>Apply for food stamps & other benefits</span>
+          </a>
+
+          <a class="btn-link" href="https://www.orlandohousing.org/apply-for-housing" target="_blank" rel="noopener">
+            Orlando Housing Authority – Apply for Housing
+            <span>Section 8 & public housing (Orlando area)</span>
+          </a>
+
+          <a class="btn-link" href="https://www.orangecountyfl.net/NeighborsHousing/RentalAssistance.aspx" target="_blank" rel="noopener">
+            Orange County – Rental Assistance Programs
+            <span>Help with rent & housing costs</span>
+          </a>
+
+          <a class="btn-link" href="https://www.ssa.gov/forms/" target="_blank" rel="noopener">
+            Social Security Forms Portal
+            <span>All SSA forms (retirement, disability, SSI)</span>
+          </a>
+        </div>
+      </div>
+
+      <p class="disclaimer">
+        Tout lyen sa yo mennen sou sit ofisyèl gouvènman an. MAXIMAX ede w navige, men desizyon final ak règleman yo soti
+        dirèkteman nan ajans leta yo.
+      </p>
+    </section>
+
+  </main>
+
+</body>
+</html>
