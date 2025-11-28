@@ -1,3 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(
+            to bottom,
+            #000000 0%,
+            #0f0a04 30%,
+            #d96e17 75%,
+            #f28c28 100%
+        );
+        background-attachment: fixed;
+        background-size: cover;
+        color: white; /* Optional for visibility */
+        font-family: Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+
+<h1>Your Content Here</h1>
+<p>This page now has the black → orange smooth fade background.</p>
+
+</body>
+</html>
 /<a href="federal-register.html" class="btn">Federal Register</a> GLOBAL */
 *,
 *::before,
