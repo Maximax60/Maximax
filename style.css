@@ -1,3 +1,14 @@
+body {
+  background: linear-gradient(
+      to bottom,
+      #000000,
+      #0f0a04,
+      #d96e17,
+      #f28c28
+  );
+  background-attachment: fixed;
+  background-size: cover;
+}
 <!DOCTYPE html>
 <html>
 <head>
