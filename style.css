@@ -1,4 +1,7 @@
-body {
+.hero-main-title,
+section h2 {
+  color: #ffd8a4; /* soft gold */
+}body {
   color: white;
 }body {
   color: white;
