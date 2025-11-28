@@ -60,22 +60,20 @@
     }
 
     .brand-logo {
-        width: 48px;
-        height: 48px;
+        width: 52px;
+        height: 52px;
         border-radius: 50%;
         border: 2px solid #f28c28;
+        background: #000000;       /* helps hide white edges */
+        overflow: hidden;          /* cuts off corners of the image */
         display: flex;
         align-items: center;
         justify-content: center;
-        font-weight: bold;
-        font-size: 20px;
-        color: #f28c28;
-        overflow: hidden; /* si w mete img andedan li */
     }
 
     .brand-logo img {
-        width: 100%;
-        height: 100%;
+        width: 110%;
+        height: 110%;
         object-fit: cover;
         display: block;
     }
@@ -135,6 +133,10 @@
         margin-bottom: 10px;
     }
 
+    .hero-main-title span {
+        color: #ffd08a;
+    }
+
     .hero-subtitle {
         font-size: 14px;
         color: #ffe0ba;
@@ -160,23 +162,37 @@
         color: #ffe9c7;
     }
 
+    .badge-passport {
+        border-style: solid;
+        border-width: 1px;
+        border-color: #ffd08a;
+        background: rgba(0, 0, 0, 0.65);
+    }
+
     .hero-buttons {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
     }
 
-    .btn-primary {
-        background: #f28c28;
-        border: none;
-        border-radius: 999px;
-        padding: 10px 18px;
-        font-size: 13px;
+    .btn-primary,
+    .btn-ghost {
+        display: inline-block;
+        text-decoration: none;
+        text-align: center;
         cursor: pointer;
-        color: #000000;
+        font-size: 13px;
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: 0.06em;
+        border-radius: 999px;
+        padding: 10px 18px;
+    }
+
+    .btn-primary {
+        background: #f28c28;
+        color: #000000;
+        border: none;
     }
 
     .btn-primary:hover {
@@ -185,14 +201,9 @@
 
     .btn-ghost {
         background: transparent;
-        border-radius: 999px;
+        color: #ffe9c7;
         border: 1px solid #f28c28;
         padding: 9px 16px;
-        font-size: 13px;
-        cursor: pointer;
-        color: #ffe9c7;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
     }
 
     .btn-ghost:hover {
@@ -246,33 +257,11 @@
         line-height: 1.6;
     }
 
-    .section-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-        margin-top: 10px;
-    }
-
-    @media (max-width: 900px) {
-        .section-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    .card {
-        background: rgba(0, 0, 0, 0.65);
-        border-radius: 14px;
-        padding: 12px;
-        border: 1px solid rgba(242, 140, 40, 0.3);
+    ul {
+        margin-top: 8px;
+        margin-left: 18px;
         font-size: 13px;
         color: #ffe7cb;
-    }
-
-    .card-title {
-        font-weight: bold;
-        color: #ffd597;
-        margin-bottom: 6px;
-        font-size: 14px;
     }
 
     .contact-info {
@@ -312,8 +301,10 @@
 <div class="page-wrapper">
     <header>
         <div class="brand">
-            <!-- Si w gen logo: mete <img src="logo.png"> anndan brand-logo la -->
-            <div class="brand-logo">M</div>
+            <!-- LOGO from your GitHub repo -->
+            <div class="brand-logo">
+                <img src="maximax-owner.png" alt="MAXIMAX logo" />
+            </div>
             <div class="brand-text">
                 <h1>MAXIMAX MULTI SERVICES</h1>
                 <span>MAXIMAX ALWAYS MAXIMIZED</span>
@@ -332,23 +323,25 @@
     <section class="hero">
         <div>
             <div class="hero-main-title">
-                Immigration • Forms • Translation — All in One Place.
+                Immigration • Forms • <span>U.S. Passport</span> • Translation.
             </div>
             <div class="hero-subtitle">
-                We help you with immigration cases, government applications, tax forms,
-                benefit programs and certified document translation.
+                We help you with immigration cases, U.S. passport applications,
+                government benefit forms, tax documents and certified translations.
                 We serve <strong>English • Kreyòl • Español</strong>.
             </div>
 
             <div class="hero-badges">
                 <div class="badge">Immigration Support</div>
+                <div class="badge badge-passport">U.S. Passport Services</div>
                 <div class="badge">US Government Forms</div>
                 <div class="badge">Document Translation</div>
             </div>
 
             <div class="hero-buttons">
-                <button class="btn-primary">Book Appointment</button>
-                <button class="btn-ghost">Upload Documents</button>
+                <!-- buttons now work: they go to other pages -->
+                <a href="appointment.html" class="btn-primary">Book Appointment</a>
+                <a href="upload.html" class="btn-ghost">Upload Documents</a>
             </div>
         </div>
 
@@ -361,7 +354,7 @@
             <div class="hero-card">
                 <div class="hero-card-title">Secure Forms & Packets</div>
                 Admin-only access to USCIS packets, tax forms, SNAP, Social Security,
-                housing, unemployment, and non-contested divorce packets.
+                housing, unemployment, non-contested divorce and U.S. passport checklists.
             </div>
         </div>
     </section>
@@ -372,22 +365,41 @@
             MAXIMAX Multi Services helps families, immigrants and workers handle
             complex paperwork with clarity and respect.
         </p>
+        <ul>
+            <li>Immigration & USCIS forms (family petitions, adjustment, work permits, citizenship)</li>
+            <li><strong>U.S. Passport applications</strong> (first-time, renewal, minors, name change support)</li>
+            <li>Government benefit forms (SNAP, Medicaid/Medicare, Social Security, SSI)</li>
+            <li>Housing & unemployment forms (HUD, Section 8, state unemployment)</li>
+            <li>Child support and non-contested dissolution of marriage packets</li>
+            <li>Certified document translation (birth, marriage, divorce, school, court, etc.)</li>
+        </ul>
     </section>
 
     <section id="alerts">
         <h2>Alerts – Federal Register</h2>
         <p>
             This area will show key updates from the Federal Register on immigration,
-            taxes, benefits and housing — explained in simple language.
+            taxes, benefits and housing — explained in simple language so clients
+            can understand how changes may affect them.
         </p>
     </section>
 
     <section id="forms">
         <h2>Admin Forms & Packets</h2>
         <p>
-            A secure area (for admins only) will contain full packets for USCIS,
-            IRS, Social Security, SNAP, housing, unemployment, child support and
-            non-contested dissolution of marriage.
+            A secure area (for admins only) will contain full packets for:
+        </p>
+        <ul>
+            <li>USCIS immigration forms and cover sheets</li>
+            <li>IRS tax forms and schedules</li>
+            <li>SNAP, Medicaid/Medicare, Social Security and SSI</li>
+            <li>Housing (HUD & Section 8) and unemployment forms</li>
+            <li>Child support forms</li>
+            <li>Non-contested dissolution of marriage packets</li>
+            <li><strong>U.S. Passport application checklists and support documents</strong></li>
+        </ul>
+        <p style="margin-top:8px;font-size:12px;">
+            Admin login will be required to view or download these documents.
         </p>
     </section>
 
