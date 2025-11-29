@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MAXIMAX – Services</title>
+
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        min-height: 100vh;
+        background: linear-gradient(
+            to bottom,
+            #000000 0%,
+            #0f0a04 30%,
+            #d96e17 75%,
+            #f28c28 100%
+        );
+        background-attachment: fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+        body {
+            background: linear-gradient(to bottom, #000000, #1a1106, #df771e, #f28c28);
+        }
+    }
+
+    .page-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px;
+    }
+
+    /* HEADER */
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 0 20px 0;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .brand-logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 2px solid #f28c28;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 20px;
+        color: #f28c28;
+    }
+
+    .brand-text h1 {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+
+    .brand-text span {
+        font-size: 12px;
+        color: #ffd9a4;
+        text-transform: uppercase;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #ffe9c7;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    nav a:hover { color: #ffffff; }
+
+    /* SECTIONS */
+    section {
+        margin-top: 24px;
+        padding: 18px;
+        border-radius: 16px;
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(242, 140, 40, 0.3);
+    }
+
+    section h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #ffd8a4;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    section p {
+        font-size: 13px;
+        color: #ffe7cb;
+        line-height: 1.6;
+    }
+
+    .services-grid {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    @media (max-width: 900px) {
+        .services-grid { grid-template-columns: 1fr; }
+    }
+
+    .service-card {
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 14px;
+        padding: 12px;
+        border: 1px solid rgba(242, 140, 40, 0.4);
+        font-size: 13px;
+        color: #ffe7cb;
+    }
+
+    .service-title {
+        font-weight: bold;
+        color: #ffd597;
+        margin-bottom: 6px;
+        font-size: 14px;
+    }
+
+    .tag {
+        display: inline-block;
+        margin-top: 6px;
+        font-size: 11px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        border: 1px solid rgba(242, 140, 40, 0.7);
+        color: #ffd8a4;
+    }
+
+    .note {
+        margin-top: 10px;
+        font-size: 11px;
+        color: #ffe0b8;
+        opacity: 0.9;
+    }
+
+    footer {
+        margin-top: 24px;
+        padding: 12px 0 20px 0;
+        font-size: 11px;
+        text-align: center;
+        color: #ffd9a4;
+    }
+</style>
+</head>
+
+<body>
+<div class="page-wrapper">
+    <!-- HEADER -->
+    <header>
+        <div class="brand">
+            <div class="brand-logo">M</div>
+            <div class="brand-text">
+                <h1>MAXIMAX MULTI SERVICES</h1>
+                <span>MAXIMAX ALWAYS MAXIMIZED</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="alerts.html">Alerts</a>
+            <a href="forms.html">Forms</a>
+            <a href="index.html#translation">Translation</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <section>
+        <h2>Core Services</h2>
+        <p>
+            MAXIMAX Multi Services helps clients with immigration, government forms,
+            translation and document preparation — in <strong>English, Kreyòl and Spanish</strong>.
+        </p>
+
+        <div class="services-grid">
+
+            <div class="service-card">
+                <div class="service-title">Immigration Case Support</div>
+                <p>
+                    Assistance with family petitions, status adjustment, work permits,
+                    naturalization, green card renewals and consular processes. We help
+                    you organize evidence and complete USCIS forms correctly.
+                </p>
+                <span class="tag">USCIS Forms</span>
+            </div>
+
+            <div class="service-card">
+                <div class="service-title">Government Forms & Benefits</div>
+                <p>
+                    Support with SNAP / Food Stamps, Medicaid/Medicare, Social Security,
+                    SSI, unemployment, housing applications (HUD & Section 8) and
+                    other federal and state benefit programs.
+                </p>
+                <span class="tag">SNAP • SSA • HUD</span>
+            </div>
+
+            <div class="service-card">
+                <div class="service-title">Tax & Income Documents</div>
+                <p>
+                    Basic tax preparation forms, ITIN application support, W-7, 1040,
+                    W-2 and other income documentation, plus employer forms for small
+                    businesses in the community.
+                </p>
+                <span class="tag">IRS / ITIN</span>
+            </div>
+
+            <div class="service-card">
+                <div class="service-title">Certified Document Translation</div>
+                <p>
+                    Translation of birth certificates, marriage certificates, divorce
+                    decrees, school records and other official documents, formatted
+                    with MAXIMAX letterhead and translator certification text.
+                </p>
+                <span class="tag">EN • HT • ES</span>
+            </div>
+
+            <div class="service-card">
+                <div class="service-title">Family Law: Non-Contested Divorce</div>
+                <p>
+                    Preparation of packets for dissolution of marriage (non-contested),
+                    including petitions, settlement agreement, financial affidavit,
+                    parenting plan, final judgment templates and court cover sheets.
+                </p>
+                <span class="tag">Packet Preparation</span>
+            </div>
+
+            <div class="service-card">
+                <div class="service-title">Administrative Support & Follow-Up</div>
+                <p>
+                    Appointment booking, document upload support, printing, scanning,
+                    copying, and follow-up letters to agencies so your case stays
+                    organized and on time.
+                </p>
+                <span class="tag">Office Support</span>
+            </div>
+
+        </div>
+
+        <p class="note">
+            Important: MAXIMAX Multi Services assists with forms and translation. We do not provide
+            legal representation. For complex legal issues or court representation, you may be
+            referred to qualified attorneys.
+        </p>
+    </section>
+
+    <footer>
+        © 2025 MAXIMAX Multi Services – MAXIMAX ALWAYS MAXIMIZED.
+    </footer>
+</div>
+</body>
+</html>
