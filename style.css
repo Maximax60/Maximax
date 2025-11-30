@@ -1,4 +1,19 @@
-/* RESET */
+/* ===== MAXIMAX COLOR FIX – PA KITE BLAN AN DOMINE ===== */
+    body {
+      color: #ffe8c7 !important; /* krèm/aprikot olye de blan */
+    }
+
+    .hero-main-title,
+    .hero-subtitle,
+    section h2,
+    section p,
+    header,
+    header * ,
+    nav a,
+    .hero-card,
+    .hero-card * {
+      color: #ffe8c7 !important;
+    }/* RESET */
 *,
 *::before,
 *::after {
