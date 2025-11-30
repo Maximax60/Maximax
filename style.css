@@ -1,4 +1,19 @@
+/* FORCE MAXIMAX COLORS – NO PURE WHITE TEXT */
+body,
+p,
+li,
+span,
+a,
+strong,
+h1, h2, h3, h4, h5, h6 {
+  color: #ffe8c7 !important;   /* krem/aprikot limyè, pa blan */
+}
 
+/* Tit prensipal ak seksyon yo ka pi klè yon ti jan */
+.hero-main-title,
+section h2 {
+  color: #ffd8a4 !important;
+}
 /* ------------------------------
    GLOBAL RESET
 ------------------------------ */
