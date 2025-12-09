@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAXIMAX Multi Services</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(
+        to bottom,
+        #000000 0%,
+        #0f0a04 30%,
+        #d96e17 75%,
+        #f28c28 100%
+      );
+      background-attachment: fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        background: linear-gradient(
+          to bottom,
+          #000000,
+          #1a1106,
+          #df771e,
+          #f28c28
+        );
+      }
+    }
+
+    .page-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0 20px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid #f28c28;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-text h1 {
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+
+    .brand-text span {
+      font-size: 12px;
+      color: #ffd9a4;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid #f28c28;
+      color: #f28c28;
+      background: rgba(0, 0, 0, 0.7);
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      background: #f28c28;
+      color: #000000;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <header>
+      <div class="brand">
+        <div class="brand-logo">
+          <!-- Asire fichye sa a nan menm dosye a ak index.html -->
+          <img src="MAXIMAX MULTI SERVICES II.png" alt="MAXIMAX Multi Services Logo" />
+        </div>
+        <div class="brand-text">
+          <h1>MAXIMAX MULTI SERVICES</h1>
+          <span>MAXIMAX ALWAYS MAXIMIZED</span>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#alerts">Alerts</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+  </div>
+</body>
+</html>
