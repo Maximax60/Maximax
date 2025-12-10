@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAXIMAX Multi Services</title>
+
+  <style>
+    /* SAME STYLING YOU ALREADY HAVE — CLEAN & SAFE */
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(to bottom, #000000, #1a1106, #df771e, #f28c28);
+      font-family: Arial, sans-serif;
+      color: white;
+      background-attachment: fixed;
+    }
+    header {
+      width: 100%;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to right, #000, #1a0d03, #b85c12, #f28c28);
+      border-bottom: 2px solid #f28c28;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand-logo {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: #000; border: 2px solid #f28c28; overflow: hidden;
+    }
+    .brand-logo img { width: 100%; height: 100%; object-fit: cover; }
+    nav a { color: #ffe9c7; margin-left: 16px; text-decoration: none; font-size: 14px; }
+    nav a:hover { color: white; }
+    .language-toggle button {
+      padding: 4px 12px; border-radius: 999px;
+      background:black; border:1px solid #f28c28; color:#f28c28; cursor:pointer;
+    }
+    .language-toggle .active { background:#f28c28; color:black; }
+    .page-wrapper { max-width: 1200px; margin: auto; padding: 20px; }
+    section {
+      margin-top: 30px; padding: 20px;
+      border-radius: 16px; background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(242,140,40,0.3);
+    }
+    h2 { font-size: 22px; color:#ffd8a4; margin-bottom: 12px; text-transform:uppercase; }
+    ul { margin-left: 20px; margin-top: 10px; }
+    ul li { margin-bottom: 6px; font-size:14px; }
+    ul li a { color:#ffd08a; text-decoration:none; }
+    ul li a:hover { text-decoration:underline; }
+    .card { margin-top:15px; padding:15px; border:1px solid #f28c28; border-radius:14px; }
+    .card-title { font-weight:bold; color:#ffd597; margin-bottom:8px; font-size:16px; }
+    .btn-upload {
+      display:inline-block; background:#f28c28; color:black;
+      padding:10px 20px; border-radius:999px; font-weight:bold;
+      text-transform:uppercase; cursor:pointer; margin-top:10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-logo"><img src="MAXIMAX MULTI SERVICES II.png" /></div>
+    <div>
+      <h1>MAXIMAX MULTI SERVICES</h1>
+      <span>MAXIMAX ALWAYS MAXIMIZED</span>
+    </div>
+  </div>
+
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#alerts">Alerts</a>
+    <a href="#forms">Forms</a>
+    <a href="#translation">Translation</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="language-toggle">
+    <button class="active">EN</button>
+    <button>KRÉYÒL</button>
+    <button>ES</button>
+  </div>
+</header>
+
+<div class="page-wrapper">
+
+  <!-- HERO -->
+  <section>
+    <h2>IMMIGRATION • FORMS • TRANSLATION — ALL IN ONE PLACE</h2>
+    <p>Helping you with immigration, tax, SNAP, housing, Social Security, translation, and more.</p>
+
+    <button class="btn-upload">UPLOAD DOCUMENTS</button>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <h2>Core Services</h2>
+    <p>MAXIMAX helps families and immigrants handle paperwork with clarity and respect.</p>
+  </section>
+
+  <!-- ALERTS -->
+  <section id="alerts">
+    <h2>MAXIMAX ALERTS • NOUVO LWA & MIZAJOU</h2>
+    <p>Latest immigration, tax, and benefits updates.</p>
+  </section>
+
+  <!-- FORMS LIBRARY -->
+  <section id="forms">
+    <h2>OFFICIAL FORMS LIBRARY</h2>
+    <p>Full categorized list of immigration, tax, benefits, and legal forms.</p>
+  </section>
+
+  <!-- ⭐⭐ DOWNLOADABLE PDF FORMS — COMPLETE ⭐⭐ -->
+  <section id="download-pdfs">
+    <h2>Downloadable PDF Forms</h2>
+    <p>Click any form to download instantly.</p>
+
+    <!-- IMMIGRATION -->
+    <div class="card">
+      <div class="card-title">IMMIGRATION – USCIS PDF Forms</div>
+      <ul>
+        <li><a href="pdf/I-130.pdf" download>I-130 – Petition for Alien Relative</a></li>
+        <li><a href="pdf/I-485.pdf" download>I-485 – Green Card (Adjust Status)</a></li>
+        <li><a href="pdf/I-765.pdf" download>I-765 – Work Permit</a></li>
+        <li><a href="pdf/I-864.pdf" download>I-864 – Affidavit of Support</a></li>
+        <li><a href="pdf/I-821.pdf" download>I-821 – TPS Application</a></li>
+        <li><a href="pdf/I-131.pdf" download>I-131 – Travel Document</a></li>
+      </ul>
+    </div>
+
+    <!-- TAX -->
+    <div class="card">
+      <div class="card-title">TAX – IRS PDF Forms</div>
+      <ul>
+        <li><a href="pdf/1040.pdf" download>Form 1040 – Income Tax Return</a></li>
+        <li><a href="pdf/W4.pdf" download>Form W-4 – Employee Withholding</a></li>
+        <li><a href="pdf/W9.pdf" download>Form W-9 – Taxpayer ID</a></li>
+        <li><a href="pdf/1099.pdf" download>Form 1099 – Misc Income</a></li>
+      </ul>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="card">
+      <div class="card-title">BENEFITS – Government Programs</div>
+      <ul>
+        <li><a href="pdf/SNAP.pdf" download>SNAP Application (Food Stamps)</a></li>
+        <li><a href="pdf/Medicaid.pdf" download>Medicaid Application</a></li>
+        <li><a href="pdf/SSA-16.pdf" download>SSA-16 – Social Security Application</a></li>
+        <li><a href="pdf/SSA-11.pdf" download>SSA-11 – Payee Application</a></li>
+      </ul>
+    </div>
+
+    <!-- LEGAL -->
+    <div class="card">
+      <div class="card-title">LEGAL & FAMILY FORMS</div>
+      <ul>
+        <li><a href="pdf/DivorcePacket.pdf" download>Non-Contested Divorce Packet</a></li>
+        <li><a href="pdf/ChildSupport.pdf" download>Child Support Modification</a></li>
+        <li><a href="pdf/PowerOfAttorney.pdf" download>General Power of Attorney</a></li>
+        <li><a href="pdf/NotaryTemplates.pdf" download>Notary Templates</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact & Support</h2>
+    <p>Phone: (317) 538-1150 • Email: maximaxmultiservices@gmail.com</p>
+  </section>
+
+</div>
+
+</body>
+</html>
