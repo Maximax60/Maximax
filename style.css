@@ -1,88 +1,9 @@
-/* LANGUAGE TOGGLE BUTTONS */
-.lang-toggle {
+header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-left: 10px;
+  justify-content: space-between;
+  padding: 20px;
+  background: linear-gradient(to right, #000000, #1a0d03, #b85c12, #f28c28);
+  border-bottom: 2px solid #f28c28;
+  border-radius: 10px;
 }
-
-.lang-toggle button {
-  border-radius: 50px;
-  border: 1px solid #f28c28;
-  background: rgba(0, 0, 0, 0.6);
-  color: #f28c28;
-  padding: 6px 12px;
-  font-size: 12px;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.lang-toggle button:hover {
-  background: #f28c28;
-  color: #000;
-}
-
-.lang-toggle button.active {
-  background: #f28c28;
-  color: #000;
-  font-weight: bold;
-    }/* LANGUAGE TOGGLE */
-    .lang-toggle {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-left: 10px;
-    }
-
-    .lang-toggle button {
-      border-radius: 999px;
-      border: 1px solid #f28c28;
-      background: rgba(0, 0, 0, 0.7);
-      color: #f28c28;
-      font-size: 11px;
-      padding: 4px 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-    }
-
-    .lang-toggle button.active {
-      background: #f28c28;
-      color: #000000;
-      font-weight: bold;
-    }
-
-    .lang-toggle button:hover {
-      background: #f28c28;
-      color: #000000;
-        }/* LANGUAGE TOGGLE */
-    .lang-toggle {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-left: 10px;
-    }
-
-    .lang-toggle button {
-      border-radius: 999px;
-      border: 1px solid #f28c28;
-      background: rgba(0, 0, 0, 0.7);
-      color: #f28c28;
-      font-size: 11px;
-      padding: 4px 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-    }
-
-    .lang-toggle button.active {
-      background: #f28c28;
-      color: #000000;
-      font-weight: bold;
-    }
-
-    .lang-toggle button:hover {
-      background: #f28c28;
-      color: #000000;
-    }
