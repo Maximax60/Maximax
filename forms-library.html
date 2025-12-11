@@ -3,127 +3,785 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Downloadable Forms PDF – MAXIMAX Multi Services</title>
+  <title>MAXIMAX – Forms Library</title>
+
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      background-color: #000000;
+    }
+
+    body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #000000, #1a1106, #d96e17, #f28c28);
+      color: #ffffff;
+      background: linear-gradient(
+        to bottom,
+        #000000 0%,
+        #0f0a04 30%,
+        #d96e17 75%,
+        #f28c28 100%
+      );
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        background: linear-gradient(
+          to bottom,
+          #000000,
+          #1a1106,
+          #df771e,
+          #f28c28
+        );
+      }
+    }
+
+    header {
+      width: 100%;
+      background: linear-gradient(to right, #000000, #1a0d03, #b85c12, #f28c28);
+      border-bottom: 2px solid #f28c28;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid #f28c28;
+      overflow: hidden;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-text h1 {
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+
+    .brand-text span {
+      font-size: 12px;
+      color: #ffd9a4;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #ffe9c7;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    nav a:hover {
       color: #ffffff;
     }
-    .top-bar {
-      background: #000;
-      padding: 10px 18px;
-      border-bottom: 2px solid #f28c28;
-      font-size: 14px;
+
+    .language-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 18px;
     }
-    .top-bar a {
+
+    .language-toggle button {
+      background: #000000;
+      color: #f28c28;
+      border: 1px solid #f28c28;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .language-toggle button.active {
+      background: #f28c28;
+      color: #000000;
+    }
+
+    .language-toggle button:hover {
+      background: #f28c28;
+      color: #000000;
+    }
+
+    .page-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 16px 24px 16px;
+    }
+
+    h1, h2 {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 8px;
+      color: #ffd8a4;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #ffd8a4;
+    }
+
+    p {
+      font-size: 13px;
+      color: #ffe7cb;
+      line-height: 1.6;
+    }
+
+    .intro {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(242, 140, 40, 0.3);
+    }
+
+    .section-block {
+      margin-top: 24px;
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(242, 140, 40, 0.3);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    th, td {
+      border-bottom: 1px solid rgba(255, 217, 164, 0.2);
+      padding: 8px 6px;
+      vertical-align: top;
+    }
+
+    th {
+      text-align: left;
+      color: #ffd8a4;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    td small {
+      display: block;
+      font-size: 11px;
+      color: #ffdfb0;
+      margin-top: 2px;
+    }
+
+    a.download-link {
+      color: #ffd08a;
+      text-decoration: underline;
+      font-size: 12px;
+    }
+
+    a.download-link:hover {
+      color: #ffffff;
+    }
+
+    .category-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(242, 140, 40, 0.7);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #ffe9c7;
+      margin-bottom: 6px;
+    }
+
+    .note {
+      font-size: 11px;
+      color: #f7d2a0;
+      margin-top: 6px;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 12px 0 20px 0;
+      font-size: 11px;
+      text-align: center;
+      color: #ffd9a4;
+    }
+
+    .footer-links a {
+      color: #ffd9a4;
+      text-decoration: none;
+      margin: 0 6px;
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-mini {
+      margin-top: 4px;
+      font-size: 10px;
+      color: #f7d2a0;
+      line-height: 1.5;
+    }
+
+    .back-home {
+      margin-top: 12px;
+      font-size: 12px;
+    }
+
+    .back-home a {
       color: #ffd08a;
       text-decoration: none;
     }
-    .wrapper {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    h1 {
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #f28c28;
-      margin-bottom: 10px;
-    }
-    h2 {
-      font-size: 16px;
-      margin-bottom: 6px;
-      color: #ffd08a;
-    }
-    .card {
-      background: rgba(0,0,0,0.8);
-      border-radius: 14px;
-      border: 1px solid rgba(242,140,40,0.5);
-      padding: 16px;
-      margin-top: 15px;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    .note {
-      font-size: 12px;
-      color: #ffd9a4;
-    }
-    ul {
-      margin-top: 6px;
-      padding-left: 20px;
+
+    .back-home a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="top-bar">
-    ← <a href="index.html">Back to Home</a> · MAXIMAX Multi Services – Downloadable Forms PDF
-  </div>
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="assets/img/MAXIMAX MULTI SERVICES II.png" alt="MAXIMAX Multi Services Logo" />
+        </div>
+        <div class="brand-text">
+          <h1>MAXIMAX MULTI SERVICES</h1>
+          <span>MAXIMAX ALWAYS MAXIMIZED</span>
+        </div>
+      </div>
+    </div>
 
-  <div class="wrapper">
-    <h1>Downloadable Forms PDF</h1>
+    <div class="header-right" style="display:flex; align-items:center; gap:16px;">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="alerts.html">Alerts</a>
+        <a href="forms-library.html">Forms</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="upload-documents.html">Upload</a>
+        <a href="contact.html">Contact</a>
+      </nav>
 
-    <div class="card">
-      <h2>English</h2>
+      <div class="language-toggle">
+        <button class="active">EN</button>
+        <button>KRÉYÒL</button>
+        <button>ES</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-wrapper">
+    <!-- INTRO -->
+    <div class="intro">
+      <h1>Official Forms Library</h1>
       <p>
-        This page will become the full MAXIMAX Forms Library. Immigration, tax, benefits,
-        housing and Social Security forms will be listed here with official PDF links.
+        This page organizes key U.S. government forms used by MAXIMAX Multi Services for
+        immigration, taxes, benefits, housing, unemployment, Social Security and more.
+        Forms are provided as PDFs for easy download, printing and completion.
       </p>
       <p class="note">
-        Example categories that will appear:
+        🇭🇹 Kreyòl · Fòm yo sòti nan sous ofisyèl. MAXIMAX pa chanje tèks legal ki sou fòm yo.<br />
+        🇺🇸 English · Forms come from official public sources. MAXIMAX does not alter legal content.<br />
+        🇪🇸 Español · Formularios tomados de fuentes oficiales. MAXIMAX no modifica el contenido legal.
       </p>
-      <ul>
-        <li>USCIS Forms (I-130, I-485, I-765, I-821…)</li>
-        <li>IRS Forms (1040, W-4, W-7…)</li>
-        <li>SNAP / Benefits / Housing / Unemployment forms</li>
-      </ul>
+      <div class="back-home">
+        <a href="index.html">← Back to Home</a>
+      </div>
+    </div>
+
+    <!-- IMMIGRATION FORMS -->
+    <div class="section-block" id="immigration-forms">
+      <span class="category-badge">Immigration · USCIS</span>
+      <h2>Immigration Forms (USCIS)</h2>
+      <p>
+        Core USCIS forms for family petitions, green cards, TPS, work permits and citizenship.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 28%;">Form</th>
+            <th style="width: 52%;">Description (Tri-lang)</th>
+            <th style="width: 20%;">Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>I-130</strong></td>
+            <td>
+              Petition for Alien Relative<br />
+              <small>🇭🇹 Demann pou manm fanmi</small>
+              <small>🇪🇸 Petición para Familiar Extranjero</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/immigration/I-130.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>I-485</strong></td>
+            <td>
+              Application to Register Permanent Residence or Adjust Status (Green Card)<br />
+              <small>🇭🇹 Ajisteman estati / Green Card</small>
+              <small>🇪🇸 Ajuste de Estatus (Residencia)</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/immigration/I-485.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>I-864</strong></td>
+            <td>
+              Affidavit of Support<br />
+              <small>🇭🇹 Affidavit de sipo finansye</small>
+              <small>🇪🇸 Declaración Jurada de Patrocinio</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/immigration/I-864.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>I-751</strong></td>
+            <td>
+              Petition to Remove Conditions on Residence<br />
+              <small>🇭🇹 Retire kondisyon sou rezidans</small>
+              <small>🇪🇸 Petición para Remover Condición</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/immigration/I-751.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>I-821</strong></td>
+            <td>
+              Application for Temporary Protected Status (TPS)<br />
+              <small>🇭🇹 Demann pou TPS</small>
+              <small>🇪🇸 Solicitud de TPS</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/immigration/I-821.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>I-765</strong></td>
+            <td>
+              Application for Employment Authorization<br />
+              <small>🇭🇹 Permi travay</small>
+              <small>🇪🇸 Permiso de Trabajo</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/immigration/I-765.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>I-131</strong></td>
+            <td>
+              Application for Travel Document (Advance Parole)<br />
+              <small>🇭🇹 Dokiman vwayaj</small>
+              <small>🇪🇸 Documento de Viaje</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/immigration/I-131.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>N-400</strong></td>
+            <td>
+              Application for Naturalization<br />
+              <small>🇭🇹 Demann sitwayènte / naturalizasyon</small>
+              <small>🇪🇸 Solicitud de Naturalización</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/immigration/N-400.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>N-600</strong></td>
+            <td>
+              Application for Certificate of Citizenship<br />
+              <small>🇭🇹 Sètifika sitwayènte</small>
+              <small>🇪🇸 Certificado de Ciudadanía</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/immigration/N-600.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>G-28</strong></td>
+            <td>
+              Notice of Entry of Appearance as Attorney or Accredited Representative<br />
+              <small>🇭🇹 Fòm reprezantasyon</small>
+              <small>🇪🇸 Notificación de Representación</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/immigration/G-28.pdf">Download PDF</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
       <p class="note">
-        For now, if you need a specific form, contact MAXIMAX and we will send you
-        the correct link or PDF.
+        Remak / Note / Nota:<br />
+        MAXIMAX pa ranplase avoka. Nou ede ak ranpli fòm yo epi eksplike yo an 3 lang.
       </p>
     </div>
 
-    <div class="card">
-      <h2>Kreyòl Ayisyen</h2>
+    <!-- TAX FORMS -->
+    <div class="section-block" id="tax-forms">
+      <span class="category-badge">Tax · IRS</span>
+      <h2>Tax Forms (IRS)</h2>
       <p>
-        Paj sa a pral tounen gwo bibliyotèk fòm MAXIMAX la. Tout fòm imigrasyon, taks,
-        benefis, lojman ak Social Security ap òganize isit la ak lyen PDF ofisyèl.
+        Key IRS forms used for individual income tax, ITIN, withholding and self-employment income.
       </p>
-      <p class="note">
-        Egzanp kategori ki pral ladan l:
-      </p>
-      <ul>
-        <li>Fòm USCIS (I-130, I-485, I-765, I-821…)</li>
-        <li>Fòm IRS (1040, W-4, W-7…)</li>
-        <li>Fòm SNAP / benefis / lojman / chomaj</li>
-      </ul>
-      <p class="note">
-        Pou kounya, si ou bezwen yon fòm an patikilye, kontakte MAXIMAX pou nou voye
-        lyen oswa PDF ki kòrèk la ba ou.
-      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Form</th>
+            <th>Description (Tri-lang)</th>
+            <th>Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1040</strong></td>
+            <td>
+              U.S. Individual Income Tax Return<br />
+              <small>🇭🇹 Fòm taks endividyèl</small>
+              <small>🇪🇸 Declaración de Impuestos Individual</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/tax/1040.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>W-7</strong></td>
+            <td>
+              Application for IRS Individual Taxpayer Identification Number (ITIN)<br />
+              <small>🇭🇹 Demann pou ITIN</small>
+              <small>🇪🇸 Solicitud de ITIN</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/tax/W-7.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>W-4</strong></td>
+            <td>
+              Employee's Withholding Certificate<br />
+              <small>🇭🇹 Fòm retransyon sou salè</small>
+              <small>🇪🇸 Certificado de Retención del Empleado</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/tax/W-4.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>1099 Sample</strong></td>
+            <td>
+              Information Return for Independent/Contractor Income (sample template)<br />
+              <small>🇭🇹 Revni endepandan</small>
+              <small>🇪🇸 Ingresos de Contratista</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/tax/1099-sample.pdf">Download PDF</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="card">
-      <h2>Español</h2>
+    <!-- BENEFITS FORMS -->
+    <div class="section-block" id="benefits-forms">
+      <span class="category-badge">Benefits · SNAP / Medicaid / WIC</span>
+      <h2>Benefits & Public Assistance Forms</h2>
       <p>
-        Esta página será la Biblioteca de Formularios de MAXIMAX. Aquí se organizarán
-        los formularios de inmigración, impuestos, beneficios, vivienda y Seguro Social
-        con enlaces oficiales en PDF.
+        Forms related to SNAP, Medicaid, WIC and other public benefits. States may have their own
+        specific versions; these are general examples.
       </p>
-      <p class="note">
-        Ejemplos de categorías:
-      </p>
-      <ul>
-        <li>Formularios USCIS (I-130, I-485, I-765, I-821…)</li>
-        <li>Formularios IRS (1040, W-4, W-7…)</li>
-        <li>Formularios de SNAP / beneficios / vivienda / desempleo</li>
-      </ul>
-      <p class="note">
-        Por ahora, si necesita un formulario específico, contacte a MAXIMAX
-        y le enviaremos el enlace o el PDF correcto.
-      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Form</th>
+            <th>Description (Tri-lang)</th>
+            <th>Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>SNAP Application</strong></td>
+            <td>
+              Supplemental Nutrition Assistance Program Application<br />
+              <small>🇭🇹 Demann pou SNAP / Food Stamps</small>
+              <small>🇪🇸 Solicitud de SNAP (Cupones de Alimentos)</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/benefits/SNAP-application.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Medicaid / CHIP</strong></td>
+            <td>
+              Medicaid / Children's Health Insurance Application<br />
+              <small>🇭🇹 Demann Medicaid / CHIP</small>
+              <small>🇪🇸 Solicitud de Medicaid / CHIP</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/benefits/Medicaid-CHIP.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>WIC Form</strong></td>
+            <td>
+              Women, Infants, and Children Program Form<br />
+              <small>🇭🇹 Fòm WIC</small>
+              <small>🇪🇸 Formulario de WIC</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/benefits/WIC-form.pdf">Download PDF</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
+    <!-- HOUSING FORMS -->
+    <div class="section-block" id="housing-forms">
+      <span class="category-badge">Housing · Section 8 / HUD</span>
+      <h2>Housing & Section 8 Forms</h2>
+      <p>
+        General examples of housing and Section 8 paperwork. Local housing authorities may provide
+        their own versions.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Form</th>
+            <th>Description (Tri-lang)</th>
+            <th>Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Section 8 Application</strong></td>
+            <td>
+              Housing Choice Voucher / Section 8 Application<br />
+              <small>🇭🇹 Demann pou Section 8</small>
+              <small>🇪🇸 Solicitud de Sección 8</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/housing/Section8-application.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Recertification Packet</strong></td>
+            <td>
+              Annual Housing Recertification Packet<br />
+              <small>🇭🇹 Rekèt renouvèlman lojman</small>
+              <small>🇪🇸 Paquete de Recertificación</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/housing/Recertification-packet.pdf">Download PDF</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SOCIAL SECURITY FORMS -->
+    <div class="section-block" id="ssa-forms">
+      <span class="category-badge">Social Security · SSA</span>
+      <h2>Social Security Forms</h2>
+      <p>
+        Common Social Security Administration (SSA) forms for SSI, cards and benefit updates.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Form</th>
+            <th>Description (Tri-lang)</th>
+            <th>Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>SS-5</strong></td>
+            <td>
+              Application for a Social Security Card<br />
+              <small>🇭🇹 Demann nouvo / ranplasman kat sekirite sosyal</small>
+              <small>🇪🇸 Solicitud de Tarjeta de Seguro Social</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/social-security/SS-5.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>SSI Application</strong></td>
+            <td>
+              Supplemental Security Income Application (sample packet)<br />
+              <small>🇭🇹 Demann pou SSI</small>
+              <small>🇪🇸 Solicitud de SSI</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/social-security/SSI-application.pdf">Download PDF</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- UNEMPLOYMENT FORMS -->
+    <div class="section-block" id="unemployment-forms">
+      <span class="category-badge">Unemployment · State/Federal</span>
+      <h2>Unemployment Forms</h2>
+      <p>
+        General unemployment claim and weekly certification forms. Exact forms vary by state.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Form</th>
+            <th>Description (Tri-lang)</th>
+            <th>Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Initial Claim</strong></td>
+            <td>
+              Initial Unemployment Claim Form (example)<br />
+              <small>🇭🇹 Premye demann chomaj</small>
+              <small>🇪🇸 Solicitud Inicial de Desempleo</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/unemployment/initial-claim.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Weekly Certification</strong></td>
+            <td>
+              Weekly Unemployment Certification Form (example)<br />
+              <small>🇭🇹 Fòm sètifikasyon chak semèn</small>
+              <small>🇪🇸 Formulario Semanal de Certificación</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/unemployment/weekly-certification.pdf">Download PDF</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CHILD SUPPORT FORMS -->
+    <div class="section-block" id="child-support-forms">
+      <span class="category-badge">Child Support</span>
+      <h2>Child Support Forms</h2>
+      <p>
+        Basic forms used in many states for child support application and modification.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Form</th>
+            <th>Description (Tri-lang)</th>
+            <th>Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Child Support Application</strong></td>
+            <td>
+              Child Support Services Application<br />
+              <small>🇭🇹 Demann sèvis Child Support</small>
+              <small>🇪🇸 Solicitud de Manutención de Menores</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/child-support/child-support-application.pdf">Download PDF</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Modification Request</strong></td>
+            <td>
+              Request to Modify Child Support Order<br />
+              <small>🇭🇹 Demann pou chanje kantite child support</small>
+              <small>🇪🇸 Solicitud de Modificación de Manutención</small>
+            </td>
+            <td>
+              <a class="download-link" href="assets/docs/child-support/modification-request.pdf">Download PDF</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-links">
+        <a href="index.html">Home</a> |
+        <a href="alerts.html">Alerts</a> |
+        <a href="forms-library.html">Forms</a> |
+        <a href="terms.html">Terms of Use</a> |
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div>© 2025 MAXIMAX Multi Services – MAXIMAX ALWAYS MAXIMIZED.</div>
+      <div class="footer-mini">
+        🇭🇹 MAXIMAX pa yon kabinè avoka; nou ofri asistans ak dokiman sèlman.<br />
+        🇺🇸 MAXIMAX is not a law firm; we provide document assistance only.<br />
+        🇪🇸 MAXIMAX no es una oficina de abogados; brindamos asistencia con documentos solamente.
+      </div>
+    </footer>
   </div>
 </body>
 </html>
