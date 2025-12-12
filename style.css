@@ -120,3 +120,12 @@ body{
 .panel p{color:#ffe7cb;font-size:13px;line-height:1.6}
 .panel ul{margin-left:18px;color:#ffe7cb;line-height:1.9;font-size:13px}
 .wide{margin-top:14px}
+* {
+  box-sizing: border-box;
+}
+
+body::after {
+  content: "";
+  display: block;
+  height: 1px;
+}
