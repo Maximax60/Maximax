@@ -1,60 +1,278 @@
-<section id="alerts">
-  <h2 style="color:#ff9f43;">ALERTE · Nouvo Lwa & Mizajou</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAXIMAX — Alerts</title>
 
-  <p style="color:#ccc; font-size:14px; margin-bottom:20px;">
-    Paj sa a bay enfòmasyon enpòtan sou chanjman nan lwa imigrasyon, taks,
-    SNAP, Section 8, Social Security, chomaj, ak lòt pwogram federal.
-  </p>
+  <!-- Load both (since you said both exist and are same) -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css" />
 
-  <!-- ALERT 1 – Immigration -->
-  <div style="border:1px solid #ff9f43; padding:16px; border-radius:10px; margin-bottom:16px;">
-    <div style="color:#ff9f43; font-size:12px; text-transform:uppercase; letter-spacing:2px;">
-      Immigration · USCIS
+  <style>
+    /* SAFETY STYLES (to guarantee NO WHITE even if CSS breaks) */
+    :root{
+      --bg:#070707;
+      --panel:rgba(255,255,255,.03);
+      --stroke:rgba(242,140,40,.35);
+      --accent:#f28c28;
+      --text:#ffffff;
+      --muted:#ffd9a4;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    a{color:#ffd08a;text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Topbar fallback (if your CSS already has .topbar it will override nicely) */
+    .topbar{
+      background:linear-gradient(90deg,#000,#1b0b02,#f28c28);
+      border-bottom:2px solid var(--stroke);
+      padding:12px 0;
+    }
+    .topbar-inner{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 16px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand-logo{
+      width:46px;height:46px;border-radius:50%;
+      border:2px solid rgba(255,255,255,.15);
+      object-fit:cover;
+      background:#000;
+    }
+    .brand-name{font-weight:800;letter-spacing:.5px}
+    .brand-tagline{font-size:12px;color:rgba(255,255,255,.85)}
+    .nav{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .nav-link{
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.15);
+      color:#fff;
+      font-weight:700;
+      font-size:13px;
+    }
+    .nav-link.active{
+      border-color:var(--accent);
+      box-shadow:0 0 0 2px rgba(242,140,40,.12) inset;
+    }
+    .lang{display:flex;gap:8px;align-items:center}
+    .lang-btn{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.15);
+      background:rgba(0,0,0,.25);
+      color:#fff;
+      font-weight:800;
+      cursor:pointer;
+    }
+    .lang-btn.is-active{
+      border-color:var(--accent);
+      background:rgba(242,140,40,.2);
+    }
+
+    /* Page */
+    .page{max-width:1200px;margin:0 auto;padding:18px 16px 40px;}
+    .hero{
+      border:1px solid var(--stroke);
+      border-radius:16px;
+      padding:16px;
+      background:linear-gradient(135deg, rgba(242,140,40,.18), rgba(255,255,255,.03));
+    }
+    .hero h1{margin:0 0 8px;letter-spacing:1px}
+    .hero p{margin:0;color:var(--muted);line-height:1.6}
+    .grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:14px;
+    }
+    @media(max-width:980px){.grid{grid-template-columns:1fr}}
+    .card{
+      border:1px solid var(--stroke);
+      border-radius:16px;
+      padding:14px;
+      background:var(--panel);
+    }
+    .card h2{
+      margin:0 0 8px;
+      color:var(--accent);
+      text-transform:uppercase;
+      font-size:15px;
+      letter-spacing:1px;
+    }
+    .alert{
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px;
+      padding:12px;
+      background:rgba(0,0,0,.25);
+      margin-top:10px;
+    }
+    .alert-title{font-weight:900;font-size:16px;margin:0 0 6px}
+    .meta{font-size:12px;color:rgba(255,255,255,.7);margin-bottom:8px}
+    .tri{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:8px;
+      color:#ffe7cb;
+      line-height:1.6;
+    }
+    .label{display:inline-block;margin-right:6px;color:var(--accent);font-weight:900}
+    .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:900;
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .btn.primary{
+      background:var(--accent);
+      color:#000;
+      border-color:var(--accent);
+    }
+    .btn.outline{
+      background:transparent;
+      color:#ffd08a;
+      border-color:rgba(242,140,40,.35);
+    }
+
+    .contactLine{color:#ffe7cb;line-height:1.8;margin:0}
+    .small{font-size:12px;color:rgba(255,255,255,.7);line-height:1.6}
+    footer{
+      margin-top:14px;
+      border-top:1px solid rgba(242,140,40,.25);
+      padding-top:12px;
+      color:rgba(255,255,255,.75);
+      font-size:12px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img src="maximax-owner.png" alt="MAXIMAX Logo" class="brand-logo" />
+        <div class="brand-text">
+          <div class="brand-name">MAXIMAX MULTI SERVICES</div>
+          <div class="brand-tagline">MAXIMAX ALWAYS MAXIMIZED</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="alerts.html" class="nav-link active">ALERTS</a>
+        <a href="forms-library.html" class="nav-link">FORMS</a>
+        <a href="how-it-works.html" class="nav-link">HOW IT WORKS</a>
+        <a href="upload.html" class="nav-link">UPLOAD</a>
+        <a href="contact.html" class="nav-link">CONTACT</a>
+      </nav>
+
+      <div class="lang">
+        <button class="lang-btn">EN</button>
+        <button class="lang-btn is-active">KREYÒL</button>
+        <button class="lang-btn">ES</button>
+      </div>
     </div>
+  </header>
 
-    <h3 style="margin:6px 0;">New USCIS Fee Rule Now in Effect</h3>
-    <p style="color:#888; font-size:12px;">Effective: March 25, 2025</p>
+  <main class="page">
+    <section class="hero">
+      <h1>ALÈT • NOUVO LWA &amp; MIZAJOU</h1>
+      <p>
+        Paj sa a bay enfòmasyon enpòtan sou chanjman USCIS, taks, benefis (SNAP/Medicaid/SSI),
+        Housing (Section 8 / HUD), ak lòt mizajou kominotè.
+      </p>
+      <div class="btnrow">
+        <a class="btn outline" href="forms-library.html">OPEN FORMS LIBRARY</a>
+        <a class="btn outline" href="upload.html">UPLOAD DOCUMENTS</a>
+      </div>
+    </section>
 
-    <p><strong>Kreyòl:</strong> USCIS mete nouvo frè sou fòm I-130, I-485, I-765, I-821.</p>
-    <p><strong>English:</strong> USCIS has updated fees for petitions and applications.</p>
+    <section class="grid">
+      <!-- LEFT: Alerts feed -->
+      <section class="card">
+        <h2>ALÈT AKTIF</h2>
 
-    <p style="color:#ccc; font-size:13px;"><strong>Who is affected:</strong> Family petitions • Work permits • TPS • Green Cards</p>
+        <!-- Alert #1 -->
+        <article class="alert">
+          <div class="alert-title">New USCIS Fee Rule Now in Effect</div>
+          <div class="meta">Effective: March 25, 2025 • Category: IMMIGRATION — USCIS</div>
 
-    <p style="color:#ff9f43;">➤ MAXIMAX can help verify your correct filing fee.</p>
-  </div>
+          <div class="tri">
+            <div><span class="label">Kreyòl:</span> USCIS mete nouvo frè sou fòm I-130, I-485, I-765, I-821.</div>
+            <div><span class="label">English:</span> USCIS has updated fees for petitions and applications.</div>
+            <div><span class="label">Español:</span> USCIS actualizó las tarifas para peticiones y solicitudes.</div>
+          </div>
 
-  <!-- ALERT 2 – IRS TAX -->
-  <div style="border:1px solid #66512c; padding:16px; border-radius:10px; margin-bottom:16px;">
-    <div style="color:#ff9f43; font-size:12px; text-transform:uppercase; letter-spacing:2px;">
-      Tax · IRS
-    </div>
+          <div class="btnrow">
+            <a class="btn outline" href="forms-library.html">Go to Forms</a>
+            <a class="btn outline" href="contact.html">Get Help</a>
+          </div>
+        </article>
 
-    <h3 style="margin:6px 0;">IRS Refund Processing Time Update</h3>
-    <p style="color:#888; font-size:12px;">Effective: January 10, 2025</p>
+        <!-- Alert #2 -->
+        <article class="alert">
+          <div class="alert-title">IRS Refund Processing Time Update</div>
+          <div class="meta">Effective: January 10, 2025 • Category: TAX — IRS</div>
 
-    <p><strong>Kreyòl:</strong> Ranbousman ka pran 3–5 semèn pou moun ki depoze bonè.</p>
-    <p><strong>English:</strong> Refunds may take 3–5 weeks for early filers.</p>
+          <div class="tri">
+            <div><span class="label">Kreyòl:</span> Ranbousman ka pran 3–5 semèn pou moun ki depoze bonè.</div>
+            <div><span class="label">English:</span> Refunds may take 3–5 weeks for early filers.</div>
+            <div><span class="label">Español:</span> Los reembolsos pueden tardar 3–5 semanas para quienes presentan temprano.</div>
+          </div>
 
-    <p style="color:#ccc; font-size:13px;"><strong>Who is affected:</strong> Parents • Early filers • Low-income workers</p>
+          <div class="btnrow">
+            <a class="btn outline" href="forms-library.html">Tax Forms</a>
+            <a class="btn outline" href="contact.html">Talk to MAXIMAX</a>
+          </div>
+        </article>
 
-    <p style="color:#ff9f43;">➤ MAXIMAX can help check your IRS refund status.</p>
-  </div>
+        <p class="small" style="margin-top:12px;">
+          *Nòt: MAXIMAX pa yon kabinè avoka. Nou ede ak fòm, tradiksyon, ak asistans administrativ.
+        </p>
+      </section>
 
-  <!-- ALERT 3 – SNAP -->
-  <div style="border:1px solid #3f5f3f; padding:16px; border-radius:10px; margin-bottom:16px;">
-    <div style="color:#ff9f43; font-size:12px; text-transform:uppercase; letter-spacing:2px;">
-      Benefits · SNAP
-    </div>
+      <!-- RIGHT: Contact & Business info (NO WHITE) -->
+      <aside class="card">
+        <h2>CONTACT &amp; SUPPORT</h2>
+        <p class="contactLine"><b>Address:</b> 6934 Coral Cove Drive, Orlando, Florida 32818</p>
+        <p class="contactLine"><b>Email:</b> <a href="mailto:maximaxmultiservices@gmail.com">maximaxmultiservices@gmail.com</a></p>
+        <p class="contactLine"><b>Website:</b> <a href="https://maximaxmultiservices.com">maximaxmultiservices.com</a></p>
+        <p class="contactLine"><b>Tel:</b> <a href="tel:+13175381150">(317) 538-1150</a> • <a href="tel:+15162168494">(516) 216-8494</a></p>
 
-    <h3 style="margin:6px 0;">SNAP Work Requirement Update</h3>
-    <p style="color:#888; font-size:12px;">Effective: February 1, 2025</p>
+        <div class="btnrow" style="margin-top:12px;">
+          <a class="btn primary" href="contact.html">OPEN CONTACT PAGE</a>
+          <a class="btn outline" href="upload.html">UPLOAD DOCUMENTS</a>
+        </div>
 
-    <p><strong>Kreyòl:</strong> Nouvo kondisyon pou adilt san timoun nan SNAP.</p>
-    <p><strong>English:</strong> New work rules for adults without dependents.</p>
+        <div style="margin-top:14px;border-top:1px solid rgba(242,140,40,.25);padding-top:12px;">
+          <h2 style="margin-top:0;">COMING NEXT</h2>
+          <ul style="margin:0;padding-left:18px;color:#ffe7cb;line-height:1.9">
+            <li>Credit Repair section</li>
+            <li>LLC Services section</li>
+            <li>Working language toggle (EN / KREYÒL / ES)</li>
+            <li>Full translation on all pages</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
 
-    <p style="color:#ccc; font-size:13px;"><strong>Who is affected:</strong> Low-income adults • Singles</p>
-
-    <p style="color:#ff9f43;">➤ MAXIMAX can help you complete your SNAP form.</p>
-  </div>
-
-</section>
+    <footer>
+      © <span>2025</span> MAXIMAX MULTI SERVICES — MAXIMAX ALWAYS MAXIMIZED
+    </footer>
+  </main>
+</body>
+</html>
