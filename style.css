@@ -154,7 +154,16 @@ ul{margin:0;padding-left:18px}
 /* FORMS/INPUTS — no white */
 input, textarea, select, button{
   background:#0b0b0b !important;
-  color:#f28c28 !important;
+  color:#f28c28 !important;/* FIX BLUE LINKS IN CONTACT SECTION */
+a {
+  color: #f28c28;          /* orange MAXIMAX */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffd08a;          /* lighter orange hover */
+  text-decoration: underline;
+   }
   border:1px solid rgba(242,140,40,.45) !important;
 }
 
