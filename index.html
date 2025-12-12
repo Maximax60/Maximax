@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAXIMAX Multi Services</title>
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html, body { height:100%; }
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      color:#fff;
+      background: linear-gradient(to bottom,#000 0%,#0f0a04 30%,#d96e17 75%,#f28c28 100%);
+      background-attachment: fixed;
+    }
+    a{ color:inherit; }
+    .wrap{ max-width:1200px; margin:0 auto; padding:16px; }
+
+    /* HEADER */
+    header{
+      width:100%;
+      background: linear-gradient(to right,#000,#1a0d03,#b85c12,#f28c28);
+      border-bottom:2px solid #f28c28;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .logo{
+      width:54px; height:54px; border-radius:50%;
+      border:2px solid #f28c28; overflow:hidden; background:#000;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .logo img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .brand h1{ font-size:18px; letter-spacing:1px; }
+    .brand small{
+      display:block;
+      font-size:11px; color:#ffd9a4;
+      text-transform:uppercase; letter-spacing:2px;
+      margin-top:2px;
+    }
+    nav{ display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
+    nav a{
+      text-decoration:none; color:#ffe9c7;
+      font-size:12px; text-transform:uppercase; letter-spacing:.06em;
+      padding:6px 8px; border-radius:8px;
+    }
+    nav a:hover{ background: rgba(0,0,0,.35); color:#fff; }
+
+    /* HERO */
+    .hero{
+      margin-top:14px;
+      padding:22px;
+      border-radius:18px;
+      background: rgba(0,0,0,.58);
+      border:1px solid rgba(242,140,40,.35);
+      box-shadow:0 12px 28px rgba(0,0,0,.55);
+      display:grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap:18px;
+    }
+    @media (max-width:900px){ .hero{ grid-template-columns:1fr; } }
+    .hero h2{
+      font-size:26px; line-height:1.15;
+      color:#f28c28; text-transform:uppercase;
+      margin-bottom:10px;
+    }
+    .hero p{ font-size:14px; color:#ffe6c8; line-height:1.6; }
+    .badges{ display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 18px; }
+    .badge{
+      font-size:11px; letter-spacing:.07em; text-transform:uppercase;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(242,140,40,.7);
+      background: rgba(242,140,40,.12);
+      color:#ffe9c7;
+    }
+    .btns{ display:flex; flex-wrap:wrap; gap:10px; }
+    .btn{
+      display:inline-block;
+      padding:11px 16px;
+      border-radius:999px;
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      font-weight:bold;
+      font-size:12px;
+    }
+    .btn.primary{ background:#f28c28; color:#000; }
+    .btn.primary:hover{ background:#ffb259; }
+    .btn.ghost{
+      border:1px solid #f28c28;
+      color:#ffe9c7;
+      background: transparent;
+    }
+    .btn.ghost:hover{ background: rgba(242,140,40,.16); }
+
+    .hero-side{
+      display:flex; flex-direction:column; gap:10px; justify-content:center;
+    }
+    .side-card{
+      background: rgba(0,0,0,.58);
+      border-radius:16px;
+      padding:14px;
+      border:1px solid rgba(242,140,40,.35);
+      color:#ffe6c8;
+      font-size:12px;
+      line-height:1.5;
+    }
+    .side-card strong{ color:#ffd08a; display:block; margin-bottom:4px; font-size:13px; }
+
+    /* SECTIONS */
+    section{
+      margin-top:18px;
+      padding:18px;
+      border-radius:16px;
+      background: rgba(0,0,0,.62);
+      border:1px solid rgba(242,140,40,.30);
+    }
+    section h3{
+      font-size:18px;
+      color:#ffd8a4;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:10px;
+    }
+    section p{ font-size:13px; color:#ffe7cb; line-height:1.6; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:14px;
+      margin-top:12px;
+    }
+    @media (max-width:900px){ .grid{ grid-template-columns:1fr; } }
+
+    .card{
+      background: rgba(0,0,0,.65);
+      border-radius:14px;
+      padding:14px;
+      border:1px solid rgba(242,140,40,.30);
+      color:#ffe7cb;
+      font-size:13px;
+      line-height:1.55;
+    }
+    .card .title{
+      font-weight:bold;
+      color:#ffd597;
+      margin-bottom:6px;
+      font-size:14px;
+    }
+    .muted{ color:#ccc; }
+
+    /* PRICING */
+    .price{
+      font-size:22px; font-weight:bold; color:#f28c28; margin:6px 0;
+    }
+    .note{
+      font-size:12px; color:#cfcfcf; margin-top:8px;
+    }
+
+    /* TESTIMONIALS */
+    .quote{
+      font-size:13px;
+      color:#ffe7cb;
+      line-height:1.6;
+      border-left:3px solid #f28c28;
+      padding-left:12px;
+    }
+
+    /* ADMIN MESSAGE */
+    .admin{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+    .admin .avatar{
+      width:64px; height:64px; border-radius:14px;
+      border:1px solid rgba(242,140,40,.45);
+      background: rgba(0,0,0,.55);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:bold; color:#f28c28;
+    }
+    .admin .msg{ flex:1; min-width:240px; }
+
+    /* CONTACT */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:14px;
+      margin-top:12px;
+      font-size:13px;
+      color:#ffe7cb;
+      line-height:1.7;
+    }
+    @media (max-width:800px){ .contact-grid{ grid-template-columns:1fr; } }
+    .link{ color:#ffd08a; text-decoration:none; }
+    .link:hover{ text-decoration:underline; }
+
+    footer{
+      margin-top:18px;
+      text-align:center;
+      padding:16px 10px 22px;
+      color:#ffd9a4;
+      font-size:11px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="logo">
+        <img src="images/maximax-owner.png" alt="MAXIMAX Multi Services Logo" />
+      </div>
+      <div>
+        <h1>MAXIMAX MULTI SERVICES</h1>
+        <small>MAXIMAX ALWAYS MAXIMIZED</small>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#forms">Forms</a>
+      <a href="#alerts">Alerts</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#why">Why Choose Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="wrap">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div>
+        <h2>Immigration • Taxes • Benefits • Forms</h2>
+        <p>
+          MAXIMAX Multi Services helps you complete important paperwork with clarity and respect.
+          We support clients in <strong>English • Kreyòl • Español</strong>.
+        </p>
+
+        <div class="badges">
+          <div class="badge">Immigration Support</div>
+          <div class="badge">Tax Prep</div>
+          <div class="badge">Government Forms</div>
+          <div class="badge">Document Upload</div>
+        </div>
+
+        <div class="btns">
+          <a class="btn primary" href="forms-library.html">📄 Downloadable Forms (PDF)</a>
+          <a class="btn ghost" href="alerts.html">🚨 Alerts & Updates</a>
+          <a class="btn ghost" href="upload.html">⬆️ Upload Documents</a>
+          <a class="btn ghost" href="contact.html">📞 Contact</a>
+        </div>
+
+        <p class="note">
+          Notice: MAXIMAX assists with forms and translations. We do not replace an attorney.
+        </p>
+      </div>
+
+      <div class="hero-side">
+        <div class="side-card">
+          <strong>Federal Register Alerts</strong>
+          We translate official updates into clear, practical alerts for immigration and public programs.
+        </div>
+        <div class="side-card">
+          <strong>Forms Library</strong>
+          Central place for USCIS, IRS, SSA, SNAP, HUD/Section 8 and other official forms.
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <h3>Services</h3>
+      <p>
+        We help you prepare applications, organize documents, and submit forms correctly.
+        Below are the main categories we support.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="title">Immigration Forms</div>
+          I-130, I-485, I-765, I-131, N-400, I-90, I-751, I-864, TPS packets and more.
+        </div>
+        <div class="card">
+          <div class="title">Tax Services</div>
+          Personal tax filing, W-2 / 1099 assistance, ITIN support (as applicable), and document preparation.
+        </div>
+        <div class="card">
+          <div class="title">Benefits & Programs</div>
+          SNAP, Medicaid/CHIP renewal assistance, Social Security forms, unemployment guidance and paperwork.
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMS -->
+    <section id="forms">
+      <h3>Forms Library (PDF)</h3>
+      <p>
+        Download official forms and packets anytime.
+        <strong>Click below to access the full library.</strong>
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="title">Immigration (USCIS)</div>
+          Common filing forms and checklists for family, work authorization, TPS and more.
+          <div style="margin-top:10px;">
+            <a class="btn primary" href="forms-library.html">Open Forms Library</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="title">Tax (IRS)</div>
+          Tax-related forms and printable references for clients.
+          <div style="margin-top:10px;">
+            <a class="btn ghost" href="forms-library.html#tax">View Tax Forms</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="title">Benefits (SNAP / SSA / HUD)</div>
+          Forms for SNAP, Social Security, Housing/Section 8, and program renewals.
+          <div style="margin-top:10px;">
+            <a class="btn ghost" href="forms-library.html#benefits">View Benefits Forms</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALERTS -->
+    <section id="alerts">
+      <h3>Alerts</h3>
+      <p>
+        MAXIMAX posts simple alerts from official sources to help you understand what changed and what to do next.
+        Visit the Alerts page for details and updates.
+      </p>
+      <div style="margin-top:10px;">
+        <a class="btn primary" href="alerts.html">Go to Alerts Page</a>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <h3>Pricing Services</h3>
+      <p class="muted">Sample pricing display. You can adjust these anytime.</p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="title">Basic Form Assistance</div>
+          <div class="price">$50+</div>
+          Help completing a simple form, printing, and checklist.
+          <div class="note">Final pricing depends on complexity and number of forms.</div>
+        </div>
+        <div class="card">
+          <div class="title">Immigration Packet Prep</div>
+          <div class="price">$150+</div>
+          Organized packet, cover sheet, fee check, and document guidance.
+          <div class="note">USCIS fees are paid to USCIS separately.</div>
+        </div>
+        <div class="card">
+          <div class="title">Tax Filing</div>
+          <div class="price">$120+</div>
+          W-2 / 1099 filing, dependents review, and basic filing support.
+          <div class="note">Pricing varies by filing status and forms required.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews">
+      <h3>Testimonials / Reviews</h3>
+      <div class="grid">
+        <div class="card">
+          <div class="title">Client Review</div>
+          <div class="quote">“MAXIMAX explained everything clearly and helped me submit my forms on time.”</div>
+        </div>
+        <div class="card">
+          <div class="title">Client Review</div>
+          <div class="quote">“Fast service, respectful, and professional. I recommend MAXIMAX to everyone.”</div>
+        </div>
+        <div class="card">
+          <div class="title">Client Review</div>
+          <div class="quote">“They helped me with benefits renewal and saved me from missing the deadline.”</div>
+        </div>
+      </div>
+      <p class="note">You can replace these with real reviews later.</p>
+    </section>
+
+    <!-- WHY CHOOSE -->
+    <section id="why">
+      <h3>Why Choose MAXIMAX Multi Services</h3>
+      <div class="grid">
+        <div class="card">
+          <div class="title">Clear Communication</div>
+          We explain steps in simple language so you know what you’re submitting.
+        </div>
+        <div class="card">
+          <div class="title">Organized & Reliable</div>
+          Clean packets, checklists, and file organization to reduce mistakes.
+        </div>
+        <div class="card">
+          <div class="title">Multilingual Support</div>
+          English • Kreyòl • Español for better client understanding.
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN MESSAGE -->
+    <section id="admin">
+      <h3>Admin Message</h3>
+      <div class="admin">
+        <div class="avatar">M</div>
+        <div class="msg">
+          <p>
+            Welcome to MAXIMAX Multi Services. Our goal is to help you move forward with confidence.
+            If you need help with forms, translations, or organizing your case, contact us today.
+          </p>
+          <p class="note">— MAXIMAX, Dirijan Vizyonè</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL ELEMENTS -->
+    <section id="final">
+      <h3>How It Works</h3>
+      <div class="grid">
+        <div class="card">
+          <div class="title">1) Choose Service</div>
+          Tell us what you need: immigration, tax, benefits, or translation.
+        </div>
+        <div class="card">
+          <div class="title">2) Upload Documents</div>
+          Upload your documents securely for review and preparation.
+        </div>
+        <div class="card">
+          <div class="title">3) Receive Guidance</div>
+          We prepare your packet and guide you on the next steps.
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h3>Contact</h3>
+      <div class="contact-grid">
+        <div class="card">
+          <div class="title">Office & Communication</div>
+          Phone: (317) 538-1150<br />
+          Phone: (516) 216-8494<br />
+          Email: <a class="link" href="mailto:maximaxmultiservices@gmail.com">maximaxmultiservices@gmail.com</a><br />
+          Website: <a class="link" href="https://www.maximaxmultiservices.com">www.maximaxmultiservices.com</a><br />
+          Languages: English • Kreyòl • Español
+        </div>
+        <div class="card">
+          <div class="title">Important Notice</div>
+          MAXIMAX Multi Services assists with forms and translations.
+          We do not replace an attorney. For complex legal issues,
+          you may be referred to qualified legal counsel.
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 MAXIMAX Multi Services — MAXIMAX ALWAYS MAXIMIZED.
+    </footer>
+
+  </div>
+</body>
+</html>
