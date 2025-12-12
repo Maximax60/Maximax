@@ -172,3 +172,14 @@ body.alerts-page{
   background:#070707 !important;
   color:#f28c28 !important;
 }
+.contact-support a,
+.contact a {
+  color: #f28c28;
+  text-decoration: none;
+}
+
+.contact-support a:hover,
+.contact a:hover {
+  color: #ffd08a;
+  text-decoration: underline;
+}
