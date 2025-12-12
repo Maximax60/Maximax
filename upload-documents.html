@@ -1,413 +1,307 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MAXIMAX – Secure Upload Center (Admin Only)</title>
+  <title>MAXIMAX – Secure Upload (Admin Only)</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html, body { height:100%; background:#000; }
 
-    html, body {
-      height: 100%;
-      background-color: #000000;
-    }
-
-    body {
+    body{
       font-family: Arial, sans-serif;
-      color: #ffffff;
-      background: linear-gradient(
-        to bottom,
-        #000000 0%,
-        #0f0a04 30%,
-        #d96e17 75%,
-        #f28c28 100%
-      );
+      color:#fff;
+      background: linear-gradient(to bottom,#000000 0%,#0f0a04 30%,#d96e17 75%,#f28c28 100%);
       background-attachment: fixed;
       background-size: cover;
     }
-
-    @media (max-width: 768px) {
-      body {
-        background: linear-gradient(
-          to bottom,
-          #000000,
-          #1a1106,
-          #df771e,
-          #f28c28
-        );
-      }
+    @media (max-width:768px){
+      body{ background: linear-gradient(to bottom,#000,#1a1106,#df771e,#f28c28); }
     }
 
-    header {
-      width: 100%;
+    header{
+      width:100%;
       background: linear-gradient(to right, #000000, #1a0d03, #b85c12, #f28c28);
-      border-bottom: 2px solid #f28c28;
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      border-bottom:2px solid #f28c28;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
     }
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .brand{ display:flex; align-items:center; gap:10px; }
+    .brand-logo{
+      width:48px; height:48px; border-radius:50%;
+      border:2px solid #f28c28; overflow:hidden; background:#000;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .brand-logo img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .brand-text h1{ font-size:20px; letter-spacing:1px; }
+    .brand-text span{ font-size:12px; color:#ffd9a4; text-transform:uppercase; }
+
+    nav{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; justify-content:flex-end; }
+    nav a{ text-decoration:none; color:#ffe9c7; font-size:13px; text-transform:uppercase; letter-spacing:.05em; }
+    nav a:hover{ color:#fff; }
+
+    .page-wrapper{ max-width:900px; margin:0 auto; padding:18px 16px 30px; }
+
+    .card{
+      margin-top:18px;
+      padding:18px;
+      border-radius:16px;
+      background: rgba(0,0,0,.75);
+      border:1px solid rgba(242,140,40,.35);
+    }
+    .warning{ border-color:#ff9f43; }
+    .title{
+      font-size:16px;
+      font-weight:bold;
+      color:#ffd8a4;
+      margin-bottom:8px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+    p{ font-size:13px; color:#ffe7cb; line-height:1.6; }
+
+    .row{ margin-top:12px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    input[type="password"], input[type="text"]{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid #f28c28;
+      background:#000;
+      color:#ffe9c7;
+      font-size:13px;
+      min-width:220px;
+      outline:none;
+    }
+    input[type="file"]{ margin-top:8px; color:#ffe7cb; font-size:13px; }
+
+    button{
+      background:#f28c28;
+      border:none;
+      border-radius:999px;
+      padding:9px 16px;
+      font-size:13px;
+      cursor:pointer;
+      color:#000;
+      font-weight:bold;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+    }
+    button:hover{ background:#ffb259; }
+
+    .msg{ margin-top:10px; font-size:12px; display:none; }
+    .msg.error{ color:#ffb3b3; }
+    .msg.ok{ color:#b6ffbf; }
+
+    .upload-area{ display:none; }
+    .mini{
+      margin-top:8px;
+      font-size:11px;
+      color:#f7d2a0;
+      line-height:1.5;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .pill{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid rgba(242,140,40,.7);
+      background: rgba(242,140,40,.12);
+      font-size:11px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:#ffe9c7;
+      margin-top:10px;
     }
 
-    .brand-logo {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 2px solid #f28c28;
-      overflow: hidden;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .brand-text h1 {
-      font-size: 20px;
-      letter-spacing: 1px;
-    }
-
-    .brand-text span {
-      font-size: 12px;
-      color: #ffd9a4;
-      text-transform: uppercase;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #ffe9c7;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    nav a:hover {
-      color: #ffffff;
-    }
-
-    .page-wrapper {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 18px 16px 30px 16px;
-    }
-
-    h1 {
-      font-size: 22px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #ffd8a4;
-      margin-bottom: 8px;
-    }
-
-    p {
-      font-size: 13px;
-      color: #ffe7cb;
-      line-height: 1.6;
-    }
-
-    .card {
-      margin-top: 20px;
-      padding: 18px;
-      border-radius: 16px;
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(242, 140, 40, 0.3);
-    }
-
-    .warning {
-      border-color: #ff9f43;
-    }
-
-    .card-title {
-      font-size: 15px;
-      font-weight: bold;
-      color: #ffd8a4;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .admin-login {
-      margin-top: 12px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .admin-login input {
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid #f28c28;
-      background: #000;
-      color: #ffe9c7;
-      font-size: 13px;
-      min-width: 190px;
-    }
-
-    .admin-login button {
-      background: #f28c28;
-      border: none;
-      border-radius: 999px;
-      padding: 8px 16px;
-      font-size: 13px;
-      cursor: pointer;
-      color: #000000;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .admin-login button:hover {
-      background: #ffb259;
-    }
-
-    .error-msg {
-      margin-top: 8px;
-      font-size: 12px;
-      color: #ffb3b3;
-      display: none;
-    }
-
-    .upload-area {
-      margin-top: 22px;
-      padding: 18px;
-      border-radius: 16px;
-      background: rgba(0, 0, 0, 0.8);
-      border: 1px solid rgba(242, 140, 40, 0.5);
-      display: none; /* kache jiskaske admin valide */
-    }
-
-    .upload-area h2 {
-      font-size: 18px;
-      margin-bottom: 8px;
-      color: #ffd8a4;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .upload-area-label {
-      margin-top: 10px;
-      font-size: 13px;
-      color: #ffe7cb;
-    }
-
-    .upload-area input[type="file"] {
-      margin-top: 8px;
-      font-size: 13px;
-      color: #ffe7cb;
-    }
-
-    .upload-area button {
-      margin-top: 12px;
-      background: #f28c28;
-      border: none;
-      border-radius: 999px;
-      padding: 9px 18px;
-      font-size: 13px;
-      cursor: pointer;
-      color: #000000;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .upload-area button:hover {
-      background: #ffb259;
-    }
-
-    .notice {
-      margin-top: 8px;
-      font-size: 11px;
-      color: #f7d2a0;
-    }
-
-    footer {
-      margin-top: 30px;
-      padding: 12px 0 20px 0;
-      font-size: 11px;
-      text-align: center;
-      color: #ffd9a4;
-    }
-
-    .footer-links a {
-      color: #ffd9a4;
-      text-decoration: none;
-      margin: 0 6px;
-      font-size: 11px;
-    }
-
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
-
-    .footer-mini {
-      margin-top: 4px;
-      font-size: 10px;
-      color: #f7d2a0;
-      line-height: 1.5;
+    footer{
+      margin-top:24px;
+      padding:12px 0 20px;
+      font-size:11px;
+      text-align:center;
+      color:#ffd9a4;
     }
   </style>
 </head>
 
 <body>
-  <!-- HEADER -->
   <header>
-    <div class="header-left">
-      <div class="brand">
-        <div class="brand-logo">
-          <img src="assets/img/MAXIMAX MULTI SERVICES II.png" alt="MAXIMAX Multi Services Logo" />
-        </div>
-        <div class="brand-text">
-          <h1>MAXIMAX MULTI SERVICES</h1>
-          <span>MAXIMAX ALWAYS MAXIMIZED</span>
-        </div>
+    <div class="brand">
+      <div class="brand-logo">
+        <img src="assets/img/MAXIMAX MULTI SERVICES II.png" alt="MAXIMAX Logo" />
+      </div>
+      <div class="brand-text">
+        <h1>MAXIMAX MULTI SERVICES</h1>
+        <span>MAXIMAX ALWAYS MAXIMIZED</span>
       </div>
     </div>
 
-    <div class="header-right" style="display:flex; align-items:center; gap:16px;">
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="alerts.html">Alerts</a>
-        <a href="downloadable-forms-pdf.html">Forms</a>
-        <a href="upload-documents.html">Upload</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="alerts.html">Alerts</a>
+      <a href="downloadable-forms-pdf.html">Forms</a>
+      <a href="upload-documents.html">Upload</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
 
   <div class="page-wrapper">
-    <!-- AVERTISMAN ADMIN -->
-    <div class="card warning" id="admin-gate">
-      <div class="card-title">ADMIN ONLY · SECURE AREA</div>
+
+    <!-- NIVO 2: ADMIN GATE -->
+    <div class="card warning" id="adminGate">
+      <div class="title">Admin Only · Secure Area</div>
       <p>
-        🇭🇹 Zòn sa a se pou <strong>ADMIN MAXIMAX</strong> sèlman. Si ou pa otorize,
-        tanpri pa kontinye. Nenpòt abiz ka fè kont ou bloke.
-      </p>
-      <p>
-        🇺🇸 This upload center is for <strong>MAXIMAX ADMIN ONLY</strong>. If you are not authorized,
-        please do not continue. Any abuse may result in access being blocked.
+        🇭🇹 Zòn sa a se pou ADMIN sèlman. Antre kòd la pou kontinye.<br/>
+        🇺🇸 Admin-only upload center. Enter code to continue.<br/>
+        🇪🇸 Centro de carga solo para administradores. Ingrese el código.
       </p>
 
-      <div class="admin-login">
-        <input
-          type="password"
-          id="adminCode"
-          placeholder="Admin Access Code"
-          autocomplete="off"
-        />
-        <button type="button" onclick="checkAdminCode()">Enter</button>
+      <div class="row">
+        <input type="password" id="adminCode" placeholder="Admin Access Code" autocomplete="off" />
+        <button type="button" onclick="unlock()">Enter</button>
       </div>
-      <div class="error-msg" id="errorMsg">
-        ⚠ Invalid code. Please contact Super Admin MAXIMAX if you need access.
-      </div>
+
+      <div class="msg error" id="adminErr">⚠ Wrong code. Contact Super Admin.</div>
+      <div class="mini">Tip: Use a strong code. (You can change it inside the script.)</div>
     </div>
 
-    <!-- ZÒN UPLOAD LA – KACHE JISKASKE ADMIN VALIDE -->
-    <div class="upload-area" id="uploadArea">
-      <h2>Secure Upload Center</h2>
+    <!-- NIVO 3 + 4: VALIDATION + RANDOM RENAME -->
+    <div class="card upload-area" id="uploadArea">
+      <div class="title">Secure Upload Center</div>
       <p>
-        🇭🇹 Chwazi fichye kliyan yo (PDF, JPG, PNG) pou upload nan sistèm MAXIMAX la.
-        Pou sekirite, fichye yo ap estoke nan zòn ki pa piblik epi yo sèlman vizib
-        nan admin dashboard la (lè nou ajoute backend la).
-      </p>
-      <p>
-        🇺🇸 Select client documents (PDF, JPG, PNG) to upload into the MAXIMAX system.
-        For security, files will be stored in a non-public area and only visible
-        through the admin dashboard (once backend is connected).
+        🇭🇹 Chwazi PDF/JPG/PNG. Sistèm nan ap verifye fichye a, epi li ap kreye yon
+        non o aza (random) pou sekirite.<br/>
+        🇺🇸 Select PDF/JPG/PNG. The system validates the file and generates a random secure filename.<br/>
+        🇪🇸 Seleccione PDF/JPG/PNG. El sistema valida el archivo y genera un nombre aleatorio seguro.
       </p>
 
-      <div class="upload-area-label">
-        Select file to upload / Chwazi fichye pou upload:
+      <span class="pill">Allowed: PDF · JPG · PNG | Max: 10MB</span>
+
+      <div class="row" style="margin-top:14px;">
+        <input type="text" id="clientRef" placeholder="Client Reference (Optional)" autocomplete="off" />
       </div>
-      <input type="file" id="fileInput" />
 
-      <button type="button" onclick="fakeUpload()">
-        Upload Securely (Demo)
-      </button>
+      <div style="margin-top:12px;">
+        <input type="file" id="fileInput" />
+      </div>
 
-      <div class="notice" id="uploadNotice">
-        🛈 Demo mode: in this static HTML version, we only simulate upload.
-        Backend (Firebase / server) will be connected later for real storage.
+      <div class="row" style="margin-top:12px;">
+        <button type="button" onclick="prepareSecureUpload()">Prepare Secure Upload</button>
+      </div>
+
+      <div class="msg ok" id="okMsg"></div>
+      <div class="msg error" id="fileErr"></div>
+
+      <div class="mini" id="note">
+        🛈 Static demo: We generate the secure filename and validate locally.
+        Real upload storage will be connected with Firebase/Backend next.
       </div>
     </div>
 
     <footer>
-      <div class="footer-links">
-        <a href="index.html">Home</a> |
-        <a href="alerts.html">Alerts</a> |
-        <a href="downloadable-forms-pdf.html">Forms</a> |
-        <a href="terms.html">Terms of Use</a> |
-        <a href="privacy.html">Privacy Policy</a>
-      </div>
-      <div>© 2025 MAXIMAX Multi Services – MAXIMAX ALWAYS MAXIMIZED.</div>
-      <div class="footer-mini">
-        🇭🇹 MAXIMAX pa yon kabinè avoka; nou ofri asistans ak dokiman sèlman.<br />
-        🇺🇸 MAXIMAX is not a law firm; we provide document assistance only.<br />
-        🇪🇸 MAXIMAX no es una oficina de abogados; brindamos asistencia con documentos solamente.
-      </div>
+      © 2025 MAXIMAX Multi Services – MAXIMAX ALWAYS MAXIMIZED.
     </footer>
+
   </div>
 
   <script>
-    // ⚙ Kòd sekirite senp pou admin gate la
-    function checkAdminCode() {
-      const input = document.getElementById("adminCode");
-      const errorMsg = document.getElementById("errorMsg");
-      const uploadArea = document.getElementById("uploadArea");
-      const adminGate = document.getElementById("admin-gate");
+    // =========================
+    // NIVO 2: ADMIN GATE
+    // =========================
+    const SECRET_CODE = "MAXIMAX2025"; // CHANJE SA SI OU VLE
 
-      // 🧡 CHANJE KOD LA SI OU VLE
-      const SECRET_CODE = "MAXIMAX2025";
+    function unlock(){
+      const code = document.getElementById("adminCode").value;
+      const err = document.getElementById("adminErr");
+      const gate = document.getElementById("adminGate");
+      const area = document.getElementById("uploadArea");
 
-      if (input.value === SECRET_CODE) {
-        errorMsg.style.display = "none";
-        adminGate.style.display = "none";
-        uploadArea.style.display = "block";
+      if(code === SECRET_CODE){
+        err.style.display = "none";
+        gate.style.display = "none";
+        area.style.display = "block";
       } else {
-        errorMsg.style.display = "block";
+        err.style.display = "block";
       }
     }
 
-    // Fake upload pou montre user la ke bouton an mache
-    function fakeUpload() {
+    // =========================
+    // NIVO 3: FILE VALIDATION
+    // =========================
+    const allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
+    const maxSize = 10 * 1024 * 1024; // 10MB
+
+    function validateFile(file){
+      if(!file) return { ok:false, msg:"Please select a file / Tanpri chwazi yon fichye." };
+
+      if(!allowedTypes.includes(file.type)){
+        return { ok:false, msg:"Only PDF, JPG, PNG allowed. / Se PDF, JPG, PNG sèlman." };
+      }
+
+      if(file.size > maxSize){
+        return { ok:false, msg:"File too large. Max 10MB. / Fichye a twò lou (Max 10MB)." };
+      }
+
+      return { ok:true };
+    }
+
+    // =========================
+    // NIVO 4: RANDOM SECURE NAME
+    // =========================
+    function randomId(len=16){
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      let out = "";
+      for(let i=0;i<len;i++) out += chars[Math.floor(Math.random()*chars.length)];
+      return out;
+    }
+
+    function getExtension(file){
+      // safer: based on MIME
+      if(file.type === "application/pdf") return "pdf";
+      if(file.type === "image/jpeg") return "jpg";
+      if(file.type === "image/png") return "png";
+      return "bin";
+    }
+
+    function prepareSecureUpload(){
       const fileInput = document.getElementById("fileInput");
-      if (!fileInput.value) {
-        alert("Tanpri chwazi yon fichye avan / Please select a file first.");
+      const file = fileInput.files && fileInput.files[0] ? fileInput.files[0] : null;
+
+      const okMsg = document.getElementById("okMsg");
+      const fileErr = document.getElementById("fileErr");
+      okMsg.style.display = "none";
+      fileErr.style.display = "none";
+
+      const v = validateFile(file);
+      if(!v.ok){
+        fileErr.textContent = "⚠ " + v.msg;
+        fileErr.style.display = "block";
         return;
       }
-      alert(
-        "Demo upload only.\n\nNan vèsyon final la, fichye a ap voye sou yon sèvè sekirize / Firebase Storage."
-      );
+
+      // Create secure filename
+      const ext = getExtension(file);
+      const ref = (document.getElementById("clientRef").value || "").trim();
+
+      // Example: MAXIMAX_2025-12-11_REF_JH3k... .pdf
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth()+1).padStart(2,"0");
+      const dd = String(today.getDate()).padStart(2,"0");
+
+      const safeRef = ref ? ref.replace(/[^a-zA-Z0-9_-]/g, "").slice(0, 20) : "NOREF";
+      const secureName = `MAXIMAX_${yyyy}-${mm}-${dd}_${safeRef}_${randomId(18)}.${ext}`;
+
+      // In a real backend upload, we'd send this secureName as the storage filename.
+      okMsg.innerHTML =
+        `✅ File validated.<br/>
+         🔒 Secure filename generated:<br/>
+         <strong>${secureName}</strong><br/><br/>
+         Next step: connect Firebase Storage to upload using this secure name.`;
+      okMsg.style.display = "block";
     }
   </script>
 </body>
