@@ -1,284 +1,158 @@
-<!DOCTYPE html>
+
+  <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MAXIMAX MULTI SERVICES</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ALERTS | MAXIMAX Multi Services</title>
 
-  <!-- Try to use your existing stylesheet if present -->
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Fallback styling (so page still looks right even if CSS files change) -->
   <style>
     :root{
-      --bg:#070707;
-      --panel: rgba(255,255,255,.03);
-      --line: rgba(242,140,40,.35);
-      --accent:#f28c28;
-      --accent2:#ffd08a;
-      --text:#fff;
-      --muted:#ffe0b8;
-      --shadow: 0 18px 40px rgba(0,0,0,.35);
-      --radius:18px;
+      --orange:#f6a85f; /* jon abrikot */
+      --black:#000;
+      --card: rgba(246,168,95,.07);
+      --border: rgba(246,168,95,.55);
+      --text: #fff;
+      --muted: rgba(255,255,255,.75);
     }
-    *{box-sizing:border-box}
     body{
-      margin:0;font-family:Arial, Helvetica, sans-serif;color:var(--text);
-      background:
-        radial-gradient(1200px 800px at 30% 10%, rgba(242,140,40,.22), transparent 55%),
-        radial-gradient(900px 600px at 70% 20%, rgba(242,140,40,.12), transparent 60%),
-        var(--bg);
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--black);
+      color: var(--text);
     }
-
-    /* TOP BAR */
-    header.topbar{
-      border-bottom:2px solid var(--accent);
-      background: linear-gradient(90deg,#000,#120802,#2b0f03,#f28c28);
+    header{
+      border-bottom: 1px solid var(--border);
+      padding: 18px 16px;
     }
-    .topbar-inner{
-      max-width:1200px;margin:0 auto;padding:14px 16px;
-      display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    .wrap{ max-width: 980px; margin: 0 auto; }
+    nav a{
+      color: var(--text);
+      text-decoration:none;
+      margin-right:14px;
+      font-weight:700;
     }
-    .brand{display:flex;align-items:center;gap:12px;min-width:260px}
-    .brand-logo{
-      width:44px;height:44px;border-radius:999px;
-      border:2px solid rgba(255,255,255,.25);
-      background:#000;object-fit:cover;
+    nav a:hover{ color: var(--orange); }
+    h1{
+      margin: 18px 0 6px;
+      color: var(--orange);
+      font-size: 34px;
+      letter-spacing:.5px;
     }
-    .brand-name{font-weight:900;letter-spacing:.6px}
-    .brand-tagline{font-size:12px;color:rgba(255,255,255,.88);margin-top:2px}
-
-    nav.nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .nav-link{
-      text-decoration:none;font-weight:900;letter-spacing:.3px;
-      padding:10px 12px;border-radius:999px;
-      background:rgba(255,255,255,.25);color:#1a0b02;border:1px solid rgba(0,0,0,.2);
+    .sub{ color: var(--muted); margin:0 0 16px; line-height:1.5; }
+    .grid{ display:grid; gap:14px; padding: 0 16px 26px; }
+    .card{
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 14px;
+      padding: 16px;
     }
-    .nav-link.active{background:var(--accent)}
-    .nav-link:hover{filter:brightness(1.06)}
-
-    .lang{display:flex;gap:8px;align-items:center}
-    .lang-btn{
-      cursor:pointer;border:1px solid rgba(0,0,0,.25);
-      padding:10px 12px;border-radius:999px;
-      background:rgba(255,255,255,.22);
-      font-weight:900;color:#1a0b02;
+    .row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
     }
-    .lang-btn.is-active{background:#111;color:var(--accent);border-color:rgba(242,140,40,.6)}
-
-    /* LAYOUT */
-    main.page{max-width:1200px;margin:0 auto;padding:18px 16px 28px}
-    .grid{
-      display:grid;grid-template-columns: 1.05fr 1.35fr 1.05fr;
-      gap:14px;margin-top:14px;
+    .title{ font-size: 20px; font-weight: 800; margin:0; }
+    .meta{ display:flex; gap:10px; align-items:center; }
+    .tag{
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 12px;
+      color:#000;
     }
-    @media (max-width:1050px){ .grid{grid-template-columns:1fr} }
-
-    .panel{
-      background: linear-gradient(180deg, rgba(242,140,40,.10), rgba(0,0,0,.0) 55%), var(--panel);
-      border:1px solid var(--line);border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:16px;position:relative;overflow:hidden;
-    }
-    .panel h2{
-      margin:0 0 10px;color:var(--accent);
-      letter-spacing:.6px;font-size:16px;text-transform:uppercase;
-    }
-    .panel p{margin:0;color:var(--muted);line-height:1.6}
-    .panel ul{margin:0;padding-left:18px;color:#ffe7cb;line-height:1.9}
-    .panel li{margin:2px 0}
-
-    .hero{
-      border:1px solid rgba(242,140,40,.45);
-      background:
-        radial-gradient(900px 500px at 50% 0%, rgba(242,140,40,.28), transparent 55%),
-        rgba(0,0,0,.20);
-      padding:18px;
-    }
-    .hero h1{
-      margin:0 0 8px;
-      font-size:28px;letter-spacing:1px;
-      color:#ffcc7a;text-transform:uppercase;
-    }
-    .hero .sub{margin:0 0 14px;color:#ffe7cb;line-height:1.7;max-width:75ch}
-
-    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:12px 14px;border-radius:999px;
-      text-decoration:none;font-weight:900;letter-spacing:.3px;
-      border:1px solid rgba(0,0,0,.2);
-    }
-    .btn.primary{background:var(--accent);color:#120802}
-    .btn.outline{background:rgba(255,255,255,.10);color:#ffdfb0;border-color:rgba(242,140,40,.55)}
-    .btn:hover{transform:translateY(-1px)}
-
-    .badge{
-      display:inline-flex;align-items:center;gap:8px;
-      border:1px solid rgba(242,140,40,.45);
-      background:rgba(242,140,40,.10);
-      padding:8px 12px;border-radius:999px;
-      color:#ffe7cb;font-weight:900;text-decoration:none;
-    }
-
-    .section-title{
-      margin:18px 0 10px;
-      font-size:13px;text-transform:uppercase;letter-spacing:.8px;
-      color:#cfa77a;
-    }
-
+    .high{ background:#dc2626; color:#fff; }
+    .medium{ background:#eab308; }
+    .low{ background:#16a34a; color:#fff; }
+    .date{ font-size: 12px; color: var(--muted); }
+    .body{ margin: 10px 0 0; line-height: 1.55; color: rgba(255,255,255,.92); }
     footer{
-      max-width:1200px;margin:18px auto 10px;
-      padding:0 16px 22px;color:#cfa77a;font-size:12px;
+      padding: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      text-align:center;
     }
-    .fineprint{margin-top:10px;font-size:12px;color:#cfa77a}
-    .kv{display:grid;grid-template-columns: 120px 1fr;gap:8px 12px;margin-top:8px}
-    .kv b{color:#ffdfb0}
-    .link{color:var(--accent2);text-decoration:none}
-    .link:hover{text-decoration:underline}
+    .note{
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
   </style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <img src="maximax-owner.png" alt="MAXIMAX Logo" class="brand-logo" />
-        <div class="brand-text">
-          <div class="brand-name">MAXIMAX MULTI SERVICES</div>
-          <div class="brand-tagline">MAXIMAX ALWAYS MAXIMIZED</div>
-        </div>
-      </div>
 
-      <nav class="nav">
-        <a href="index.html" class="nav-link active">HOME</a>
-        <a href="alerts.html" class="nav-link">ALERTS</a>
-        <a href="forms-library.html" class="nav-link">FORMS</a>
-        <a href="how-it-works.html" class="nav-link">HOW IT WORKS</a>
-        <a href="upload.html" class="nav-link">UPLOAD</a>
-        <a href="contact.html" class="nav-link">CONTACT</a>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a href="index.html">HOME</a>
+        <a href="services.html">SERVICES</a>
+        <a href="contact.html">CONTACT</a>
+        <a href="alerts.html" style="color:#f6a85f;">ALERTS</a>
       </nav>
 
-      <div class="lang">
-        <button class="lang-btn">EN</button>
-        <button class="lang-btn is-active">KREYÒL</button>
-        <button class="lang-btn">ES</button>
-      </div>
+      <h1>ALERTS (ALÈT)</h1>
+      <p class="sub">Mizajou ijan sou imigrasyon, taks, SNAP, SSA, lwa, ak sèvis MAXIMAX yo.</p>
+      <p class="note"><b>Tip:</b> Mete nouvo alèt yo anwo lis la pou moun wè yo an premye.</p>
     </div>
   </header>
 
-  <main class="page">
+  <main class="wrap">
     <div class="grid">
-      <!-- LEFT: SERVICES LIST -->
-      <section class="panel">
-        <h2>CORE SERVICES</h2>
-        <ul>
-          <li>Immigration Services (USCIS)</li>
-          <li>Tax / IRS Help</li>
-          <li>Benefits (SNAP / Medicaid / SSI)</li>
-          <li>Housing (Section 8 / HUD)</li>
-          <li>Translation (Kreyòl / English / Español)</li>
-          <li>Credit Repair</li>
-          <li>LLC Services</li>
-        </ul>
 
-        <div class="section-title">WHY CHOOSE MAXIMAX</div>
-        <ul>
-          <li>Clear guidance & organized resources</li>
-          <li>Fast support by phone</li>
-          <li>Secure uploads & professional follow-up</li>
-        </ul>
+      <section class="card">
+        <div class="row">
+          <h2 class="title">USCIS / Immigration Update</h2>
+          <div class="meta">
+            <span class="tag high">HIGH</span>
+            <span class="date">2025-12-13</span>
+          </div>
+        </div>
+        <p class="body">
+          Gen nouvo chanjman ki ka afekte dosye imigrasyon. Si w gen aplikasyon ap tann,
+          kontakte nou pou verifye sa ki nesesè pou dosye w la.
+        </p>
       </section>
 
-      <!-- CENTER: HERO -->
-      <section class="panel hero">
-        <h1>IMMIGRATION • FORMS • TRANSLATION<br/>ALL IN ONE PLACE</h1>
-        <p class="sub">
-          MAXIMAX Multi Services helps families and individuals with Immigration (USCIS), Taxes (IRS),
-          Benefits (SNAP / Medicaid / SSI), Housing (Section 8 / HUD), Credit Repair, LLC Services,
-          and professional document translation.
-        </p>
-
-        <div class="actions">
-          <a class="btn primary" href="upload.html">UPLOAD DOCUMENTS</a>
-          <a class="btn outline" href="forms-library.html">DOWNLOADABLE PDF FORMS</a>
-          <a class="btn outline" href="alerts.html">VIEW ALERTS</a>
+      <section class="card">
+        <div class="row">
+          <h2 class="title">Tax Season Preparation</h2>
+          <div class="meta">
+            <span class="tag medium">MEDIUM</span>
+            <span class="date">2025-12-13</span>
+          </div>
         </div>
-
-        <div style="height:12px"></div>
-
-        <a class="badge" href="forms-library.html">OPEN FORMS LIBRARY →</a>
-        <a class="badge" href="contact.html" style="margin-left:8px;">GET SUPPORT →</a>
-
-        <div class="section-title">TRANSLATION</div>
-        <p>
-          Translation services for official documents (Kreyòl ↔ English ↔ Español).
-          Click below to request translation.
+        <p class="body">
+          Ranmase dokiman ou yo (W-2, 1099, ID, dependents). Nou ouvè pou randevou.
         </p>
-        <div style="height:10px"></div>
-        <!-- If you have translation.html later, this link will work. If not, it still goes to contact. -->
-        <div class="actions">
-          <a class="btn outline" href="translation.html">REQUEST TRANSLATION</a>
-          <a class="btn outline" href="contact.html">CONTACT FOR TRANSLATION</a>
-        </div>
       </section>
 
-      <!-- RIGHT: FORMS + CONTACT -->
-      <section class="panel">
-        <h2>DOWNLOADABLE PDF FORMS</h2>
-        <p>
-          Access organized official forms for USCIS, IRS, benefits, and legal templates.
+      <section class="card">
+        <div class="row">
+          <h2 class="title">SNAP / Medicaid Notice</h2>
+          <div class="meta">
+            <span class="tag low">LOW</span>
+            <span class="date">2025-12-13</span>
+          </div>
+        </div>
+        <p class="body">
+          Si ou resevwa lèt renouvèlman oswa demann prèv, pa tann dènye jou a.
+          Nou ka ede w ranpli epi voye dokiman yo.
         </p>
-        <div style="height:10px"></div>
-        <a class="btn outline" href="forms-library.html">GO TO FORMS LIBRARY</a>
-
-        <div class="section-title">BENEFITS — GOVERNMENT PROGRAMS</div>
-        <ul>
-          <li>SNAP (Food Stamps)</li>
-          <li>Medicaid</li>
-          <li>SSI / Social Security</li>
-        </ul>
-
-        <div class="section-title">LEGAL & FAMILY FORMS</div>
-        <ul>
-          <li>Divorce Packet (Template)</li>
-          <li>Child Support (Template)</li>
-          <li>Power of Attorney</li>
-          <li>Notary Templates</li>
-        </ul>
-
-        <div class="section-title">CREDIT REPAIR</div>
-        <p>Help improving credit profile, dispute guidance, and action plan.</p>
-
-        <div class="section-title">LLC SERVICES</div>
-        <p>LLC setup support, basic filing guidance, and business document help.</p>
-
-        <div class="section-title">CONTACT & SUPPORT</div>
-        <div class="kv">
-          <b>Address:</b>
-          <span>6934 Coral Cove Drive, Orlando, Florida 32818</span>
-
-          <b>Phone:</b>
-          <span>(317) 538-1150 • (516) 216-8494</span>
-
-          <b>Email:</b>
-          <span><a class="link" href="mailto:maximaxmultiservices@gmail.com">maximaxmultiservices@gmail.com</a></span>
-
-          <b>Website:</b>
-          <span><a class="link" href="https://maximaxmultiservices.com" target="_blank" rel="noopener">maximaxmultiservices.com</a></span>
-        </div>
-
-        <div class="fineprint">
-          MAXIMAX Multi Services is not a law firm. We assist with forms and translations.
-        </div>
       </section>
+
     </div>
   </main>
 
   <footer>
-    © 2025 MAXIMAX MULTI SERVICES — MAXIMAX ALWAYS MAXIMIZED
+    <div class="wrap">
+      <b>MAXIMAX ALWAY MAXIMIZED</b> — © MAXIMAX Multi Services
+    </div>
   </footer>
 
-  
+</body>
+</html>
 <
