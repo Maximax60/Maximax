@@ -1,158 +1,311 @@
-
-  <!doctype html>
-<html lang="en">
+<!doctype html>
+<html lang="ht">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ALERTS | MAXIMAX Multi Services</title>
+  <title>MAXIMAX Multi Services</title>
 
   <style>
     :root{
-      --orange:#f6a85f; /* jon abrikot */
-      --black:#000;
-      --card: rgba(246,168,95,.07);
-      --border: rgba(246,168,95,.55);
-      --text: #fff;
-      --muted: rgba(255,255,255,.75);
+      --bg:#000000;
+      --panel:#0b0b0b;
+      --panel2:#101010;
+      --orange:#f6a85f;   /* jon abrikot */
+      --muted:#b48a5a;    /* jon fonse (PA BLAN) */
+      --border:#f6a85f;
+      --shadow: 0 12px 30px rgba(0,0,0,.6);
     }
+    *{ box-sizing:border-box; }
     body{
       margin:0;
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--black);
-      color: var(--text);
+      background: var(--bg);
+      color: var(--orange); /* PA BLAN */
     }
+    .wrap{ max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+    /* Top bar */
     header{
-      border-bottom: 1px solid var(--border);
-      padding: 18px 16px;
+      position: sticky;
+      top:0;
+      z-index: 10;
+      background: rgba(0,0,0,.92);
+      border-bottom: 1px solid rgba(246,168,95,.45);
+      backdrop-filter: blur(6px);
     }
-    .wrap{ max-width: 980px; margin: 0 auto; }
-    nav a{
-      color: var(--text);
-      text-decoration:none;
-      margin-right:14px;
-      font-weight:700;
-    }
-    nav a:hover{ color: var(--orange); }
-    h1{
-      margin: 18px 0 6px;
-      color: var(--orange);
-      font-size: 34px;
-      letter-spacing:.5px;
-    }
-    .sub{ color: var(--muted); margin:0 0 16px; line-height:1.5; }
-    .grid{ display:grid; gap:14px; padding: 0 16px 26px; }
-    .card{
-      border: 1px solid var(--border);
-      background: var(--card);
-      border-radius: 14px;
-      padding: 16px;
-    }
-    .row{
+    .top{
       display:flex;
-      justify-content:space-between;
       align-items:center;
+      justify-content:space-between;
       gap:12px;
-      flex-wrap:wrap;
+      padding: 14px 0;
     }
-    .title{ font-size: 20px; font-weight: 800; margin:0; }
-    .meta{ display:flex; gap:10px; align-items:center; }
-    .tag{
-      padding: 5px 10px;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 220px;
+    }
+    .logo{
+      width:40px;
+      height:40px;
+      border-radius: 12px;
+      border: 1px solid rgba(246,168,95,.65);
+      background: radial-gradient(circle at 30% 30%, rgba(246,168,95,.22), rgba(0,0,0,.2));
+      box-shadow: var(--shadow);
+    }
+    .brand h1{
+      margin:0;
+      font-size: 16px;
+      letter-spacing:.4px;
+      font-weight: 900;
+      color: var(--orange);
+    }
+    .brand p{
+      margin:2px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav a{
+      text-decoration:none;
+      color: var(--orange);
+      border: 1px solid rgba(246,168,95,.45);
+      background: rgba(246,168,95,.06);
+      padding: 8px 12px;
       border-radius: 999px;
       font-weight: 900;
-      font-size: 12px;
-      color:#000;
+      font-size: 13px;
     }
-    .high{ background:#dc2626; color:#fff; }
-    .medium{ background:#eab308; }
-    .low{ background:#16a34a; color:#fff; }
-    .date{ font-size: 12px; color: var(--muted); }
-    .body{ margin: 10px 0 0; line-height: 1.55; color: rgba(255,255,255,.92); }
+    nav a:hover{
+      background: rgba(246,168,95,.14);
+      border-color: rgba(246,168,95,.75);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 28px 0 18px;
+    }
+    .heroCard{
+      border: 1px solid rgba(246,168,95,.55);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(246,168,95,.10), rgba(0,0,0,.18));
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+      align-items: start;
+    }
+    @media (max-width: 900px){
+      .heroGrid{ grid-template-columns: 1fr; }
+    }
+    .headline{
+      margin:0;
+      font-size: 34px;
+      font-weight: 1000;
+      letter-spacing:.4px;
+      color: var(--orange);
+      line-height: 1.1;
+    }
+    .tagline{
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-weight: 800;
+      line-height: 1.5;
+    }
+    .ctaRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 14px;
+    }
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      padding: 11px 14px;
+      border-radius: 14px;
+      font-weight: 1000;
+      border: 1px solid rgba(246,168,95,.75);
+      background: rgba(246,168,95,.12);
+      color: var(--orange);
+    }
+    .btn:hover{ background: rgba(246,168,95,.20); }
+    .btnSolid{
+      background: rgba(246,168,95,.95);
+      color: #000000; /* nwa ok */
+      border-color: rgba(246,168,95,1);
+    }
+    .btnSolid:hover{ filter: brightness(.95); }
+
+    .sideCard{
+      border: 1px solid rgba(246,168,95,.45);
+      border-radius: 18px;
+      background: rgba(16,16,16,.9);
+      padding: 14px;
+    }
+    .sideTitle{
+      margin:0 0 10px;
+      font-size: 16px;
+      font-weight: 1000;
+      color: var(--orange);
+    }
+    .list{
+      margin:0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-weight: 800;
+      line-height: 1.6;
+    }
+
+    /* Sections */
+    .section{
+      padding: 12px 0 26px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+    .card{
+      border: 1px solid rgba(246,168,95,.45);
+      border-radius: 18px;
+      background: rgba(11,11,11,.95);
+      padding: 14px;
+    }
+    .card h3{
+      margin:0 0 8px;
+      font-size: 16px;
+      font-weight: 1000;
+      color: var(--orange);
+    }
+    .card p{
+      margin:0;
+      color: var(--muted);
+      font-weight: 800;
+      line-height: 1.55;
+      font-size: 13px;
+    }
+
+    /* Footer */
     footer{
-      padding: 16px;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid rgba(246,168,95,.45);
+      padding: 18px 0;
       color: var(--muted);
+      font-weight: 800;
       font-size: 13px;
-      text-align:center;
     }
-    .note{
-      margin-top: 10px;
-      font-size: 13px;
+    .footerRow{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .mini{
       color: var(--muted);
+      font-weight: 900;
     }
+    .mini b{ color: var(--orange); }
   </style>
 </head>
 
 <body>
-
   <header>
     <div class="wrap">
-      <nav>
-        <a href="index.html">HOME</a>
-        <a href="services.html">SERVICES</a>
-        <a href="contact.html">CONTACT</a>
-        <a href="alerts.html" style="color:#f6a85f;">ALERTS</a>
-      </nav>
+      <div class="top">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>MAXIMAX Multi Services</h1>
+            <p>MAXIMAX ALWAY MAXIMIZED</p>
+          </div>
+        </div>
 
-      <h1>ALERTS (ALÈT)</h1>
-      <p class="sub">Mizajou ijan sou imigrasyon, taks, SNAP, SSA, lwa, ak sèvis MAXIMAX yo.</p>
-      <p class="note"><b>Tip:</b> Mete nouvo alèt yo anwo lis la pou moun wè yo an premye.</p>
+        <nav>
+          <a href="index.html">HOME</a>
+          <a href="services.html">SERVICES</a>
+          <a href="forms.html">FORMS</a>
+          <a href="alerts.html">ALERTS</a>
+          <a href="contact.html">CONTACT</a>
+        </nav>
+      </div>
     </div>
   </header>
 
-  <main class="wrap">
-    <div class="grid">
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="heroCard">
+          <div class="heroGrid">
+            <div>
+              <h2 class="headline">Nou la pou ede w ranpli, prepare, epi avanse.</h2>
+              <p class="tagline">
+                Sèvis imigrasyon • Taks • Fòm gouvènman • Upload dokiman • Sipò pou kominote a.
+              </p>
 
-      <section class="card">
-        <div class="row">
-          <h2 class="title">USCIS / Immigration Update</h2>
-          <div class="meta">
-            <span class="tag high">HIGH</span>
-            <span class="date">2025-12-13</span>
+              <div class="ctaRow">
+                <a class="btn btnSolid" href="alerts.html">Gade ALÈT yo</a>
+                <a class="btn" href="services.html">Wè Sèvis yo</a>
+                <a class="btn" href="contact.html">Kontakte Nou</a>
+              </div>
+            </div>
+
+            <aside class="sideCard">
+              <h3 class="sideTitle">Sèvis Popilè</h3>
+              <ul class="list">
+                <li>Immigration assistance</li>
+                <li>Tax preparation</li>
+                <li>SNAP / Medicaid forms</li>
+                <li>Social Security support</li>
+                <li>Unemployment forms</li>
+                <li>Document upload</li>
+              </ul>
+            </aside>
           </div>
         </div>
-        <p class="body">
-          Gen nouvo chanjman ki ka afekte dosye imigrasyon. Si w gen aplikasyon ap tann,
-          kontakte nou pou verifye sa ki nesesè pou dosye w la.
-        </p>
-      </section>
+      </div>
+    </section>
 
-      <section class="card">
-        <div class="row">
-          <h2 class="title">Tax Season Preparation</h2>
-          <div class="meta">
-            <span class="tag medium">MEDIUM</span>
-            <span class="date">2025-12-13</span>
+    <section class="section">
+      <div class="wrap">
+        <div class="grid">
+          <div class="card">
+            <h3>IMMIGRATION</h3>
+            <p>Ed, tradiksyon, randevou, preparasyon fòm ak dosye. (Tout bagay fèt ak disiplin.)</p>
+          </div>
+          <div class="card">
+            <h3>TAX</h3>
+            <p>Preparasyon taks, konsiltasyon, epi òganizasyon dokiman pou sezon taks la.</p>
+          </div>
+          <div class="card">
+            <h3>FORMS</h3>
+            <p>Unemployment, SNAP, SSA, Medicaid/Medicare, Housing, Child Support, elatriye.</p>
           </div>
         </div>
-        <p class="body">
-          Ranmase dokiman ou yo (W-2, 1099, ID, dependents). Nou ouvè pou randevou.
-        </p>
-      </section>
-
-      <section class="card">
-        <div class="row">
-          <h2 class="title">SNAP / Medicaid Notice</h2>
-          <div class="meta">
-            <span class="tag low">LOW</span>
-            <span class="date">2025-12-13</span>
-          </div>
-        </div>
-        <p class="body">
-          Si ou resevwa lèt renouvèlman oswa demann prèv, pa tann dènye jou a.
-          Nou ka ede w ranpli epi voye dokiman yo.
-        </p>
-      </section>
-
-    </div>
+      </div>
+    </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <b>MAXIMAX ALWAY MAXIMIZED</b> — © MAXIMAX Multi Services
+      <div class="footerRow">
+        <div class="mini"><b>MAXIMAX ALWAY MAXIMIZED</b></div>
+        <div class="mini">© MAXIMAX Multi Services</div>
+      </div>
     </div>
   </footer>
-
 </body>
 </html>
-<
