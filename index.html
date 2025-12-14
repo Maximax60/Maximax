@@ -311,7 +311,21 @@
       font-weight: 800;
       font-size: 13px;
     }
-    .footerRow{
+<style>
+/* Force remove any empty logo / header space */
+.logo,
+.logo-container,
+.brand,
+.header-logo,
+header img,
+header .logo,
+header div:empty {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+</style>    .footerRow{
       display:flex;
       justify-content:space-between;
       gap:12px;
