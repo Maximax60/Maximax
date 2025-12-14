@@ -1,4 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Translation | MAXIMAX Multi Services</title>
+  <meta name="description" content="Document translation support: birth, marriage, divorce certificates and more.">
+  <style>
+    :root{
+      --accent:#f6a85f; --accent2:#ff8a2a;
+      --border:rgba(246,168,95,.45); --muted:rgba(246,168,95,.78);
+      --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--accent);
+      background: radial-gradient(1200px 700px at 85% 10%, rgba(255,138,42,.18), transparent 60%),
+                  radial-gradient(900px 600px at 15% 85%, rgba(246,168,95,.10), transparent 55%),
+                  linear-gradient(#050505,#0a0a0a);
+    }
+    .wrap{max-width:1150px;margin:0 auto;padding:16px}
+    header{
+      position:sticky;top:10px;z-index:20;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      background:rgba(0,0,0,.45); backdrop-filter:blur(6px);
+      border:1px solid var(--border); border-radius:18px; padding:10px 14px; box-shadow:var(--shadow);
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{width:52px;height:auto;object-fit:contain;border-radius:12px;border:1px solid var(--border);background:rgba(0,0,0,.35);padding:6px}
+    .brand h1{margin:0;font-size:20px;letter-spacing:.6px}
+    .brand small{display:block;color:var(--muted);font-weight:700}
+    nav{display:flex;gap:10px;flex-wrap:wrap}
+    .pill{display:inline-block;padding:9px 14px;border-radius:999px;border:1px solid var(--border);background:rgba(246,168,95,.10);color:var(--accent);font-weight:900;text-decoration:none}
+    .pill:hover{background:rgba(246,168,95,.18)}
+
+    .hero{
+      margin-top:16px;
+      border:1px solid var(--border); border-radius:22px;
+      background:rgba(0,0,0,.45); box-shadow:var(--shadow); padding:20px;
+    }
+    .hero h2{margin:0 0 6px 0;font-size:36px;line-height:1.05}
+    .muted{color:var(--muted);font-weight:700;line-height:1.5}
+
+    .grid{margin-top:16px;display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+    .card{border:1px solid var(--border);border-radius:18px;background:rgba(0,0,0,.5);box-shadow:var(--shadow);padding:16px}
+    .card h3{margin:0 0 8px 0;font-size:18px;letter-spacing:.4px}
+    label{display:block;margin:10px 0 6px;color:var(--muted);font-weight:800}
+    input, select, textarea{
+      width:100%;
+      background:rgba(0,0,0,.55);
+      border:1px solid var(--border);
+      color:var(--accent);
+      border-radius:14px;
+      padding:10px 12px;
+      outline:none;
+      font-weight:800;
+    }
+    textarea{min-height:110px;resize:vertical}
+    .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{
+      display:inline-block;padding:12px 16px;border-radius:14px;border:1px solid var(--border);
+      background:rgba(246,168,95,.12);color:var(--accent);font-weight:900;text-decoration:none;cursor:pointer
+    }
+    .btn.primary{background:linear-gradient(90deg,rgba(246,168,95,.92),rgba(255,138,42,.92));color:#1a0e05;border-color:transparent}
+    .note{
+      margin-top:10px;
+      border:1px dashed rgba(246,168,95,.45);
+      border-radius:16px;
+      padding:12px;
+      color:var(--muted);
+      font-weight:800;
+      line-height:1.5;
+      background:rgba(0,0,0,.35);
+    }
+    footer{margin:16px 0 10px;border:1px solid var(--border);border-radius:18px;padding:14px;text-align:center;background:rgba(0,0,0,.45);color:var(--muted);font-weight:800}
+    @media (max-width:920px){ .grid{grid-template-columns:1fr}.hero h2{font-size:32px} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img src="maximaxmultiservices.png" alt="MAXIMAX logo">
+        <div>
+          <h1>MAXIMAX Multi Services</h1>
+          <small>MAXIMAX ALWAYS MAXIMIZED</small>
+        </div>
+      </div>
+      <nav>
+        <a class="pill" href="index.html">HOME</a>
+        <a class="pill" href="services.html">SERVICES</a>
+        <a class="pill" href="forms.html">FORMS</a>
+        <a class="pill" href="alerts.html">ALERTS</a>
+        <a class="pill" href="translation.html">TRANSLATION</a>
+        <a class="pill" href="contact.html">CONTACT</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h2>Translation Support</h2>
+      <div class="muted">
+        We help translate important documents into clear, official-style formats.
+        Submit your request below and we’ll contact you with next steps.
+      </div>
+      <div class="note">
+        Common documents: Birth Certificate, Marriage Certificate, Divorce Decree, Affidavit, School Records, Letters.
+        <br>Languages supported: English • Kreyòl • Spanish (as needed).
+      </div>
+    </section>
+
+    <section class="grid">
+
+      <div class="card">
+        <h3>Request a Translation</h3>
+
+        <!-- NOTE: This is a simple HTML form (no JS). It can send via email only if your hosting supports form handling. -->
+        <form method="post" action="#">
+          <label>Your Name</label>
+          <input type="text" name="name" placeholder="Full name">
+
+          <label>Phone Number</label>
+          <input type="tel" name="phone" placeholder="(xxx) xxx-xxxx">
+
+          <label>Email (optional)</label>
+          <input type="email" name="email" placeholder="you@example.com">
+
+          <label>Document Type</label>
+          <select name="doctype">
+            <option>Birth Certificate</option>
+            <option>Marriage Certificate</option>
+            <option>Divorce Certificate / Decree</option>
+            <option>Affidavit / Letter</option>
+            <option>School Records</option>
+            <option>Other</option>
+          </select>
+
+          <label>Translate From</label>
+          <select name="from">
+            <option>Kreyòl</option>
+            <option>English</option>
+            <option>Spanish</option>
+            <option>French</option>
+            <option>Other</option>
+          </select>
+
+          <label>Translate To</label>
+          <select name="to">
+            <option>English</option>
+            <option>Kreyòl</option>
+            <option>Spanish</option>
+          </select>
+
+          <label>Notes (optional)</label>
+          <textarea name="notes" placeholder="Tell us anything important (deadlines, special requirements, etc.)"></textarea>
+
+          <div class="btnrow">
+            <button class="btn primary" type="button" onclick="location.href='contact.html'">CONTACT US TO SUBMIT</button>
+            <a class="btn" href="forms.html">Go to Forms</a>
+          </div>
+        </form>
+
+        <div class="note">
+          For document upload, use the contact page or your preferred method.
+          We can guide you step-by-step.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>What You Get</h3>
+        <ul style="margin:0;padding-left:18px;color:rgba(246,168,95,.78);font-weight:800;line-height:1.6;">
+          <li>Clean translated text in official format</li>
+          <li>Proper names, dates, and structure</li>
+          <li>Optional formatting for USCIS / legal use (as needed)</li>
+          <li>Fast communication and follow-up</li>
+        </ul>
+
+        <div class="note">
+          If you need certified translation requirements, tell us up front so we can guide you correctly.
+        </div>
+
+        <div class="btnrow">
+          <a class="btn primary" href="contact.html">GET HELP NOW</a>
+          <a class="btn" href="alerts.html">IMMIGRATION ALERTS</a>
+        </div>
+      </div>
+
+    </section>
+
+    <footer>© 2025 MAXIMAX Multi Services — MAXIMAX ALWAYS MAXIMIZED</footer>
+  </div>
+</body>
+</html><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
