@@ -56,8 +56,26 @@
     /* MOBILE */
     @media (max-width:920px){ .hero{grid-template-columns:1fr}.hero h2{font-size:34px}.grid{grid-template-columns:1fr}}
   </style>
-</head>
-<body>
+
+<style>
+/* MAXIMAX QUICK FIX — shows CONTACT + removes big empty space */
+html, body { height: auto !important; overflow-y: auto !important; }
+body { min-height: 100% !important; }
+
+.main, .container, .wrapper, .content, .page, .layout {
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+
+/* If your main layout is grid/flex, allow it to wrap */
+.grid, .content-grid {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+}
+.flex, .content-flex, .row {
+  flex-wrap: wrap !important;
+}
+</style>
   <div class="wrap">
     <header>
       <div class="brand">
