@@ -183,3 +183,24 @@ body.alerts-page{
   color: #ffd08a;
   text-decoration: underline;
 }
+<style>
+/* Kill the small square logo in the middle ONLY */
+img[src*="maximaxmultiservices"],
+img[src*="MAXIMAX"],
+img[alt*="MAXIMAX"],
+img[alt*="Logo"]{
+  display:none !important;
+  width:0 !important;
+  height:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+
+/* Collapse the row that is creating empty space */
+.footerRow,
+.headerRow,
+.brandRow{
+  justify-content:center !important;
+  gap:12px !important;
+}
+</style>
