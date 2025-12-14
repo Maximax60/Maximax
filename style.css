@@ -204,3 +204,11 @@ img[alt*="Logo"]{
   gap:12px !important;
 }
 </style>
+<style>
+.footerRow{ 
+  justify-content:center !important; 
+}
+.footerRow > *:first-child{
+  display:none !important;
+}
+</style>
