@@ -1,4 +1,114 @@
-<!doctype html>
+<style>
+  :root{
+    --bg:#070707;
+    --panel:#0f0f0f;
+    --accent:#f6a85f;
+    --accent2:#ff8a2a;
+    --text:#f6a85f;
+    --muted:rgba(246,168,95,.75);
+    --border:rgba(246,168,95,.45);
+    --shadow:0 14px 40px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background: radial-gradient(1200px 700px at 85% 15%, rgba(255,138,42,.18), transparent 60%),
+                radial-gradient(900px 600px at 15% 85%, rgba(246,168,95,.10), transparent 55%),
+                linear-gradient(180deg, #050505, #090909);
+    color:var(--text);
+  }
+  a{color:var(--accent); text-decoration:none}
+  .wrap{max-width:1150px;margin:0 auto;padding:18px}
+  .topbar{
+    border:1px solid var(--border);
+    background:rgba(12,12,12,.65);
+    border-radius:18px;
+    padding:14px 16px;
+    box-shadow:var(--shadow);
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    position:sticky; top:10px; z-index:30;
+    backdrop-filter: blur(6px);
+  }
+  .brand{display:flex;flex-direction:column;gap:3px}
+  .brand strong{letter-spacing:.8px}
+  .brand small{color:var(--muted)}
+  .nav{display:flex;flex-wrap:wrap;gap:10px; justify-content:flex-end}
+  .pill{
+    display:inline-block;
+    padding:10px 14px;
+    border-radius:999px;
+    border:1px solid var(--border);
+    background:rgba(246,168,95,.10);
+    color:var(--text);
+    font-weight:800;
+    letter-spacing:.4px;
+  }
+  .pill:hover{background:rgba(246,168,95,.18)}
+  .hero{
+    margin-top:16px;
+    border:1px solid var(--border);
+    border-radius:22px;
+    background: linear-gradient(135deg, rgba(246,168,95,.10), rgba(255,138,42,.06));
+    box-shadow:var(--shadow);
+    padding:22px;
+    display:grid; grid-template-columns: 1.1fr .9fr; gap:16px;
+    align-items:center;
+  }
+  .hero h1{margin:0;font-size:46px;line-height:1.05}
+  .hero p{margin:10px 0 0;color:var(--muted);font-weight:700}
+  .ctaRow{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px}
+  .btn{
+    display:inline-block;
+    padding:12px 16px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    background:rgba(246,168,95,.12);
+    color:var(--text);
+    font-weight:900;
+  }
+  .btn.primary{
+    background: linear-gradient(90deg, rgba(246,168,95,.92), rgba(255,138,42,.92));
+    color:#140c05;
+    border-color:transparent;
+  }
+  .grid{
+    margin-top:16px;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:14px;
+  }
+  .card{
+    border:1px solid var(--border);
+    border-radius:18px;
+    background:rgba(12,12,12,.60);
+    box-shadow:var(--shadow);
+    padding:16px;
+    min-height:132px;
+  }
+  .card h3{margin:0 0 8px;font-size:18px}
+  .card p{margin:0;color:var(--muted);font-weight:700;line-height:1.35}
+  .list{
+    margin:0; padding-left:16px; color:var(--muted); font-weight:800;
+    line-height:1.45;
+  }
+  .footer{
+    margin:16px 0 10px;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:14px;
+    text-align:center;
+    background:rgba(12,12,12,.65);
+    color:var(--muted);
+    font-weight:800;
+  }
+  @media (max-width: 920px){
+    .hero{grid-template-columns:1fr}
+    .hero h1{font-size:38px}
+    .grid{grid-template-columns:1fr}
+    .nav{justify-content:flex-start}
+  }
+</style><!doctype html>
 <html lang="ht">
 <head>
   <meta charset="utf-8" />
