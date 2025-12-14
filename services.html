@@ -1,277 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MAXIMAX – Services</title>
-
-<style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-        min-height: 100vh;
-        background: linear-gradient(
-            to bottom,
-            #000000 0%,
-            #0f0a04 30%,
-            #d96e17 75%,
-            #f28c28 100%
-        );
-        background-attachment: fixed;
-        background-size: cover;
-        font-family: Arial, sans-serif;
-        color: #ffffff;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Services | MAXIMAX Multi Services</title>
+  <meta name="description" content="Immigration, Tax, Government Forms, Credit Repair & LLC Services. MAXIMAX ALWAYS MAXIMIZED.">
+  <style>
+    :root{
+      --bg:#070707; --panel:#0d0d0d;
+      --accent:#f6a85f; --accent2:#ff8a2a;
+      --border:rgba(246,168,95,.45); --muted:rgba(246,168,95,.78);
+      --shadow:0 10px 30px rgba(0,0,0,.45);
     }
-
-    @media (max-width: 768px) {
-        body {
-            background: linear-gradient(to bottom, #000000, #1a1106, #df771e, #f28c28);
-        }
+    *{box-sizing:border-box}
+    body{
+      margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--accent);
+      background: radial-gradient(1200px 700px at 85% 10%, rgba(255,138,42,.18), transparent 60%),
+                  radial-gradient(900px 600px at 15% 85%, rgba(246,168,95,.10), transparent 55%),
+                  linear-gradient(#050505,#0a0a0a);
     }
-
-    .page-wrapper {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 16px;
+    .wrap{max-width:1150px;margin:0 auto;padding:16px}
+    header{
+      position:sticky;top:10px;z-index:20;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      background:rgba(0,0,0,.45); backdrop-filter:blur(6px);
+      border:1px solid var(--border); border-radius:18px; padding:10px 14px; box-shadow:var(--shadow);
     }
-
-    /* HEADER */
-    header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 0 20px 0;
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{width:52px;height:auto;object-fit:contain;border-radius:12px;border:1px solid var(--border);background:rgba(0,0,0,.35);padding:6px}
+    .brand h1{margin:0;font-size:20px;letter-spacing:.6px}
+    .brand small{display:block;color:var(--muted);font-weight:700}
+    nav{display:flex;gap:10px;flex-wrap:wrap}
+    .pill{display:inline-block;padding:9px 14px;border-radius:999px;border:1px solid var(--border);background:rgba(246,168,95,.10);color:var(--accent);font-weight:900;text-decoration:none}
+    .pill:hover{background:rgba(246,168,95,.18)}
+    .hero{
+      margin-top:16px;
+      border:1px solid var(--border); border-radius:22px;
+      background:rgba(0,0,0,.45); box-shadow:var(--shadow); padding:20px;
     }
-
-    .brand {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+    .hero h2{margin:0 0 6px 0;font-size:38px;line-height:1.05}
+    .muted{color:var(--muted);font-weight:700;line-height:1.5}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{display:inline-block;padding:12px 16px;border-radius:14px;border:1px solid var(--border);background:rgba(246,168,95,.12);color:var(--accent);font-weight:900;text-decoration:none}
+    .btn.primary{background:linear-gradient(90deg,rgba(246,168,95,.92),rgba(255,138,42,.92));color:#1a0e05;border-color:transparent}
+    .grid{margin-top:16px;display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+    .card{border:1px solid var(--border);border-radius:18px;background:rgba(0,0,0,.5);box-shadow:var(--shadow);padding:16px}
+    .card h3{margin:0 0 8px 0;font-size:18px;letter-spacing:.4px}
+    .card p{margin:0 0 12px 0;color:var(--muted);font-weight:700;line-height:1.45}
+    .list{margin:0;padding-left:18px;color:var(--muted);font-weight:800;line-height:1.55}
+    .split{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    footer{margin:16px 0 10px;border:1px solid var(--border);border-radius:18px;padding:14px;text-align:center;background:rgba(0,0,0,.45);color:var(--muted);font-weight:800}
+    @media (max-width:920px){
+      .hero h2{font-size:32px}
+      .grid{grid-template-columns:1fr}
     }
-
-    .brand-logo {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        border: 2px solid #f28c28;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 20px;
-        color: #f28c28;
-    }
-
-    .brand-text h1 {
-        font-size: 20px;
-        letter-spacing: 1px;
-    }
-
-    .brand-text span {
-        font-size: 12px;
-        color: #ffd9a4;
-        text-transform: uppercase;
-    }
-
-    nav {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-    }
-
-    nav a {
-        text-decoration: none;
-        color: #ffe9c7;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-
-    nav a:hover { color: #ffffff; }
-
-    /* SECTIONS */
-    section {
-        margin-top: 24px;
-        padding: 18px;
-        border-radius: 16px;
-        background: rgba(0, 0, 0, 0.6);
-        border: 1px solid rgba(242, 140, 40, 0.3);
-    }
-
-    section h2 {
-        font-size: 18px;
-        margin-bottom: 10px;
-        color: #ffd8a4;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-    }
-
-    section p {
-        font-size: 13px;
-        color: #ffe7cb;
-        line-height: 1.6;
-    }
-
-    .services-grid {
-        margin-top: 14px;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-    }
-
-    @media (max-width: 900px) {
-        .services-grid { grid-template-columns: 1fr; }
-    }
-
-    .service-card {
-        background: rgba(0, 0, 0, 0.7);
-        border-radius: 14px;
-        padding: 12px;
-        border: 1px solid rgba(242, 140, 40, 0.4);
-        font-size: 13px;
-        color: #ffe7cb;
-    }
-
-    .service-title {
-        font-weight: bold;
-        color: #ffd597;
-        margin-bottom: 6px;
-        font-size: 14px;
-    }
-
-    .tag {
-        display: inline-block;
-        margin-top: 6px;
-        font-size: 11px;
-        padding: 2px 8px;
-        border-radius: 999px;
-        border: 1px solid rgba(242, 140, 40, 0.7);
-        color: #ffd8a4;
-    }
-
-    .note {
-        margin-top: 10px;
-        font-size: 11px;
-        color: #ffe0b8;
-        opacity: 0.9;
-    }
-
-    footer {
-        margin-top: 24px;
-        padding: 12px 0 20px 0;
-        font-size: 11px;
-        text-align: center;
-        color: #ffd9a4;
-    }
-</style>
+  </style>
 </head>
-
 <body>
-<div class="page-wrapper">
-    <!-- HEADER -->
+  <div class="wrap">
     <header>
-        <div class="brand">
-            <div class="brand-logo">M</div>
-            <div class="brand-text">
-                <h1>MAXIMAX MULTI SERVICES</h1>
-                <span>MAXIMAX ALWAYS MAXIMIZED</span>
-            </div>
+      <div class="brand">
+        <img src="maximaxmultiservices.png" alt="MAXIMAX logo">
+        <div>
+          <h1>MAXIMAX Multi Services</h1>
+          <small>MAXIMAX ALWAYS MAXIMIZED</small>
         </div>
-
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
-            <a href="alerts.html">Alerts</a>
-            <a href="forms.html">Forms</a>
-            <a href="index.html#translation">Translation</a>
-            <a href="index.html#contact">Contact</a>
-        </nav>
+      </div>
+      <nav>
+        <a class="pill" href="index.html">HOME</a>
+        <a class="pill" href="services.html">SERVICES</a>
+        <a class="pill" href="forms.html">FORMS</a>
+        <a class="pill" href="alerts.html">ALERTS</a>
+        <a class="pill" href="contact.html">CONTACT</a>
+      </nav>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <section>
-        <h2>Core Services</h2>
-        <p>
-            MAXIMAX Multi Services helps clients with immigration, government forms,
-            translation and document preparation — in <strong>English, Kreyòl and Spanish</strong>.
-        </p>
-
-        <div class="services-grid">
-
-            <div class="service-card">
-                <div class="service-title">Immigration Case Support</div>
-                <p>
-                    Assistance with family petitions, status adjustment, work permits,
-                    naturalization, green card renewals and consular processes. We help
-                    you organize evidence and complete USCIS forms correctly.
-                </p>
-                <span class="tag">USCIS Forms</span>
-            </div>
-
-            <div class="service-card">
-                <div class="service-title">Government Forms & Benefits</div>
-                <p>
-                    Support with SNAP / Food Stamps, Medicaid/Medicare, Social Security,
-                    SSI, unemployment, housing applications (HUD & Section 8) and
-                    other federal and state benefit programs.
-                </p>
-                <span class="tag">SNAP • SSA • HUD</span>
-            </div>
-
-            <div class="service-card">
-                <div class="service-title">Tax & Income Documents</div>
-                <p>
-                    Basic tax preparation forms, ITIN application support, W-7, 1040,
-                    W-2 and other income documentation, plus employer forms for small
-                    businesses in the community.
-                </p>
-                <span class="tag">IRS / ITIN</span>
-            </div>
-
-            <div class="service-card">
-                <div class="service-title">Certified Document Translation</div>
-                <p>
-                    Translation of birth certificates, marriage certificates, divorce
-                    decrees, school records and other official documents, formatted
-                    with MAXIMAX letterhead and translator certification text.
-                </p>
-                <span class="tag">EN • HT • ES</span>
-            </div>
-
-            <div class="service-card">
-                <div class="service-title">Family Law: Non-Contested Divorce</div>
-                <p>
-                    Preparation of packets for dissolution of marriage (non-contested),
-                    including petitions, settlement agreement, financial affidavit,
-                    parenting plan, final judgment templates and court cover sheets.
-                </p>
-                <span class="tag">Packet Preparation</span>
-            </div>
-
-            <div class="service-card">
-                <div class="service-title">Administrative Support & Follow-Up</div>
-                <p>
-                    Appointment booking, document upload support, printing, scanning,
-                    copying, and follow-up letters to agencies so your case stays
-                    organized and on time.
-                </p>
-                <span class="tag">Office Support</span>
-            </div>
-
-        </div>
-
-        <p class="note">
-            Important: MAXIMAX Multi Services assists with forms and translation. We do not provide
-            legal representation. For complex legal issues or court representation, you may be
-            referred to qualified attorneys.
-        </p>
+    <section class="hero">
+      <h2>Our Services</h2>
+      <div class="muted">
+        Clear support, clean paperwork, and fast follow-up — all in one place.
+        Choose the service you need below, then contact us to get started.
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="contact.html">GET HELP</a>
+        <a class="btn" href="forms.html">OPEN FORMS</a>
+        <a class="btn" href="alerts.html">IMMIGRATION ALERTS</a>
+      </div>
     </section>
 
-    <footer>
-        © 2025 MAXIMAX Multi Services – MAXIMAX ALWAYS MAXIMIZED.
-    </footer>
-</div>
+    <section class="grid">
+
+      <div class="card">
+        <h3>IMMIGRATION ASSISTANCE</h3>
+        <p>Support for preparation and organization of immigration-related paperwork and appointments.</p>
+        <ul class="list">
+          <li>Form help & document preparation</li>
+          <li>Translations support (as needed)</li>
+          <li>Appointment scheduling support</li>
+          <li>Case organization & checklist</li>
+        </ul>
+        <div class="split">
+          <a class="btn" href="alerts.html">View Alerts</a>
+          <a class="btn" href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>TAX PREPARATION</h3>
+        <p>Tax season support with document organization and preparation assistance.</p>
+        <ul class="list">
+          <li>Personal tax preparation support</li>
+          <li>Document review & organization</li>
+          <li>Filing guidance & follow-up</li>
+          <li>Year-round planning (basic)</li>
+        </ul>
+        <div class="split">
+          <a class="btn" href="contact.html">Get Help</a>
+          <a class="btn" href="forms.html">Upload Docs</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>GOVERNMENT FORMS</h3>
+        <p>Help with common U.S. government forms and applications (based on your needs).</p>
+        <ul class="list">
+          <li>SNAP / Food Stamps</li>
+          <li>Medicaid / Medicare</li>
+          <li>Unemployment</li>
+          <li>Social Security</li>
+          <li>Housing (HUD / Section 8)</li>
+          <li>Child Support</li>
+        </ul>
+        <div class="split">
+          <a class="btn primary" href="forms.html">OPEN FORMS</a>
+          <a class="btn" href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>CREDIT REPAIR &amp; LLC SERVICES</h3>
+        <p>Support to improve your credit profile and help you start or organize your business (LLC).</p>
+        <ul class="list">
+          <li>Credit report review & action plan</li>
+          <li>Dispute support (as applicable)</li>
+          <li>LLC startup guidance</li>
+          <li>Basic business paperwork organization</li>
+        </ul>
+        <div class="split">
+          <a class="btn primary" href="contact.html">GET HELP</a>
+          <a class="btn" href="tel:+13175381150">CALL NOW</a>
+        </div>
+      </div>
+
+    </section>
+
+    <footer>© 2025 MAXIMAX Multi Services — MAXIMAX ALWAYS MAXIMIZED</footer>
+  </div>
 </body>
-</html>
+           </html>
