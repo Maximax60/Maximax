@@ -1,35 +1,4 @@
-/* =========================================================
-   MAXIMAX — ABSOLUTE NO WHITE (TEXT OR BACKGROUND)
-   Colors:
-   - Dark: #070707 / #0b0b0b
-.pdf-section {
-  padding: 40px;
-  text-align: center;
-}
 
-.pdf-btn {
-  display: block;
-  margin: 12px auto;
-  padding: 14px 20px;
-  width: 90%;
-  max-width: 420px;
-  border: 2px solid #ff9f1c;
-  border-radius: 10px;
-  color: #ff9f1c;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.pdf-btn:hover {
-  background: #ff9f1c;
-  color: black;
-}
-   - Apricot Orange: #f28c28
-   - Deep Orange text: #d97a1e
-   - Muted Orange text: #c96f18
-   ========================================================= */
-
-/* HARD RESET */
 *,
 *::before,
 *::after{
