@@ -1,4 +1,13 @@
-/* FIX: retire gwo espas */
+/* si gen overlay k ap kouvri bouton yo */
+.overlay, .bg, .layer {
+  pointer-events: none !important;
+}
+
+/* asire bouton yo anwo */
+button, a, .btn {
+  position: relative;
+  z-index: 9999;
+}/* FIX: retire gwo espas */
 main, .main, .container, .page, .hero {
   min-height: auto !important;
   height: auto !important;
