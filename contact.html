@@ -1,4 +1,202 @@
+<!doctype html>
+<html lang="ht">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kontak | MAXIMAX Multi Services</title>
+  <meta name="description" content="Kontakte MAXIMAX Multi Services pou imigrasyon, taks, fòm gouvènman, tradiksyon, upload dokiman." />
 
+  <style>
+    :root{
+      --accent:#f6a85f; --accent2:#ff8a2a;
+      --border:rgba(246,168,95,.45); --muted:rgba(246,168,95,.78);
+      --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--accent);
+      background:
+        radial-gradient(1200px 700px at 85% 10%, rgba(255,138,42,.18), transparent 60%),
+        radial-gradient(900px 600px at 15% 85%, rgba(246,168,95,.10), transparent 55%),
+        linear-gradient(#050505,#0a0a0a);
+    }
+    .wrap{max-width:1150px;margin:0 auto;padding:16px}
+
+    header{
+      position:sticky;top:10px;z-index:20;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+      background:rgba(0,0,0,.45); backdrop-filter:blur(6px);
+      border:1px solid var(--border); border-radius:18px; padding:10px 14px; box-shadow:var(--shadow);
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{width:52px;height:auto;object-fit:contain;border-radius:12px;border:1px solid var(--border);background:rgba(0,0,0,.35);padding:6px}
+    .brand h1{margin:0;font-size:18px;letter-spacing:.6px}
+    .brand small{display:block;color:var(--muted);font-weight:700}
+
+    nav{display:flex;gap:10px;flex-wrap:wrap}
+    .pill{
+      display:inline-block;padding:9px 14px;border-radius:999px;border:1px solid var(--border);
+      background:rgba(246,168,95,.10);color:var(--accent);font-weight:900;text-decoration:none
+    }
+    .pill:hover{background:rgba(246,168,95,.18)}
+    .pill.active{background:linear-gradient(90deg,rgba(246,168,95,.92),rgba(255,138,42,.92));color:#1a0e05;border-color:transparent}
+
+    .lang{display:flex;gap:8px;flex-wrap:wrap}
+    .lang a{
+      display:inline-block;padding:8px 12px;border-radius:999px;border:1px solid var(--border);
+      background:rgba(0,0,0,.35);color:var(--accent);font-weight:900;text-decoration:none
+    }
+    .lang a.is-active{background:rgba(246,168,95,.18)}
+
+    .hero{
+      margin-top:16px;border:1px solid var(--border);border-radius:22px;
+      background:rgba(0,0,0,.45);box-shadow:var(--shadow);padding:20px
+    }
+    .hero h2{margin:0 0 6px 0;font-size:34px}
+    .muted{color:var(--muted);font-weight:700;line-height:1.6}
+
+    .grid{margin-top:16px;display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+    .card{
+      border:1px solid var(--border);border-radius:18px;background:rgba(0,0,0,.5);
+      box-shadow:var(--shadow);padding:16px
+    }
+    .card h3{margin:0 0 8px 0;font-size:18px}
+    label{display:block;margin:10px 0 6px;color:var(--muted);font-weight:900}
+    input, select, textarea{
+      width:100%;
+      background:rgba(0,0,0,.55);
+      border:1px solid var(--border);
+      color:var(--accent);
+      border-radius:14px;
+      padding:10px 12px;
+      outline:none;
+      font-weight:800;
+    }
+    textarea{min-height:120px;resize:vertical}
+
+    .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{
+      display:inline-block;padding:12px 16px;border-radius:14px;border:1px solid var(--border);
+      background:rgba(246,168,95,.12);color:var(--accent);font-weight:900;text-decoration:none;cursor:pointer
+    }
+    .btn.primary{background:linear-gradient(90deg,rgba(246,168,95,.92),rgba(255,138,42,.92));color:#1a0e05;border-color:transparent}
+
+    .note{
+      margin-top:12px;border:1px dashed rgba(246,168,95,.45);border-radius:16px;
+      padding:12px;background:rgba(0,0,0,.35);color:var(--muted);font-weight:800;line-height:1.6
+    }
+    footer{
+      margin:16px 0 10px;border:1px solid var(--border);border-radius:18px;
+      padding:14px;text-align:center;background:rgba(0,0,0,.45);color:var(--muted);font-weight:800
+    }
+    @media (max-width:920px){ .grid{grid-template-columns:1fr}.hero h2{font-size:30px} }
+  </style>
+</head>
+
+<body>
+
+  <!-- LANGUAGE (TOP ONLY) -->
+  <div style="max-width:1150px;margin:0 auto;padding:14px 16px;">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;">
+      <a href="contact.html" style="padding:8px 12px;border-radius:999px;border:1px solid rgba(246,168,95,.45);background:rgba(0,0,0,.35);color:#f6a85f;font-weight:900;text-decoration:none;">EN</a>
+      <a href="contact-ht.html" style="padding:8px 12px;border-radius:999px;border:1px solid rgba(246,168,95,.45);background:rgba(246,168,95,.18);color:#f6a85f;font-weight:900;text-decoration:none;">KREYÒL</a>
+    </div>
+  </div>
+  <!-- /LANGUAGE -->
+
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <img src="maximaxmultiservices.png" alt="MAXIMAX logo">
+        <div>
+          <h1>MAXIMAX Multi Services</h1>
+          <small>MAXIMAX ALWAYS MAXIMIZED</small>
+        </div>
+      </div>
+
+      <nav>
+        <a class="pill" href="index-ht.html">AKÈY</a>
+        <a class="pill" href="services-ht.html">SÈVIS</a>
+        <a class="pill" href="forms-library-ht.html">FÒM</a>
+        <a class="pill" href="alerts-ht.html">ALÈT</a>
+        <a class="pill active" href="contact-ht.html">KONTAK</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h2>KONTAKTE NOU</h2>
+      <div class="muted">
+        Voye mesaj ou a. Nou reponn rapid epi nou gide w pou pwochen etap yo.
+      </div>
+    </section>
+
+    <section class="grid">
+
+      <div class="card">
+        <h3>Fòm Mesaj</h3>
+
+        <!-- Static form: placeholder. For real delivery, use your hosting form handler or email method -->
+        <form method="post" action="#">
+          <label>Non w</label>
+          <input type="text" name="name" placeholder="Non konplè">
+
+          <label>Telefòn</label>
+          <input type="tel" name="phone" placeholder="(xxx) xxx-xxxx">
+
+          <label>Email (opsyonèl)</label>
+          <input type="email" name="email" placeholder="ou@example.com">
+
+          <label>Sijè</label>
+          <select name="topic">
+            <option>Imigrasyon</option>
+            <option>Taks</option>
+            <option>Fòm gouvènman / Benefis</option>
+            <option>Tradiksyon</option>
+            <option>Upload dokiman</option>
+            <option>Lòt</option>
+          </select>
+
+          <label>Mesaj</label>
+          <textarea name="message" placeholder="Ekri mesaj ou a..."></textarea>
+
+          <div class="btnrow">
+            <button class="btn primary" type="button" onclick="location.href='mailto:maximaxmultiservices@gmail.com'">
+              VOYE PA EMAIL
+            </button>
+            <a class="btn" href="alerts-ht.html">Gade ALÈT yo</a>
+          </div>
+        </form>
+
+        <div class="note">
+          NÒT: Pou sekirite, pa voye enfòmasyon sansib piblikman. Si w bezwen voye dokiman, kontakte nou an prive.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Kontak Dirèk</h3>
+        <p class="muted">
+          Email: <strong>maximaxmultiservices@gmail.com</strong><br>
+          Sit: <strong>maximaxmultiservices.com</strong>
+        </p>
+
+        <div class="note">
+          Si w bezwen èd rapid: mete non w + sèvis ou bezwen an nan premye mesaj la.
+          Nou ka voye w checklist dokiman yo.
+        </div>
+
+        <div class="btnrow">
+          <a class="btn primary" href="forms-library-ht.html">ALE NAN FÒM YO</a>
+          <a class="btn" href="services-ht.html">WÈ SÈVIS YO</a>
+        </div>
+      </div>
+
+    </section>
+
+    <footer>© 2025 MAXIMAX Multi Services — MAXIMAX ALWAYS MAXIMIZED</footer>
+  </div>
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
