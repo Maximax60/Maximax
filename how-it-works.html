@@ -4,10 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>How It Works | MAXIMAX Multi Services</title>
-  <meta name="description" content="How MAXIMAX Multi Services works: steps, uploads, payments, and follow-up.">
+  <meta name="description" content="How MAXIMAX works: choose service, submit info, review, payment, and follow-up.">
   <style>
     :root{
-      --bg:#070707; --panel:#0d0d0d;
       --accent:#f6a85f; --accent2:#ff8a2a;
       --border:rgba(246,168,95,.45); --muted:rgba(246,168,95,.78);
       --shadow:0 10px 30px rgba(0,0,0,.45);
@@ -15,47 +14,50 @@
     *{box-sizing:border-box}
     body{
       margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--accent);
-      background: radial-gradient(1200px 700px at 85% 10%, rgba(255,138,42,.18), transparent 60%),
-                  radial-gradient(900px 600px at 15% 85%, rgba(246,168,95,.10), transparent 55%),
-                  linear-gradient(#050505,#0a0a0a);
+      background:
+        radial-gradient(1200px 700px at 85% 10%, rgba(255,138,42,.18), transparent 60%),
+        radial-gradient(900px 600px at 15% 85%, rgba(246,168,95,.10), transparent 55%),
+        linear-gradient(#050505,#0a0a0a);
     }
     .wrap{max-width:1150px;margin:0 auto;padding:16px}
     header{
       position:sticky;top:10px;z-index:20;
-      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
       background:rgba(0,0,0,.45); backdrop-filter:blur(6px);
       border:1px solid var(--border); border-radius:18px; padding:10px 14px; box-shadow:var(--shadow);
     }
     .brand{display:flex;align-items:center;gap:10px}
     .brand img{width:52px;height:auto;object-fit:contain;border-radius:12px;border:1px solid var(--border);background:rgba(0,0,0,.35);padding:6px}
-    .brand h1{margin:0;font-size:20px;letter-spacing:.6px}
+    .brand h1{margin:0;font-size:18px;letter-spacing:.6px}
     .brand small{display:block;color:var(--muted);font-weight:700}
     nav{display:flex;gap:10px;flex-wrap:wrap}
     .pill{display:inline-block;padding:9px 14px;border-radius:999px;border:1px solid var(--border);background:rgba(246,168,95,.10);color:var(--accent);font-weight:900;text-decoration:none}
     .pill:hover{background:rgba(246,168,95,.18)}
+    .pill.active{background:linear-gradient(90deg,rgba(246,168,95,.92),rgba(255,138,42,.92));color:#1a0e05;border-color:transparent}
     .hero{
-      margin-top:16px;
-      border:1px solid var(--border); border-radius:22px;
-      background:rgba(0,0,0,.45); box-shadow:var(--shadow); padding:20px;
+      margin-top:16px;border:1px solid var(--border);border-radius:22px;
+      background:rgba(0,0,0,.45);box-shadow:var(--shadow);padding:20px
     }
-    .hero h2{margin:0 0 6px 0;font-size:38px;line-height:1.05}
+    .hero h2{margin:0 0 6px 0;font-size:34px}
     .muted{color:var(--muted);font-weight:700;line-height:1.6}
     .grid{margin-top:16px;display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
     .card{border:1px solid var(--border);border-radius:18px;background:rgba(0,0,0,.5);box-shadow:var(--shadow);padding:16px}
     .card h3{margin:0 0 8px 0;font-size:18px}
-    .steps{margin:0;padding-left:18px;color:var(--muted);font-weight:800;line-height:1.7}
+    .steps{margin:0;padding-left:18px;color:rgba(246,168,95,.78);font-weight:800;line-height:1.7}
     .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .btn{
-      display:inline-block;padding:12px 16px;border-radius:14px;border:1px solid var(--border);
-      background:rgba(246,168,95,.12);color:var(--accent);font-weight:900;text-decoration:none
-    }
+    .btn{display:inline-block;padding:12px 16px;border-radius:14px;border:1px solid var(--border);background:rgba(246,168,95,.12);color:var(--accent);font-weight:900;text-decoration:none}
     .btn.primary{background:linear-gradient(90deg,rgba(246,168,95,.92),rgba(255,138,42,.92));color:#1a0e05;border-color:transparent}
+    .note{
+      margin-top:12px;border:1px dashed rgba(246,168,95,.45);border-radius:16px;
+      padding:12px;background:rgba(0,0,0,.35);color:var(--muted);font-weight:800;line-height:1.6
+    }
     footer{margin:16px 0 10px;border:1px solid var(--border);border-radius:18px;padding:14px;text-align:center;background:rgba(0,0,0,.45);color:var(--muted);font-weight:800}
-    @media (max-width:920px){ .grid{grid-template-columns:1fr}.hero h2{font-size:32px} }
+    @media (max-width:920px){ .grid{grid-template-columns:1fr}.hero h2{font-size:30px} }
   </style>
 </head>
 <body>
   <div class="wrap">
+
     <header>
       <div class="brand">
         <img src="maximaxmultiservices.png" alt="MAXIMAX logo">
@@ -64,12 +66,13 @@
           <small>MAXIMAX ALWAYS MAXIMIZED</small>
         </div>
       </div>
+
       <nav>
         <a class="pill" href="index.html">HOME</a>
         <a class="pill" href="services.html">SERVICES</a>
-        <a class="pill" href="forms.html">FORMS</a>
-        <a class="pill" href="how-it-works.html">HOW IT WORKS</a>
-        <a class="pill" href="upload.html">UPLOAD</a>
+        <a class="pill" href="forms-library.html">FORMS</a>
+        <a class="pill" href="alerts.html">ALERTS</a>
+        <a class="pill active" href="how-it-works.html">HOW IT WORKS</a>
         <a class="pill" href="contact.html">CONTACT</a>
       </nav>
     </header>
@@ -77,42 +80,48 @@
     <section class="hero">
       <h2>How It Works</h2>
       <div class="muted">
-        Simple steps to get help fast — immigration, taxes, government forms, and document support.
+        Clear steps. No confusion. We help you prepare and move forward with discipline.
       </div>
       <div class="btnrow">
-        <a class="btn primary" href="upload.html">UPLOAD DOCUMENTS</a>
-        <a class="btn" href="contact.html">CONTACT US</a>
+        <a class="btn primary" href="contact.html">START NOW</a>
+        <a class="btn" href="upload.html">UPLOAD DOCUMENTS</a>
+        <a class="btn" href="alerts.html">IMMIGRATION ALERTS</a>
       </div>
     </section>
 
     <section class="grid">
+
       <div class="card">
-        <h3>Step-by-step</h3>
+        <h3>Step-by-Step Process</h3>
         <ol class="steps">
-          <li>Choose a service (Immigration, Tax, Forms, Translation).</li>
-          <li>Upload your documents (or contact us if you prefer).</li>
-          <li>We review your information and confirm requirements.</li>
-          <li>You receive next steps + timeline.</li>
-          <li>Finish, sign, and submit with guidance (as needed).</li>
+          <li>Choose the service you need (Immigration, Tax, Forms, Translation).</li>
+          <li>Contact us and describe your situation clearly.</li>
+          <li>Submit documents/info (upload or direct contact).</li>
+          <li>We review, confirm requirements, and give you the next steps.</li>
+          <li>We prepare your packet / forms and you approve.</li>
+          <li>Final delivery + follow-up support.</li>
         </ol>
+        <div class="note">
+          Tip: Have your ID, dates, and key documents ready. This speeds everything up.
+        </div>
       </div>
 
       <div class="card">
-        <h3>What to prepare</h3>
+        <h3>Important Notes</h3>
         <ul class="steps">
-          <li>Valid ID (if available)</li>
-          <li>Forms or letters you received</li>
-          <li>Proof documents (birth/marriage/divorce, income, etc.)</li>
-          <li>Any deadlines from agencies</li>
+          <li>We are not a government agency and are not affiliated with USCIS/IRS/SSA.</li>
+          <li>We provide assistance, guidance, and document preparation support.</li>
+          <li>Rules and forms can change. We rely on official sources.</li>
+          <li>For urgent cases, tell us your deadline immediately.</li>
         </ul>
-        <div class="btnrow">
-          <a class="btn" href="forms.html">OPEN FORMS</a>
-          <a class="btn" href="alerts.html">IMMIGRATION ALERTS</a>
+        <div class="note">
+          Last reviewed by MAXIMAX Multi Services: <strong>[Month Day, Year]</strong>
         </div>
       </div>
+
     </section>
 
     <footer>© 2025 MAXIMAX Multi Services — MAXIMAX ALWAYS MAXIMIZED</footer>
   </div>
 </body>
-  </html>
+</html>
