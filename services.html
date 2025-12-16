@@ -103,7 +103,16 @@
       .hero h2{font-size:28px}
       header{gap:12px; flex-direction:column; align-items:flex-start}
       nav{justify-content:flex-start}
-    }
+/* REMOVE WHITE BULLETS (default) + use brand bullets */
+ul{list-style:none; padding-left:0; margin:0}
+li{position:relative; padding-left:16px}
+li::before{
+  content:"•";
+  position:absolute;
+  left:0;
+  color:var(--accent);
+  font-weight:900;
+    }    }
   </style>
 </head>
 
