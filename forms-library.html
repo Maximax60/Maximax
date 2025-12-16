@@ -2,27 +2,151 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Forms Library | MAXIMAX</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Forms Library | MAXIMAX Multi Services</title>
+  <meta name="description" content="Official government forms and portals for immigration, tax, and benefits.">
+
   <style>
-    body{margin:0;font-family:Arial;color:#f6a85f;background:linear-gradient(#050505,#0a0a0a)}
-    .wrap{max-width:980px;margin:0 auto;padding:18px}
-    .box{border:1px solid rgba(246,168,95,.45);border-radius:16px;background:rgba(0,0,0,.5);padding:16px}
-    a.btn{display:block;margin:10px 0;padding:14px;border-radius:14px;border:1px solid rgba(246,168,95,.45);
-      background:rgba(246,168,95,.12);color:#f6a85f;font-weight:900;text-decoration:none}
+    :root{
+      --accent:#f6a85f; --accent2:#ff8a2a;
+      --border:rgba(246,168,95,.45); --muted:rgba(246,168,95,.78);
+      --shadow:0 10px 30px rgba(0,0,0,.45);
+      --panel:rgba(0,0,0,.55);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;width:100%;overflow-x:hidden;background:#050505}
+    body{
+      font-family:Arial,Helvetica,sans-serif;color:var(--accent);
+      background:
+        radial-gradient(1200px 700px at 85% 10%, rgba(255,138,42,.18), transparent 60%),
+        radial-gradient(900px 600px at 15% 85%, rgba(246,168,95,.10), transparent 55%),
+        linear-gradient(#050505,#0a0a0a);
+    }
+    .wrap{max-width:1150px;margin:0 auto;padding:16px}
+    header{
+      position:sticky;top:10px;z-index:20;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+      background:rgba(0,0,0,.45); backdrop-filter:blur(6px);
+      border:1px solid var(--border); border-radius:18px; padding:10px 14px; box-shadow:var(--shadow);
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{width:52px;height:auto;object-fit:contain;border-radius:12px;border:1px solid var(--border);background:rgba(0,0,0,.35);padding:6px}
+    .brand h1{margin:0;font-size:18px;letter-spacing:.6px}
+    .brand small{display:block;color:var(--muted);font-weight:700}
+
+    nav{display:flex;gap:10px;flex-wrap:wrap}
+    .pill{display:inline-block;padding:9px 14px;border-radius:999px;border:1px solid var(--border);background:rgba(246,168,95,.10);color:var(--accent);font-weight:900;text-decoration:none}
+    .pill:hover{background:rgba(246,168,95,.18)}
+    .pill.active{background:rgba(246,168,95,.22)}
+
+    .hero{
+      margin-top:16px;border:1px solid var(--border);border-radius:22px;
+      background:rgba(0,0,0,.45);box-shadow:var(--shadow);padding:20px
+    }
+    .hero h2{margin:0 0 6px 0;font-size:32px}
+    .muted{color:var(--muted);font-weight:700;line-height:1.6}
+
+    .grid{margin-top:16px;display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+    .card{border:1px solid var(--border);border-radius:18px;background:var(--panel);box-shadow:var(--shadow);padding:16px}
+    .card h3{margin:0 0 10px 0;font-size:18px;letter-spacing:.3px}
+
+    .btn{
+      display:block;
+      margin:10px 0;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(246,168,95,.12);
+      color:var(--accent);
+      font-weight:900;
+      text-decoration:none;
+    }
+    .btn:hover{background:rgba(246,168,95,.20)}
+    .note{
+      margin-top:12px;border:1px dashed rgba(246,168,95,.45);border-radius:16px;
+      padding:12px;background:rgba(0,0,0,.35);color:var(--muted);font-weight:800;line-height:1.6
+    }
+    footer{
+      margin:16px 0 10px;border:1px solid var(--border);border-radius:18px;
+      padding:14px;text-align:center;background:rgba(0,0,0,.45);color:var(--muted);font-weight:800
+    }
+    @media (max-width:920px){ .grid{grid-template-columns:1fr}.hero h2{font-size:28px} }
   </style>
 </head>
+
 <body>
   <div class="wrap">
-    <div class="box">
-      <h2>Official Forms (Government Links)</h2>
 
-      <a class="btn" target="_blank" rel="noopener" href="https://www.uscis.gov/forms/all-forms">USCIS — All Forms</a>
-      <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/forms-instructions">IRS — Forms & Instructions</a>
-      <a class="btn" target="_blank" rel="noopener" href="https://www.ssa.gov/forms/">SSA — Forms</a>
-      <a class="btn" target="_blank" rel="noopener" href="https://www.medicaid.gov/">Medicaid — Official</a>
-      <a class="btn" target="_blank" rel="noopener" href="https://www.usa.gov/benefits">Benefits — USA.gov</a>
-    </div>
+    <header>
+      <div class="brand">
+        <img src="maximaxmultiservices.png" alt="MAXIMAX logo">
+        <div>
+          <h1>MAXIMAX Multi Services</h1>
+          <small>MAXIMAX ALWAYS MAXIMIZED</small>
+        </div>
+      </div>
+
+      <nav>
+        <a class="pill" href="index.html">HOME</a>
+        <a class="pill" href="services.html">SERVICES</a>
+        <a class="pill active" href="forms-library.html">FORMS</a>
+        <a class="pill" href="alerts.html">ALERTS</a>
+        <a class="pill" href="how-it-works.html">HOW IT WORKS</a>
+        <a class="pill" href="contact.html">CONTACT</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h2>Forms Library (Official Links)</h2>
+      <div class="muted">
+        These buttons open official government pages (always updated). No PDF uploads required.
+      </div>
+
+      <div class="note">
+        <strong>Global Disclaimer:</strong> MAXIMAX Multi Services is not a government agency and is not affiliated with USCIS/IRS/SSA.
+        We provide assistance and document preparation support.
+        <br><br>
+        <strong>Last updated:</strong> 2025-12-16 • <strong>Last reviewed by:</strong> MAXIMAX Multi Services
+      </div>
+    </section>
+
+    <section class="grid">
+
+      <div class="card">
+        <h3>USCIS — Immigration (Official)</h3>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.uscis.gov/forms/all-forms">BUTTON — GENERAL USCIS PACKET (All Forms)</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.uscis.gov/i-130">Form I-130 — Petition for Alien Relative</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.uscis.gov/i-485">Form I-485 — Adjustment of Status</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.uscis.gov/i-765">Form I-765 — Employment Authorization</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.uscis.gov/i-864">Form I-864 — Affidavit of Support</a>
+      </div>
+
+      <div class="card">
+        <h3>IRS — Tax (Official)</h3>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/forms-instructions">IRS Forms & Instructions</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/forms-pubs/about-form-1040">Form 1040 — Individual Tax Return</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/payments">IRS Payments (Official)</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/individuals/get-transcript">Get IRS Transcript</a>
+      </div>
+
+      <div class="card">
+        <h3>Benefits — SNAP / Medicaid / SSA</h3>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.usa.gov/benefits">Benefits Finder (USA.gov)</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.ssa.gov/forms/">SSA Forms (Official)</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.medicaid.gov/">Medicaid (Official)</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.fns.usda.gov/snap/supplemental-nutrition-assistance-program">SNAP (USDA Official)</a>
+      </div>
+
+      <div class="card">
+        <h3>Housing / Unemployment / Child Support</h3>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.hud.gov/">Housing (HUD Official)</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.dol.gov/general/topic/unemployment-insurance">Unemployment (DOL Official)</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.usa.gov/child-support">Child Support (USA.gov)</a>
+      </div>
+
+    </section>
+
+    <footer>© 2025 MAXIMAX Multi Services — MAXIMAX ALWAYS MAXIMIZED</footer>
   </div>
 </body>
 </html>
