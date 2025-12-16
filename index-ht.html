@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ht">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Akèy | MAXIMAX Multi Services</title>
+  <meta name="description" content="Sèvis imigrasyon, taks, fòm gouvènman, tradiksyon, upload dokiman.">
+  <style>
+    :root{
+      --accent:#f6a85f; --accent2:#ff8a2a;
+      --border:rgba(246,168,95,.45); --muted:rgba(246,168,95,.78);
+      --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--accent);
+      background:
+        radial-gradient(1200px 700px at 85% 10%, rgba(255,138,42,.18), transparent 60%),
+        radial-gradient(900px 600px at 15% 85%, rgba(246,168,95,.10), transparent 55%),
+        linear-gradient(#050505,#0a0a0a);
+    }
+    .wrap{max-width:1150px;margin:0 auto;padding:16px}
+    header{
+      position:sticky;top:10px;z-index:20;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+      background:rgba(0,0,0,.45); backdrop-filter:blur(6px);
+      border:1px solid var(--border); border-radius:18px; padding:10px 14px; box-shadow:var(--shadow);
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{width:52px;height:auto;object-fit:contain;border-radius:12px;border:1px solid var(--border);background:rgba(0,0,0,.35);padding:6px}
+    .brand h1{margin:0;font-size:18px;letter-spacing:.6px}
+    .brand small{display:block;color:var(--muted);font-weight:700}
+    nav{display:flex;gap:10px;flex-wrap:wrap}
+    .pill{display:inline-block;padding:9px 14px;border-radius:999px;border:1px solid var(--border);background:rgba(246,168,95,.10);color:var(--accent);font-weight:900;text-decoration:none}
+    .pill:hover{background:rgba(246,168,95,.18)}
+    .pill.active{background:linear-gradient(90deg,rgba(246,168,95,.92),rgba(255,138,42,.92));color:#1a0e05;border-color:transparent}
+    .hero{
+      margin-top:16px;border:1px solid var(--border); border-radius:22px;
+      background:rgba(0,0,0,.45); box-shadow:var(--shadow); padding:20px;
+      display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:center;
+    }
+    .hero h2{margin:0 0 8px 0;font-size:36px;line-height:1.05}
+    .muted{color:var(--muted);font-weight:700;line-height:1.6}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{display:inline-block;padding:12px 16px;border-radius:14px;border:1px solid var(--border);background:rgba(246,168,95,.12);color:var(--accent);font-weight:900;text-decoration:none}
+    .btn.primary{background:linear-gradient(90deg,rgba(246,168,95,.92),rgba(255,138,42,.92));color:#1a0e05;border-color:transparent}
+    .card{border:1px solid var(--border);border-radius:18px;background:rgba(0,0,0,.5);box-shadow:var(--shadow);padding:16px}
+    .list{margin:0;padding-left:18px;color:var(--muted);font-weight:800;line-height:1.6}
+    .grid{margin-top:16px;display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
+    footer{margin:16px 0 10px;border:1px solid var(--border);border-radius:18px;padding:14px;text-align:center;background:rgba(0,0,0,.45);color:var(--muted);font-weight:800}
+    @media (max-width:920px){ .hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.hero h2{font-size:30px} }
+  </style>
+</head>
+<body>
+
+  <!-- LANGUAGE (TOP ONLY) -->
+  <div style="max-width:1150px;margin:0 auto;padding:14px 16px;">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;">
+      <a href="index.html" style="padding:8px 12px;border-radius:999px;border:1px solid rgba(246,168,95,.45);background:rgba(0,0,0,.35);color:#f6a85f;font-weight:900;text-decoration:none;">EN</a>
+      <a href="index-ht.html" style="padding:8px 12px;border-radius:999px;border:1px solid rgba(246,168,95,.45);background:rgba(246,168,95,.18);color:#f6a85f;font-weight:900;text-decoration:none;">KREYÒL</a>
+    </div>
+  </div>
+  <!-- /LANGUAGE -->
+
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <img src="maximaxmultiservices.png" alt="MAXIMAX logo">
+        <div>
+          <h1>MAXIMAX Multi Services</h1>
+          <small>MAXIMAX ALWAYS MAXIMIZED</small>
+        </div>
+      </div>
+      <nav>
+        <a class="pill active" href="index-ht.html">AKÈY</a>
+        <a class="pill" href="services-ht.html">SÈVIS</a>
+        <a class="pill" href="forms-library-ht.html">FÒM</a>
+        <a class="pill" href="alerts-ht.html">ALÈT</a>
+        <a class="pill" href="contact-ht.html">KONTAK</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h2>Nou la pou ede w ranpli, prepare, epi avanse.</h2>
+        <div class="muted">Imigrasyon • Taks • Fòm Gouvènman • Tradiksyon • Sipò ak Upload Dokiman</div>
+        <div class="cta">
+          <a class="btn primary" href="alerts-ht.html">Gade ALÈT yo</a>
+          <a class="btn" href="services-ht.html">Wè SÈVIS yo</a>
+          <a class="btn" href="contact-ht.html">Kontakte Nou</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-weight:900;margin-bottom:8px;">Sèvis Popilè</div>
+        <ul class="list">
+          <li>Asistans imigrasyon</li>
+          <li>Preparasyon taks</li>
+          <li>Fòm SNAP / Medicaid</li>
+          <li>Sipò Social Security</li>
+          <li>Fòm chomaj (Unemployment)</li>
+          <li>Upload dokiman & suiv</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div style="font-weight:900;margin-bottom:6px;">IMIGRASYON</div>
+        <div class="muted">Gidans, preparasyon fòm, òganizasyon dosye, randevou.</div>
+      </div>
+      <div class="card">
+        <div style="font-weight:900;margin-bottom:6px;">TAKS</div>
+        <div class="muted">Preparasyon taks, òganizasyon dokiman, sipò sezon taks.</div>
+      </div>
+      <div class="card">
+        <div style="font-weight:900;margin-bottom:6px;">FÒM</div>
+        <div class="muted">USCIS / IRS / SNAP / Medicaid / SSA / Housing / Child Support.</div>
+      </div>
+    </section>
+
+    <footer>© 2025 MAXIMAX Multi Services — MAXIMAX ALWAYS MAXIMIZED</footer>
+  </div>
+</body>
+</html>
