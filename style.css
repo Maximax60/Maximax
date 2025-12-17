@@ -3,7 +3,7 @@
     body {
         font-family: Arial, sans-serif;
         margin: 40px;
-        background-color: #222; /* Dark background for the whole page */
+        background-color: #222; /* Black background for the whole page */
         color: #fff; /* White text color */
     }
 
@@ -60,4 +60,29 @@
         color: white;
         border: 1px solid #555;
     }
+
+    /* Links styling */
+    a {
+        color: #f09d22; /* Apricot orange links */
+        text-decoration: none;
+        padding: 8px;
+        display: block;
+        margin: 5px 0;
+        background-color: #333; /* Dark background for links */
+        border-radius: 5px;
+    }
+
+    a:hover {
+        background-color: #444; /* Hover effect for links */
+    }
+
+    /* Form section background */
+    .form-section, .federal-register-section {
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: #333; /* Dark background for form sections */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
 </style>
