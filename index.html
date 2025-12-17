@@ -249,7 +249,61 @@
     footer{margin:16px 0 10px;border:1px solid var(--border);border-radius:18px;padding:14px;text-align:center;background:rgba(0,0,0,.45);color:var(--muted);font-weight:800}
     @media (max-width:920px){ .hero{grid-template-columns:1fr}.hero h2{font-size:34px}.grid{grid-template-columns:1fr}}
   </style>
-</head>
+<!-- AI Resume Builder Section -->
+<div>
+    <h2>Create Your Resume</h2>
+    <form id="resumeForm">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="experience">Experience:</label>
+        <textarea id="experience" name="experience" required></textarea>
+
+        <label for="education">Education:</label>
+        <textarea id="education" name="education" required></textarea>
+
+        <label for="skills">Skills:</label>
+        <textarea id="skills" name="skills" required></textarea>
+
+        <label for="language">Language:</label>
+        <select id="language" name="language">
+            <option value="en">English</option>
+            <option value="ht">Kreyòl</option>
+            <option value="es">Spanish</option>
+        </select>
+
+        <button type="submit">Generate Resume</button>
+    </form>
+</div>
+
+<script>
+    // Handle form submission
+    document.getElementById('resumeForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        const formData = {
+            name: document.getElementById('name').value,
+            address: document.getElementById('address').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+            experience: document.getElementById('experience').value,
+            education: document.getElementById('education').value,
+            skills: document.getElementById('skills').value,
+            language: document.getElementById('language').value,
+        };
+
+        console.log(formData); // You can replace this with an API call for resume generation
+    });
+                                                           </script></head>
 <body>
   <div class="wrap">
     <header>
