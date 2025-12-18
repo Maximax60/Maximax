@@ -1,4 +1,33 @@
-<!DOCTYPE html>
+<style>
+/* MAXIMAX - Language Toggle (EN/KR/ES) */
+#mmLangBar{
+  position:fixed; right:16px; bottom:16px; z-index:99999;
+  display:flex; gap:8px; align-items:center;
+  padding:10px 12px; border-radius:999px;
+  background:rgba(0,0,0,.65); backdrop-filter:blur(8px);
+  border:1px solid rgba(255,140,0,.55);
+  font-family:Arial, sans-serif;
+}
+#mmLangBar .mmLabel{color:#cfcfcf; font-weight:900; font-size:12px; margin-right:4px;}
+#mmLangBar button{
+  border:1px solid rgba(255,140,0,.55);
+  background:rgba(0,0,0,.35);
+  color:#f2f2f2; font-weight:900;
+  padding:8px 10px; border-radius:999px; cursor:pointer;
+}
+#mmLangBar button:hover{background:rgba(255,140,0,.15)}
+#mmLangBar button.active{
+  background:linear-gradient(180deg,#ffb347,#ff8c00);
+  color:#111; border-color:rgba(255,140,0,.9);
+}
+</style>
+
+<div id="mmLangBar" aria-label="Language Toggle">
+  <span class="mmLabel">LANG</span>
+  <button type="button" data-mm-lang="en">EN</button>
+  <button type="button" data-mm-lang="kr">KR</button>
+  <button type="button" data-mm-lang="es">ES</button>
+</div><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
