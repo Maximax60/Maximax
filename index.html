@@ -461,7 +461,75 @@
         }
       }
 
-      // ✅ ensures it runs after the page fully loads
+<script>
+/* MAXIMAX - Language Toggle Engine (EN/KR/ES) */
+(function(){
+  const dict = {
+    en: {
+      home:"Home", services:"Services", forms:"Forms", alerts:"Alerts", contact:"Contact",
+      welcome:"Welcome", openForms:"Open Forms Library", resume:"Create Your Resume"
+    },
+    kr: {
+      home:"Akèy", services:"Sèvis", forms:"Fòm", alerts:"Alèt", contact:"Kontak",
+      welcome:"Byenveni", openForms:"Ouvri Bibliyotèk Fòm", resume:"Kreye Rezime w"
+    },
+    es: {
+      home:"Inicio", services:"Servicios", forms:"Formularios", alerts:"Alertas", contact:"Contacto",
+      welcome:"Bienvenido", openForms:"Abrir Biblioteca de Formularios", resume:"Crear tu Currículum"
+    }
+  };
+
+  function setActive(lang){
+    document.querySelectorAll('#mmLangBar button').forEach(b=>b.classList.remove('active'));
+    const btn = document.querySelector(`#mmLangBar button[data-mm-lang="${lang}"]`);
+    if(btn) btn.classList.add('active');
+  }
+
+  function applyText(lang){
+    const d = dict[lang] || dict.en;
+
+    // Auto-map common navbar words WITHOUT you editing HTML
+    document.querySelectorAll('a,button,h1,h2,h3,span,strong').forEach(el=>{
+      const t = (el.textContent||"").trim();
+
+      if(t === "HOME" || t === "Home") el.textContent = d.home;
+      if(t === "SERVICES" || t === "Services") el.textContent = d.services;
+      if(t === "FORMS" || t === "Forms") el.textContent = d.forms;
+      if(t === "ALERTS" || t === "Alerts") el.textContent = d.alerts;
+      if(t === "CONTACT" || t === "Contact") el.textContent = d.contact;
+
+      if(t === "Welcome" || t === "WELCOME") el.textContent = d.welcome;
+      if(t === "Open Forms Library" || t === "OPEN FORMS LIBRARY") el.textContent = d.openForms;
+      if(t === "Create Your Resume" || t === "CREATE YOUR RESUME") el.textContent = d.resume;
+    });
+  }
+
+  function applyTheme(lang){
+    // Optional: slight accent shift by language (keeps orange/black)
+    const root = document.documentElement;
+    if(lang === "es"){ root.style.setProperty('--accent', '#ff9a2f'); }
+    else if(lang === "kr"){ root.style.setProperty('--accent', '#ff8c00'); }
+    else { root.style.setProperty('--accent', '#ff8c00'); }
+  }
+
+  function setLang(lang){
+    try{ localStorage.setItem("mm_lang", lang); }catch(e){}
+    setActive(lang);
+    applyText(lang);
+    applyTheme(lang);
+  }
+
+  // Init
+  const saved = (()=>{ try{return localStorage.getItem("mm_lang")||"en"}catch(e){return "en"} })();
+  setLang(saved);
+
+  // Click handlers
+  document.querySelectorAll('#mmLangBar button').forEach(btn=>{
+    btn.addEventListener('click', ()=> setLang(btn.getAttribute('data-mm-lang')));
+  });
+
+})();
+</script>      // ✅ ensures it runs after the page fully loads
       if(document.readyState === "loading"){
         document.addEventListener("DOMContentLoaded", init);
       } else {
