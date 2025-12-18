@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MAXIMAX Multi Services</title>
+
+  <style>
+    :root{
+      --bg:#070707;
+      --panel:#111111;
+      --panel2:#161616;
+      --text:#f2f2f2;
+      --muted:#bdbdbd;
+      --accent:#f59e0b;        /* Orange 🍊 */
+      --accent2:#ffb84d;       /* lighter orange */
+      --border:rgba(245,158,11,.40);
+      --shadow: 0 10px 30px rgba(0,0,0,.45);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(800px 500px at 20% 10%, rgba(245,158,11,.18), transparent 60%),
+        radial-gradient(700px 450px at 90% 25%, rgba(245,158,11,.12), transparent 60%),
+        linear-gradient(180deg, #050505, var(--bg));
+      color:var(--text);
+    }
+
+    a{color:inherit}
+
+    .wrap{max-width:1100px;margin:0 auto;padding:0 16px;}
+
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(0,0,0,.65);
+      border-bottom:1px solid var(--border);
+      backdrop-filter: blur(7px);
+    }
+
+    .top{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:16px 0;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;flex-direction:column;gap:4px;
+    }
+    .brand .name{
+      font-size:22px;font-weight:900;letter-spacing:.6px;
+      color:var(--accent);
+      text-transform:uppercase;
+    }
+    .brand .slogan{
+      font-size:12px;color:var(--muted);font-weight:700;
+    }
+
+    nav{
+      display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+    }
+
+    .pill{
+      text-decoration:none;
+      border:1px solid var(--border);
+      background:rgba(15,15,15,.85);
+      padding:10px 12px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:13px;
+      transition:.15s ease;
+      box-shadow: 0 8px 18px rgba(0,0,0,.18);
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      background:rgba(245,158,11,.12);
+    }
+
+    .langBox{
+      display:flex;align-items:center;gap:8px;
+      border:1px solid var(--border);
+      background:rgba(15,15,15,.85);
+      padding:10px 12px;border-radius:999px;
+      font-weight:900;font-size:13px;
+    }
+    .langBox label{color:var(--muted);font-size:12px;font-weight:900}
+    .langBox select{
+      background:transparent;
+      border:none; outline:none;
+      color:var(--text);
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    main{padding:22px 0 70px;}
+
+    .hero{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(245,158,11,.12), rgba(17,17,17,.92));
+      border-radius:18px;
+      padding:20px;
+      box-shadow: var(--shadow);
+    }
+    .hero h1{
+      margin:0 0 8px 0;
+      color:var(--accent);
+      font-size:26px;
+      text-transform:none;
+      letter-spacing:.3px;
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-weight:600;
+    }
+
+    .ctaRow{
+      margin-top:14px;
+      display:flex;flex-wrap:wrap;gap:10px;
+    }
+
+    .btn{
+      display:inline-block;
+      border-radius:14px;
+      padding:12px 14px;
+      font-weight:1000;
+      text-decoration:none;
+      border:1px solid rgba(245,158,11,.70);
+      background:linear-gradient(180deg, var(--accent2), var(--accent));
+      color:#121212;
+      box-shadow: 0 10px 25px rgba(245,158,11,.18);
+      transition:.15s ease;
+    }
+    .btn:hover{transform: translateY(-1px); filter:brightness(.98);}
+    .btn.secondary{
+      background:transparent;
+      color:var(--text);
+      border:1px solid var(--border);
+      box-shadow:none;
+    }
+
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:14px;
+    }
+    .card{
+      border:1px solid var(--border);
+      background:rgba(17,17,17,.88);
+      border-radius:16px;
+      padding:16px;
+      box-shadow: var(--shadow);
+    }
+    .card h2{
+      margin:0 0 10px 0;
+      color:var(--accent);
+      font-size:18px;
+      text-transform:none;
+    }
+    .card p,.card li{color:var(--muted);line-height:1.6;font-weight:600}
+    ul{margin:0;padding-left:18px}
+    .col6{grid-column:span 6}
+    .col12{grid-column:span 12}
+
+    @media (max-width:860px){
+      .col6{grid-column:span 12}
+      .top{flex-direction:column;align-items:flex-start}
+    }
+
+    .list a{
+      display:block;
+      margin:10px 0;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(22,22,22,.95);
+      text-decoration:none;
+      font-weight:900;
+      transition:.15s ease;
+    }
+    .list a:hover{background:rgba(245,158,11,.12);transform:translateY(-1px);}
+
+    footer{
+      border-top:1px solid var(--border);
+      background:rgba(0,0,0,.65);
+      color:var(--muted);
+      padding:16px 0;
+    }
+
+    .miniNote{
+      margin-top:10px;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      background:rgba(245,158,11,.08);
+      border-radius:12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+      font-weight:650;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="top">
+        <div class="brand">
+          <div class="name">MAXIMAX Multi Services</div>
+          <div class="slogan" data-i18n="slogan">MAXIMAX ALWAYS MAXIMIZED</div>
+        </div>
+
+        <nav>
+          <a class="pill" href="#home" data-i18n="navHome">HOME</a>
+          <a class="pill" href="#services" data-i18n="navServices">SERVICES</a>
+          <a class="pill" href="#forms" data-i18n="navForms">FORMS</a>
+          <a class="pill" href="#power" data-i18n="navPOA">POWER ATTORNEY</a>
+          <a class="pill" href="#contact" data-i18n="navContact">CONTACT</a>
+
+          <!-- ✅ Language Toggle -->
+          <div class="langBox">
+            <label for="lang" data-i18n="langLabel">LANG</label>
+            <select id="lang">
+              <option value="en">EN</option>
+              <option value="kr">KR</option>
+              <option value="es">ES</option>
+            </select>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="home">
+    <section class="hero">
+      <h1 data-i18n="heroTitle">Welcome</h1>
+      <p data-i18n="heroText">
+        Your one-stop solution for immigration, taxes, benefits (SNAP/Medicaid/SSA), housing (HUD/Section 8),
+        and official government forms.
+      </p>
+
+      <div class="ctaRow">
+        <a class="btn" href="#forms" data-i18n="btnForms">Open Forms Library</a>
+        <a class="btn secondary" href="#power" data-i18n="btnPOA">Power of Attorney</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <!-- SERVICES -->
+      <div class="card col6" id="services">
+        <h2 data-i18n="servicesTitle">Services</h2>
+        <ul>
+          <li data-i18n="svc1"><b>Immigration Assistance</b> (guidance, documents, checklists)</li>
+          <li data-i18n="svc2"><b>Tax Support</b> (IRS forms, help preparing files)</li>
+          <li data-i18n="svc3"><b>Benefits Help</b> (SNAP / Medicaid / SSA)</li>
+          <li data-i18n="svc4"><b>Housing</b> (HUD / Section 8)</li>
+          <li data-i18n="svc5"><b>Translation Assistance</b> (Kreyòl ↔ English official format)</li>
+        </ul>
+      </div>
+
+      <!-- ALERTS -->
+      <div class="card col6" id="alerts">
+        <h2 data-i18n="alertsTitle">Alerts & Updates</h2>
+        <p data-i18n="alertsText">
+          Use this area to post urgent updates: new immigration rules, IRS deadlines, processing alerts, etc.
+        </p>
+        <div class="list">
+          <a href="https://www.federalregister.gov/" target="_blank" rel="noopener">Federal Register — Daily Updates</a>
+          <a href="https://www.uscis.gov/newsroom" target="_blank" rel="noopener">USCIS — Newsroom</a>
+          <a href="https://www.irs.gov/newsroom" target="_blank" rel="noopener">IRS — Newsroom</a>
+        </div>
+        <div class="miniNote" data-i18n="alertsNote">
+          Next upgrade (optional): a real “Post Alert” system (admin adds alerts, public sees them).
+        </div>
+      </div>
+
+      <!-- FORMS -->
+      <div class="card col12" id="forms">
+        <h2 data-i18n="formsTitle">Forms Library</h2>
+        <div class="list">
+          <a href="https://www.irs.gov/forms-instructions" target="_blank" rel="noopener">IRS Forms & Instructions</a>
+          <a href="https://www.irs.gov/forms-pubs/about-form-1040" target="_blank" rel="noopener">Form 1040 — Individual Tax Return</a>
+          <a href="https://www.irs.gov/payments" target="_blank" rel="noopener">IRS Payments (Official)</a>
+          <a href="https://www.irs.gov/individuals/get-transcript" target="_blank" rel="noopener">Get IRS Transcript</a>
+          <a href="https://www.benefits.gov" target="_blank" rel="noopener">Benefits Finder (USA.gov)</a>
+          <a href="https://www.ssa.gov/forms" target="_blank" rel="noopener">SSA Forms (Official)</a>
+          <a href="https://www.medicaid.gov" target="_blank" rel="noopener">Medicaid (Official)</a>
+          <a href="https://www.snap.gov" target="_blank" rel="noopener">SNAP (USDA Official)</a>
+          <a href="https://www.hud.gov" target="_blank" rel="noopener">Housing (HUD Official)</a>
+          <a href="https://www.dol.gov/ui" target="_blank" rel="noopener">Unemployment (DOL Official)</a>
+          <a href="https://www.childsupport.gov" target="_blank" rel="noopener">Child Support (USA.gov)</a>
+        </div>
+      </div>
+
+      <!-- ✅ POWER OF ATTORNEY -->
+      <div class="card col12" id="power">
+        <h2 data-i18n="poaTitle">Power of Attorney (POA)</h2>
+        <p data-i18n="poaText">
+          Need someone to act on your behalf for documents, benefits, taxes, housing, or immigration steps?
+          We can guide you on what to prepare and what forms are commonly required.
+        </p>
+        <div class="list">
+          <a href="https://www.irs.gov/forms-pubs/about-form-2848" target="_blank" rel="noopener">IRS Form 2848 — Power of Attorney & Declaration of Representative</a>
+          <a href="https://www.irs.gov/forms-pubs/about-form-8821" target="_blank" rel="noopener">IRS Form 8821 — Tax Information Authorization</a>
+        </div>
+        <div class="miniNote" data-i18n="poaNote">
+          Note: POA rules can depend on the agency and state. Contact us so we can tell you the correct steps.
+        </div>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="card col12" id="contact">
+        <h2 data-i18n="contactTitle">Contact</h2>
+        <p><span data-i18n="contactEmail">Email</span>: <b>maximaxmultiservices@gmail.com</b></p>
+        <p class="miniNote" data-i18n="contactNote">We can add WhatsApp / Zangi buttons here anytime.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span data-i18n="footer">© 2025 MAXIMAX Multi Services — Orange 🍊 & Black ⚫️</span>
+    </div>
+  </footer>
+
+  <script>
+    // ✅ Language toggle EN / KR / ES (static, no package.json)
+    const I18N = {
+      en: {
+        slogan:"MAXIMAX ALWAYS MAXIMIZED",
+        langLabel:"LANG",
+        navHome:"HOME", navServices:"SERVICES", navForms:"FORMS", navPOA:"POWER ATTORNEY", navContact:"CONTACT",
+        heroTitle:"Welcome",
+        heroText:"Your one-stop solution for immigration, taxes, benefits (SNAP/Medicaid/SSA), housing (HUD/Section 8), and official government forms.",
+        btnForms:"Open Forms Library",
+        btnPOA:"Power of Attorney",
+        servicesTitle:"Services",
+        svc1:"<b>Immigration Assistance</b> (guidance, documents, checklists)",
+        svc2:"<b>Tax Support</b> (IRS forms, help preparing files)",
+        svc3:"<b>Benefits Help</b> (SNAP / Medicaid / SSA)",
+        svc4:"<b>Housing</b> (HUD / Section 8)",
+        svc5:"<b>Translation Assistance</b> (Kreyòl ↔ English official format)",
+        alertsTitle:"Alerts & Updates",
+        alertsText:"Use this area to post urgent updates: new immigration rules, IRS deadlines, processing alerts, etc.",
+        alertsNote:"Next upgrade (optional): a real “Post Alert” system (admin adds alerts, public sees them).",
+        formsTitle:"Forms Library",
+        poaTitle:"Power of Attorney (POA)",
+        poaText:"Need someone to act on your behalf for documents, benefits, taxes, housing, or immigration steps? We can guide you on what to prepare and what forms are commonly required.",
+        poaNote:"Note: POA rules can depend on the agency and state. Contact us so we can tell you the correct steps.",
+        contactTitle:"Contact",
+        contactEmail:"Email",
+        contactNote:"We can add WhatsApp / Zangi buttons here anytime.",
+        footer:"© 2025 MAXIMAX Multi Services — Orange 🍊 & Black ⚫️"
+      },
+      kr: {
+        slogan:"MAXIMAX TOUJOU MAXIMIZE",
+        langLabel:"LANG",
+        navHome:"AKÈY", navServices:"SÈVIS", navForms:"FÒM", navPOA:"POWER ATTORNEY", navContact:"KONTAK",
+        heroTitle:"Byenveni",
+        heroText:"Tout sèvis ou bezwen pou imigrasyon, taks, benefis (SNAP/Medicaid/SSA), lojman (HUD/Seksyon 8), ak fòm gouvènman ofisyèl.",
+        btnForms:"Louvri Bibliyotèk Fòm yo",
+        btnPOA:"Power of Attorney",
+        servicesTitle:"Sèvis",
+        svc1:"<b>Asistans Imigrasyon</b> (gide, dokiman, lis verifikasyon)",
+        svc2:"<b>Asistans Taks</b> (fòm IRS, ede prepare dosye)",
+        svc3:"<b>Asistans Benefis</b> (SNAP / Medicaid / SSA)",
+        svc4:"<b>Lojman</b> (HUD / Seksyon 8)",
+        svc5:"<b>Asistans Tradiksyon</b> (Kreyòl ↔ Anglè, fòma ofisyèl)",
+        alertsTitle:"Alèt & Mizajou",
+        alertsText:"Itilize seksyon sa a pou mete nouvèl ijans: nouvo règleman, dat limit IRS, alèt dosye, elatriye.",
+        alertsNote:"Pwochen etap (opsyonèl): yon sistèm “Mete Alèt” (admin mete alèt, piblik wè yo).",
+        formsTitle:"Bibliyotèk Fòm",
+        poaTitle:"Power of Attorney (POA)",
+        poaText:"Ou bezwen yon moun reprezante w pou dokiman, benefis, taks, lojman, oswa etap imigrasyon? Nou ka gide w sou sa pou w prepare ak fòm yo.",
+        poaNote:"Nòt: Règ POA yo ka depann de ajans lan ak eta a. Kontakte nou pou nou ba w bon etap yo.",
+        contactTitle:"Kontak",
+        contactEmail:"Imèl",
+        contactNote:"Nou ka ajoute bouton WhatsApp / Zangi isit la nenpòt lè.",
+        footer:"© 2025 MAXIMAX Multi Services — Orange 🍊 & Black ⚫️"
+      },
+      es: {
+        slogan:"MAXIMAX SIEMPRE MAXIMIZADO",
+        langLabel:"IDIOMA",
+        navHome:"INICIO", navServices:"SERVICIOS", navForms:"FORMULARIOS", navPOA:"PODER NOTARIAL", navContact:"CONTACTO",
+        heroTitle:"Bienvenido",
+        heroText:"Tu solución integral para inmigración, impuestos, beneficios (SNAP/Medicaid/SSA), vivienda (HUD/Sección 8) y formularios oficiales.",
+        btnForms:"Abrir Biblioteca de Formularios",
+        btnPOA:"Poder Notarial",
+        servicesTitle:"Servicios",
+        svc1:"<b>Asistencia de Inmigración</b> (guía, documentos, listas)",
+        svc2:"<b>Soporte de Impuestos</b> (formularios IRS, preparación de archivos)",
+        svc3:"<b>Ayuda de Beneficios</b> (SNAP / Medicaid / SSA)",
+        svc4:"<b>Vivienda</b> (HUD / Sección 8)",
+        svc5:"<b>Asistencia de Traducción</b> (Criollo ↔ Inglés en formato oficial)",
+        alertsTitle:"Alertas y Actualizaciones",
+        alertsText:"Usa esta sección para avisos urgentes: nuevas reglas, fechas límite del IRS, alertas de trámites, etc.",
+        alertsNote:"Próxima mejora (opcional): sistema para publicar alertas (admin publica, público ve).",
+        formsTitle:"Biblioteca de Formularios",
+        poaTitle:"Poder Notarial (POA)",
+        poaText:"¿Necesitas que alguien actúe en tu nombre para documentos, beneficios, impuestos, vivienda o pasos de inmigración? Podemos guiarte sobre lo que debes preparar y los formularios comunes.",
+        poaNote:"Nota: Las reglas del POA pueden depender de la agencia y del estado. Contáctanos para los pasos correctos.",
+        contactTitle:"Contacto",
+        contactEmail:"Correo",
+        contactNote:"Podemos agregar botones de WhatsApp / Zangi aquí cuando quieras.",
+        footer:"© 2025 MAXIMAX Multi Services — Orange 🍊 & Black ⚫️"
+      }
+    };
+
+    function applyLang(lang){
+      const dict = I18N[lang] || I18N.en;
+      document.documentElement.lang = (lang === "kr" ? "ht" : lang);
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if(dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+      localStorage.setItem("mm_lang", lang);
+      document.getElementById("lang").value = lang;
+    }
+
+    const saved = localStorage.getItem("mm_lang") || "en";
+    document.getElementById("lang").addEventListener("change", e => applyLang(e.target.value));
+    applyLang(saved);
+  </script>
+</body>
+</html>
