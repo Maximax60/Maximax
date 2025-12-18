@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MAXIMAX Multi Services</title>
+
+  <style>
+    :root{
+      --bg:#050505;
+      --panel:#0f0f0f;
+      --panel2:#141414;
+      --text:#f2f2f2;
+      --muted:#bdbdbd;
+      --accent:#ff8c00;     /* orange */
+      --accent2:#ffb347;    /* light orange */
+      --line:rgba(255,140,0,.45);
+      --shadow:0 10px 30px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:radial-gradient(900px 500px at 70% 0%, rgba(255,140,0,.18), transparent 55%),
+                 radial-gradient(900px 600px at 10% 40%, rgba(255,140,0,.10), transparent 60%),
+                 var(--bg);
+      color:var(--text);
+      font-family:Arial, Helvetica, sans-serif;
+      min-height:100vh;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1150px;margin:0 auto;padding:20px 16px 90px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(20,20,20,.85), rgba(8,8,8,.75));
+      box-shadow:var(--shadow);
+      position:sticky; top:10px; z-index:50;
+      backdrop-filter:blur(8px);
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:6px;
+      line-height:1;
+    }
+    .brand .title{
+      font-weight:1000; letter-spacing:.5px;
+      color:var(--accent2); font-size:18px;
+      text-transform:uppercase;
+    }
+    .brand .slogan{
+      font-size:12px; color:var(--muted); font-weight:700;
+    }
+    nav{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .pill{
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.25);
+      font-weight:900;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.35px;
+      cursor:pointer;
+      transition:.15s;
+    }
+    .pill:hover{transform:translateY(-1px); background:rgba(255,140,0,.10)}
+    .pill.active{background:linear-gradient(180deg,var(--accent2),var(--accent)); color:#111}
+    .langBar{
+      display:flex; align-items:center; gap:8px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.25);
+      padding:7px 10px;
+      border-radius:999px;
+    }
+    .langBar .lbl{font-size:11px;color:var(--muted);font-weight:1000;letter-spacing:.5px}
+    .langBtn{
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.35);
+      color:var(--text);
+      font-weight:1000;
+      padding:7px 10px;
+      border-radius:999px;
+      cursor:pointer;
+      font-size:12px;
+      transition:.15s;
+    }
+    .langBtn:hover{background:rgba(255,140,0,.12); transform:translateY(-1px)}
+    .langBtn.active{background:linear-gradient(180deg,var(--accent2),var(--accent)); color:#111}
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+    }
+    @media(max-width:900px){
+      .grid{grid-template-columns:1fr}
+      nav{justify-content:flex-start}
+      .topbar{position:static}
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(18,18,18,.92), rgba(10,10,10,.86));
+      box-shadow:var(--shadow);
+      padding:16px;
+    }
+    .card h2{
+      margin:0 0 10px;
+      color:var(--accent2);
+      font-size:20px;
+      letter-spacing:.3px;
+      text-transform:capitalize;
+    }
+    .muted{color:var(--muted);font-weight:700}
+    .ctaRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .cta{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,140,0,.65);
+      background:rgba(0,0,0,.35);
+      color:var(--text);
+      font-weight:1000;
+      cursor:pointer;
+      transition:.15s;
+      min-width:170px;
+    }
+    .cta.primary{
+      background:linear-gradient(180deg,var(--accent2),var(--accent));
+      color:#111;
+      border-color:rgba(255,140,0,.95);
+    }
+    .cta:hover{transform:translateY(-1px)}
+    .twoCol{
+      display:grid; grid-template-columns:1fr 1fr; gap:16px;
+    }
+    @media(max-width:900px){.twoCol{grid-template-columns:1fr}}
+    ul{margin:10px 0 0 18px}
+    li{margin:6px 0}
+    .sectionTitle{
+      margin:18px 0 10px;
+      font-weight:1000;
+      color:var(--accent2);
+      text-transform:uppercase;
+      letter-spacing:.35px;
+      font-size:13px;
+    }
+    .hidden{display:none !important}
+    .footerNote{
+      margin-top:14px;
+      font-size:12px;
+      color:var(--muted);
+      border-top:1px solid rgba(255,140,0,.20);
+      padding-top:12px;
+    }
+    /* simple resume modal */
+    .modalBack{
+      position:fixed; inset:0; background:rgba(0,0,0,.65);
+      display:none; align-items:center; justify-content:center;
+      z-index:9999;
+      padding:18px;
+    }
+    .modal{
+      width:min(820px, 98vw);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(18,18,18,.96), rgba(8,8,8,.92));
+      box-shadow:0 30px 70px rgba(0,0,0,.65);
+      padding:16px;
+      position:relative;
+    }
+    .modal h3{margin:0 0 10px;color:var(--accent2);font-size:18px}
+    .closeX{
+      position:absolute; right:12px; top:10px;
+      border:1px solid rgba(255,140,0,.45);
+      background:rgba(0,0,0,.35);
+      color:var(--text);
+      font-weight:1000;
+      border-radius:12px;
+      padding:6px 10px;
+      cursor:pointer;
+    }
+    .formGrid{
+      display:grid; grid-template-columns:1fr 1fr; gap:12px;
+    }
+    @media(max-width:720px){.formGrid{grid-template-columns:1fr}}
+    label{font-size:12px;color:var(--muted);font-weight:900}
+    input, textarea{
+      width:100%;
+      margin-top:6px;
+      padding:10px 10px;
+      border-radius:12px;
+      border:1px solid rgba(255,140,0,.35);
+      background:rgba(0,0,0,.35);
+      color:var(--text);
+      outline:none;
+    }
+    textarea{min-height:90px; resize:vertical}
+    .modalActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .small{min-width:auto}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="brand">
+        <div class="title" id="t_brand">MAXIMAX Multi Services</div>
+        <div class="slogan" id="t_slogan">MAXIMAX ALWAYS MAXIMIZED</div>
+      </div>
+
+      <nav>
+        <a class="pill active" href="#home" id="nav_home">HOME</a>
+        <a class="pill" href="#services" id="nav_services">SERVICES</a>
+        <a class="pill" href="#forms" id="nav_forms">FORMS</a>
+        <a class="pill" href="#alerts" id="nav_alerts">ALERTS</a>
+        <a class="pill" href="#contact" id="nav_contact">CONTACT</a>
+
+        <div class="langBar" id="langBar">
+          <span class="lbl" id="t_lang">LANG</span>
+          <button class="langBtn active" type="button" data-lang="en">EN</button>
+          <button class="langBtn" type="button" data-lang="kr">KR</button>
+          <button class="langBtn" type="button" data-lang="es">ES</button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- HOME -->
+    <section id="home" class="grid">
+      <div class="card">
+        <h2 id="t_welcome">Welcome</h2>
+        <div class="muted" id="t_homeDesc">
+          Your one-stop solution for immigration, taxes, benefits (SNAP/Medicaid/SSA), housing (HUD/Section 8), and official government forms.
+        </div>
+
+        <div class="ctaRow">
+          <a class="cta primary" href="#forms" id="btn_forms">Open Forms Library</a>
+          <button class="cta" type="button" id="btn_resume">Create Your Resume</button>
+          <a class="cta" href="#forms" id="btn_poa">Power of Attorney</a>
+        </div>
+
+        <div class="footerNote" id="t_note">
+          Tip: Use the Forms Library to go directly to official sites. For urgent changes, check Alerts.
+        </div>
+      </div>
+
+      <div class="twoCol">
+        <div class="card" id="services">
+          <div class="sectionTitle" id="t_servicesTitle">Services</div>
+          <ul id="t_servicesList">
+            <li>Immigration Assistance (guidance, documents, checklists)</li>
+            <li>Tax Support (IRS forms, help preparing files)</li>
+            <li>Benefits Help (SNAP / Medicaid / SSA)</li>
+            <li>Housing (HUD / Section 8)</li>
+            <li>Translation Assistance (Kreyòl ⇄ English official format)</li>
+          </ul>
+        </div>
+
+        <div class="card" id="alerts">
+          <div class="sectionTitle" id="t_alertsTitle">Alerts & Updates</div>
+          <div class="muted" id="t_alertsDesc">
+            Use this area to post urgent updates: new immigration rules, IRS deadlines, processing alerts, required evidence, etc.
+          </div>
+          <div style="margin-top:10px">
+            <a class="pill" href="#alertsPage" id="btn_alertsPage">OPEN ALERTS PAGE</a>
+          </div>
+          <div class="sectionTitle" style="margin-top:14px" id="t_fedTitle">Federal Register — Daily Updates</div>
+          <a class="pill" href="https://www.federalregister.gov/" target="_blank" rel="noopener">Federal Register - Search & Daily Content</a>
+          <a class="pill" style="display:inline-block;margin-top:10px" href="https://www.govinfo.gov/app/collection/FR" target="_blank" rel="noopener">Federal Register Archive (govinfo.gov)</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMS (simple placeholder / your current forms page can stay separate; this is just a section) -->
+    <section id="forms" class="card" style="margin-top:16px">
+      <h2 id="t_formsTitle">Forms Library</h2>
+      <div class="muted" id="t_formsDesc">
+        Direct access to official forms for IRS, benefits, housing, and more. (Keep your existing Forms page links if you already have them.)
+      </div>
+      <div class="ctaRow" style="margin-top:12px">
+        <a class="cta" href="https://www.irs.gov/forms-instructions" target="_blank" rel="noopener">IRS Forms & Instructions</a>
+        <a class="cta" href="https://www.irs.gov/forms-pubs/about-form-1040" target="_blank" rel="noopener">Form 1040 — Individual Tax Return</a>
+        <a class="cta" href="https://www.irs.gov/payments" target="_blank" rel="noopener">IRS Payments (Official)</a>
+        <a class="cta" href="https://www.irs.gov/individuals/get-transcript" target="_blank" rel="noopener">Get IRS Transcript</a>
+      </div>
+      <div class="ctaRow">
+        <a class="cta" href="https://www.usa.gov/benefits" target="_blank" rel="noopener">Benefits Finder (USA.gov)</a>
+        <a class="cta" href="https://www.ssa.gov/forms/" target="_blank" rel="noopener">SSA Forms (Official)</a>
+        <a class="cta" href="https://www.medicaid.gov/" target="_blank" rel="noopener">Medicaid (Official)</a>
+        <a class="cta" href="https://www.fns.usda.gov/snap/apply" target="_blank" rel="noopener">SNAP (USDA Official)</a>
+      </div>
+      <div class="ctaRow">
+        <a class="cta" href="https://www.hud.gov/" target="_blank" rel="noopener">Housing (HUD Official)</a>
+        <a class="cta" href="https://www.dol.gov/general/topic/unemployment-insurance" target="_blank" rel="noopener">Unemployment (DOL Official)</a>
+        <a class="cta" href="https://www.usa.gov/child-support" target="_blank" rel="noopener">Child Support (USA.gov)</a>
+      </div>
+
+      <div class="sectionTitle" style="margin-top:16px" id="t_poaTitle">Power of Attorney</div>
+      <div class="muted" id="t_poaDesc">
+        If you need a Power of Attorney prepared or reviewed, contact us and we’ll guide you through the correct format.
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card" style="margin-top:16px">
+      <h2 id="t_contactTitle">Contact</h2>
+      <div class="muted" id="t_contactDesc">
+        Reach out for help with forms, document translation, resume support, or urgent alerts affecting your case.
+      </div>
+      <div class="ctaRow" style="margin-top:12px">
+        <a class="cta primary" href="mailto:maximaxmultiservices@gmail.com">Email Us</a>
+        <a class="cta" href="#home">Back to Top</a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- RESUME MODAL -->
+  <div class="modalBack" id="resumeModal">
+    <div class="modal">
+      <button class="closeX" id="closeResume">X</button>
+      <h3 id="t_resumeTitle">Create Your Resume</h3>
+
+      <div class="formGrid">
+        <div>
+          <label id="t_fullName">Full Name</label>
+          <input id="r_name" placeholder="John Doe" />
+        </div>
+        <div>
+          <label id="t_phone">Phone</label>
+          <input id="r_phone" placeholder="(000) 000-0000" />
+        </div>
+        <div>
+          <label id="t_email">Email</label>
+          <input id="r_email" placeholder="name@email.com" />
+        </div>
+        <div>
+          <label id="t_address">Address</label>
+          <input id="r_address" placeholder="City, State" />
+        </div>
+        <div style="grid-column:1/-1">
+          <label id="t_exp">Experience</label>
+          <textarea id="r_exp" placeholder="Your job experience..."></textarea>
+        </div>
+        <div style="grid-column:1/-1">
+          <label id="t_edu">Education</label>
+          <textarea id="r_edu" placeholder="Your education..."></textarea>
+        </div>
+        <div style="grid-column:1/-1">
+          <label id="t_skills">Skills</label>
+          <textarea id="r_skills" placeholder="Your skills..."></textarea>
+        </div>
+      </div>
+
+      <div class="modalActions">
+        <button class="cta primary small" id="genResume">Generate</button>
+        <button class="cta small" id="copyResume">Copy</button>
+      </div>
+
+      <div class="card" style="margin-top:12px" id="resumeOutCard">
+        <div class="sectionTitle">Preview</div>
+        <pre id="resumeOut" style="white-space:pre-wrap;margin:0;color:#eaeaea"></pre>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------- NAV ACTIVE ----------
+    (function(){
+      const pills = document.querySelectorAll("nav .pill");
+      function setActiveByHash(){
+        const hash = (location.hash || "#home").toLowerCase();
+        pills.forEach(p=>p.classList.remove("active"));
+        const match = Array.from(pills).find(p => (p.getAttribute("href")||"").toLowerCase() === hash);
+        if(match) match.classList.add("active");
+      }
+      window.addEventListener("hashchange", setActiveByHash);
+      setActiveByHash();
+    })();
+
+    // ---------- RESUME MODAL ----------
+    const resumeModal = document.getElementById("resumeModal");
+    document.getElementById("btn_resume").addEventListener("click", ()=> resumeModal.style.display="flex");
+    document.getElementById("closeResume").addEventListener("click", ()=> resumeModal.style.display="none");
+    resumeModal.addEventListener("click", (e)=>{ if(e.target === resumeModal) resumeModal.style.display="none"; });
+
+    function buildResume(){
+      const name = document.getElementById("r_name").value.trim();
+      const phone = document.getElementById("r_phone").value.trim();
+      const email = document.getElementById("r_email").value.trim();
+      const address = document.getElementById("r_address").value.trim();
+      const exp = document.getElementById("r_exp").value.trim();
+      const edu = document.getElementById("r_edu").value.trim();
+      const skills = document.getElementById("r_skills").value.trim();
+
+      return [
+        (name||""),
+        [address, phone, email].filter(Boolean).join(" | "),
+        "",
+        "PROFESSIONAL SUMMARY",
+        "Motivated professional with strong work ethic and attention to detail. Seeking an opportunity to contribute skills and grow within a team.",
+        "",
+        "EXPERIENCE",
+        (exp||"-"),
+        "",
+        "EDUCATION",
+        (edu||"-"),
+        "",
+        "SKILLS",
+        (skills||"-")
+      ].join("\n");
+    }
+
+    document.getElementById("genResume").addEventListener("click", ()=>{
+      document.getElementById("resumeOut").textContent = buildResume();
+    });
+
+    document.getElementById("copyResume").addEventListener("click", async ()=>{
+      const text = document.getElementById("resumeOut").textContent || buildResume();
+      try{
+        await navigator.clipboard.writeText(text);
+        alert("Copied!");
+      }catch(e){
+        alert("Copy failed. Select the text and copy manually.");
+      }
+    });
+
+    // ---------- LANGUAGE TOGGLE ----------
+    const T = {
+      en:{
+        nav_home:"HOME", nav_services:"SERVICES", nav_forms:"FORMS", nav_alerts:"ALERTS", nav_contact:"CONTACT",
+        t_welcome:"Welcome",
+        t_homeDesc:"Your one-stop solution for immigration, taxes, benefits (SNAP/Medicaid/SSA), housing (HUD/Section 8), and official government forms.",
+        btn_forms:"Open Forms Library", btn_poa:"Power of Attorney",
+        t_servicesTitle:"Services",
+        t_servicesList:[
+          "Immigration Assistance (guidance, documents, checklists)",
+          "Tax Support (IRS forms, help preparing files)",
+          "Benefits Help (SNAP / Medicaid / SSA)",
+          "Housing (HUD / Section 8)",
+          "Translation Assistance (Kreyòl ⇄ English official format)"
+        ],
+        t_alertsTitle:"Alerts & Updates",
+        t_alertsDesc:"Use this area to post urgent updates: new immigration rules, IRS deadlines, processing alerts, required evidence, etc.",
+        t_fedTitle:"Federal Register — Daily Updates",
+        t_formsTitle:"Forms Library",
+        t_formsDesc:"Direct access to official forms for IRS, benefits, housing, and more. (Keep your existing Forms page links if you already have them.)",
+        t_poaTitle:"Power of Attorney",
+        t_poaDesc:"If you need a Power of Attorney prepared or reviewed, contact us and we’ll guide you through the correct format.",
+        t_contactTitle:"Contact",
+        t_contactDesc:"Reach out for help with forms, document translation, resume support, or urgent alerts affecting your case.",
+        t_resumeTitle:"Create Your Resume",
+        t_fullName:"Full Name", t_phone:"Phone", t_email:"Email", t_address:"Address",
+        t_exp:"Experience", t_edu:"Education", t_skills:"Skills",
+        t_note:"Tip: Use the Forms Library to go directly to official sites. For urgent changes, check Alerts."
+      },
+      kr:{
+        nav_home:"AKÈY", nav_services:"SÈVIS", nav_forms:"FÒM", nav_alerts:"ALÈT", nav_contact:"KONTAK",
+        t_welcome:"Byenveni",
+        t_homeDesc:"Solisyon ou an sèl kote pou imigrasyon, taks, asistans benefis (SNAP/Medicaid/SSA), lojman (HUD/Seksyon 8), ak fòm gouvènman ofisyèl.",
+        btn_forms:"Ouvri Bibliyotèk Fòm", btn_poa:"Pouvwa Avoka",
+        t_servicesTitle:"Sèvis",
+        t_servicesList:[
+          "Asistans Imigrasyon (gid, dokiman, lis verifikasyon)",
+          "Sipò Taks (fòm IRS, ede prepare dosye)",
+          "Asistans Benefis (SNAP / Medicaid / SSA)",
+          "Lojman (HUD / Seksyon 8)",
+          "Asistans Tradiksyon (Kreyòl ⇄ Anglè fòm ofisyèl)"
+        ],
+        t_alertsTitle:"Alèt & Mizajou",
+        t_alertsDesc:"Sèvi ak zòn sa a pou mete mizajou ijans: nouvo règ imigrasyon, delè IRS, alèt pwosesis, prèv obligatwa, elatriye.",
+        t_fedTitle:"Federal Register — Mizajou Chak Jou",
+        t_formsTitle:"Bibliyotèk Fòm",
+        t_formsDesc:"Aksè dirèk sou fòm ofisyèl pou IRS, benefis, lojman, elatriye. (Ou ka kenbe lyen Forms ou yo si ou deja genyen yo.)",
+        t_poaTitle:"Pouvwa Avoka",
+        t_poaDesc:"Si w bezwen Pouvwa Avoka prepare oswa verifye, kontakte nou n ap gide w sou bon fòma a.",
+        t_contactTitle:"Kontak",
+        t_contactDesc:"Kontakte nou pou èd ak fòm, tradiksyon dokiman, rezime, oswa alèt ijans sou dosye w.",
+        t_resumeTitle:"Kreye Rezime w",
+        t_fullName:"Non Konplè", t_phone:"Telefòn", t_email:"Imèl", t_address:"Adrès",
+        t_exp:"Eksperyans", t_edu:"Edikasyon", t_skills:"Konpetans",
+        t_note:"Ti konsèy: Itilize Forms Library pou ale dirèk sou sit ofisyèl yo. Pou ijans, gade Alèt."
+      },
+      es:{
+        nav_home:"INICIO", nav_services:"SERVICIOS", nav_forms:"FORMULARIOS", nav_alerts:"ALERTAS", nav_contact:"CONTACTO",
+        t_welcome:"Bienvenido",
+        t_homeDesc:"Tu solución en un solo lugar para inmigración, impuestos, beneficios (SNAP/Medicaid/SSA), vivienda (HUD/Sección 8) y formularios oficiales del gobierno.",
+        btn_forms:"Abrir Biblioteca de Formularios", btn_poa:"Poder Notarial",
+        t_servicesTitle:"Servicios",
+        t_servicesList:[
+          "Asistencia de Inmigración (guía, documentos, listas)",
+          "Soporte de Impuestos (formularios IRS, preparación)",
+          "Ayuda de Beneficios (SNAP / Medicaid / SSA)",
+          "Vivienda (HUD / Sección 8)",
+          "Asistencia de Traducción (Kreyòl ⇄ Inglés formato oficial)"
+        ],
+        t_alertsTitle:"Alertas y Actualizaciones",
+        t_alertsDesc:"Usa esta área para publicar actualizaciones urgentes: nuevas reglas, fechas límite del IRS, alertas de procesamiento, evidencia requerida, etc.",
+        t_fedTitle:"Federal Register — Actualizaciones Diarias",
+        t_formsTitle:"Biblioteca de Formularios",
+        t_formsDesc:"Acceso directo a formularios oficiales de IRS, beneficios, vivienda y más. (Mantén tus enlaces si ya los tienes.)",
+        t_poaTitle:"Poder Notarial",
+        t_poaDesc:"Si necesitas un Poder Notarial preparado o revisado, contáctanos y te guiaremos.",
+        t_contactTitle:"Contacto",
+        t_contactDesc:"Contáctanos para ayuda con formularios, traducción, currículum o alertas urgentes.",
+        t_resumeTitle:"Crear tu Currículum",
+        t_fullName:"Nombre Completo", t_phone:"Teléfono", t_email:"Correo", t_address:"Dirección",
+        t_exp:"Experiencia", t_edu:"Educación", t_skills:"Habilidades",
+        t_note:"Consejo: Usa la Biblioteca para ir a sitios oficiales. Para urgencias, revisa Alertas."
+      }
+    };
+
+    function setText(id, val){
+      const el = document.getElementById(id);
+      if(el) el.textContent = val;
+    }
+
+    function setList(id, items){
+      const ul = document.getElementById(id);
+      if(!ul) return;
+      ul.innerHTML = "";
+      items.forEach(t=>{
+        const li = document.createElement("li");
+        li.textContent = t;
+        ul.appendChild(li);
+      });
+    }
+
+    function applyLang(lang){
+      const d = T[lang] || T.en;
+
+      Object.keys(d).forEach(k=>{
+        if(k === "t_servicesList") return;
+        setText(k, d[k]);
+      });
+      setList("t_servicesList", d.t_servicesList);
+
+      // buttons text
+      document.getElementById("btn_forms").textContent = d.btn_forms;
+      document.getElementById("btn_poa").textContent = d.btn_poa;
+
+      // resume modal labels
+      setText("t_resumeTitle", d.t_resumeTitle);
+      setText("t_fullName", d.t_fullName);
+      setText("t_phone", d.t_phone);
+      setText("t_email", d.t_email);
+      setText("t_address", d.t_address);
+      setText("t_exp", d.t_exp);
+      setText("t_edu", d.t_edu);
+      setText("t_skills", d.t_skills);
+
+      // store & set active
+      try{ localStorage.setItem("mm_lang", lang); }catch(e){}
+      document.querySelectorAll(".langBtn").forEach(b=>b.classList.remove("active"));
+      const active = document.querySelector(`.langBtn[data-lang="${lang}"]`);
+      if(active) active.classList.add("active");
+    }
+
+    // init saved language
+    (function(){
+      const saved = (()=>{ try{return localStorage.getItem("mm_lang")||"en"}catch(e){return "en"} })();
+      applyLang(saved);
+      document.querySelectorAll(".langBtn").forEach(btn=>{
+        btn.addEventListener("click", ()=> applyLang(btn.getAttribute("data-lang")));
+      });
+    })();
+  </script>
+</body>
+</html>
