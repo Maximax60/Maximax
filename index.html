@@ -1,126 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAXIMAX Multi Services</title>
-    
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #222; /* Dark background */
-            color: #fff; /* White text */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MAXIMAX Multi Services</title>
 
-        header {
-            background-color: #f09d22; /* Apricot Orange */
-            padding: 20px;
-            text-align: center;
-        }
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --panel:#141414;
+      --panel2:#1b1b1b;
+      --text:#f2f2f2;
+      --muted:#bdbdbd;
+      --accent:#f09d22; /* apricot orange */
+      --border:rgba(240,157,34,.35);
+    }
 
-        header h1 {
-            margin: 0;
-            color: white;
-        }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:linear-gradient(180deg,#070707,var(--bg));
+      color:var(--text);
+    }
 
-        nav {
-            background-color: #333; /* Dark background */
-            padding: 10px 0;
-            text-align: center;
-        }
+    header{
+      padding:20px 16px;
+      border-bottom:1px solid var(--border);
+      background:rgba(0,0,0,.55);
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(6px);
+    }
 
-        nav a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 18px;
-        }
+    .wrap{max-width:1100px;margin:0 auto}
+    .brand{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+    }
+    .brand h1{
+      margin:0;
+      font-size:22px;
+      color:var(--accent);
+      letter-spacing:.5px;
+    }
+    .tag{color:var(--muted);font-size:13px;margin-top:4px}
 
-        nav a:hover {
-            color: #f09d22; /* Apricot Orange on hover */
-        }
+    nav{
+      margin-top:14px;
+      display:flex;flex-wrap:wrap;gap:10px;
+    }
+    nav a{
+      text-decoration:none;
+      color:var(--text);
+      border:1px solid var(--border);
+      padding:10px 12px;
+      border-radius:999px;
+      background:rgba(20,20,20,.75);
+      font-weight:700;
+      font-size:13px;
+    }
+    nav a:hover{background:rgba(240,157,34,.12)}
 
-        .main-section {
-            text-align: center;
-            padding: 40px;
-            background-color: #333; /* Dark background for content */
-        }
+    main{padding:22px 16px 60px}
+    .hero{
+      background:linear-gradient(180deg, rgba(240,157,34,.10), rgba(20,20,20,.88));
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:22px;
+    }
+    .hero h2{
+      margin:0 0 8px 0;
+      color:var(--accent);
+      font-size:26px;
+    }
+    .hero p{margin:0;color:var(--muted);line-height:1.6}
 
-        .main-section h2 {
-            color: #f09d22;
-        }
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:14px;
+    }
+    .card{
+      background:rgba(20,20,20,.85);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px;
+    }
+    .card h3{margin:0 0 10px 0;color:var(--accent)}
+    .card p,.card li{color:var(--muted);line-height:1.6}
 
-        .main-section p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
+    .col-6{grid-column:span 6}
+    .col-12{grid-column:span 12}
+    @media (max-width:860px){
+      .col-6{grid-column:span 12}
+      .brand{flex-direction:column;align-items:flex-start}
+    }
 
-        .main-section a {
-            color: white;
-            background-color: #f09d22; /* Apricot Orange */
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 20px;
-            display: inline-block;
-            margin-top: 20px;
-        }
+    .btn{
+      display:inline-block;
+      margin-top:10px;
+      padding:12px 14px;
+      border-radius:12px;
+      background:var(--accent);
+      color:#111;
+      font-weight:800;
+      text-decoration:none;
+      border:1px solid rgba(240,157,34,.65);
+    }
+    .btn:hover{filter:brightness(.95)}
 
-        .main-section a:hover {
-            background-color: #e0891c; /* Darker orange on hover */
-        }
+    .list a{
+      display:block;
+      margin:10px 0;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(27,27,27,.9);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:700;
+    }
+    .list a:hover{background:rgba(240,157,34,.12)}
 
-        footer {
-            background-color: #222;
-            text-align: center;
-            padding: 20px;
-            color: #f09d22;
-        }
-
-        footer a {
-            color: #f09d22;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            color: white;
-        }
-    </style>
+    footer{
+      border-top:1px solid var(--border);
+      padding:18px 16px;
+      color:var(--muted);
+      background:rgba(0,0,0,.55);
+    }
+  </style>
 </head>
+
 <body>
+  <header>
+    <div class="wrap">
+      <div class="brand">
+        <div>
+          <h1>MAXIMAX Multi Services</h1>
+          <div class="tag">MAXIMAX ALWAYS MAXIMIZED</div>
+        </div>
+      </div>
 
-    <!-- Header Section -->
-    <header>
-        <h1>MAXIMAX Multi Services</h1>
-    </header>
-
-    <!-- Navigation Bar -->
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="forms-library.html">Forms Library</a>
-        <a href="services.html">Services</a> <!-- Link to Services Page -->
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <!-- Main Content Section -->
-    <div class="main-section">
-        <h2>Welcome to MAXIMAX Multi Services</h2>
-        <p>Your One-Stop Solution for Government Forms and Services</p>
-        <p>Explore the services we provide, including tax forms, benefits, housing, and much more!</p>
-        
-        <!-- Link to the Forms Library -->
-        <a href="forms-library.html">Go to Forms Library</a>
+      <!-- NAV: pa gen okenn paj vid ankò. Tout se seksyon anndan index.html -->
+      <nav>
+        <a href="#home">HOME</a>
+        <a href="#services">SERVICES</a>
+        <a href="#forms">FORMS</a>
+        <a href="#alerts">ALERTS</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2025 MAXIMAX Multi Services. All Rights Reserved.</p>
-        <p>
-            <a href="mailto:info@maximaxservices.com">Email Us</a> | 
-            <a href="tel:+1234567890">Call Us</a>
+  <main class="wrap" id="home">
+    <section class="hero">
+      <h2>Welcome</h2>
+      <p>
+        Your one-stop solution for immigration, taxes, benefits (SNAP/Medicaid/SSA), housing (HUD/Section 8),
+        and official government forms.
+      </p>
+      <a class="btn" href="#forms">Open Forms Library</a>
+    </section>
+
+    <section class="grid">
+      <!-- SERVICES -->
+      <div class="card col-6" id="services">
+        <h3>Services</h3>
+        <ul>
+          <li><b>Immigration Assistance</b> (guidance, documents, checklists)</li>
+          <li><b>Tax Support</b> (IRS forms, help preparing files)</li>
+          <li><b>Benefits Help</b> (SNAP / Medicaid / SSA)</li>
+          <li><b>Housing</b> (HUD / Section 8)</li>
+          <li><b>Translation Assistance</b> (Creole ↔ English formats)</li>
+          <li><b>Resume Builder</b> (coming next step)</li>
+        </ul>
+      </div>
+
+      <!-- ALERTS -->
+      <div class="card col-6" id="alerts">
+        <h3>Alerts & Updates</h3>
+        <p><b>Post urgent updates here:</b> new immigration rules, IRS deadlines, required evidence, processing alerts, etc.</p>
+        <div class="list">
+          <a href="https://www.federalregister.gov/" target="_blank">Federal Register — Daily Updates</a>
+          <a href="https://www.uscis.gov/newsroom" target="_blank">USCIS — Newsroom</a>
+          <a href="https://www.irs.gov/newsroom" target="_blank">IRS — Newsroom</a>
+        </div>
+        <p style="margin-top:12px;color:var(--muted)">
+          (Next step: I can add a small “Add Alert” form that saves alerts in the browser or sends to your email.)
         </p>
-    </footer>
+      </div>
 
+      <!-- FORMS LIBRARY -->
+      <div class="card col-12" id="forms">
+        <h3>Forms Library</h3>
+        <div class="list">
+          <a href="https://www.irs.gov/forms-instructions" target="_blank">IRS Forms & Instructions</a>
+          <a href="https://www.irs.gov/forms-pubs/about-form-1040" target="_blank">Form 1040 — Individual Tax Return</a>
+          <a href="https://www.irs.gov/payments" target="_blank">IRS Payments (Official)</a>
+          <a href="https://www.irs.gov/individuals/get-transcript" target="_blank">Get IRS Transcript</a>
+
+          <a href="https://www.benefits.gov" target="_blank">Benefits Finder (USA.gov)</a>
+          <a href="https://www.ssa.gov/forms" target="_blank">SSA Forms (Official)</a>
+          <a href="https://www.medicaid.gov" target="_blank">Medicaid (Official)</a>
+          <a href="https://www.snap.gov" target="_blank">SNAP (USDA Official)</a>
+
+          <a href="https://www.hud.gov" target="_blank">Housing (HUD Official)</a>
+          <a href="https://www.dol.gov/ui" target="_blank">Unemployment (DOL Official)</a>
+          <a href="https://www.childsupport.gov" target="_blank">Child Support (USA.gov)</a>
+        </div>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="card col-12" id="contact">
+        <h3>Contact</h3>
+        <p>Email: <b>maximaxmultiservices@gmail.com</b></p>
+        <p style="color:var(--muted)">If you want, we can add WhatsApp / Zangi buttons here too.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © 2025 MAXIMAX Multi Services — Orange 🍊 & Black ⚫️
+    </div>
+  </footer>
 </body>
 </html>
+
