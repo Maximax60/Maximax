@@ -193,3 +193,110 @@
   tryLogo(LOGO_CANDIDATES, 0);
 })();
     </script>
+<script>
+/* MAXIMAX - FORCE BLACK/ORANGE + SAME LOGO HEADER (PASTE AT BOTTOM OF EVERY PAGE) */
+(function () {
+  var SLOGAN = "YES WE CAN.";
+  var LOGO_CANDIDATES = ["logo.png", "images/logo.png", "assets/logo.png"];
+
+  function injectCSS(){
+    var css = `
+      :root{ --mm-bg:#050505; --mm-card:#0b0b0b; --mm-orange:#ff8c00; --mm-text:#f2f2f2; }
+      html,body{margin:0;padding:0;background:var(--mm-bg) !important;color:var(--mm-text) !important;font-family:Arial,Helvetica,sans-serif}
+      body *{box-sizing:border-box}
+
+      /* KILL WHITE BACKGROUNDS EVERYWHERE */
+      body, main, section, header, footer, nav, article, aside, .container, .wrapper, .content, .page, .panel, .card, .box {
+        background: transparent !important;
+      }
+      /* Force dark surface on big blocks */
+      .container, .wrapper, .content, .page, .panel, .card, .box, .section, .block, .module {
+        background: rgba(10,10,10,.88) !important;
+        border: 1px solid rgba(255,140,0,.35) !important;
+        border-radius: 18px !important;
+      }
+
+      /* Inputs (to avoid white fields) */
+      input, textarea, select, option {
+        background: #0a0a0a !important;
+        color: var(--mm-text) !important;
+        border: 1px solid rgba(255,140,0,.55) !important;
+        border-radius: 12px !important;
+        outline: none !important;
+      }
+
+      a{color:inherit;text-decoration:none}
+      .mm-topbar{
+        display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+        padding:14px 16px;margin:14px;
+        border:1px solid rgba(255,140,0,.45);border-radius:18px;
+        background:linear-gradient(180deg, rgba(20,20,20,.92), rgba(8,8,8,.82)) !important;
+        box-shadow:0 10px 30px rgba(0,0,0,.45);
+        position:sticky;top:10px;z-index:9999;backdrop-filter:blur(7px);
+      }
+      .mm-brand{display:flex;align-items:center;gap:12px}
+      .mm-logo{width:54px;height:54px;border-radius:12px;object-fit:cover;border:1px solid rgba(255,140,0,.45);background:#000}
+      .mm-logoText{
+        width:54px;height:54px;border-radius:12px;border:1px solid rgba(255,140,0,.45);
+        display:flex;align-items:center;justify-content:center;background:#000;
+        color:#ffb347;font-weight:1000;letter-spacing:.5px;
+      }
+      .mm-title{font-weight:1000;letter-spacing:.4px;text-transform:uppercase;color:#ffb347;font-size:16px;line-height:1.1}
+      .mm-slogan{font-weight:1000;color:var(--mm-orange);margin-top:4px;font-size:12px;letter-spacing:.2px}
+      .mm-nav{display:flex;gap:10px;flex-wrap:wrap}
+      .mm-nav a{
+        padding:8px 12px;border-radius:999px;border:1px solid rgba(255,140,0,.45);
+        background:rgba(0,0,0,.28);font-weight:1000;font-size:12px;letter-spacing:.35px;text-transform:uppercase
+      }
+      .mm-nav a:hover{background:rgba(255,140,0,.12)}
+    `;
+    var styleTag = document.createElement("style");
+    styleTag.textContent = css;
+    document.head.appendChild(styleTag);
+    document.body.style.background = "#050505";
+    document.documentElement.style.background = "#050505";
+  }
+
+  function buildHeader(logoHTML){
+    if (document.getElementById("mmTopbar")) return;
+
+    var topbar = document.createElement("div");
+    topbar.id = "mmTopbar";
+    topbar.className = "mm-topbar";
+
+    topbar.innerHTML = `
+      <div class="mm-brand">
+        ${logoHTML}
+        <div>
+          <div class="mm-title">MAXIMAX Multi Services</div>
+          <div class="mm-slogan">${SLOGAN}</div>
+        </div>
+      </div>
+      <div class="mm-nav">
+        <a href="index.html">HOME</a>
+        <a href="services.html">SERVICES</a>
+        <a href="forms.html">FORMS</a>
+        <a href="alerts.html">ALERTS</a>
+        <a href="contact.html">CONTACT</a>
+      </div>
+    `;
+    document.body.insertBefore(topbar, document.body.firstChild);
+  }
+
+  function tryLogo(paths, i){
+    if(i >= paths.length){
+      buildHeader(`<div class="mm-logoText">MAX</div>`);
+      return;
+    }
+    var img = new Image();
+    img.onload = function(){
+      buildHeader(`<img class="mm-logo" src="${paths[i]}" alt="MAXIMAX Logo">`);
+    };
+    img.onerror = function(){ tryLogo(paths, i+1); };
+    img.src = paths[i] + "?v=" + Date.now();
+  }
+
+  injectCSS();
+  tryLogo(LOGO_CANDIDATES, 0);
+})();
+</script>
