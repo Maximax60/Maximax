@@ -193,7 +193,27 @@
         </ul>
       </div>
     </section>
+<!-- FIX LANGUAGE TOGGLE (NO GOOGLE TRANSLATE) -->
+<script>
+  (function () {
+    function go(page){ window.location.href = page; }
 
+    // if your buttons are links (<a>) with text EN / KR / ES
+    document.querySelectorAll('a,button').forEach(function(el){
+      const t = (el.textContent || '').trim().toUpperCase();
+
+      // Stop Google Translate links if they exist
+      const href = (el.getAttribute && el.getAttribute('href')) ? el.getAttribute('href') : '';
+      if (href && href.includes('translate.google')) {
+        el.setAttribute('href', '#');
+      }
+
+      if (t === 'EN') { el.onclick = function(e){ e.preventDefault(); go('index.html'); }; }
+      if (t === 'KR') { el.onclick = function(e){ e.preventDefault(); go('index-kr.html'); }; }
+      if (t === 'ES' || t === 'ESPAÑOL') { el.onclick = function(e){ e.preventDefault(); go('index-es.html'); }; }
+    });
+  })();
+</script>
     <div class="foot">© <span id="y"></span> MAXIMAX Multi Services • www.maximaxmultiservices.com</div>
   </div>
 
