@@ -104,7 +104,96 @@ i<!doctype html>
       .hero{grid-template-columns:1fr}
       .grid{grid-template-columns:1fr}
       .brand{min-width:auto}
-    }
+    }<style>
+  :root{
+    --bg:#0b0f16;
+    --panel:#101826;
+    --border:#2a3a55;
+    --text:#e9f0ff;
+    --muted:#a9b7d3;
+    --accent:#ffb100; /* apricot/orange */
+  }
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--bg) !important;
+    color:var(--text) !important;
+  }
+  .container{max-width:1100px;margin:0 auto;padding:20px}
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:14px;padding:12px 16px;border:1px solid var(--border);
+    background:rgba(16,24,38,.85);border-radius:16px;
+  }
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand img{height:42px;width:auto;display:block}
+  .brand .title{font-weight:800;letter-spacing:.5px;color:var(--accent)}
+  .brand .tag{font-size:12px;color:var(--muted)}
+  .nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .btn{
+    border:1px solid var(--border);
+    background:rgba(0,0,0,.25);
+    color:var(--text);
+    padding:10px 14px;border-radius:999px;
+    cursor:pointer;text-decoration:none;display:inline-block;
+    font-weight:700;
+  }
+  .btn:hover{border-color:var(--accent)}
+  .btn.primary{background:var(--accent);color:#161616;border-color:#f2a000}
+  .lang{display:flex;gap:8px;align-items:center}
+  .lang .btn{padding:8px 12px;font-size:12px}
+  .section{
+    margin-top:18px;padding:16px;border-radius:16px;
+    border:1px solid var(--border);
+    background:rgba(16,24,38,.75);
+  }
+  .section h2{margin:0 0 10px 0;color:var(--accent)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+  .card{
+    border:1px solid var(--border);
+    background:rgba(0,0,0,.20);
+    border-radius:16px;padding:14px;
+  }
+  .card h3{margin:0 0 8px 0}
+  .card ul{margin:8px 0 0 18px;color:var(--muted)}
+  .small{color:var(--muted);font-size:12px}
+  /* Kache Google translate bar la pou li pa gate layout */
+  .goog-te-banner-frame.skiptranslate { display: none !important; }
+  body { top: 0px !important; }
+</style>
+
+<script>
+  // Google Translate init
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,es,ht', // EN + Spanish + Haitian Creole
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+
+  // Chanje lang san kreye nouvo paj (pa gen 404)
+  function setLang(lang){
+    // lang: 'en' 'es' 'ht'
+    const trySet = () => {
+      const combo = document.querySelector('select.goog-te-combo');
+      if(!combo) return false;
+      combo.value = lang;
+      combo.dispatchEvent(new Event('change'));
+      return true;
+    };
+
+    // Eseye plizyè fwa (paske script la konn pran 1-2 segond)
+    let tries = 0;
+    const timer = setInterval(() => {
+      tries++;
+      if(trySet() || tries > 20) clearInterval(timer);
+    }, 250);
+  }
+</script>
+
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </style>
 </head>
 <body>
