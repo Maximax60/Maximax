@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MAXIMAX Multi Services — Forms</title>
+  <style>
+    :root{--bg:#0b0f16;--panel:#111827;--panel2:#0f172a;--text:#e5e7eb;--muted:#94a3b8;--accent:#f59e0b;--accent2:#ffb020;--line:rgba(245,158,11,.35);--shadow:0 18px 60px rgba(0,0,0,.45);--radius:18px}
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(1200px 600px at 20% 15%, rgba(245,158,11,.18), transparent 55%),linear-gradient(180deg,#070a10 0%,#0b0f16 100%);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:18px 16px 40px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;background:linear-gradient(90deg, rgba(245,158,11,.22), rgba(17,24,39,.7));border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);position:sticky;top:12px;z-index:10;backdrop-filter:blur(10px)}
+    .brand{display:flex;align-items:center;gap:12px;min-width:240px}
+    .brand img{width:42px;height:42px;object-fit:contain;border-radius:10px;background:rgba(0,0,0,.25);border:1px solid var(--line);padding:4px}
+    .brand .t1{font-weight:900;letter-spacing:.6px;color:var(--accent2);font-size:16px;line-height:1.1}
+    .brand .t2{font-weight:700;color:var(--muted);font-size:12px;margin-top:2px}
+    .nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+    .pill{padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(15,23,42,.7);font-weight:800;letter-spacing:.4px;font-size:12px}
+    .pill.active{background:rgba(245,158,11,.18);border-color:rgba(245,158,11,.55)}
+    .langs{display:flex;gap:8px;align-items:center}
+    .langbtn{width:44px;text-align:center;padding:10px 0;border-radius:999px;border:1px solid var(--line);background:rgba(15,23,42,.7);font-weight:900;font-size:12px}
+    .langbtn.active{background:rgba(245,158,11,.2)}
+    .card{margin-top:18px;background:linear-gradient(180deg, rgba(17,24,39,.92), rgba(15,23,42,.92));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    h1{margin:0;color:var(--accent2)} p{color:var(--muted);line-height:1.6}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr} .brand{min-width:auto}}
+    .box{border:1px solid var(--line);border-radius:16px;padding:14px;background:rgba(0,0,0,.18)}
+    .box h3{margin:0 0 10px;font-size:15px}
+    .links a{display:block;margin:8px 0;padding:10px 12px;border-radius:14px;border:1px solid var(--line);background:rgba(15,23,42,.75);font-weight:800}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/logo.png" alt="MAXIMAX logo">
+        <div>
+          <div class="t1">MAXIMAX MULTI SERVICES</div>
+          <div class="t2">MAXIMAX ALWAYS MAXIMIZED • YES WE CAN.</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="pill" href="index.html">HOME</a>
+        <a class="pill" href="services.html">SERVICES</a>
+        <a class="pill active" href="forms.html">FORMS</a>
+        <a class="pill" href="alerts.html">ALERTS</a>
+        <a class="pill" href="contact.html">CONTACT</a>
+      </nav>
+
+      <div class="langs">
+        <a class="langbtn active" href="forms.html">EN</a>
+        <a class="langbtn" href="forms-kr.html">KR</a>
+        <a class="langbtn" href="forms-es.html">ES</a>
+      </div>
+    </header>
+
+    <section class="card">
+      <h1>Forms Library</h1>
+      <p>Direct links to official sources. (We can expand this list anytime.)</p>
+
+      <div class="grid">
+        <div class="box">
+          <h3>IRS — Tax (Official)</h3>
+          <div class="links">
+            <a href="https://www.irs.gov/forms-instructions" target="_blank" rel="noopener">IRS Forms & Instructions</a>
+            <a href="https://www.irs.gov/forms-pubs/about-form-1040" target="_blank" rel="noopener">Form 1040 — Individual Tax Return</a>
+            <a href="https://www.irs.gov/payments" target="_blank" rel="noopener">IRS Payments (Official)</a>
+            <a href="https://www.irs.gov/individuals/get-transcript" target="_blank" rel="noopener">Get IRS Transcript</a>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3>Benefits — SNAP / Medicaid / SSA</h3>
+          <div class="links">
+            <a href="https://www.usa.gov/benefits" target="_blank" rel="noopener">Benefits Finder (USA.gov)</a>
+            <a href="https://www.ssa.gov/forms/" target="_blank" rel="noopener">SSA Forms (Official)</a>
+            <a href="https://www.medicaid.gov/" target="_blank" rel="noopener">Medicaid (Official)</a>
+            <a href="https://www.fns.usda.gov/snap" target="_blank" rel="noopener">SNAP (USDA Official)</a>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3>Housing / Unemployment / Child Support</h3>
+          <div class="links">
+            <a href="https://www.hud.gov/" target="_blank" rel="noopener">Housing (HUD Official)</a>
+            <a href="https://www.dol.gov/general/topic/unemployment-insurance" target="_blank" rel="noopener">Unemployment (DOL Official)</a>
+            <a href="https://www.acf.hhs.gov/css" target="_blank" rel="noopener">Child Support (HHS/ACF)</a>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3>Immigration (USCIS)</h3>
+          <div class="links">
+            <a href="https://www.uscis.gov/forms" target="_blank" rel="noopener">USCIS Forms (Official)</a>
+            <a href="https://www.uscis.gov/news" target="_blank" rel="noopener">USCIS News & Updates</a>
+            <a href="https://egov.uscis.gov/" target="_blank" rel="noopener">Check Case Status</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
