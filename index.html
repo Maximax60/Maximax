@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MAXIMAX Multi Services — Home</title>
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:#121923;
+      --panel2:#0f1620;
+      --text:#e9eef6;
+      --muted:#a9b4c3;
+      --accent:#ffb100;
+      --accent2:#ff8a00;
+      --border:rgba(255,177,0,.35);
+      --shadow:0 10px 30px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:radial-gradient(1200px 700px at 20% 0%, rgba(255,177,0,.12), transparent 55%),
+                 radial-gradient(900px 600px at 95% 10%, rgba(255,138,0,.10), transparent 55%),
+                 var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1150px;margin:0 auto;padding:18px}
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,177,0,.10), rgba(18,25,35,.55));
+      box-shadow:var(--shadow);
+      position:sticky;top:10px;z-index:20;
+      backdrop-filter: blur(8px);
+    }
+    .brand{display:flex;align-items:center;gap:12px;min-width:260px}
+    .brand img{width:52px;height:52px;object-fit:contain;border-radius:12px;border:1px solid var(--border);background:rgba(0,0,0,.25)}
+    .brand .t1{font-weight:800;letter-spacing:.5px;color:var(--accent);line-height:1.05}
+    .brand .t2{font-size:12px;color:var(--muted);margin-top:2px}
+    .nav{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
+    .pill{
+      padding:10px 14px;border:1px solid var(--border);border-radius:999px;
+      background:rgba(0,0,0,.18);
+      font-weight:700;font-size:13px;letter-spacing:.3px;
+      transition:.15s ease;
+    }
+    .pill:hover{transform:translateY(-1px);border-color:rgba(255,177,0,.65)}
+    .pill.active{background:linear-gradient(180deg, rgba(255,177,0,.28), rgba(0,0,0,.10));}
+    .lang{display:flex;gap:8px;align-items:center}
+    .lang .tag{font-size:12px;color:var(--muted);margin-right:6px}
+    .lang a{padding:8px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(0,0,0,.18);font-weight:800;font-size:12px}
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(18,25,35,.85), rgba(15,22,32,.75));
+      box-shadow:var(--shadow);
+      padding:22px;
+      display:grid;grid-template-columns:1.4fr .9fr;gap:18px;
+    }
+    .hero h1{margin:0 0 8px;font-size:34px;line-height:1.1}
+    .hero p{margin:0;color:var(--muted);line-height:1.5}
+    .btnRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .btn{
+      display:inline-block;
+      padding:12px 14px;border-radius:14px;font-weight:900;
+      border:1px solid rgba(255,177,0,.75);
+      background:linear-gradient(180deg, rgba(255,177,0,.95), rgba(255,138,0,.75));
+      color:#101014;
+      box-shadow:0 10px 24px rgba(255,177,0,.12);
+    }
+    .btn.secondary{
+      background:rgba(0,0,0,.18);
+      color:var(--text);
+      border:1px solid var(--border);
+      box-shadow:none;
+    }
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+    .card{
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(18,25,35,.85), rgba(15,22,32,.75));
+      box-shadow:var(--shadow);
+      padding:16px;
+      min-height:160px;
+    }
+    .card h3{margin:0 0 10px;color:var(--accent)}
+    .card ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.6}
+    .foot{
+      margin:18px 0 8px;
+      color:var(--muted);
+      text-align:center;
+      font-size:12px;
+    }
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .brand{min-width:auto}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/maximax-owner.png" alt="MAXIMAX Logo" />
+        <div>
+          <div class="t1">MAXIMAX Multi Services</div>
+          <div class="t2">MAXIMAX ALWAYS MAXIMIZED • YES WE CAN.</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="pill active" href="index.html">HOME</a>
+        <a class="pill" href="services.html">SERVICES</a>
+        <a class="pill" href="forms.html">FORMS</a>
+        <a class="pill" href="alerts.html">ALERTS</a>
+        <a class="pill" href="contact.html">CONTACT</a>
+      </nav>
+
+      <div class="lang">
+        <span class="tag">LANG</span>
+        <!-- Static (NO JS): open Google-Translate version of THIS page -->
+        <a href="index.html" title="English">EN</a>
+        <a href="https://translate.google.com/translate?sl=en&tl=ht&u=https://www.maximaxmultiservices.com/index.html" title="Kreyòl">KR</a>
+        <a href="https://translate.google.com/translate?sl=en&tl=es&u=https://www.maximaxmultiservices.com/index.html" title="Español">ES</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1>Your One-Stop Solution for Government Forms and Services</h1>
+        <p>
+          Immigration assistance, tax support, benefits (SNAP/Medicaid/SSA), housing (HUD/Section 8),
+          and official government forms — all in one place.
+        </p>
+
+        <div class="btnRow">
+          <a class="btn" href="forms.html">Open Forms Library</a>
+          <a class="btn secondary" href="services.html">View Services</a>
+          <a class="btn secondary" href="alerts.html">Alerts & Updates</a>
+          <a class="btn secondary" href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Quick Actions</h3>
+        <ul>
+          <li>Go straight to official forms</li>
+          <li>Check urgent immigration/tax updates</li>
+          <li>Contact MAXIMAX for help</li>
+          <li>Power of Attorney support</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Services</h3>
+        <ul>
+          <li>Immigration Assistance (guidance, documents, checklists)</li>
+          <li>Tax Support (IRS forms, filing help, preparation)</li>
+          <li>Benefits Help (SNAP / Medicaid / SSA)</li>
+          <li>Housing (HUD / Section 8)</li>
+          <li>Translation Assistance</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Alerts & Updates</h3>
+        <ul>
+          <li>New rules & deadlines</li>
+          <li>USCIS policy changes</li>
+          <li>IRS season updates</li>
+          <li>Required evidence reminders</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Tip</h3>
+        <ul>
+          <li>Use Forms Library to reach official sources fast</li>
+          <li>Use Alerts for urgent updates</li>
+          <li>Need help? Contact us</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="foot">© <span id="y"></span> MAXIMAX Multi Services • www.maximaxmultiservices.com</div>
+  </div>
+
+  <script>
+    // harmless, optional: year only (can delete if you want 100% no JS)
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
