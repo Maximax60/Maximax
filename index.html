@@ -73,7 +73,9 @@ i<!doctype html>
     // --- 2) Simple language state via URL param: ?lang=en|kr|es ---
     const params = new URLSearchParams(window.location.search);
     const allowed = new Set(['en','kr','es']);
-    let lang = (params.get('lang') || 'en').toLowerCase();
+    
+   <html lang="ht">   
+      ;
     if (!allowed.has(lang)) lang = 'en';
 
     const toggle = document.getElementById('mmLang');
