@@ -16,7 +16,128 @@ i<!doctype html>
       --border:rgba(255,177,0,.35);
       --shadow:0 10px 30px rgba(0,0,0,.45);
       --radius:18px;
+    }<!-- ===================== MAXIMAX LANGUAGE TOGGLE (NO 404) ===================== -->
+<style>
+  /* Hide any old language toggles that might still exist */
+  .lang-toggle, .language-toggle, #languageToggle, #langToggle { display: none !important; }
+
+  /* New fixed language toggle */
+  .mm-lang {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 9999;
+    display: flex;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(0,0,0,0.70);
+    border: 1px solid rgba(255, 170, 60, 0.55);
+    backdrop-filter: blur(6px);
+  }
+  .mm-lang button{
+    cursor: pointer;
+    border: 1px solid rgba(255,170,60,0.55);
+    background: transparent;
+    color: #ffb24a;
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 8px 12px;
+    line-height: 1;
+  }
+  .mm-lang button.active{
+    background: #ffb24a;
+    color: #000;
+    border-color: #ffb24a;
+  }
+</style>
+
+<div class="mm-lang" id="mmLang">
+  <button type="button" data-lang="en">EN</button>
+  <button type="button" data-lang="kr">KR</button>
+  <button type="button" data-lang="es">ES</button>
+</div>
+
+<script>
+  (function () {
+    // --- 1) Remove/disable old broken links that caused 404 (kreyol/espanol pages) ---
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = (a.getAttribute('href') || '').toLowerCase();
+      if (href.includes('kreyol') || href.includes('espanol') || href.includes('spanish')) {
+        // Keep the text but stop navigation to missing pages
+        a.setAttribute('href', '#');
+        a.addEventListener('click', (e) => e.preventDefault());
+      }
+    });
+
+    // --- 2) Simple language state via URL param: ?lang=en|kr|es ---
+    const params = new URLSearchParams(window.location.search);
+    const allowed = new Set(['en','kr','es']);
+    let lang = (params.get('lang') || 'en').toLowerCase();
+    if (!allowed.has(lang)) lang = 'en';
+
+    const toggle = document.getElementById('mmLang');
+    const btns = toggle.querySelectorAll('button[data-lang]');
+
+    function setActive(lang) {
+      btns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
     }
+
+    // --- 3) Optional: translate ONLY labels that have data-i18n attributes (safe; won’t break layout) ---
+    // If your page has no data-i18n, nothing breaks — it still fixes the 404 language buttons.
+    const dict = {
+      en: {
+        nav_home: "HOME",
+        nav_services: "SERVICES",
+        nav_forms: "FORMS",
+        nav_alerts: "ALERTS",
+        nav_contact: "CONTACT",
+        quick_actions: "Quick Actions",
+      },
+      kr: {
+        nav_home: "AKÈY",
+        nav_services: "SÈVIS",
+        nav_forms: "FÒM",
+        nav_alerts: "ALÈT",
+        nav_contact: "KONTAK",
+        quick_actions: "Aksyon Rapid",
+      },
+      es: {
+        nav_home: "INICIO",
+        nav_services: "SERVICIOS",
+        nav_forms: "FORMULARIOS",
+        nav_alerts: "ALERTAS",
+        nav_contact: "CONTACTO",
+        quick_actions: "Acciones Rápidas",
+      }
+    };
+
+    function applyLang(lang) {
+      setActive(lang);
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const val = dict[lang] && dict[lang][key];
+        if (val) el.textContent = val;
+      });
+    }
+
+    // Click handlers
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const next = btn.dataset.lang;
+        const url = new URL(window.location.href);
+        url.searchParams.set('lang', next);
+        // Stay on same page file (NO new pages, NO 404)
+        window.location.href = url.toString();
+      });
+    });
+
+    // Run
+    applyLang(lang);
+  })();
+</script>
+<!-- ===================== /MAXIMAX LANGUAGE TOGGLE (NO 404) ===================== -->
     *{box-sizing:border-box}
     body{
       margin:0;
