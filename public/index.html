@@ -1,11 +1,284 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<!doctype html>
+<html lang="ht">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MAXIMAX Multi Services</title>
+  <style>
+    :root{
+      --orange:#f4a261; /* jon abrikot */
+      --black:#0b0b0f;
+      --card:#13131a;
+      --text:#f2f2f2;
+      --muted:#b7b7c2;
+      --line:rgba(244,162,97,.22);
+      --glow:rgba(244,162,97,.45);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(244,162,97,.10), transparent 60%),
+                  radial-gradient(900px 500px at 80% 30%, rgba(244,162,97,.08), transparent 65%),
+                  var(--black);
+      color:var(--text);
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:18px}
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;padding:14px 16px;border:1px solid var(--line);
+      background: rgba(19,19,26,.75); backdrop-filter: blur(10px);
+      border-radius:18px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.03) inset;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:44px;height:44px;border-radius:12px;
+      background: rgba(244,162,97,.12);
+      border:1px solid var(--line);
+      display:grid;place-items:center;overflow:hidden;
+    }
+    .logo img{width:100%;height:100%;object-fit:cover}
+    .title{line-height:1.1}
+    .title b{display:block;font-size:16px;letter-spacing:.4px}
+    .title small{color:var(--muted)}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .btn{
+      appearance:none;border:1px solid var(--line);
+      background: rgba(244,162,97,.10);
+      color:var(--text); padding:10px 12px;border-radius:999px;
+      cursor:pointer;font-weight:600;
+    }
+    .btn:hover{box-shadow: 0 0 18px var(--glow)}
+    .btn.primary{background: rgba(244,162,97,.18)}
+    .pill{
+      border:1px solid var(--line);
+      background: rgba(19,19,26,.70);
+      padding:8px 10px;border-radius:999px;
+      display:flex;gap:6px;align-items:center;
+    }
+    .pill button{
+      border:0;background:transparent;color:var(--muted);
+      padding:6px 10px;border-radius:999px;cursor:pointer;font-weight:700;
+    }
+    .pill button.active{
+      color:var(--black);
+      background: var(--orange);
+    }
+
+    h2{
+      margin:18px 0 10px;
+      font-size:22px;
+      color:var(--orange);
+      text-shadow: 0 0 18px rgba(244,162,97,.30);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:14px;
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
+
+    .card{
+      border:1px solid var(--line);
+      background: rgba(19,19,26,.72);
+      border-radius:18px;
+      padding:16px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.03) inset;
+      min-height: 260px;
+    }
+    .card h3{
+      margin:0 0 10px;
+      font-size:18px;
+      color:var(--orange);
+      text-shadow: 0 0 18px rgba(244,162,97,.28);
+    }
+    ul{margin:0;padding-left:18px}
+    li{margin:8px 0;color:var(--text)}
+    a{color:var(--orange);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .note{
+      margin-top:12px;
+      color:var(--muted);
+      font-style:italic;
+      border-left:3px solid var(--line);
+      padding-left:10px;
+    }
+    footer{
+      margin:18px 0 0;
+      padding:14px 16px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background: rgba(19,19,26,.60);
+      color:var(--muted);
+    }
+    .hidden{display:none}
+  </style>
 </head>
+
 <body>
-  <h1>MAXIMAX Multi Services</h1>
-  <p>YES WE CAN</p>
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <div class="logo" title="MAXIMAX Logo">
+          <!-- Logo: public/maximax-owner.png -->
+          <img src="./maximax-owner.png" alt="MAXIMAX Logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="title">
+          <b>MAXIMAX Multi Services</b>
+          <small>MAXIMAX ALWAY MAXIMIZED • YES WE CAN</small>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="pill" aria-label="Language toggle">
+          <button id="btnHT" class="active" type="button">Kreyòl</button>
+          <button id="btnES" type="button">Español</button>
+        </div>
+
+        <!-- Letterhead download -->
+        <a class="btn primary" href="./Maximax-Letterhead.pdf" download>
+          Download Letterhead
+        </a>
+      </div>
+    </header>
+
+    <h2 id="sectionTitle">Sèvis Nou Yo</h2>
+
+    <div class="grid">
+      <!-- TRANSLATION -->
+      <section class="card">
+        <h3 id="tTitle">Translation & Document Assistance</h3>
+        <ul id="tList">
+          <li>Haitian Creole ⇄ English</li>
+          <li>Spanish ⇄ English</li>
+          <li>Birth, Marriage, Divorce Certificates</li>
+          <li>Affidavits & Immigration Documents</li>
+          <li>Formatting for USCIS, IRS, SSA</li>
+          <li>
+            <a href="https://www.uscis.gov/" target="_blank" rel="noopener">USCIS (Official)</a>
+            •
+            <a href="https://www.irs.gov/" target="_blank" rel="noopener">IRS (Official)</a>
+            •
+            <a href="https://www.ssa.gov/" target="_blank" rel="noopener">SSA (Official)</a>
+          </li>
+        </ul>
+        <div class="note" id="tNote">
+          Translation assistance is provided for preparation purposes. Certified translations available upon request.
+        </div>
+      </section>
+
+      <!-- US PASSPORT -->
+      <section class="card">
+        <h3 id="usTitle">U.S. Passport Services (US)</h3>
+        <ul id="usList">
+          <li>
+            <a href="https://travel.state.gov/content/travel/en/passports.html" target="_blank" rel="noopener">
+              U.S. Passports (Official)
+            </a>
+          </li>
+          <li>
+            <a href="https://travel.state.gov/content/travel/en/passports/how-apply/form-finder.html" target="_blank" rel="noopener">
+              Which form should I use? (Form Wizard)
+            </a>
+          </li>
+          <li>
+            <a href="https://travel.state.gov/content/travel/en/passports/how-apply/forms.html" target="_blank" rel="noopener">
+              Passport forms page (DS-11 / DS-82)
+            </a>
+          </li>
+          <li>New Passport Applications (DS-11)</li>
+          <li>Passport Renewals (DS-82)</li>
+          <li>Lost or Stolen Passport Assistance</li>
+          <li>Child Passport Guidance</li>
+        </ul>
+        <div class="note" id="usNote">
+          MAXIMAX helps with preparation & guidance. Passport issuance is handled by official government authorities.
+        </div>
+      </section>
+
+      <!-- HAITIAN PASSPORT -->
+      <section class="card">
+        <h3 id="htTitle">Haitian Passport Services (HT)</h3>
+        <ul id="htList">
+          <li>
+            <a href="https://www.haiti.org/consular-services/" target="_blank" rel="noopener">
+              Haiti Consular Services (Official site)
+            </a>
+          </li>
+          <li>New Haitian Passport Assistance</li>
+          <li>Passport Renewal Guidance</li>
+          <li>Document Preparation Support</li>
+          <li>Consulate Appointment Guidance</li>
+        </ul>
+        <div class="note" id="htNote">
+          MAXIMAX provides assistance only. Passport issuance is handled by official government authorities.
+        </div>
+      </section>
+    </div>
+
+    <footer id="footerText">
+      Need help fast? Send us your documents and we’ll guide you step-by-step.
+    </footer>
+
+  </div>
+
+  <script>
+    // Default: Kreyòl
+    const btnHT = document.getElementById("btnHT");
+    const btnES = document.getElementById("btnES");
+
+    const sectionTitle = document.getElementById("sectionTitle");
+    const footerText = document.getElementById("footerText");
+
+    const tTitle = document.getElementById("tTitle");
+    const tNote  = document.getElementById("tNote");
+
+    const usTitle = document.getElementById("usTitle");
+    const usNote  = document.getElementById("usNote");
+
+    const htTitle = document.getElementById("htTitle");
+    const htNote  = document.getElementById("htNote");
+
+    function setActive(lang){
+      if(lang === "ht"){
+        btnHT.classList.add("active");
+        btnES.classList.remove("active");
+
+        sectionTitle.textContent = "Sèvis Nou Yo";
+        footerText.textContent = "Ou bezwen èd vit? Voye dokiman yo — n ap gide w etap pa etap.";
+
+        tTitle.textContent = "Tradiksyon & Asistans Dokiman";
+        tNote.textContent  = "Tradiksyon se pou preparasyon. Tradiksyon sètifye disponib sou demann.";
+
+        usTitle.textContent = "Sèvis Paspò Etazini (US)";
+        usNote.textContent  = "MAXIMAX ede w prepare & gide w. Gouvènman an sèlman ki bay paspò a.";
+
+        htTitle.textContent = "Sèvis Paspò Ayisyen (HT)";
+        htNote.textContent  = "MAXIMAX bay asistans sèlman. Otorite ofisyèl yo sèlman ki bay paspò a.";
+      } else {
+        btnES.classList.add("active");
+        btnHT.classList.remove("active");
+
+        sectionTitle.textContent = "Nuestros Servicios";
+        footerText.textContent = "¿Necesitas ayuda rápido? Envíanos tus documentos y te guiamos paso a paso.";
+
+        tTitle.textContent = "Traducción y Asistencia de Documentos";
+        tNote.textContent  = "Asistencia para preparación. Traducciones certificadas disponibles a solicitud.";
+
+        usTitle.textContent = "Servicios de Pasaporte de EE.UU. (US)";
+        usNote.textContent  = "MAXIMAX ayuda con preparación y orientación. El pasaporte lo emiten solo autoridades oficiales.";
+
+        htTitle.textContent = "Servicios de Pasaporte Haitiano (HT)";
+        htNote.textContent  = "MAXIMAX brinda asistencia. El pasaporte lo emiten solo autoridades oficiales.";
+      }
+    }
+
+    btnHT.addEventListener("click", ()=>setActive("ht"));
+    btnES.addEventListener("click", ()=>setActive("es"));
+    setActive("ht");
+  </script>
 </body>
 </html>
