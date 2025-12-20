@@ -610,7 +610,32 @@ i<!doctype html>
     // harmless, optional: year only (can delete if you want 100% no JS)
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
-</body>
+</body><script>
+  const btnHT = document.getElementById("btnHT");
+  const btnEN = document.getElementById("btnEN");
+  const btnES = document.getElementById("btnES");
+
+  function setActive(lang){
+    document.querySelectorAll("[data-lang]").forEach(el=>{
+      el.style.display = el.dataset.lang === lang ? "block" : "none";
+    });
+
+    btnHT.classList.remove("active");
+    btnEN.classList.remove("active");
+    btnES.classList.remove("active");
+
+    if(lang==="ht") btnHT.classList.add("active");
+    if(lang==="en") btnEN.classList.add("active");
+    if(lang==="es") btnES.classList.add("active");
+  }
+
+  btnHT.addEventListener("click", ()=>setActive("ht"));
+  btnEN.addEventListener("click", ()=>setActive("en"));
+  btnES.addEventListener("click", ()=>setActive("es"));
+
+  // default language
+  setActive("ht");
+</script>
 </html>
 <!-- HIDE LANGUAGE TOGGLE COMPLETELY -->
 <style>
