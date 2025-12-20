@@ -1,468 +1,353 @@
 <!doctype html>
 <html lang="ht">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MAXIMAX Multi Services</title>
-
   <style>
     :root{
-      --orange:#f4a261;      /* Jon abrikot */
-      --black:#07070b;       /* Nwa */
-      --panel:#101018;
-      --panel2:#141420;
-      --text:#f4f4f5;
-      --muted:#b7b7c2;
-      --line:rgba(244,162,97,.25);
-      --glow:rgba(244,162,97,.45);
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --bg:#0b1220;
+      --panel:#101a2e;
+      --panel2:#0e1730;
+      --text:#e9eefc;
+      --muted:#a9b4d6;
+      --line:rgba(255,255,255,.12);
+      --accent:#f4a261; /* jon abrikot */
+      --accent2:#ffcc80;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
       --radius:18px;
+      --radius2:24px;
+      --max:1150px;
     }
-
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(1200px 650px at 20% 0%, rgba(244,162,97,.10), transparent 60%),
-        radial-gradient(900px 520px at 85% 30%, rgba(244,162,97,.08), transparent 65%),
-        var(--black);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: radial-gradient(1200px 700px at 20% 0%, rgba(244,162,97,.20), transparent 60%),
+                  radial-gradient(900px 600px at 85% 20%, rgba(255,204,128,.15), transparent 60%),
+                  linear-gradient(180deg, #070b14, var(--bg));
       color:var(--text);
     }
-
-    .wrap{max-width:1150px;margin:0 auto;padding:18px}
-    .top{
-      display:flex;align-items:center;justify-content:space-between;gap:14px;
-      padding:14px 16px;border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:rgba(16,16,24,.78);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 0 1px rgba(255,255,255,.03) inset;
-      position:sticky; top:12px; z-index:10;
-    }
-
-    .brand{display:flex;align-items:center;gap:12px;min-width:240px}
-    .logo{
-      width:50px;height:50px;border-radius:14px;
-      overflow:hidden;border:1px solid var(--line);
-      background:rgba(244,162,97,.12);
-      display:grid;place-items:center;
-      box-shadow: 0 0 0 1px rgba(255,255,255,.02) inset;
-    }
-    .logo img{width:100%;height:100%;object-fit:cover}
-    .name{line-height:1.05}
-    .name b{display:block;font-size:16px;letter-spacing:.5px;color:var(--orange)}
-    .name small{display:block;color:var(--muted);margin-top:4px}
-
-    .nav{
-      display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
-    }
-    .nav a{
-      text-decoration:none;color:var(--text);
-      padding:9px 12px;border-radius:999px;border:1px solid var(--line);
-      background:rgba(0,0,0,.18);
-      font-weight:700;
-    }
-    .nav a:hover{box-shadow:0 0 18px var(--glow);border-color:rgba(244,162,97,.65)}
-    .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-
-    .lang{
-      display:flex;gap:6px;align-items:center;
-      border:1px solid var(--line);border-radius:999px;
-      background:rgba(0,0,0,.18);
-      padding:6px;
-    }
-    .lang button{
-      border:0;background:transparent;color:var(--muted);
-      padding:7px 10px;border-radius:999px;cursor:pointer;
-      font-weight:800;
-      white-space:nowrap;
-    }
-    .lang button.active{
-      background:var(--orange);
-      color:var(--black);
-    }
-
-    .btn{
-      display:inline-block;
-      text-decoration:none;
-      padding:10px 12px;border-radius:999px;
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:18px 16px 44px;}
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid var(--line);
-      background:rgba(244,162,97,.12);
-      color:var(--text);
-      font-weight:800;
+      border-radius: var(--radius2);
+      padding:14px 14px;
+      box-shadow: var(--shadow);
+      position:sticky; top:10px; z-index:10;
+      backdrop-filter: blur(8px);
     }
-    .btn:hover{box-shadow:0 0 18px var(--glow);border-color:rgba(244,162,97,.65)}
-    .btn.primary{background:rgba(244,162,97,.18)}
+    .brand{display:flex; align-items:center; gap:12px;}
+    .logo{
+      width:52px; height:52px; border-radius:14px;
+      background: rgba(244,162,97,.12);
+      border:1px solid rgba(244,162,97,.35);
+      display:grid; place-items:center;
+      overflow:hidden;
+    }
+    .logo img{width:100%; height:100%; object-fit:cover;}
+    .brand h1{margin:0; font-size:16px; letter-spacing:.3px;}
+    .brand .tag{margin:2px 0 0; font-size:12px; color:var(--muted)}
+    .right{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
+    .pill{
+      display:flex; align-items:center; gap:8px;
+      background: rgba(0,0,0,.18);
+      border:1px solid var(--line);
+      border-radius: 999px;
+      padding:8px 10px;
+    }
+    .btn{
+      cursor:pointer;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:8px 12px;
+      border-radius: 999px;
+      font-weight:600;
+      font-size:13px;
+    }
+    .btn:hover{border-color: rgba(244,162,97,.55)}
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(244,162,97,.95), rgba(244,162,97,.70));
+      border-color: rgba(244,162,97,.9);
+      color:#1b1107;
+    }
+    .btn.small{padding:8px 10px; font-size:12px;}
+    .langBtn[aria-pressed="true"]{
+      border-color: rgba(244,162,97,.85);
+      box-shadow: 0 0 0 3px rgba(244,162,97,.18);
+    }
 
     .hero{
-      margin-top:14px;
+      margin-top:18px;
+      background: linear-gradient(180deg, rgba(244,162,97,.10), rgba(255,255,255,.03));
       border:1px solid var(--line);
-      border-radius:calc(var(--radius) + 6px);
-      background:linear-gradient(180deg, rgba(20,20,32,.78), rgba(16,16,24,.70));
-      box-shadow: var(--shadow);
+      border-radius: var(--radius2);
       padding:18px;
-      overflow:hidden;
-      position:relative;
+      box-shadow: var(--shadow);
     }
-    .hero:before{
-      content:"";
-      position:absolute;inset:-2px;
-      background: radial-gradient(500px 260px at 10% 20%, rgba(244,162,97,.16), transparent 70%),
-                  radial-gradient(420px 240px at 85% 25%, rgba(244,162,97,.10), transparent 75%);
-      pointer-events:none;
-    }
-    .hero *{position:relative}
-    .hero h1{margin:0;font-size:34px;line-height:1.05}
-    .hero p{margin:10px 0 0;color:var(--muted);max-width:900px}
-    .hero .cta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
-    .tag{
-      display:inline-flex;gap:8px;align-items:center;
-      margin-top:12px;
-      border-left:3px solid var(--orange);
-      padding-left:10px;
-      color:var(--muted);
-      font-style:italic;
-    }
-
-    .sectionTitle{
-      margin:18px 0 10px;
-      font-size:20px;
-      color:var(--orange);
-      text-shadow:0 0 18px rgba(244,162,97,.25);
-    }
-
+    .heroTop{display:flex; gap:16px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;}
+    .hero h2{margin:0; font-size:26px;}
+    .hero p{margin:8px 0 0; color:var(--muted); line-height:1.5;}
     .grid{
       display:grid;
-      grid-template-columns:repeat(12,1fr);
+      grid-template-columns: repeat(12, 1fr);
       gap:14px;
+      margin-top:14px;
     }
     .card{
-      grid-column:span 6;
+      grid-column: span 4;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.10));
       border:1px solid var(--line);
-      background:rgba(20,20,32,.72);
-      border-radius:var(--radius);
-      padding:16px;
-      box-shadow:0 0 0 1px rgba(255,255,255,.03) inset;
-      min-height:220px;
+      border-radius: var(--radius);
+      padding:14px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+      min-height: 260px;
     }
-    .card.full{grid-column:span 12}
-    .card h2{margin:0 0 10px;font-size:18px;color:var(--orange)}
-    .card ul{margin:0;padding-left:18px}
-    .card li{margin:8px 0;color:var(--text)}
-    .card a{color:var(--orange);text-decoration:none;font-weight:800}
-    .card a:hover{text-decoration:underline}
+    .card h3{
+      margin:0 0 10px 0;
+      font-size:18px;
+      color: var(--accent2);
+      letter-spacing:.2px;
+    }
+    .list{margin:0; padding-left:18px; color:var(--text)}
+    .list li{margin:8px 0; color:var(--text)}
+    .list a{
+      text-decoration:none;
+      border-bottom:1px dashed rgba(244,162,97,.55);
+      padding-bottom:1px;
+    }
+    .list a:hover{border-bottom-style:solid}
     .note{
-      margin-top:12px;
+      margin-top:10px;
       color:var(--muted);
-      border-left:3px solid rgba(244,162,97,.55);
-      padding-left:10px;
-      font-style:italic;
+      font-size:12.5px;
+      line-height:1.5;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:10px;
     }
-
-    .two{
-      display:grid;grid-template-columns:repeat(12,1fr);gap:14px;
+    .footer{
+      margin-top:18px;
+      color:rgba(255,255,255,.55);
+      font-size:12.5px;
+      text-align:center;
     }
-    .box{
-      grid-column:span 6;
-      border:1px solid rgba(255,255,255,.06);
-      background:rgba(0,0,0,.18);
-      border-radius:14px;
-      padding:12px;
-      color:var(--muted);
+    .twoCol{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
     }
-    .box b{color:var(--text)}
-    .box a{color:var(--orange);font-weight:900;text-decoration:none}
-    .box a:hover{text-decoration:underline}
-
-    .waFloat{
-      position:fixed;right:18px;bottom:18px;
-      background:#25D366;color:#071; /* WhatsApp green */
-      padding:12px 14px;border-radius:999px;
-      font-weight:1000;text-decoration:none;
-      color:#0b0b0f;
-      box-shadow:0 18px 50px rgba(0,0,0,.45);
-      border:1px solid rgba(255,255,255,.15);
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size:12px;
+      padding:2px 6px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      color: rgba(255,255,255,.85);
     }
-
     @media (max-width: 980px){
-      .top{position:relative;top:0}
-      .brand{min-width:auto}
-      .card{grid-column:span 12}
-      .box{grid-column:span 12}
-      .hero h1{font-size:28px}
+      .card{grid-column: span 12;}
+      .hero h2{font-size:22px;}
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <header class="top">
+    <header>
       <div class="brand">
-        <div class="logo" title="MAXIMAX Logo">
-          <!-- Logo file must exist: public/maximax-owner.png -->
-          <img src="./maximax-owner.png" alt="MAXIMAX Logo"
-               onerror="this.style.display='none'"/>
+        <div class="logo" title="MAXIMAX logo">
+          <img src="maximax-owner.png" alt="MAXIMAX logo" onerror="this.style.display='none'; this.parentElement.textContent='MAX';" />
         </div>
-        <div class="name">
-          <b>MAXIMAX Multi Services</b>
-          <small id="slogan">MAXIMAX ALWAY MAXIMIZED • YES WE CAN.</small>
+        <div>
+          <h1>MAXIMAX Multi Services</h1>
+          <div class="tag" id="tagline">MAXIMAX ALWAYS MAXIMIZED • YES WE CAN</div>
         </div>
       </div>
 
-      <nav class="nav">
-        <a href="#services" id="navServices">Services</a>
-        <a href="#forms" id="navForms">Forms</a>
-        <a href="#contact" id="navContact">Contact</a>
-        <a href="#resume" id="navResume">Resume AI</a>
-      </nav>
-
       <div class="right">
-        <div class="lang" aria-label="Language toggle">
-          <button id="btnHT" class="active" type="button">Kreyòl</button>
-          <button id="btnEN" type="button">English</button>
-          <button id="btnES" type="button">Español</button>
+        <div class="pill" aria-label="Language switch">
+          <button class="btn small langBtn" id="btnHT" aria-pressed="true">Kreyòl</button>
+          <button class="btn small langBtn" id="btnEN" aria-pressed="false">English</button>
+          <button class="btn small langBtn" id="btnES" aria-pressed="false">Español</button>
         </div>
 
-        <!-- Letterhead download: file must exist in public/ -->
-        <a class="btn primary" href="./Maximax-Letterhead.pdf" download id="btnLetterhead">
-          Letterhead
-        </a>
+        <a class="btn primary" href="https://wa.me/" target="_blank" rel="noopener" id="ctaWhatsApp">WhatsApp</a>
       </div>
     </header>
 
-    <section class="hero" id="home">
-      <h1 id="heroTitle">Solisyon 1 sèl kote pou sèvis & fòm ofisyèl</h1>
-      <p id="heroSub">
-        Imigrasyon • Taks • SNAP • Medicaid/Medicare • SSA • Housing (HUD/Section 8) • Dokumentasyon • Asistans fòm gouvènman.
-      </p>
-      <div class="cta">
-        <a class="btn primary" href="#forms" id="ctaForms">Open Forms Library</a>
-        <a class="btn" href="#services" id="ctaServices">View Services</a>
-        <a class="btn" href="https://wa.me/13175381150" target="_blank" rel="noopener" id="ctaWA">
-          WhatsApp
-        </a>
+    <section class="hero">
+      <div class="heroTop">
+        <div>
+          <h2 id="heroTitle">Sèvis Nou Yo</h2>
+          <p id="heroDesc">
+            Chwazi sa ou bezwen an. Tout bouton yo konekte dirèk ak sous ofisyèl yo (US / Ayiti / USCIS).
+            Nou bay asistans pou preparasyon dokiman, tradiksyon, ak gid etap-pa-etap.
+          </p>
+        </div>
+
+        <div class="twoCol">
+          <span class="kbd" id="hint1">Kreyòl = default</span>
+          <span class="kbd" id="hint2">Klike sou yon lyen pou ouvri sit ofisyèl la</span>
+        </div>
       </div>
-      <div class="tag" id="heroNote">
-        Nòt: Nou ede w ranpli/prepare dokiman. Desizyon final rete sou ajans ofisyèl yo.
+
+      <div class="grid">
+
+        <!-- TRANSLATION -->
+        <div class="card" id="cardTranslation">
+          <h3 id="tTitle">Tradiksyon & Asistans Dokiman</h3>
+          <ul class="list" id="tList">
+            <li><a href="https://www.uscis.gov/forms" target="_blank" rel="noopener">Fòm USCIS (Ofisyèl)</a></li>
+            <li><a href="https://www.ssa.gov/forms/" target="_blank" rel="noopener">Fòm SSA (Social Security)</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs" target="_blank" rel="noopener">Fòm IRS (Tax)</a></li>
+            <li><a href="https://www.uscis.gov/policy-manual" target="_blank" rel="noopener">USCIS Policy Manual (Règleman)</a></li>
+            <li><a href="https://www.uscis.gov/forms/filing-guidance/form-filing-tips" target="_blank" rel="noopener">USCIS Filing Tips</a></li>
+          </ul>
+          <div class="note" id="tNote">
+            Tradiksyon sètifye disponib sou demann (batistè, maryaj, divòs, elatriye). Nou ka fòmate dokiman pou USCIS / IRS / SSA.
+          </div>
+        </div>
+
+        <!-- US PASSPORT -->
+        <div class="card" id="cardUS">
+          <h3 id="uTitle">Sèvis Paspò Etazini (US)</h3>
+          <ul class="list" id="uList">
+            <li><a href="https://travel.state.gov/content/travel/en/passports/how-apply.html" target="_blank" rel="noopener">Nouvo Paspò (How to Apply)</a></li>
+            <li><a href="https://travel.state.gov/content/travel/en/passports/have-passport/renew.html" target="_blank" rel="noopener">Renouvèlman Paspò</a></li>
+            <li><a href="https://travel.state.gov/content/travel/en/passports/have-passport/lost-stolen.html" target="_blank" rel="noopener">Paspò Pèdi / Vòlè</a></li>
+            <li><a href="https://travel.state.gov/content/travel/en/passports/how-apply/forms.html" target="_blank" rel="noopener">Paj Fòm Paspò (DS-11, DS-82, DS-64)</a></li>
+            <li><a href="https://travel.state.gov/content/travel/en/passports/need-passport/under-16.html" target="_blank" rel="noopener">Paspò Timoun (Gid)</a></li>
+          </ul>
+          <div class="note" id="uNote">
+            Nou ede w prepare dokiman yo epi verifye lis egzijans yo. Gouvènman an sèlman ki bay paspò a.
+          </div>
+        </div>
+
+        <!-- HAITIAN PASSPORT -->
+        <div class="card" id="cardHT">
+          <h3 id="hTitle">Sèvis Paspò Ayisyen (HT)</h3>
+          <ul class="list" id="hList">
+            <li><a href="https://www.haiti.org/" target="_blank" rel="noopener">Haiti.org (Info Jeneral)</a></li>
+            <li><a href="https://www.haitianconsulate.org/" target="_blank" rel="noopener">Haitian Consulate Services (Ofisyèl si disponib)</a></li>
+            <li><a href="https://www.haiti.org/consulate/" target="_blank" rel="noopener">Info Konsila & Randevou</a></li>
+            <li><a href="https://www.haiti.org/passport/" target="_blank" rel="noopener">Gid Paspò Ayiti (si disponib)</a></li>
+          </ul>
+          <div class="note" id="hNote">
+            Nou bay gid pou ranmase dokiman yo, ranpli fòm yo, epi òganize dosye a pou konsila.
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <h2 class="sectionTitle" id="services">Services</h2>
-
-    <div class="grid">
-      <div class="card">
-        <h2 id="tTitle">Translation & Document Assistance</h2>
-        <ul id="tList">
-          <li>Kreyòl ⇄ English</li>
-          <li>Español ⇄ English</li>
-          <li>Birth / Marriage / Divorce Certificates</li>
-          <li>Affidavits & Immigration Documents</li>
-          <li>Formatting for USCIS, IRS, SSA</li>
-          <li><a href="https://wa.me/13175381150?text=Hi%20MAXIMAX%2C%20I%20need%20translation%20help." target="_blank" rel="noopener" id="tWA">WhatsApp for Translation</a></li>
-        </ul>
-        <div class="note" id="tNote">
-          Translation assistance for preparation. Certified translations available upon request.
-        </div>
-      </div>
-
-      <div class="card">
-        <h2 id="usTitle">U.S. Passport Services (US)</h2>
-        <ul id="usList">
-          <li><a href="https://travel.state.gov/content/travel/en/passports.html" target="_blank" rel="noopener">Official Passport Info (travel.state.gov)</a></li>
-          <li><a href="https://travel.state.gov/content/travel/en/passports/how-apply/form-finder.html" target="_blank" rel="noopener">Which form should I use? (Form Wizard)</a></li>
-          <li><a href="https://travel.state.gov/content/travel/en/passports/how-apply/forms.html" target="_blank" rel="noopener">Passport Forms (DS-11 / DS-82)</a></li>
-          <li>New Passport Applications</li>
-          <li>Renewals</li>
-          <li>Lost or Stolen Passport Help</li>
-          <li>Child Passport Guidance</li>
-        </ul>
-        <div class="note" id="usNote">
-          MAXIMAX provides preparation & guidance. Passport issuance is handled by official authorities.
-        </div>
-      </div>
-
-      <div class="card">
-        <h2 id="htTitle">Haitian Passport Services (HT)</h2>
-        <ul id="htList">
-          <li><a href="https://www.haiti.org/consular-services/" target="_blank" rel="noopener">Consular Services (Official)</a></li>
-          <li>New Haitian Passport Assistance</li>
-          <li>Renewal Guidance</li>
-          <li>Document Preparation Support</li>
-          <li>Consulate Appointment Guidance</li>
-        </ul>
-        <div class="note" id="htNote">
-          MAXIMAX provides assistance only. Passport issuance is handled by official authorities.
-        </div>
-      </div>
-
-      <div class="card" id="resume">
-        <h2 id="rTitle">Resume AI</h2>
-        <ul id="rList">
-          <li>Create a professional resume fast</li>
-          <li>English / Kreyòl / Español</li>
-          <li>Download as PDF</li>
-          <li><a href="https://wa.me/13175381150?text=Hi%20MAXIMAX%2C%20I%20need%20a%20resume." target="_blank" rel="noopener" id="rWA">Start on WhatsApp</a></li>
-        </ul>
-        <div class="note" id="rNote">We can connect the full Resume Builder app next.</div>
-      </div>
-
-      <div class="card full" id="forms">
-        <h2 id="fTitle">Forms Library (Official Links)</h2>
-        <ul id="fList">
-          <li><a href="https://www.federalregister.gov/" target="_blank" rel="noopener">Federal Register (Official)</a></li>
-          <li><a href="https://www.irs.gov/forms-instructions" target="_blank" rel="noopener">IRS Forms & Instructions (Official)</a></li>
-          <li><a href="https://www.ssa.gov/forms/" target="_blank" rel="noopener">SSA Forms (Official)</a></li>
-          <li><a href="https://www.uscis.gov/forms" target="_blank" rel="noopener">USCIS Forms (Official)</a></li>
-        </ul>
-        <div class="note" id="fNote">Direct links to official sources.</div>
-      </div>
-
-      <div class="card full" id="contact">
-        <h2 id="cTitle">Contact</h2>
-        <div class="two">
-          <div class="box">
-            <b id="cAddressLabel">Address:</b>
-            <div id="cAddress">6934 Coral Cove Drive, Orlando Florida 32818</div>
-          </div>
-          <div class="box">
-            <b>Email:</b> <a href="mailto:maximaxmultiservices@gmail.com">maximaxmultiservices@gmail.com</a><br/>
-            <b>Website:</b> <a href="https://www.maximaxmultiservices.com" target="_blank" rel="noopener">www.maximaxmultiservices.com</a>
-          </div>
-          <div class="box">
-            <b>Tel:</b> <a href="tel:+13175381150">(317) 538-1150</a><br/>
-            <b>Tel:</b> <a href="tel:+15162168494">(516) 216-8494</a>
-          </div>
-          <div class="box">
-            <b>WhatsApp:</b> <a href="https://wa.me/13175381150" target="_blank" rel="noopener">(317) 538-1150</a>
-          </div>
-        </div>
-      </div>
+    <div class="footer" id="footerText">
+      MAXIMAX Multi Services bay asistans pou preparasyon sèlman. Emisyon paspò ak desizyon ofisyèl fèt pa otorite gouvènman yo.
     </div>
-
   </div>
 
-  <a class="waFloat" href="https://wa.me/13175381150" target="_blank" rel="noopener">WhatsApp</a>
-
   <script>
+    // ---- Language content ----
+    const content = {
+      ht: {
+        tagline: "MAXIMAX ALWAYS MAXIMIZED • YES WE CAN",
+        heroTitle: "Sèvis Nou Yo",
+        heroDesc: "Chwazi sa ou bezwen an. Tout bouton yo konekte dirèk ak sous ofisyèl yo (US / Ayiti / USCIS). Nou bay asistans pou preparasyon dokiman, tradiksyon, ak gid etap-pa-etap.",
+        hint1: "Kreyòl = default",
+        hint2: "Klike sou yon lyen pou ouvri sit ofisyèl la",
+        tTitle: "Tradiksyon & Asistans Dokiman",
+        tNote: "Tradiksyon sètifye disponib sou demann (batistè, maryaj, divòs, elatriye). Nou ka fòmate dokiman pou USCIS / IRS / SSA.",
+        uTitle: "Sèvis Paspò Etazini (US)",
+        uNote: "Nou ede w prepare dokiman yo epi verifye lis egzijans yo. Gouvènman an sèlman ki bay paspò a.",
+        hTitle: "Sèvis Paspò Ayisyen (HT)",
+        hNote: "Nou bay gid pou ranmase dokiman yo, ranpli fòm yo, epi òganize dosye a pou konsila.",
+        footer: "MAXIMAX Multi Services bay asistans pou preparasyon sèlman. Emisyon paspò ak desizyon ofisyèl fèt pa otorite gouvènman yo."
+      },
+      en: {
+        tagline: "MAXIMAX ALWAYS MAXIMIZED • YES WE CAN",
+        heroTitle: "Our Services",
+        heroDesc: "Pick what you need. Every button links directly to official sources (US / Haiti / USCIS). We help with document preparation, translation, and step-by-step guidance.",
+        hint1: "Haitian Creole = default",
+        hint2: "Click a link to open the official website",
+        tTitle: "Translation & Document Assistance",
+        tNote: "Certified translations available upon request (birth, marriage, divorce, etc.). We can format documents for USCIS / IRS / SSA.",
+        uTitle: "U.S. Passport Services (US)",
+        uNote: "We help you prepare and verify requirements. Passport issuance is handled only by government authorities.",
+        hTitle: "Haitian Passport Services (HT)",
+        hNote: "We guide you to gather documents, complete forms, and organize your file for the consulate.",
+        footer: "MAXIMAX Multi Services provides preparation assistance only. Official issuance/decisions are handled by government authorities."
+      },
+      es: {
+        tagline: "MAXIMAX ALWAY MAXIMIZED • YES WE CAN",
+        heroTitle: "Nuestros Servicios",
+        heroDesc: "Elige lo que necesitas. Cada botón enlaza directamente a fuentes oficiales (EE.UU. / Haití / USCIS). Ayudamos con preparación de documentos, traducción y guía paso a paso.",
+        hint1: "Kreyòl = por defecto",
+        hint2: "Haz clic en un enlace para abrir el sitio oficial",
+        tTitle: "Traducción y Asistencia de Documentos",
+        tNote: "Traducciones certificadas disponibles a pedido (nacimiento, matrimonio, divorcio, etc.). Podemos dar formato para USCIS / IRS / SSA.",
+        uTitle: "Servicios de Pasaporte de EE.UU.",
+        uNote: "Ayudamos a preparar y verificar requisitos. La emisión del pasaporte solo la realiza el gobierno.",
+        hTitle: "Servicios de Pasaporte Haitiano (HT)",
+        hNote: "Te guiamos para reunir documentos, completar formularios y organizar tu expediente para el consulado.",
+        footer: "MAXIMAX Multi Services solo brinda asistencia de preparación. Las decisiones/emisiones oficiales las realizan autoridades gubernamentales."
+      }
+    };
+
+    const els = {
+      tagline: document.getElementById("tagline"),
+      heroTitle: document.getElementById("heroTitle"),
+      heroDesc: document.getElementById("heroDesc"),
+      hint1: document.getElementById("hint1"),
+      hint2: document.getElementById("hint2"),
+      tTitle: document.getElementById("tTitle"),
+      tNote: document.getElementById("tNote"),
+      uTitle: document.getElementById("uTitle"),
+      uNote: document.getElementById("uNote"),
+      hTitle: document.getElementById("hTitle"),
+      hNote: document.getElementById("hNote"),
+      footer: document.getElementById("footerText")
+    };
+
     const btnHT = document.getElementById("btnHT");
     const btnEN = document.getElementById("btnEN");
     const btnES = document.getElementById("btnES");
 
-    const T = {
-      ht:{
-        navServices:"Sèvis", navForms:"Fòm", navContact:"Kontak", navResume:"Resume AI",
-        heroTitle:"Solisyon 1 sèl kote pou sèvis & fòm ofisyèl",
-        heroSub:"Imigrasyon • Taks • SNAP • Medicaid/Medicare • SSA • Housing (HUD/Section 8) • Dokumentasyon • Asistans fòm gouvènman.",
-        heroNote:"Nòt: Nou ede w ranpli/prepare dokiman. Desizyon final rete sou ajans ofisyèl yo.",
-        ctaForms:"Louvri Forms", ctaServices:"Gade Sèvis", ctaWA:"WhatsApp",
-        tTitle:"Tradiksyon & Asistans Dokiman",
-        tNote:"Tradiksyon se pou preparasyon. Tradiksyon sètifye disponib sou demann.",
-        tWA:"WhatsApp pou Tradiksyon",
-        usTitle:"Sèvis Paspò Etazini (US)",
-        usNote:"MAXIMAX ede w prepare & gide w. Gouvènman an sèlman ki bay paspò a.",
-        htTitle:"Sèvis Paspò Ayisyen (HT)",
-        htNote:"MAXIMAX bay asistans sèlman. Otorite ofisyèl yo sèlman ki bay paspò.",
-        rTitle:"Resume AI",
-        rNote:"Nou ka konekte Resume Builder la aprè.",
-        rWA:"Kòmanse sou WhatsApp",
-        fTitle:"Bibliyotèk Fòm (Lyen Ofisyèl)",
-        fNote:"Lyen dirèk sou sous ofisyèl yo.",
-        cTitle:"Kontak",
-        cAddressLabel:"Adrès:"
-      },
-      en:{
-        navServices:"Services", navForms:"Forms", navContact:"Contact", navResume:"Resume AI",
-        heroTitle:"Your one-stop solution for official services & forms",
-        heroSub:"Immigration • Taxes • SNAP • Medicaid/Medicare • SSA • Housing (HUD/Section 8) • Documentation • Government form assistance.",
-        heroNote:"Note: We assist with preparation/filling. Final decisions remain with official agencies.",
-        ctaForms:"Open Forms", ctaServices:"View Services", ctaWA:"WhatsApp",
-        tTitle:"Translation & Document Assistance",
-        tNote:"Translation assistance for preparation. Certified translations available upon request.",
-        tWA:"WhatsApp for Translation",
-        usTitle:"U.S. Passport Services (US)",
-        usNote:"MAXIMAX provides preparation & guidance. Passport issuance is handled by official authorities.",
-        htTitle:"Haitian Passport Services (HT)",
-        htNote:"MAXIMAX provides assistance only. Passport issuance is handled by official authorities.",
-        rTitle:"Resume AI",
-        rNote:"We can connect the full Resume Builder next.",
-        rWA:"Start on WhatsApp",
-        fTitle:"Forms Library (Official Links)",
-        fNote:"Direct links to official sources.",
-        cTitle:"Contact",
-        cAddressLabel:"Address:"
-      },
-      es:{
-        navServices:"Servicios", navForms:"Formularios", navContact:"Contacto", navResume:"Resume AI",
-        heroTitle:"Tu solución integral para servicios y formularios oficiales",
-        heroSub:"Inmigración • Impuestos • SNAP • Medicaid/Medicare • SSA • Vivienda (HUD/Section 8) • Documentación • Asistencia con formularios.",
-        heroNote:"Nota: Ayudamos con preparación/llenado. Las decisiones finales pertenecen a agencias oficiales.",
-        ctaForms:"Abrir Formularios", ctaServices:"Ver Servicios", ctaWA:"WhatsApp",
-        tTitle:"Traducción y Asistencia de Documentos",
-        tNote:"Asistencia para preparación. Traducciones certificadas disponibles a solicitud.",
-        tWA:"WhatsApp para Traducción",
-        usTitle:"Servicios de Pasaporte de EE.UU. (US)",
-        usNote:"MAXIMAX ayuda con preparación y orientación. El pasaporte lo emiten autoridades oficiales.",
-        htTitle:"Servicios de Pasaporte Haitiano (HT)",
-        htNote:"MAXIMAX brinda asistencia. El pasaporte lo emiten autoridades oficiales.",
-        rTitle:"Resume AI",
-        rNote:"Luego conectamos el generador completo de CV.",
-        rWA:"Comenzar en WhatsApp",
-        fTitle:"Biblioteca de Formularios (Enlaces Oficiales)",
-        fNote:"Enlaces directos a fuentes oficiales.",
-        cTitle:"Contacto",
-        cAddressLabel:"Dirección:"
-      }
-    };
-
-    function setLang(lang){
-      // active button
-      btnHT.classList.toggle("active", lang==="ht");
-      btnEN.classList.toggle("active", lang==="en");
-      btnES.classList.toggle("active", lang==="es");
-
-      document.documentElement.lang = (lang==="ht") ? "ht" : (lang==="es" ? "es" : "en");
-
-      document.getElementById("navServices").textContent = T[lang].navServices;
-      document.getElementById("navForms").textContent = T[lang].navForms;
-      document.getElementById("navContact").textContent = T[lang].navContact;
-      document.getElementById("navResume").textContent = T[lang].navResume;
-
-      document.getElementById("heroTitle").textContent = T[lang].heroTitle;
-      document.getElementById("heroSub").textContent = T[lang].heroSub;
-      document.getElementById("heroNote").textContent = T[lang].heroNote;
-
-      document.getElementById("ctaForms").textContent = T[lang].ctaForms;
-      document.getElementById("ctaServices").textContent = T[lang].ctaServices;
-      document.getElementById("ctaWA").textContent = T[lang].ctaWA;
-
-      document.getElementById("tTitle").textContent = T[lang].tTitle;
-      document.getElementById("tNote").textContent = T[lang].tNote;
-      document.getElementById("tWA").textContent = T[lang].tWA;
-
-      document.getElementById("usTitle").textContent = T[lang].usTitle;
-      document.getElementById("usNote").textContent = T[lang].usNote;
-
-      document.getElementById("htTitle").textContent = T[lang].htTitle;
-      document.getElementById("htNote").textContent = T[lang].htNote;
-
-      document.getElementById("rTitle").textContent = T[lang].rTitle;
-      document.getElementById("rNote").textContent = T[lang].rNote;
-      document.getElementById("rWA").textContent = T[lang].rWA;
-
-      document.getElementById("fTitle").textContent = T[lang].fTitle;
-      document.getElementById("fNote").textContent = T[lang].fNote;
-
-      document.getElementById("cTitle").textContent = T[lang].cTitle;
-      document.getElementById("cAddressLabel").textContent = T[lang].cAddressLabel;
+    function setPressed(lang){
+      [btnHT,btnEN,btnES].forEach(b=>b.setAttribute("aria-pressed","false"));
+      if(lang==="ht") btnHT.setAttribute("aria-pressed","true");
+      if(lang==="en") btnEN.setAttribute("aria-pressed","true");
+      if(lang==="es") btnES.setAttribute("aria-pressed","true");
     }
 
-    btnHT.addEventListener("click", ()=>setLang("ht"));
-    btnEN.addEventListener("click", ()=>setLang("en"));
-    btnES.addEventListener("click", ()=>setLang("es"));
+    function applyLang(lang){
+      const c = content[lang] || content.ht;
+      document.documentElement.lang = lang === "ht" ? "ht" : (lang === "es" ? "es" : "en");
+      els.tagline.textContent = c.tagline;
+      els.heroTitle.textContent = c.heroTitle;
+      els.heroDesc.textContent = c.heroDesc;
+      els.hint1.textContent = c.hint1;
+      els.hint2.textContent = c.hint2;
+      els.tTitle.textContent = c.tTitle;
+      els.tNote.textContent = c.tNote;
+      els.uTitle.textContent = c.uTitle;
+      els.uNote.textContent = c.uNote;
+      els.hTitle.textContent = c.hTitle;
+      els.hNote.textContent = c.hNote;
+      els.footer.textContent = c.footer;
+      setPressed(lang);
+      localStorage.setItem("mx_lang", lang);
+    }
 
-    // Default: Kreyòl
-    setLang("ht");
+    // Default to Haitian Creole
+    const saved = localStorage.getItem("mx_lang");
+    applyLang(saved || "ht");
+
+    btnHT.addEventListener("click", ()=>applyLang("ht"));
+    btnEN.addEventListener("click", ()=>applyLang("en"));
+    btnES.addEventListener("click", ()=>applyLang("es"));
   </script>
 </body>
 </html>
