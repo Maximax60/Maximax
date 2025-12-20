@@ -1,793 +1,468 @@
-i<!doctype html>
-<html lang="en">
+<!doctype html>
+<html lang="ht">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MAXIMAX Multi Services — Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAXIMAX Multi Services</title>
+
   <style>
     :root{
-      --bg:#0b0f14;
-      --panel:#121923;
-      --panel2:#0f1620;
-      --text:#e9eef6;
-      --muted:#a9b4c3;
-      --accent:#ffb100;
-      --accent2:#ff8a00;
-      --border:rgba(255,177,0,.35);
-      --shadow:0 10px 30px rgba(0,0,0,.45);
+      --orange:#f4a261;      /* Jon abrikot */
+      --black:#07070b;       /* Nwa */
+      --panel:#101018;
+      --panel2:#141420;
+      --text:#f4f4f5;
+      --muted:#b7b7c2;
+      --line:rgba(244,162,97,.25);
+      --glow:rgba(244,162,97,.45);
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
       --radius:18px;
-    }<!-- ===================== MAXIMAX LANGUAGE TOGGLE (NO 404) ===================== -->
-<style>
-  /* Hide any old language toggles that might still exist */
-  .lang-toggle, .language-toggle, #languageToggle, #langToggle { display: none !important; }
-
-  /* New fixed language toggle */
-  .mm-lang {
-    position: fixed;
-    top: 18px;
-    right: 18px;
-    z-index: 9999;
-    display: flex;
-    gap: 10px;
-    padding: 10px 12px;
-    border-radius: 14px;
-    background: rgba(0,0,0,0.70);
-    border: 1px solid rgba(255, 170, 60, 0.55);
-    backdrop-filter: blur(6px);
-  }
-  .mm-lang button{
-    cursor: pointer;
-    border: 1px solid rgba(255,170,60,0.55);
-    background: transparent;
-    color: #ffb24a;
-    font-weight: 700;
-    border-radius: 12px;
-    padding: 8px 12px;
-    line-height: 1;
-  }
-  .mm-lang button.active{
-    background: #ffb24a;
-    color: #000;
-    border-color: #ffb24a;
-  }
-</style>
-
-<div class="mm-lang" id="mmLang">
-  <button type="button" data-lang="en">EN</button>
-  <button type="button" data-lang="kr">KR</button>
-  <button type="button" data-lang="es">ES</button>
-</div>
-
-<script>
-  (function () {
-    // --- 1) Remove/disable old broken links that caused 404 (kreyol/espanol pages) ---
-    document.querySelectorAll('a[href]').forEach(a => {
-      const href = (a.getAttribute('href') || '').toLowerCase();
-      if (href.includes('kreyol') || href.includes('espanol') || href.includes('spanish')) {
-        // Keep the text but stop navigation to missing pages
-        a.setAttribute('href', '#');
-        a.addEventListener('click', (e) => e.preventDefault());
-      }
-    });
-
-    // --- 2) Simple language state via URL param: ?lang=en|kr|es ---
-    const params = new URLSearchParams(window.location.search);
-    const allowed = new Set(['en','kr','es']);
-    
-   <html lang="ht">   
-      ;
-    if (!allowed.has(lang)) lang = 'en';
-
-    const toggle = document.getElementById('mmLang');
-    const btns = toggle.querySelectorAll('button[data-lang]');
-
-    function setActive(lang) {
-      btns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
     }
 
-    // --- 3) Optional: translate ONLY labels that have data-i18n attributes (safe; won’t break layout) ---
-    // If your page has no data-i18n, nothing breaks — it still fixes the 404 language buttons.
-    const dict = {
-      en: {
-        nav_home: "HOME",
-        nav_services: "SERVICES",
-        nav_forms: "FORMS",
-        nav_alerts: "ALERTS",
-        nav_contact: "CONTACT",
-        quick_actions: "Quick Actions",
-      },
-      kr: {
-        nav_home: "AKÈY",
-        nav_services: "SÈVIS",
-        nav_forms: "FÒM",
-        nav_alerts: "ALÈT",
-        nav_contact: "KONTAK",
-        quick_actions: "Aksyon Rapid",
-      },
-      es: {
-        nav_home: "INICIO",
-        nav_services: "SERVICIOS",
-        nav_forms: "FORMULARIOS",
-        nav_alerts: "ALERTAS",
-        nav_contact: "CONTACTO",
-        quick_actions: "Acciones Rápidas",
-      }
-    };
-
-    function applyLang(lang) {
-      setActive(lang);
-
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        const val = dict[lang] && dict[lang][key];
-        if (val) el.textContent = val;
-      });
-    }
-
-    // Click handlers
-    btns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const next = btn.dataset.lang;
-        const url = new URL(window.location.href);
-        url.searchParams.set('lang', next);
-        // Stay on same page file (NO new pages, NO 404)
-        window.location.href = url.toString();
-      });
-    });
-
-    // Run
-    applyLang(lang);
-  })();
-</script>
-<!-- ===================== /MAXIMAX LANGUAGE TOGGLE (NO 404) ===================== -->
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      background:radial-gradient(1200px 700px at 20% 0%, rgba(255,177,0,.12), transparent 55%),
-                 radial-gradient(900px 600px at 95% 10%, rgba(255,138,0,.10), transparent 55%),
-                 var(--bg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 650px at 20% 0%, rgba(244,162,97,.10), transparent 60%),
+        radial-gradient(900px 520px at 85% 30%, rgba(244,162,97,.08), transparent 65%),
+        var(--black);
       color:var(--text);
     }
-    a{color:inherit;text-decoration:none}
+
     .wrap{max-width:1150px;margin:0 auto;padding:18px}
-    .topbar{
+    .top{
       display:flex;align-items:center;justify-content:space-between;gap:14px;
-      padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius);
-      background:linear-gradient(180deg, rgba(255,177,0,.10), rgba(18,25,35,.55));
-      box-shadow:var(--shadow);
-      position:sticky;top:10px;z-index:20;
-      backdrop-filter: blur(8px);
-    }
-    .brand{display:flex;align-items:center;gap:12px;min-width:260px}
-    .brand img{width:52px;height:52px;object-fit:contain;border-radius:12px;border:1px solid var(--border);background:rgba(0,0,0,.25)}
-    .brand .t1{font-weight:800;letter-spacing:.5px;color:var(--accent);line-height:1.05}
-    .brand .t2{font-size:12px;color:var(--muted);margin-top:2px}
-    .nav{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
-    .pill{
-      padding:10px 14px;border:1px solid var(--border);border-radius:999px;
-      background:rgba(0,0,0,.18);
-      font-weight:700;font-size:13px;letter-spacing:.3px;
-      transition:.15s ease;
-    }
-    .pill:hover{transform:translateY(-1px);border-color:rgba(255,177,0,.65)}
-    .pill.active{background:linear-gradient(180deg, rgba(255,177,0,.28), rgba(0,0,0,.10));}
-    .lang{display:flex;gap:8px;align-items:center}
-    .lang .tag{font-size:12px;color:var(--muted);margin-right:6px}
-    .lang a{padding:8px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(0,0,0,.18);font-weight:800;font-size:12px}
-    .hero{
-      margin-top:18px;
-      border:1px solid var(--border);
+      padding:14px 16px;border:1px solid var(--line);
       border-radius:var(--radius);
-      background:linear-gradient(180deg, rgba(18,25,35,.85), rgba(15,22,32,.75));
-      box-shadow:var(--shadow);
-      padding:22px;
-      display:grid;grid-template-columns:1.4fr .9fr;gap:18px;
+      background:rgba(16,16,24,.78);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.03) inset;
+      position:sticky; top:12px; z-index:10;
     }
-    .hero h1{margin:0 0 8px;font-size:34px;line-height:1.1}
-    .hero p{margin:0;color:var(--muted);line-height:1.5}
-    .btnRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+
+    .brand{display:flex;align-items:center;gap:12px;min-width:240px}
+    .logo{
+      width:50px;height:50px;border-radius:14px;
+      overflow:hidden;border:1px solid var(--line);
+      background:rgba(244,162,97,.12);
+      display:grid;place-items:center;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.02) inset;
+    }
+    .logo img{width:100%;height:100%;object-fit:cover}
+    .name{line-height:1.05}
+    .name b{display:block;font-size:16px;letter-spacing:.5px;color:var(--orange)}
+    .name small{display:block;color:var(--muted);margin-top:4px}
+
+    .nav{
+      display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
+    }
+    .nav a{
+      text-decoration:none;color:var(--text);
+      padding:9px 12px;border-radius:999px;border:1px solid var(--line);
+      background:rgba(0,0,0,.18);
+      font-weight:700;
+    }
+    .nav a:hover{box-shadow:0 0 18px var(--glow);border-color:rgba(244,162,97,.65)}
+    .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+
+    .lang{
+      display:flex;gap:6px;align-items:center;
+      border:1px solid var(--line);border-radius:999px;
+      background:rgba(0,0,0,.18);
+      padding:6px;
+    }
+    .lang button{
+      border:0;background:transparent;color:var(--muted);
+      padding:7px 10px;border-radius:999px;cursor:pointer;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .lang button.active{
+      background:var(--orange);
+      color:var(--black);
+    }
+
     .btn{
       display:inline-block;
-      padding:12px 14px;border-radius:14px;font-weight:900;
-      border:1px solid rgba(255,177,0,.75);
-      background:linear-gradient(180deg, rgba(255,177,0,.95), rgba(255,138,0,.75));
-      color:#101014;
-      box-shadow:0 10px 24px rgba(255,177,0,.12);
-    }
-    .btn.secondary{
-      background:rgba(0,0,0,.18);
+      text-decoration:none;
+      padding:10px 12px;border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(244,162,97,.12);
       color:var(--text);
-      border:1px solid var(--border);
-      box-shadow:none;
+      font-weight:800;
     }
+    .btn:hover{box-shadow:0 0 18px var(--glow);border-color:rgba(244,162,97,.65)}
+    .btn.primary{background:rgba(244,162,97,.18)}
+
+    .hero{
+      margin-top:14px;
+      border:1px solid var(--line);
+      border-radius:calc(var(--radius) + 6px);
+      background:linear-gradient(180deg, rgba(20,20,32,.78), rgba(16,16,24,.70));
+      box-shadow: var(--shadow);
+      padding:18px;
+      overflow:hidden;
+      position:relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute;inset:-2px;
+      background: radial-gradient(500px 260px at 10% 20%, rgba(244,162,97,.16), transparent 70%),
+                  radial-gradient(420px 240px at 85% 25%, rgba(244,162,97,.10), transparent 75%);
+      pointer-events:none;
+    }
+    .hero *{position:relative}
+    .hero h1{margin:0;font-size:34px;line-height:1.05}
+    .hero p{margin:10px 0 0;color:var(--muted);max-width:900px}
+    .hero .cta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+    .tag{
+      display:inline-flex;gap:8px;align-items:center;
+      margin-top:12px;
+      border-left:3px solid var(--orange);
+      padding-left:10px;
+      color:var(--muted);
+      font-style:italic;
+    }
+
+    .sectionTitle{
+      margin:18px 0 10px;
+      font-size:20px;
+      color:var(--orange);
+      text-shadow:0 0 18px rgba(244,162,97,.25);
+    }
+
     .grid{
-      margin-top:18px;
       display:grid;
-      grid-template-columnns:repeat(3,1fr);
+      grid-template-columns:repeat(12,1fr);
       gap:14px;
     }
     .card{
-      border:1px solid var(--border);
+      grid-column:span 6;
+      border:1px solid var(--line);
+      background:rgba(20,20,32,.72);
       border-radius:var(--radius);
-      background:linear-gradient(180deg, rgba(18,25,35,.85), rgba(15,22,32,.75));
-      box-shadow:var(--shadow);
       padding:16px;
-      min-height:160px;
+      box-shadow:0 0 0 1px rgba(255,255,255,.03) inset;
+      min-height:220px;
     }
-    .card h3{margin:0 0 10px;color:var(--accent)}
-    .card ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.6}
-    .foot{
-      margin:18px 0 8px;
+    .card.full{grid-column:span 12}
+    .card h2{margin:0 0 10px;font-size:18px;color:var(--orange)}
+    .card ul{margin:0;padding-left:18px}
+    .card li{margin:8px 0;color:var(--text)}
+    .card a{color:var(--orange);text-decoration:none;font-weight:800}
+    .card a:hover{text-decoration:underline}
+    .note{
+      margin-top:12px;
       color:var(--muted);
-      text-align:center;
-      font-size:12px;
+      border-left:3px solid rgba(244,162,97,.55);
+      padding-left:10px;
+      font-style:italic;
     }
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
+
+    .two{
+      display:grid;grid-template-columns:repeat(12,1fr);gap:14px;
+    }
+    .box{
+      grid-column:span 6;
+      border:1px solid rgba(255,255,255,.06);
+      background:rgba(0,0,0,.18);
+      border-radius:14px;
+      padding:12px;
+      color:var(--muted);
+    }
+    .box b{color:var(--text)}
+    .box a{color:var(--orange);font-weight:900;text-decoration:none}
+    .box a:hover{text-decoration:underline}
+
+    .waFloat{
+      position:fixed;right:18px;bottom:18px;
+      background:#25D366;color:#071; /* WhatsApp green */
+      padding:12px 14px;border-radius:999px;
+      font-weight:1000;text-decoration:none;
+      color:#0b0b0f;
+      box-shadow:0 18px 50px rgba(0,0,0,.45);
+      border:1px solid rgba(255,255,255,.15);
+    }
+
+    @media (max-width: 980px){
+      .top{position:relative;top:0}
       .brand{min-width:auto}
-    }<style>
-  :root{
-    --bg:#0b0f16;
-    --panel:#101826;
-    --border:#2a3a55;
-    --text:#e9f0ff;
-    --muted:#a9b7d3;
-    --accent:#ffb100; /* apricot/orange */
-  }<section style="padding:40px;background:#0b0b0b;color:#fff;">
-
-  <h2 style="color:#f5b400;">U.S. Passport Services (US)</h2>
-  <ul>
-    <li>
-      <a href="https://travel.state.gov/content/travel/en/passports/how-apply.html"
-         target="_blank" style="color:#fff;">
-        New Passport Applications
-      </a>
-    </li>
-    <li>
-      <a href="https://travel.state.gov/content/travel/en/passports/have-passport/renew.html"
-         target="_blank" style="color:#fff;">
-        Passport Renewals
-      </a>
-    </li>
-    <li>
-      <a href="https://travel.state.gov/content/travel/en/passports/have-passport/lost-stolen.html"
-         target="_blank" style="color:#fff;">
-        Lost or Stolen Passport Assistance
-      </a>
-    </li>
-    <li>
-      <a href="https://travel.state.gov/content/travel/en/passports/need-passport/under-16.html"
-         target="_blank" style="color:#fff;">
-        Child Passport Guidance
-      </a>
-    </li>
-    <li>
-      <a href="https://travel.state.gov/content/travel/en/passports/forms.html"
-         target="_blank" style="color:#fff;">
-        Official Passport Forms (DS-11 / DS-82 / DS-64)
-      </a>
-    </li>
-  </ul>
-
-  <hr style="margin:40px 0;border-color:#333;">
-
-  <h2 style="color:#f5b400;">Haitian Passport Services (HT)</h2>
-  <ul>
-    <li>
-      <a href="https://www.consulathaiti.org/"
-         target="_blank" style="color:#fff;">
-        Consulate & Appointment Information
-      </a>
-    </li>
-    <li>
-      <a href="https://www.haiti.org/passport/"
-         target="_blank" style="color:#fff;">
-        New Haitian Passport Assistance
-      </a>
-    </li>
-    <li>
-      <a href="https://www.haiti.org/documents/"
-         target="_blank" style="color:#fff;">
-        Document Preparation Support
-      </a>
-    </li>
-  </ul>
-
-  <hr style="margin:40px 0;border-color:#333;">
-
-  <h2 style="color:#f5b400;">Translation & Document Assistance</h2>
-  <ul>
-    <li>Haitian Creole ⇄ English</li>
-    <li>Spanish ⇄ English</li>
-    <li>Birth, Marriage & Divorce Certificates</li>
-    <li>USCIS, IRS & SSA Formatting</li>
-  </ul>
-
-  <a href="https://wa.me/13175381150"
-     target="_blank"
-     style="display:inline-block;margin-top:15px;
-            padding:12px 20px;background:#25D366;
-            color:#000;font-weight:bold;
-            border-radius:30px;text-decoration:none;">
-    WhatsApp Us for Translation
-  </a>
-
-</section>
-  html,body{height:100%}
-  body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:var(--bg) !important;
-    color:var(--text) !important;
-  }
-  .container{max-width:1100px;margin:0 auto;padding:20px}
-  .topbar{
-    display:flex;align-items:center;justify-content:space-between;
-    gap:14px;padding:12px 16px;border:1px solid var(--border);
-    background:rgba(16,24,38,.85);border-radius:16px;
-  }
-  .brand{display:flex;align-items:center;gap:10px}
-  .brand img{height:42px;width:auto;display:block}
-  .brand .title{font-weight:800;letter-spacing:.5px;color:var(--accent)}
-  .brand .tag{font-size:12px;color:var(--muted)}
-  .nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-  .btn{
-    border:1px solid var(--border);
-    background:rgba(0,0,0,.25);
-    color:var(--text);
-    padding:10px 14px;border-radius:999px;
-    cursor:pointer;text-decoration:none;display:inline-block;
-    font-weight:700;
-  }
-  .btn:hover{border-color:var(--accent)}
-  .btn.primary{background:var(--accent);color:#161616;border-color:#f2a000}
-  .lang{display:flex;gap:8px;align-items:center}
-  .lang .btn{padding:8px 12px;font-size:12px}
-  .section{
-    margin-top:18px;padding:16px;border-radius:16px;
-    border:1px solid var(--border);
-    background:rgba(16,24,38,.75);
-  }
-  .section h2{margin:0 0 10px 0;color:var(--accent)}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-  .card{
-    border:1px solid var(--border);
-    background:rgba(0,0,0,.20);
-    border-radius:16px;padding:14px;
-  }
-  .card h3{margin:0 0 8px 0}
-  .card ul{margin:8px 0 0 18px;color:var(--muted)}
-  .small{color:var(--muted);font-size:12px}
-  /* Kache Google translate bar la pou li pa gate layout */
-  .goog-te-banner-frame.skiptranslate { display: none !important; }
-  body { top: 0px !important; }
-</style>
-
-<script>
-  // Google Translate init
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      includedLanguages: 'en,es,ht', // EN + Spanish + Haitian Creole
-      autoDisplay: false
-    }, 'google_translate_element');
-  }
-
-  // Chanje lang san kreye nouvo paj (pa gen 404)
-  function setLang(lang){
-    // lang: 'en' 'es' 'ht'
-    const trySet = () => {
-      const combo = document.querySelector('select.goog-te-combo');
-      if(!combo) return false;
-      combo.value = lang;
-      combo.dispatchEvent(new Event('change'));
-      return true;
-    };
-
-    // Eseye plizyè fwa (paske script la konn pran 1-2 segond)
-    let tries = 0;
-    const timer = setInterval(() => {
-      tries++;
-      if(trySet() || tries > 20) clearInterval(timer);
-    }, 250);
-  }
-</script>
-
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      .card{grid-column:span 12}
+      .box{grid-column:span 12}
+      .hero h1{font-size:28px}
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
-    <header class="topbar">
+    <header class="top">
       <div class="brand">
-        <img src="assets/maximax-owner.png" alt="MAXIMAX Logo" />
-        <div>
-          <div class="t1">MAXIMAX Multi Services</div>
-          <div class="t2">MAXIMAX ALWAYS MAXIMIZED • YES WE CAN.</div>
+        <div class="logo" title="MAXIMAX Logo">
+          <!-- Logo file must exist: public/maximax-owner.png -->
+          <img src="./maximax-owner.png" alt="MAXIMAX Logo"
+               onerror="this.style.display='none'"/>
+        </div>
+        <div class="name">
+          <b>MAXIMAX Multi Services</b>
+          <small id="slogan">MAXIMAX ALWAY MAXIMIZED • YES WE CAN.</small>
         </div>
       </div>
 
       <nav class="nav">
-        <a class="pill active" href="index.html">HOME</a>
-        <a class="pill" href="services.html">SERVICES</a>
-        <a class="pill" href="forms.html">FORMS</a>
-        <a class="pill" href="alerts.html">ALERTS</a>
-        <a class="pill" href="contact.html">CONTACT</a>
+        <a href="#services" id="navServices">Services</a>
+        <a href="#forms" id="navForms">Forms</a>
+        <a href="#contact" id="navContact">Contact</a>
+        <a href="#resume" id="navResume">Resume AI</a>
       </nav>
 
-      <div class="lang">
-        <span class="tag">LANG</span>
-        <!-- Static (NO JS): open Google-Translate version of THIS page -->
-        <a href="index.html" title="English">EN</a>
-        <a href="https://translate.google.com/translate?sl=en&tl=ht&u=https://www.maximaxmultiservices.com/index.html" title="Kreyòl">KR</a>
-        <a href="https://translate.google.com/translate?sl=en&tl=es&u=https://www.maximaxmultiservices.com/index.html" title="Español">ES</a>
+      <div class="right">
+        <div class="lang" aria-label="Language toggle">
+          <button id="btnHT" class="active" type="button">Kreyòl</button>
+          <button id="btnEN" type="button">English</button>
+          <button id="btnES" type="button">Español</button>
+        </div>
+
+        <!-- Letterhead download: file must exist in public/ -->
+        <a class="btn primary" href="./Maximax-Letterhead.pdf" download id="btnLetterhead">
+          Letterhead
+        </a>
       </div>
     </header>
 
-    <section class="hero">
-      <div>
-        <h1>Your One-Stop Solution for Government Forms and Services</h1>
-        <p>
-          Immigration assistance, tax support, benefits (SNAP/Medicaid/SSA), housing (HUD/Section 8),
-          and official government forms — all in one place.
-        </p>
+    <section class="hero" id="home">
+      <h1 id="heroTitle">Solisyon 1 sèl kote pou sèvis & fòm ofisyèl</h1>
+      <p id="heroSub">
+        Imigrasyon • Taks • SNAP • Medicaid/Medicare • SSA • Housing (HUD/Section 8) • Dokumentasyon • Asistans fòm gouvènman.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="#forms" id="ctaForms">Open Forms Library</a>
+        <a class="btn" href="#services" id="ctaServices">View Services</a>
+        <a class="btn" href="https://wa.me/13175381150" target="_blank" rel="noopener" id="ctaWA">
+          WhatsApp
+        </a>
+      </div>
+      <div class="tag" id="heroNote">
+        Nòt: Nou ede w ranpli/prepare dokiman. Desizyon final rete sou ajans ofisyèl yo.
+      </div>
+    </section>
 
-        <div class="btnRow">
-          <a class="btn" href="forms.html">Open Forms Library</a>
-          <a class="btn secondary" href="services.html">View Services</a>
-          <a class="btn secondary" href="alerts.html">Alerts & Updates</a>
-          <a class="btn secondary" href="contact.html">Contact</a>
+    <h2 class="sectionTitle" id="services">Services</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h2 id="tTitle">Translation & Document Assistance</h2>
+        <ul id="tList">
+          <li>Kreyòl ⇄ English</li>
+          <li>Español ⇄ English</li>
+          <li>Birth / Marriage / Divorce Certificates</li>
+          <li>Affidavits & Immigration Documents</li>
+          <li>Formatting for USCIS, IRS, SSA</li>
+          <li><a href="https://wa.me/13175381150?text=Hi%20MAXIMAX%2C%20I%20need%20translation%20help." target="_blank" rel="noopener" id="tWA">WhatsApp for Translation</a></li>
+        </ul>
+        <div class="note" id="tNote">
+          Translation assistance for preparation. Certified translations available upon request.
         </div>
       </div>
 
       <div class="card">
-        <h3>Quick Actions</h3>
-        <ul>
-          <li>Go straight to official forms</li>
-          <li>Check urgent immigration/tax updates</li>
-          <li>Contact MAXIMAX for help</li>
-          <li>Power of Attorney support</li>
+        <h2 id="usTitle">U.S. Passport Services (US)</h2>
+        <ul id="usList">
+          <li><a href="https://travel.state.gov/content/travel/en/passports.html" target="_blank" rel="noopener">Official Passport Info (travel.state.gov)</a></li>
+          <li><a href="https://travel.state.gov/content/travel/en/passports/how-apply/form-finder.html" target="_blank" rel="noopener">Which form should I use? (Form Wizard)</a></li>
+          <li><a href="https://travel.state.gov/content/travel/en/passports/how-apply/forms.html" target="_blank" rel="noopener">Passport Forms (DS-11 / DS-82)</a></li>
+          <li>New Passport Applications</li>
+          <li>Renewals</li>
+          <li>Lost or Stolen Passport Help</li>
+          <li>Child Passport Guidance</li>
         </ul>
-      </div>
-    </section>
-
-    <section class="grid">
-      <div class="card">
-        <h3>Services</h3>
-        <ul>
-          <li>Immigration Assistance (guidance, documents, checklists)</li>
-          <li>Tax Support (IRS forms, filing help, preparation)</li>
-          <li>Benefits Help (SNAP / Medicaid / SSA)</li>
-          <li>Housing (HUD / Section 8)</li>
-          <li>Translation Assistance</li>
-        </ul>
+        <div class="note" id="usNote">
+          MAXIMAX provides preparation & guidance. Passport issuance is handled by official authorities.
+        </div>
       </div>
 
       <div class="card">
-        <h3>Alerts & Updates</h3>
-        <ul>
-          <li>New rules & deadlines</li>
-          <li>USCIS policy changes</li>
-          <li>IRS season updates</li>
-          <li>Required evidence reminders</li>
+        <h2 id="htTitle">Haitian Passport Services (HT)</h2>
+        <ul id="htList">
+          <li><a href="https://www.haiti.org/consular-services/" target="_blank" rel="noopener">Consular Services (Official)</a></li>
+          <li>New Haitian Passport Assistance</li>
+          <li>Renewal Guidance</li>
+          <li>Document Preparation Support</li>
+          <li>Consulate Appointment Guidance</li>
         </ul>
+        <div class="note" id="htNote">
+          MAXIMAX provides assistance only. Passport issuance is handled by official authorities.
+        </div>
       </div>
 
-      <div class="card">
-        <h3>Tip</h3>
-        <ul>
-          <li>Use Forms Library to reach official sources fast</li>
-          <li>Use Alerts for urgent updates</li>
-          <li>Need help? Contact us</li>
+      <div class="card" id="resume">
+        <h2 id="rTitle">Resume AI</h2>
+        <ul id="rList">
+          <li>Create a professional resume fast</li>
+          <li>English / Kreyòl / Español</li>
+          <li>Download as PDF</li>
+          <li><a href="https://wa.me/13175381150?text=Hi%20MAXIMAX%2C%20I%20need%20a%20resume." target="_blank" rel="noopener" id="rWA">Start on WhatsApp</a></li>
         </ul>
+        <div class="note" id="rNote">We can connect the full Resume Builder app next.</div>
       </div>
-    </section>
-<!-- FIX LANGUAGE TOGGLE (NO GOOGLE TRANSLATE) -->
-<script>
-  (function () {
-    function go(page){ window.location.href = page; }
 
-    // if your buttons are links (<a>) with text EN / KR / ES
-    document.querySelectorAll('a,button').forEach(function(el){
-      const t = (el.textContent || '').trim().toUpperCase();
+      <div class="card full" id="forms">
+        <h2 id="fTitle">Forms Library (Official Links)</h2>
+        <ul id="fList">
+          <li><a href="https://www.federalregister.gov/" target="_blank" rel="noopener">Federal Register (Official)</a></li>
+          <li><a href="https://www.irs.gov/forms-instructions" target="_blank" rel="noopener">IRS Forms & Instructions (Official)</a></li>
+          <li><a href="https://www.ssa.gov/forms/" target="_blank" rel="noopener">SSA Forms (Official)</a></li>
+          <li><a href="https://www.uscis.gov/forms" target="_blank" rel="noopener">USCIS Forms (Official)</a></li>
+        </ul>
+        <div class="note" id="fNote">Direct links to official sources.</div>
+      </div>
 
-      // Stop Google Translate links if they exist
-      const href = (el.getAttribute && el.getAttribute('href')) ? el.getAttribute('href') : '';
-      if (href && href.includes('translate.google')) {
-        el.setAttribute('href', '#');
-      }
+      <div class="card full" id="contact">
+        <h2 id="cTitle">Contact</h2>
+        <div class="two">
+          <div class="box">
+            <b id="cAddressLabel">Address:</b>
+            <div id="cAddress">6934 Coral Cove Drive, Orlando Florida 32818</div>
+          </div>
+          <div class="box">
+            <b>Email:</b> <a href="mailto:maximaxmultiservices@gmail.com">maximaxmultiservices@gmail.com</a><br/>
+            <b>Website:</b> <a href="https://www.maximaxmultiservices.com" target="_blank" rel="noopener">www.maximaxmultiservices.com</a>
+          </div>
+          <div class="box">
+            <b>Tel:</b> <a href="tel:+13175381150">(317) 538-1150</a><br/>
+            <b>Tel:</b> <a href="tel:+15162168494">(516) 216-8494</a>
+          </div>
+          <div class="box">
+            <b>WhatsApp:</b> <a href="https://wa.me/13175381150" target="_blank" rel="noopener">(317) 538-1150</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      if (t === 'EN') { el.onclick = function(e){ e.preventDefault(); go('index.html'); }; }
-      if (t === 'KR') { el.onclick = function(e){ e.preventDefault(); go('index-kr.html'); }; }
-      if (t === 'ES' || t === 'ESPAÑOL') { el.onclick = function(e){ e.preventDefault(); go('index-es.html'); }; }
-    });
-  })();
-</script>
-<!-- FIX LANGUAGE TOGGLE (NO GOOGLE TRANSLATE) -->
-<script>
-  (function () {
-    function go(page){ window.location.href = page; }
-
-    // if your buttons are links (<a>) with text EN / KR / ES
-    document.querySelectorAll('a,button').forEach(function(el){
-      const t = (el.textContent || '').trim().toUpperCase();
-
-      // Stop Google Translate links if they exist
-      const href = (el.getAttribute && el.getAttribute('href')) ? el.getAttribute('href') : '';
-      if (href && href.includes('translate.google')) {
-        el.setAttribute('href', '#');
-      }
-
-      if (t === 'EN') { el.onclick = function(e){ e.preventDefault(); go('index.html'); }; }
-      if (t === 'KR') { el.onclick = function(e){ e.preventDefault(); go('index-kr.html'); }; }
-      if (t === 'ES' || t === 'ESPAÑOL') { el.onclick = function(e){ e.preventDefault(); go('index-es.html'); }; }
-    });
-  })();
-</script>    <div class="foot">© <span id="y"></span> MAXIMAX Multi Services • www.maximaxmultiservices.com</div>
   </div>
-<!-- ===== LANGUAGE TOGGLE (NO REDIRECT / NO 404) ===== -->
-<div style="text-align:right; padding:10px; font-weight:bold;">
-  <span style="margin-right:15px;">EN</span>
-  <span style="margin-right:15px;">KREYÒL</span>
-  <span>ESPAÑOL</span>
-</div>
 
-<!-- ===== SERVICES SECTION ===== -->
-<section style="padding:40px; background:#fff; color:#000;">
+  <a class="waFloat" href="https://wa.me/13175381150" target="_blank" rel="noopener">WhatsApp</a>
 
-  <h2>Translation & Document Assistance</h2>
-  <ul>
-    <li>Haitian Creole ⇄ English</li>
-    <li>Spanish ⇄ English</li>
-    <li>Birth, Marriage, Divorce Certificates</li>
-    <li>Affidavits & Immigration Documents</li>
-    <li>Formatting for USCIS, IRS, SSA</li>
-  </ul>
-  <p><em>Translation assistance is provided for preparation purposes. Certified translations available upon request.</em></p>
-
-  <hr>
-<h2>U.S. Passport Services (US)</h2>
-<ul>
-  <li>
-    <a href="https://travel.state.gov/content/travel/en/passports/how-apply.html" target="_blank">
-      New Passport Applications
-    </a>
-  </li>
-  <li>
-    <a href="https://travel.state.gov/content/travel/en/passports/have-passport/renew.html" target="_blank">
-      Passport Renewals
-    </a>
-  </li>
-  <li>
-    <a href="https://travel.state.gov/content/travel/en/passports/have-passport/lost-stolen.html" target="_blank">
-      Lost or Stolen Passport Assistance
-    </a>
-  </li>
-  <li>
-    <a href="https://travel.state.gov/content/travel/en/passports/need-passport/under-16.html" target="_blank">
-      Child Passport Guidance
-    </a>
-  </li>
-  <li>
-    <a href="https://travel.state.gov/content/travel/en/passports/forms.html" target="_blank">
-      DS-11 / DS-82 / DS-64 Forms
-    </a>
-  </li>
-</ul>
-  
-  
-
-  <h2>Haitian Passport Services (HT)</h2>
-<ul>
-  <li>
-    <a href="https://www.haiti.org/passport-application/" target="_blank">
-      New Haitian Passport Assistance
-    </a>
-  </li>
-  <li>
-    <a href="https://www.haiti.org/passport-renewal/" target="_blank">
-      Passport Renewal Guidance
-    </a>
-  </li>
-  <li>
-    <a href="https://www.haiti.org/documents/" target="_blank">
-      Document Preparation Support
-    </a>
-  </li>
-  <li>
-    <a href="https://www.consulathaiti.org/" target="_blank">
-      Consulate Appointment Guidance
-    </a>
-  </li>
-</ul>
-
-  <p><em>MAXIMAX Multi Services provides assistance only. Passport issuance is handled by official government authorities.</em></p>
-
-</section>
   <script>
-    // harmless, optional: year only (can delete if you want 100% no JS)
-    document.getElementById("y").textContent = new Date().getFullYear();
+    const btnHT = document.getElementById("btnHT");
+    const btnEN = document.getElementById("btnEN");
+    const btnES = document.getElementById("btnES");
+
+    const T = {
+      ht:{
+        navServices:"Sèvis", navForms:"Fòm", navContact:"Kontak", navResume:"Resume AI",
+        heroTitle:"Solisyon 1 sèl kote pou sèvis & fòm ofisyèl",
+        heroSub:"Imigrasyon • Taks • SNAP • Medicaid/Medicare • SSA • Housing (HUD/Section 8) • Dokumentasyon • Asistans fòm gouvènman.",
+        heroNote:"Nòt: Nou ede w ranpli/prepare dokiman. Desizyon final rete sou ajans ofisyèl yo.",
+        ctaForms:"Louvri Forms", ctaServices:"Gade Sèvis", ctaWA:"WhatsApp",
+        tTitle:"Tradiksyon & Asistans Dokiman",
+        tNote:"Tradiksyon se pou preparasyon. Tradiksyon sètifye disponib sou demann.",
+        tWA:"WhatsApp pou Tradiksyon",
+        usTitle:"Sèvis Paspò Etazini (US)",
+        usNote:"MAXIMAX ede w prepare & gide w. Gouvènman an sèlman ki bay paspò a.",
+        htTitle:"Sèvis Paspò Ayisyen (HT)",
+        htNote:"MAXIMAX bay asistans sèlman. Otorite ofisyèl yo sèlman ki bay paspò.",
+        rTitle:"Resume AI",
+        rNote:"Nou ka konekte Resume Builder la aprè.",
+        rWA:"Kòmanse sou WhatsApp",
+        fTitle:"Bibliyotèk Fòm (Lyen Ofisyèl)",
+        fNote:"Lyen dirèk sou sous ofisyèl yo.",
+        cTitle:"Kontak",
+        cAddressLabel:"Adrès:"
+      },
+      en:{
+        navServices:"Services", navForms:"Forms", navContact:"Contact", navResume:"Resume AI",
+        heroTitle:"Your one-stop solution for official services & forms",
+        heroSub:"Immigration • Taxes • SNAP • Medicaid/Medicare • SSA • Housing (HUD/Section 8) • Documentation • Government form assistance.",
+        heroNote:"Note: We assist with preparation/filling. Final decisions remain with official agencies.",
+        ctaForms:"Open Forms", ctaServices:"View Services", ctaWA:"WhatsApp",
+        tTitle:"Translation & Document Assistance",
+        tNote:"Translation assistance for preparation. Certified translations available upon request.",
+        tWA:"WhatsApp for Translation",
+        usTitle:"U.S. Passport Services (US)",
+        usNote:"MAXIMAX provides preparation & guidance. Passport issuance is handled by official authorities.",
+        htTitle:"Haitian Passport Services (HT)",
+        htNote:"MAXIMAX provides assistance only. Passport issuance is handled by official authorities.",
+        rTitle:"Resume AI",
+        rNote:"We can connect the full Resume Builder next.",
+        rWA:"Start on WhatsApp",
+        fTitle:"Forms Library (Official Links)",
+        fNote:"Direct links to official sources.",
+        cTitle:"Contact",
+        cAddressLabel:"Address:"
+      },
+      es:{
+        navServices:"Servicios", navForms:"Formularios", navContact:"Contacto", navResume:"Resume AI",
+        heroTitle:"Tu solución integral para servicios y formularios oficiales",
+        heroSub:"Inmigración • Impuestos • SNAP • Medicaid/Medicare • SSA • Vivienda (HUD/Section 8) • Documentación • Asistencia con formularios.",
+        heroNote:"Nota: Ayudamos con preparación/llenado. Las decisiones finales pertenecen a agencias oficiales.",
+        ctaForms:"Abrir Formularios", ctaServices:"Ver Servicios", ctaWA:"WhatsApp",
+        tTitle:"Traducción y Asistencia de Documentos",
+        tNote:"Asistencia para preparación. Traducciones certificadas disponibles a solicitud.",
+        tWA:"WhatsApp para Traducción",
+        usTitle:"Servicios de Pasaporte de EE.UU. (US)",
+        usNote:"MAXIMAX ayuda con preparación y orientación. El pasaporte lo emiten autoridades oficiales.",
+        htTitle:"Servicios de Pasaporte Haitiano (HT)",
+        htNote:"MAXIMAX brinda asistencia. El pasaporte lo emiten autoridades oficiales.",
+        rTitle:"Resume AI",
+        rNote:"Luego conectamos el generador completo de CV.",
+        rWA:"Comenzar en WhatsApp",
+        fTitle:"Biblioteca de Formularios (Enlaces Oficiales)",
+        fNote:"Enlaces directos a fuentes oficiales.",
+        cTitle:"Contacto",
+        cAddressLabel:"Dirección:"
+      }
+    };
+
+    function setLang(lang){
+      // active button
+      btnHT.classList.toggle("active", lang==="ht");
+      btnEN.classList.toggle("active", lang==="en");
+      btnES.classList.toggle("active", lang==="es");
+
+      document.documentElement.lang = (lang==="ht") ? "ht" : (lang==="es" ? "es" : "en");
+
+      document.getElementById("navServices").textContent = T[lang].navServices;
+      document.getElementById("navForms").textContent = T[lang].navForms;
+      document.getElementById("navContact").textContent = T[lang].navContact;
+      document.getElementById("navResume").textContent = T[lang].navResume;
+
+      document.getElementById("heroTitle").textContent = T[lang].heroTitle;
+      document.getElementById("heroSub").textContent = T[lang].heroSub;
+      document.getElementById("heroNote").textContent = T[lang].heroNote;
+
+      document.getElementById("ctaForms").textContent = T[lang].ctaForms;
+      document.getElementById("ctaServices").textContent = T[lang].ctaServices;
+      document.getElementById("ctaWA").textContent = T[lang].ctaWA;
+
+      document.getElementById("tTitle").textContent = T[lang].tTitle;
+      document.getElementById("tNote").textContent = T[lang].tNote;
+      document.getElementById("tWA").textContent = T[lang].tWA;
+
+      document.getElementById("usTitle").textContent = T[lang].usTitle;
+      document.getElementById("usNote").textContent = T[lang].usNote;
+
+      document.getElementById("htTitle").textContent = T[lang].htTitle;
+      document.getElementById("htNote").textContent = T[lang].htNote;
+
+      document.getElementById("rTitle").textContent = T[lang].rTitle;
+      document.getElementById("rNote").textContent = T[lang].rNote;
+      document.getElementById("rWA").textContent = T[lang].rWA;
+
+      document.getElementById("fTitle").textContent = T[lang].fTitle;
+      document.getElementById("fNote").textContent = T[lang].fNote;
+
+      document.getElementById("cTitle").textContent = T[lang].cTitle;
+      document.getElementById("cAddressLabel").textContent = T[lang].cAddressLabel;
+    }
+
+    btnHT.addEventListener("click", ()=>setLang("ht"));
+    btnEN.addEventListener("click", ()=>setLang("en"));
+    btnES.addEventListener("click", ()=>setLang("es"));
+
+    // Default: Kreyòl
+    setLang("ht");
   </script>
-</body><script>
-  const btnHT = document.getElementById("btnHT");
-  const btnEN = document.getElementById("btnEN");
-  const btnES = document.getElementById("btnES");
-
-  function setActive(lang){
-    document.querySelectorAll("[data-lang]").forEach(el=>{
-      el.style.display = el.dataset.lang === lang ? "block" : "none";
-    });
-
-    btnHT.classList.remove("active");
-    btnEN.classList.remove("active");
-    btnES.classList.remove("active");
-
-    if(lang==="ht") btnHT.classList.add("active");
-    if(lang==="en") btnEN.classList.add("active");
-    if(lang==="es") btnES.classList.add("active");
-  }
-
-  btnHT.addEventListener("click", ()=>setActive("ht"));
-  btnEN.addEventListener("click", ()=>setActive("en"));
-  btnES.addEventListener("click", ()=>setActive("es"));
-
-  // default language
-  setActive("ht");
-</script>
+</body>
 </html>
-<!-- HIDE LANGUAGE TOGGLE COMPLETELY -->
-<style>
-  .language-toggle,
-  .lang-toggle,
-  .lang,<!-- HIDE LANGUAGE TOGGLE COMPLETELY -->
-<style>
-  .language-toggle,
-  .lang-toggle,
-  .lang,
-  .languages,
-  .language-switch,
-  [data-lang],
-  a[href*="translate"],
-  a[href*="/kr"],
-  a[href*="/es"] {
-    display: none !important;
-  }
-</style>
-  .languages,<!-- ✅ WHATSAPP FLOATING BUTTON (MAXIMAX) -->
-<a href="https://wa.me/13175381150?text=Hello%20MAXIMAX%2C%20I%20need%20assistance.%20Please%20help%20me."
-   target="_blank" rel="noopener"
-   style="position:fixed;right:18px;bottom:18px;z-index:99999;
-          display:flex;align-items:center;gap:10px;
-          padding:12px 14px;border-radius:999px;
-          background:#25D366;color:#fff;text-decoration:none;
-          font-weight:900;font-family:Arial, sans-serif;
-          box-shadow:0 8px 18px rgba(0,0,0,.25);">
-  <span style="font-size:18px;">💬</span>
-  <span>WhatsApp</span><style>
-/* === MAXIMAX FIX: SERVICES / PASSPORT / TRANSLATION === */
-section, .services-section, .content-section {
-  background: #0e0e0e !important;
-  color: #ffffff !important;
-  padding: 28px !important;
-  margin: 30px auto !important;
-  border-radius: 18px !important;
-  max-width: 1200px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.35);
-}
-
-section h2, section h3 {
-  color: #ffb100 !important;
-  margin-bottom: 14px;
-  font-weight: 900;
-}
-
-section ul {
-  padding-left: 22px;
-  line-height: 1.7;
-}
-
-section li {
-  color: #f2f2f2 !important;
-}
-
-section p {
-  color: #dddddd !important;
-}
-
-hr {
-  border: none;
-  border-top: 1px solid rgba(255,177,0,.35);
-  margin: 24px 0;
-}
-  </style>
-</a>
-  .language-switch,
-  [data-lang],
-  a[href*="translate"],
-  a[href*="/kr"],
-  a[href*="/es"] {
-    display: none !important;
-  }
-</style>
-<section style="padding:40px;background:#0b0b0b;color:#fff;">
-
-  <h2 style="color:#f5b400;">U.S. Passport Services (US)</h2>
-  <ul>
-    <li>
-      <a href="https://travel.state.gov/content/travel/en/passports/how-apply.html"
-         target="_blank" style="color:#fff;">
-        New Passport Applications
-      </a>
-    </li>
-    <li>
-      <a href="https://travel.state.gov/content/travel/en/passports/have-passport/renew.html"
-         target="_blank" style="color:#fff;">
-        Passport Renewals
-      </a>
-    </li>
-    <li>
-      <a href="https://travel.state.gov/content/travel/en/passports/have-passport/lost-stolen.html"
-         target="_blank" style="color:#fff;">
-        Lost or Stolen Passport Assistance
-      </a>
-    </li>
-    <li>
-      <a href="https://travel.state.gov/content/travel/en/passports/need-passport/under-16.html"
-         target="_blank" style="color:#fff;">
-        Child Passport Guidance
-      </a>
-    </li>
-    <li>
-      <a href="https://travel.state.gov/content/travel/en/passports/forms.html"
-         target="_blank" style="color:#fff;">
-        Official Passport Forms (DS-11 / DS-82 / DS-64)
-      </a>
-    </li>
-  </ul>
-
-  <hr style="margin:40px 0;border-color:#333;">
-
-  <h2 style="color:#f5b400;">Haitian Passport Services (HT)</h2>
-  <ul>
-    <li>
-      <a href="https://www.consulathaiti.org/"
-         target="_blank" style="color:#fff;">
-        Consulate & Appointment Information
-      </a>
-    </li>
-    <li>
-      <a href="https://www.haiti.org/passport/"
-         target="_blank" style="color:#fff;">
-        New Haitian Passport Assistance
-      </a>
-    </li>
-    <li>
-      <a href="https://www.haiti.org/documents/"
-         target="_blank" style="color:#fff;">
-        Document Preparation Support
-      </a>
-    </li>
-  </ul>
-
-  <hr style="margin:40px 0;border-color:#333;">
-
-  <h2 style="color:#f5b400;">Translation & Document Assistance</h2>
-  <ul>
-    <li>Haitian Creole ⇄ English</li>
-    <li>Spanish ⇄ English</li>
-    <li>Birth, Marriage & Divorce Certificates</li>
-    <li>USCIS, IRS & SSA Formatting</li>
-  </ul>
-
-  <a href="https://wa.me/13175381150"
-     target="_blank"
-     style="display:inline-block;margin-top:15px;
-            padding:12px 20px;background:#25D366;
-            color:#000;font-weight:bold;
-            border-radius:30px;text-decoration:none;">
-    WhatsApp Us for Translation
-  </a>
-
-</section>
