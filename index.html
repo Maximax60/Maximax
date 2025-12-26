@@ -4,29 +4,32 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MAXIMAX Multi Services</title>
-
   <style>
     :root{
-      --bg:#0b1220;
-      --panel:#101a2e;
-      --panel2:#0e1730;
-      --text:#e9eefc;
+      /* DARK PREMIUM + APRICOT ORANGE */
+      --bg:#070a12;
+      --panel:#0c1222;
+      --panel2:#0a1020;
+      --text:#eef2ff;
       --muted:#a9b4d6;
-      --line:rgba(255,255,255,.12);
-      --accent:#f4a261; /* jon abrikot */
-      --accent2:#ffcc80;
-      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --line:rgba(255,255,255,.08);
+      --accent:#ff9f43;    /* jon abrikot */
+      --accent2:#ffd08a;
+      --shadow: 0 14px 34px rgba(0,0,0,.42);
       --radius:18px;
       --radius2:24px;
       --max:1150px;
     }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background: radial-gradient(1200px 700px at 20% 0%, rgba(244,162,97,.20), transparent 60%),
-                  radial-gradient(900px 600px at 85% 20%, rgba(255,204,128,.15), transparent 60%),
-                  linear-gradient(180deg, #070b14, var(--bg));
+      background:
+        radial-gradient(1200px 700px at 20% 0%, rgba(255,159,67,.18), transparent 62%),
+        radial-gradient(900px 600px at 85% 20%, rgba(255,208,138,.12), transparent 62%),
+        linear-gradient(180deg, #050812, var(--bg));
       color:var(--text);
     }
     a{color:inherit}
@@ -43,68 +46,65 @@
       position:sticky; top:10px; z-index:10;
       backdrop-filter: blur(8px);
     }
+
     .brand{display:flex; align-items:center; gap:12px;}
     .logo{
       width:52px; height:52px; border-radius:14px;
-      background: rgba(244,162,97,.12);
-      border:1px solid rgba(244,162,97,.35);
+      background: rgba(255,159,67,.12);
+      border:1px solid rgba(255,159,67,.28);
       display:grid; place-items:center;
       overflow:hidden;
-      flex:0 0 auto;
     }
     .logo img{width:100%; height:100%; object-fit:cover;}
     .brand h1{margin:0; font-size:16px; letter-spacing:.3px;}
     .brand .tag{margin:2px 0 0; font-size:12px; color:var(--muted)}
 
     .right{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
+
     .pill{
       display:flex; align-items:center; gap:8px;
-      background: rgba(0,0,0,.18);
+      background: rgba(0,0,0,.22);
       border:1px solid var(--line);
       border-radius: 999px;
       padding:8px 10px;
     }
+
     .btn{
       cursor:pointer;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.06);
+      background: rgba(255,255,255,.05);
       color:var(--text);
       padding:8px 12px;
       border-radius: 999px;
-      font-weight:600;
+      font-weight:700;
       font-size:13px;
       text-decoration:none;
-      display:inline-flex; align-items:center; justify-content:center;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       gap:8px;
     }
-    .btn:hover{border-color: rgba(244,162,97,.55)}
+    .btn:hover{
+      border-color: rgba(255,159,67,.55);
+      box-shadow: 0 0 0 3px rgba(255,159,67,.10);
+    }
+
     .btn.primary{
-      background: linear-gradient(180deg, rgba(244,162,97,.95), rgba(244,162,97,.70));
-      border-color: rgba(244,162,97,.9);
+      background: linear-gradient(180deg, rgba(255,159,67,.96), rgba(255,159,67,.70));
+      border-color: rgba(255,159,67,.85);
       color:#1b1107;
+      box-shadow: 0 12px 26px rgba(255,159,67,.22);
     }
     .btn.small{padding:8px 10px; font-size:12px;}
     .langBtn[aria-pressed="true"]{
-      border-color: rgba(244,162,97,.85);
-      box-shadow: 0 0 0 3px rgba(244,162,97,.18);
+      border-color: rgba(255,159,67,.85);
+      box-shadow: 0 0 0 3px rgba(255,159,67,.16);
     }
 
-    .navLinks{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;}
-    .navLinks a{
-      text-decoration:none;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.05);
-      color: var(--text);
-      font-weight:600;
-      font-size:13px;
-    }
-    .navLinks a:hover{border-color: rgba(244,162,97,.55)}
-
+    /* HERO */
     .hero{
       margin-top:18px;
-      background: linear-gradient(180deg, rgba(244,162,97,.10), rgba(255,255,255,.03));
+      background: linear-gradient(180deg, rgba(255,159,67,.10), rgba(255,255,255,.02));
       border:1px solid var(--line);
       border-radius: var(--radius2);
       padding:18px;
@@ -112,7 +112,20 @@
     }
     .heroTop{display:flex; gap:16px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;}
     .hero h2{margin:0; font-size:26px;}
-    .hero p{margin:8px 0 0; color:var(--muted); line-height:1.5;}
+    .hero p{margin:8px 0 0; color:var(--muted); line-height:1.55;}
+
+    .twoCol{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size:12px;
+      padding:2px 6px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      color: rgba(255,255,255,.86);
+    }
+
+    /* GRID */
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
@@ -121,11 +134,11 @@
     }
     .card{
       grid-column: span 4;
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.10));
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.16));
       border:1px solid var(--line);
       border-radius: var(--radius);
       padding:14px;
-      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+      box-shadow: 0 12px 26px rgba(0,0,0,.28);
       min-height: 260px;
     }
     .card h3{
@@ -134,110 +147,23 @@
       color: var(--accent2);
       letter-spacing:.2px;
     }
-    .list{margin:0; padding-left:18px; color:var(--text)}
-    .list li{margin:8px 0; color:var(--text)}
+    .list{margin:0; padding-left:18px;}
+    .list li{margin:8px 0;}
     .list a{
       text-decoration:none;
-      border-bottom:1px dashed rgba(244,162,97,.55);
+      border-bottom:1px dashed rgba(255,159,67,.55);
       padding-bottom:1px;
     }
     .list a:hover{border-bottom-style:solid}
+
     .note{
       margin-top:10px;
       color:var(--muted);
       font-size:12.5px;
-      line-height:1.5;
+      line-height:1.55;
       border-top:1px solid rgba(255,255,255,.10);
       padding-top:10px;
     }
-
-    .twoCol{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-    }
-    .kbd{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size:12px;
-      padding:2px 6px;
-      border-radius:8px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.22);
-      color: rgba(255,255,255,.85);
-    }
-
-    .section{
-      margin-top:18px;
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.08));
-      border:1px solid var(--line);
-      border-radius: var(--radius2);
-      padding:18px;
-      box-shadow: var(--shadow);
-    }
-    .section h3{margin:0 0 10px 0; color: var(--accent2); font-size:18px;}
-    .section p{margin:8px 0; color: var(--muted); line-height:1.55;}
-
-    .miniGrid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:14px;
-      margin-top:12px;
-    }
-    .miniCard{
-      grid-column: span 4;
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      padding:14px;
-      background: rgba(0,0,0,.18);
-      min-height: 140px;
-    }
-    .miniCard h4{margin:0 0 8px 0; font-size:16px; color: var(--text);}
-    .miniCard p{margin:0; color: var(--muted); font-size:13.5px;}
-
-    .steps{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:14px;
-      margin-top:12px;
-    }
-    .step{
-      grid-column: span 3;
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      padding:14px;
-      background: rgba(255,255,255,.03);
-    }
-    .stepNum{
-      width:34px; height:34px; border-radius:12px;
-      display:grid; place-items:center;
-      background: rgba(244,162,97,.14);
-      border:1px solid rgba(244,162,97,.35);
-      color: var(--accent2);
-      font-weight:800;
-      margin-bottom:10px;
-    }
-    .step b{display:block; margin-bottom:6px}
-    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
-
-    .row2{
-      display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin-top:12px;
-    }
-    .panel{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      padding:14px;
-      background: rgba(0,0,0,.16);
-    }
-    .panel .label{color: var(--muted); font-size:12.5px; margin-bottom:6px}
-    .panel a{color: var(--text); text-decoration:none; border-bottom:1px dashed rgba(244,162,97,.55)}
-    .panel a:hover{border-bottom-style:solid}
-
-    details{
-      border:1px solid rgba(255,255,255,.10);
-      border-radius: 14px;
-      padding:12px 14px;
-      background: rgba(255,255,255,.03);
-    }
-    details summary{cursor:pointer; font-weight:700;}
-    details p{margin:10px 0 0; color: var(--muted);}
 
     .footer{
       margin-top:18px;
@@ -249,9 +175,6 @@
     @media (max-width: 980px){
       .card{grid-column: span 12;}
       .hero h2{font-size:22px;}
-      .miniCard{grid-column: span 12;}
-      .step{grid-column: span 12;}
-      .row2{grid-template-columns:1fr;}
     }
   </style>
 </head>
@@ -261,4 +184,304 @@
     <header>
       <div class="brand">
         <div class="logo" title="MAXIMAX logo">
-          <img src="maximax-owner.png" alt="MAXIMAX logo" onerror="this.style.display='none'; th
+          <img src="maximax-owner.png" alt="MAXIMAX logo"
+               onerror="this.style.display='none'; this.parentElement.textContent='MAX';" />
+        </div>
+        <div>
+          <h1>MAXIMAX Multi Services</h1>
+          <div class="tag" id="tagline">MAXIMAX ALWAYS MAXIMIZED • YES WE CAN</div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="pill" aria-label="Main menu">
+          <a class="btn small" href="#services" id="menuServices">Services</a>
+          <a class="btn small" href="#passport" id="menuPassport">Passport</a>
+          <a class="btn small" href="#forms" id="menuForms">Forms</a>
+          <a class="btn small" href="#contact" id="menuContact">Contact</a>
+        </div>
+
+        <div class="pill" aria-label="Language switch">
+          <button class="btn small langBtn" id="btnHT" aria-pressed="true">Kreyòl</button>
+          <button class="btn small langBtn" id="btnEN" aria-pressed="false">English</button>
+          <button class="btn small langBtn" id="btnES" aria-pressed="false">Español</button>
+        </div>
+
+        <a class="btn primary" href="https://wa.me/13175381150" target="_blank" rel="noopener" id="ctaWhatsApp">WhatsApp</a>
+      </div>
+    </header>
+
+    <section class="hero" id="services">
+      <div class="heroTop">
+        <div>
+          <h2 id="heroTitle">Welcome — MAXIMAX Multi Services</h2>
+          <p id="heroDesc">
+            Pick what you need. We help with translation, document preparation, government forms, and step-by-step guidance.
+            Every button links to official sources (US / Haiti / USCIS).
+          </p>
+        </div>
+
+        <div class="twoCol">
+          <span class="kbd" id="hint1">Kreyòl = default</span>
+          <span class="kbd" id="hint2">Click a link to open the official website</span>
+        </div>
+      </div>
+
+      <div class="grid">
+
+        <div class="card" id="forms">
+          <h3 id="tTitle">Translation & Documents</h3>
+          <ul class="list" id="tList">
+            <li id="t1">Certified translations</li>
+            <li id="t2">Birth / Marriage / Divorce</li>
+            <li id="t3">USCIS • IRS • SSA forms</li>
+            <li id="t4">Formatting & verification</li>
+          </ul>
+          <div class="note" id="tNote">
+            Certified translations available upon request. We can format documents for USCIS / IRS / SSA.
+          </div>
+          <div style="margin-top:12px;">
+            <a class="btn" href="#contact" id="btnRequest">Request service</a>
+          </div>
+        </div>
+
+        <div class="card" id="passport">
+          <h3 id="pTitle">Passport Services</h3>
+          <ul class="list" id="pList">
+            <li id="p1">US Passport: new / renewal</li>
+            <li id="p2">Lost / stolen passport help</li>
+            <li id="p3">Haiti: consulate & appointment guidance</li>
+            <li id="p4">Official links only</li>
+          </ul>
+          <div class="note" id="pNote">
+            We help you prepare and verify requirements. Passport issuance is handled only by government authorities.
+          </div>
+          <div style="margin-top:12px;">
+            <a class="btn" href="https://travel.state.gov/content/travel/en/passports/how-apply.html" target="_blank" rel="noopener" id="btnPassport">Open Passport Page</a>
+          </div>
+        </div>
+
+        <div class="card" id="imm">
+          <h3 id="iTitle">Immigration & Forms</h3>
+          <ul class="list" id="iList">
+            <li id="i1">USCIS forms & instructions</li>
+            <li id="i2">Document checklist support</li>
+            <li id="i3">Uploads and document support</li>
+            <li id="i4">Form-filling help</li>
+          </ul>
+          <div class="note" id="iNote">
+            Use official USCIS sources. We guide you step-by-step and help you stay organized.
+          </div>
+          <div style="margin-top:12px;">
+            <a class="btn" href="https://www.uscis.gov/forms" target="_blank" rel="noopener" id="btnUSCIS">Go to USCIS Forms</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="hero" id="contact" style="margin-top:18px;">
+      <div class="heroTop">
+        <div>
+          <h2 id="contactTitle">Quick contact</h2>
+          <p id="contactDesc">Message us on WhatsApp or email us to get started. Fast response.</p>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top:12px;">
+        <div class="card" style="grid-column: span 6; min-height:auto;">
+          <h3>WhatsApp</h3>
+          <p style="margin:0;color:var(--muted);line-height:1.55">Chat now for quick help.</p>
+          <div style="margin-top:12px;">
+            <a class="btn primary" href="https://wa.me/13175381150" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="card" style="grid-column: span 6; min-height:auto;">
+          <h3>Email</h3>
+          <p style="margin:0;color:var(--muted);line-height:1.55">Send your request and we’ll reply.</p>
+          <div style="margin-top:12px;">
+            <a class="btn" href="mailto:maximaxmultiservices@gmail.com" id="emailLink">maximaxmultiservices@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer" id="footerText">
+      © 2025 MAXIMAX Multi Services — “MAXIMAX ALWAYS MAXIMIZED”.
+    </div>
+  </div>
+
+  <script>
+    const content = {
+      ht: {
+        tagline: "MAXIMAX ALWAYS MAXIMIZED • YES WE CAN",
+        menuServices:"Sèvis",
+        menuPassport:"Paspò",
+        menuForms:"Fòm",
+        menuContact:"Kontak",
+        ctaWhatsApp:"WhatsApp",
+
+        heroTitle:"Byenvini — MAXIMAX Multi Services",
+        heroDesc:"Chwazi sa ou bezwen an. Nou ede ak tradiksyon, preparasyon dokiman, fòm gouvènman, ak gid etap-pa-etap. Chak bouton konekte ak sous ofisyèl (US / Ayiti / USCIS).",
+        hint1:"Kreyòl = default",
+        hint2:"Klike sou yon lyen pou ouvri sit ofisyèl la",
+
+        tTitle:"Tradiksyon & Dokiman",
+        t1:"Tradiksyon sètifye",
+        t2:"Batistè / Maryaj / Divòs",
+        t3:"Fòm USCIS • IRS • SSA",
+        t4:"Fòmataj & verifikasyon",
+        tNote:"Tradiksyon sètifye disponib sou demann. Nou ka fòmate dokiman pou USCIS / IRS / SSA.",
+        btnRequest:"Mande sèvis",
+
+        pTitle:"Sèvis Paspò",
+        p1:"US paspò: nouvo / renouvèlman",
+        p2:"Paspò pèdi / vòlè",
+        p3:"Ayiti: gid konsila & randevou",
+        p4:"Lyen ofisyèl sèlman",
+        pNote:"Nou ede w prepare epi verifye egzijans yo. Se otorite gouvènman yo sèlman ki bay paspò a.",
+        btnPassport:"Louvri paj paspò a",
+
+        iTitle:"Imigrasyon & Fòm",
+        i1:"Fòm USCIS & enstriksyon",
+        i2:"Sipò lis dokiman (checklist)",
+        i3:"Uploads & sipò dokiman",
+        i4:"Èd pou ranpli fòm",
+        iNote:"Nou sèvi ak sous USCIS ofisyèl. Nou gide w etap-pa-etap epi ede w rete òganize.",
+        btnUSCIS:"Ale sou fòm USCIS",
+
+        contactTitle:"Kontak rapid",
+        contactDesc:"Voye mesaj sou WhatsApp oswa email pou kòmanse. Repons rapid.",
+        footerText:"© 2025 MAXIMAX Multi Services — “MAXIMAX ALWAYS MAXIMIZED”."
+      },
+
+      en: {
+        tagline: "MAXIMAX ALWAYS MAXIMIZED • YES WE CAN",
+        menuServices:"Services",
+        menuPassport:"Passport",
+        menuForms:"Forms",
+        menuContact:"Contact",
+        ctaWhatsApp:"WhatsApp",
+
+        heroTitle:"Welcome — MAXIMAX Multi Services",
+        heroDesc:"Pick what you need. We help with translation, document preparation, government forms, and step-by-step guidance. Every button links to official sources (US / Haiti / USCIS).",
+        hint1:"Haitian Creole = default",
+        hint2:"Click a link to open the official website",
+
+        tTitle:"Translation & Documents",
+        t1:"Certified translations",
+        t2:"Birth / Marriage / Divorce",
+        t3:"USCIS • IRS • SSA forms",
+        t4:"Formatting & verification",
+        tNote:"Certified translations available upon request. We can format documents for USCIS / IRS / SSA.",
+        btnRequest:"Request service",
+
+        pTitle:"Passport Services",
+        p1:"US Passport: new / renewal",
+        p2:"Lost / stolen passport help",
+        p3:"Haiti: consulate & appointment guidance",
+        p4:"Official links only",
+        pNote:"We help you prepare and verify requirements. Passport issuance is handled only by government authorities.",
+        btnPassport:"Open Passport Page",
+
+        iTitle:"Immigration & Forms",
+        i1:"USCIS forms & instructions",
+        i2:"Document checklist support",
+        i3:"Uploads and document support",
+        i4:"Form-filling help",
+        iNote:"Use official USCIS sources. We guide you step-by-step and help you stay organized.",
+        btnUSCIS:"Go to USCIS Forms",
+
+        contactTitle:"Quick contact",
+        contactDesc:"Message us on WhatsApp or email us to get started. Fast response.",
+        footerText:"© 2025 MAXIMAX Multi Services — “MAXIMAX ALWAYS MAXIMIZED”."
+      },
+
+      es: {
+        tagline: "MAXIMAX ALWAYS MAXIMIZED • YES WE CAN",
+        menuServices:"Servicios",
+        menuPassport:"Pasaporte",
+        menuForms:"Formularios",
+        menuContact:"Contacto",
+        ctaWhatsApp:"WhatsApp",
+
+        heroTitle:"Bienvenido — MAXIMAX Multi Services",
+        heroDesc:"Elige lo que necesitas. Ayudamos con traducción, preparación de documentos, formularios del gobierno y guía paso a paso. Cada botón enlaza a fuentes oficiales (EE.UU. / Haití / USCIS).",
+        hint1:"Kreyòl = por defecto",
+        hint2:"Haz clic en un enlace para abrir el sitio oficial",
+
+        tTitle:"Traducción y Documentos",
+        t1:"Traducciones certificadas",
+        t2:"Nacimiento / Matrimonio / Divorcio",
+        t3:"Formularios USCIS • IRS • SSA",
+        t4:"Formato y verificación",
+        tNote:"Traducciones certificadas disponibles a pedido. Podemos dar formato para USCIS / IRS / SSA.",
+        btnRequest:"Solicitar servicio",
+
+        pTitle:"Servicios de Pasaporte",
+        p1:"Pasaporte EE.UU.: nuevo / renovación",
+        p2:"Ayuda por pérdida/robo",
+        p3:"Haití: guía de consulado y citas",
+        p4:"Solo enlaces oficiales",
+        pNote:"Ayudamos a preparar y verificar requisitos. La emisión solo la realiza el gobierno.",
+        btnPassport:"Abrir página de pasaportes",
+
+        iTitle:"Inmigración y Formularios",
+        i1:"Formularios USCIS e instrucciones",
+        i2:"Lista de documentos (checklist)",
+        i3:"Subidas y apoyo de documentos",
+        i4:"Ayuda para completar formularios",
+        iNote:"Usa fuentes oficiales de USCIS. Te guiamos paso a paso y te ayudamos a organizarte.",
+        btnUSCIS:"Ir a formularios USCIS",
+
+        contactTitle:"Contacto rápido",
+        contactDesc:"Escríbenos por WhatsApp o correo para empezar. Respuesta rápida.",
+        footerText:"© 2025 MAXIMAX Multi Services — “MAXIMAX ALWAYS MAXIMIZED”."
+      }
+    };
+
+    const ids = [
+      "tagline","menuServices","menuPassport","menuForms","menuContact","ctaWhatsApp",
+      "heroTitle","heroDesc","hint1","hint2",
+      "tTitle","t1","t2","t3","t4","tNote","btnRequest",
+      "pTitle","p1","p2","p3","p4","pNote","btnPassport",
+      "iTitle","i1","i2","i3","i4","iNote","btnUSCIS",
+      "contactTitle","contactDesc","footerText"
+    ];
+
+    const els = {};
+    ids.forEach(id => els[id] = document.getElementById(id));
+
+    const btnHT = document.getElementById("btnHT");
+    const btnEN = document.getElementById("btnEN");
+    const btnES = document.getElementById("btnES");
+
+    function setPressed(lang){
+      [btnHT,btnEN,btnES].forEach(b=>b.setAttribute("aria-pressed","false"));
+      if(lang==="ht") btnHT.setAttribute("aria-pressed","true");
+      if(lang==="en") btnEN.setAttribute("aria-pressed","true");
+      if(lang==="es") btnES.setAttribute("aria-pressed","true");
+    }
+
+    function applyLang(lang){
+      const c = content[lang] || content.ht;
+      document.documentElement.lang = (lang==="ht") ? "ht" : (lang==="es" ? "es" : "en");
+
+      for(const key in c){
+        if(els[key]) els[key].textContent = c[key];
+      }
+
+      setPressed(lang);
+      localStorage.setItem("mx_lang", lang);
+    }
+
+    const saved = localStorage.getItem("mx_lang");
+    applyLang(saved || "ht");
+
+    btnHT.addEventListener("click", ()=>applyLang("ht"));
+    btnEN.addEventListener("click", ()=>applyLang("en"));
+    btnES.addEventListener("click", ()=>applyLang("es"));
+  </script>
+</body>
+</html>
