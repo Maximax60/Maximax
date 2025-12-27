@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ht">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -8,7 +8,7 @@
     :root{
       --bg:#070b14; --text:#eaf0ff; --muted:#aeb9da;
       --line:rgba(255,255,255,.14);
-      --accent:#f4a261; --accent2:#ffcc80;
+      --accent:#f4a261;
       --shadow: 0 14px 34px rgba(0,0,0,.45);
       --r:22px; --max:980px;
     }
@@ -30,11 +30,11 @@
     }
     .brand{display:flex; align-items:center; gap:12px}
     .logo{
-      width:56px; height:56px; border-radius:16px;
+      width:62px; height:62px; border-radius:18px;
       overflow:hidden; border:1px solid rgba(244,162,97,.45);
       background: rgba(244,162,97,.12);
       display:grid; place-items:center;
-      font-weight:1000; color:var(--accent2);
+      font-weight:1000; color:var(--accent);
     }
     .logo img{width:100%; height:100%; object-fit:cover}
     h1{margin:0; font-size:16px; letter-spacing:.3px}
@@ -53,7 +53,7 @@
       gap:12px;
       margin-top:12px;
     }
-    a{
+    a.btn{
       text-decoration:none; color:var(--text);
       display:flex; align-items:center; justify-content:space-between;
       gap:10px;
@@ -63,7 +63,7 @@
       background: rgba(255,255,255,.05);
       font-weight:800;
     }
-    a:hover{border-color: rgba(244,162,97,.75)}
+    a.btn:hover{border-color: rgba(244,162,97,.75)}
     .hint{color:var(--muted); font-size:12.5px; line-height:1.5}
     .footer{margin-top:16px; text-align:center; color:rgba(255,255,255,.55); font-size:12.5px}
     @media (max-width:780px){ .grid{grid-template-columns:1fr} }
@@ -71,10 +71,11 @@
 </head>
 <body>
   <div class="wrap">
+
     <div class="top">
       <div class="brand">
         <div class="logo">
-          <img src="MAXIMAX-OWNER.PNG" alt="MAXIMAX logo"
+          <img src="maximax-owner.png" alt="MAXIMAX logo"
                onerror="this.style.display='none'; this.parentElement.textContent='MAX';" />
         </div>
         <div>
@@ -82,24 +83,32 @@
           <div class="tag">MAXIMAX ALWAYS MAXIMIZED • Official Direct Links</div>
         </div>
       </div>
-      <div class="tag">Static HTML • No JS • No 404 pages</div>
+      <div class="tag">Static HTML • No JS</div>
     </div>
 
     <div class="card">
       <div class="hint">
-        Chwazi yon paj. Nan chak paj, tout bouton yo mennen sou sit gouvènman an dirèk (https://...).
+        These pages are separate files in your repo (no JavaScript).  
+        Each page can contain direct government links.
       </div>
 
       <div class="grid">
-        <a href="immigration.html">USCIS / Immigration <span>→</span></a>
-        <a href="passport-us.html">US Passport Services <span>→</span></a>
-        <a href="tax-irs.html">IRS / Tax & ITIN <span>→</span></a>
-        <a href="ssa.html">Social Security (SSA) <span>→</span></a>
-        <a href="benefits.html">Benefits (SNAP/Medicaid/Medicare) <span>→</span></a>
-        <a href="housing.html">Housing / Section 8 (HUD) <span>→</span></a>
-        <a href="federal-register.html">Federal Register Updates <span>→</span></a>
-        <a href="haiti.html">Haiti Official Directory <span>→</span></a>
-        <a href="contact.html">Contact <span>→</span></a>
+        <!-- PAGES YOU ALREADY HAVE IN ROOT -->
+        <a class="btn" href="services.html">Services <span>→</span></a>
+        <a class="btn" href="forms.html">Forms Center <span>→</span></a>
+
+        <a class="btn" href="immigration.html">Immigration (USCIS) <span>→</span></a>
+        <a class="btn" href="federal-register.html">Federal Register <span>→</span></a>
+
+        <a class="btn" href="appointments.html">Book Appointment <span>→</span></a>
+        <a class="btn" href="contact.html">Contact <span>→</span></a>
+
+        <!-- OPTIONAL EXISTING PAGES -->
+        <a class="btn" href="forms-library.html">Forms Library <span>→</span></a>
+        <a class="btn" href="resume-builder.html">Resume Builder <span>→</span></a>
+
+        <a class="btn" href="alerts.html">Alerts <span>→</span></a>
+        <a class="btn" href="how-it-works.html">How it works <span>→</span></a>
       </div>
     </div>
 
