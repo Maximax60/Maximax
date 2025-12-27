@@ -1,80 +1,126 @@
 <!doctype html>
-<html lang="ht">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CREDIT REPAIR & LLC | MAXIMAX</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Credit Repair • MAXIMAX Multi Services</title>
   <style>
     :root{
-      --bg:#000000; --panel:#0b0b0b; --orange:#f6a85f; --muted:#b48a5a; --border:#f6a85f;
+      --bg:#070b14; --text:#eaf0ff; --muted:#aeb9da;
+      --line:rgba(255,255,255,.14); --accent:#f4a261; --r:22px;
     }
-    body{ margin:0; font-family:Arial,Helvetica,sans-serif; background:var(--bg); color:var(--orange); }
-    .wrap{ max-width:980px; margin:0 auto; padding:18px 16px; }
-    header{ border-bottom:1px solid rgba(246,168,95,.45); background:rgba(0,0,0,.92); position:sticky; top:0; }
-    nav a{
-      text-decoration:none; color:var(--orange); font-weight:900; font-size:13px;
-      border:1px solid rgba(246,168,95,.45); background:rgba(246,168,95,.06);
-      padding:8px 12px; border-radius:999px; margin-right:8px; display:inline-block;
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(1100px 650px at 15% 0%, rgba(244,162,97,.22), transparent 60%),
+        linear-gradient(180deg,#050812,var(--bg));
     }
-    nav a:hover{ background:rgba(246,168,95,.14); }
-    h1{ margin:16px 0 6px; font-size:30px; }
-    p{ margin:8px 0; color:var(--muted); font-weight:800; line-height:1.55; }
-    .card{ margin-top:12px; border:1px solid rgba(246,168,95,.45); border-radius:16px; background:var(--panel); padding:14px; }
-    .card h2{ margin:0 0 8px; font-size:18px; color:var(--orange); }
-    ul{ margin:8px 0 0; padding-left:18px; color:var(--muted); font-weight:800; line-height:1.6; }
-    .btn{
-      display:inline-block; margin-top:12px; text-decoration:none; font-weight:1000;
-      padding:10px 14px; border-radius:14px; border:1px solid var(--border);
-      background:rgba(246,168,95,.12); color:var(--orange);
+    .wrap{max-width:980px;margin:0 auto;padding:18px 16px 50px}
+    .top{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      padding:14px;border-radius:var(--r);border:1px solid var(--line);background:rgba(255,255,255,.05)
     }
-    .btn:hover{ background:rgba(246,168,95,.20); }
-    footer{ margin-top:18px; border-top:1px solid rgba(246,168,95,.45); padding-top:14px; color:var(--muted); font-weight:900; font-size:13px; }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:16px;overflow:hidden;border:1px solid rgba(244,162,97,.45);background:rgba(244,162,97,.12)}
+    .logo img{width:100%;height:100%;object-fit:cover}
+    h1{margin:0;font-size:16px;letter-spacing:.3px}
+    .tag{margin-top:2px;color:var(--muted);font-size:12px}
+    .card{
+      margin-top:14px;padding:16px;border-radius:var(--r);
+      border:1px solid var(--line);background:rgba(0,0,0,.18)
+    }
+    .title{font-size:22px;margin:0 0 6px;font-weight:900}
+    .sub{margin:0;color:var(--muted);line-height:1.6}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+    @media (max-width:780px){.grid{grid-template-columns:1fr}}
+    .box{
+      padding:14px;border-radius:18px;border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04)
+    }
+    .box h3{margin:0 0 8px;font-size:14px;letter-spacing:.4px}
+    ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.7}
+    a.btn{
+      text-decoration:none;color:var(--text);
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);
+      font-weight:900;margin-top:12px
+    }
+    a.btn:hover{border-color:rgba(244,162,97,.75)}
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(244,162,97,.35);background:rgba(244,162,97,.10);
+      color:var(--text);font-weight:800;font-size:12px
+    }
+    .small{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6}
   </style>
 </head>
 <body>
-
-  <header>
-    <div class="wrap">
-      <nav>
-        <a href="index.html">HOME</a>
-        <a href="services.html">SERVICES</a>
-        <a href="alerts.html">ALERTS</a>
-        <a href="contact.html">CONTACT</a>
-      </nav>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <div class="logo"><img src="maximax-owner.png" alt="MAXIMAX logo"></div>
+        <div>
+          <h1>MAXIMAX Multi Services</h1>
+          <div class="tag">MAXIMAX ALWAYS MAXIMIZED</div>
+        </div>
+      </div>
+      <div class="row">
+        <a class="btn" href="index.html">← Back Home</a>
+        <a class="btn" href="contact.html">Contact →</a>
+      </div>
     </div>
-  </header>
 
-  <main class="wrap">
-    <h1>CREDIT REPAIR &amp; LLC SERVICES</h1>
-    <p>MAXIMAX bay asistans administratif pou ede w òganize dokiman, prepare demann, epi suiv pwosesis yo etap pa etap.</p>
+    <div class="card">
+      <h2 class="title">Credit Repair & Financial Guidance</h2>
+      <p class="sub">
+        We help you understand your credit, organize your documents, and create a step-by-step plan.
+        (Fast, clear, and professional.)
+      </p>
 
-    <section class="card">
-      <h2>Credit Repair Assistance</h2>
-      <p>Nou ede w mete dosye a annòd pou travay sou kredi ou:</p>
-      <ul>
-        <li>Revizyon rapò kredi (òganizasyon enfòmasyon)</li>
-        <li>Dispute preparation (dokiman + lèt sipò)</li>
-        <li>Collections / late payments / inquiries (suivi etap pa etap)</li>
-        <li>Plan òganizasyon pou amelyore kredi (disiplin + dat)</li>
-      </ul>
-      <p><b>Nòt:</b> Sa se asistans administratif; pou konsèy legal/finansye pwofon, konsilte pwofesyonèl ki lisansye.</p>
-    </section>
+      <div class="row">
+        <span class="pill">Credit Report Review</span>
+        <span class="pill">Dispute Support</span>
+        <span class="pill">Debt Plan & Budget</span>
+        <span class="pill">Letter Preparation</span>
+      </div>
 
-    <section class="card">
-      <h2>LLC / Business Services</h2>
-      <p>Nou ede w mete biznis ou sou pye:</p>
-      <ul>
-        <li>Kreyasyon LLC (asistans aplikasyon)</li>
-        <li>EIN application</li>
-        <li>Òganizasyon dokiman biznis</li>
-        <li>Mizajou enfòmasyon biznis</li>
-      </ul>
-    </section>
+      <div class="grid">
+        <div class="box">
+          <h3>What we can help with</h3>
+          <ul>
+            <li>Reviewing your credit report (3 bureaus)</li>
+            <li>Identifying errors and outdated items</li>
+            <li>Drafting dispute letters + supporting docs checklist</li>
+            <li>Building a payment plan and basic bookkeeping help</li>
+            <li>Credit education (how to keep it strong)</li>
+          </ul>
+        </div>
 
-    <a class="btn" href="contact.html">Kontakte MAXIMAX pou kòmanse</a>
+        <div class="box">
+          <h3>What to bring / send</h3>
+          <ul>
+            <li>Credit report (or we guide you to get it)</li>
+            <li>Any collection letters / court notices (if any)</li>
+            <li>ID + proof of address (if needed)</li>
+            <li>Notes about your situation (short summary)</li>
+          </ul>
+        </div>
+      </div>
 
-    <footer>MAXIMAX ALWAY MAXIMIZED</footer>
-  </main>
+      <div class="row">
+        <a class="btn" href="Upload.html">Upload Documents →</a>
+        <a class="btn" href="appointments.html">Book Appointment →</a>
+      </div>
 
+      <div class="small">
+        Note: We provide guidance and document preparation support. We do not guarantee outcomes, since each case depends on the bureaus and creditors.
+      </div>
+    </div>
+  </div>
 </body>
 </html>
