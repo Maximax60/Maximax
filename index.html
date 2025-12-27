@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MAXIMAX Multi Services — Official Government Links</title>
+  <meta name="description" content="MAXIMAX Multi Services — Direct official links for USCIS, passports, IRS, SSA, benefits, Federal Register, and more." />
+
+  <style>
+    :root{
+      --bg:#070b14;
+      --panel:rgba(0,0,0,.22);
+      --text:#f4f7ff;
+      --muted:#b8c1dd;
+      --line:rgba(255,255,255,.14);
+      --accent:#f4a261;   /* apricot */
+      --accent2:#ffcf8a;
+      --shadow:0 18px 52px rgba(0,0,0,.45);
+      --r:26px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 650px at 10% 0%, rgba(244,162,97,.18), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(255,207,138,.10), transparent 60%),
+        linear-gradient(180deg, #050812, var(--bg));
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:18px 14px 60px}
+    .bar{
+      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      padding:14px;
+      border-radius:var(--r);
+      border:1px solid rgba(244,162,97,.35);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow:var(--shadow);
+      position:sticky; top:10px; z-index:20;
+      backdrop-filter: blur(10px);
+    }
+    .brand{display:flex; align-items:center; gap:12px; min-width:270px}
+    .logo{
+      width:60px; height:60px; border-radius:18px;
+      border:1px solid rgba(244,162,97,.55);
+      background:rgba(244,162,97,.12);
+      display:grid; place-items:center;
+      overflow:hidden;
+      font-weight:1000; letter-spacing:.08em; color:var(--accent2);
+      flex:0 0 auto;
+    }
+    .logo img{width:100%; height:100%; object-fit:cover; display:block}
+    .t .name{font-weight:1000; letter-spacing:.10em; font-size:16px; text-transform:uppercase}
+    .t .sub{color:var(--muted); font-weight:800; letter-spacing:.10em; font-size:11.5px; text-transform:uppercase}
+    .pills{display:flex; gap:10px; flex-wrap:wrap; justify-content:center}
+    .pill{
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.18);
+      padding:9px 14px; border-radius:999px;
+      font-weight:900; font-size:13px;
+    }
+    .pill:hover{border-color:rgba(244,162,97,.75)}
+    .right{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .tag{
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.18);
+      padding:7px 10px; border-radius:999px;
+      font-weight:900; font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+      color:rgba(255,255,255,.85);
+    }
+    .cta{
+      text-decoration:none;
+      border-radius:999px;
+      padding:10px 14px;
+      font-weight:1000;
+      border:1px solid rgba(244,162,97,.95);
+      background:linear-gradient(180deg, rgba(244,162,97,.95), rgba(244,162,97,.70));
+      color:#1c1208;
+      min-width:120px;
+      text-align:center;
+    }
+
+    .hero{
+      margin-top:14px;
+      border-radius:var(--r);
+      border:1px solid rgba(244,162,97,.35);
+      background:linear-gradient(180deg, rgba(244,162,97,.10), rgba(255,255,255,.03));
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .heroInner{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      padding:16px;
+    }
+    .box{
+      border-radius:22px;
+      border:1px solid rgba(244,162,97,.30);
+      background:var(--panel);
+      padding:16px;
+    }
+    h1{margin:0 0 10px; font-size:30px; line-height:1.1}
+    p{margin:0; color:var(--muted); line-height:1.55; font-weight:650}
+    .note{
+      margin-top:10px;
+      font-size:12.5px;
+      color:rgba(255,255,255,.65);
+      line-height:1.4;
+    }
+
+    .grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: repeat(12,1fr);
+      gap:14px;
+    }
+    .card{grid-column: span 4}
+    .card h2{
+      margin:0 0 10px;
+      font-weight:1000;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--accent2);
+      font-size:13.5px;
+    }
+    ul{margin:10px 0 0; padding-left:18px}
+    li{margin:8px 0; color:rgba(255,255,255,.82); font-weight:650}
+    .btnRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .btn{
+      text-decoration:none;
+      display:inline-flex; align-items:center; justify-content:center;
+      border-radius:999px;
+      padding:10px 14px;
+      font-weight:950;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+    }
+    .btn:hover{border-color:rgba(244,162,97,.75)}
+    .btn.primary{
+      border-color:rgba(244,162,97,.95);
+      background:linear-gradient(180deg, rgba(244,162,97,.95), rgba(244,162,97,.70));
+      color:#1c1208;
+    }
+    .footer{
+      margin-top:18px;
+      border-radius:var(--r);
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.18);
+      padding:14px;
+      color:rgba(255,255,255,.62);
+      font-size:12.5px;
+      text-align:center;
+    }
+
+    @media (max-width: 980px){
+      .heroInner{grid-template-columns:1fr}
+      .card{grid-column:span 12}
+      h1{font-size:26px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="bar">
+      <div class="brand">
+        <div class="logo">
+          <!-- logo optional: place maximax-owner.png in repo root -->
+          <img src="maximax-owner.png" alt="MAXIMAX logo"
+               onerror="this.style.display='none'; this.parentElement.textContent='MAX';">
+        </div>
+        <div class="t">
+          <div class="name">MAXIMAX Multi Services</div>
+          <div class="sub">MAXIMAX ALWAYS MAXIMIZED • IMMIGRATION • TAX • BENEFITS</div>
+        </div>
+      </div>
+
+      <nav class="pills">
+        <a class="pill" href="#uscis">USCIS</a>
+        <a class="pill" href="#passports">Passports</a>
+        <a class="pill" href="#tax">IRS / Tax</a>
+        <a class="pill" href="#benefits">Benefits</a>
+        <a class="pill" href="#updates">Federal Register</a>
+        <a class="pill" href="#haiti">Haiti (Official)</a>
+        <a class="pill" href="#contact">Contact</a>
+      </nav>
+
+      <div class="right">
+        <div class="tag">EN • KREYÒL • ESPAÑOL</div>
+        <a class="cta" href="tel:+13175381150">Call (317) 538-1150</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="heroInner">
+        <div class="box">
+          <h1>Official Government Links — One Click</h1>
+          <p>
+            This page is built to be simple: when someone clicks a button, it goes directly to the official government website.
+            No apps, no JS, no extra pages. Just direct links.
+          </p>
+          <div class="btnRow" style="margin-top:14px">
+            <a class="btn primary" target="_blank" rel="noopener" href="https://www.uscis.gov/">Open USCIS</a>
+            <a class="btn primary" target="_blank" rel="noopener" href="https://travel.state.gov/content/travel/en/passports.html">Open US Passports</a>
+            <a class="btn primary" target="_blank" rel="noopener" href="https://www.federalregister.gov/">Open Federal Register</a>
+          </div>
+          <div class="note">
+            Important: MAXIMAX provides guidance & preparation. Final decisions are handled by the official agencies.
+          </div>
+        </div>
+
+        <div class="box">
+          <h2 style="margin:0 0 10px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); font-size:13.5px;">
+            Quick Links (US Official)
+          </h2>
+          <div class="btnRow">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.uscis.gov/forms">USCIS Forms</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://egov.uscis.gov/casestatus/landing.do">Case Status</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://passportstatus.state.gov/">Passport Status</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/forms-pubs">IRS Forms</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.ssa.gov/forms/">SSA Forms</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.usa.gov/">USA.gov</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+
+      <!-- USCIS / IMMIGRATION -->
+      <div class="box card" id="uscis">
+        <h2>USCIS • Immigration</h2>
+        <ul>
+          <li>Forms & instructions</li>
+          <li>Check case status</li>
+          <li>Processing times</li>
+          <li>Find a doctor (civil surgeon)</li>
+        </ul>
+        <div class="btnRow">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://www.uscis.gov/">USCIS Home</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.uscis.gov/forms">USCIS Forms</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://egov.uscis.gov/casestatus/landing.do">Case Status</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://egov.uscis.gov/processing-times/">Processing Times</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://my.uscis.gov/findadoctor">Find a Doctor</a>
+        </div>
+      </div>
+
+      <!-- PASSPORTS -->
+      <div class="box card" id="passports">
+        <h2>US • Passports</h2>
+        <ul>
+          <li>Passport main page</li>
+          <li>Apply / renew</li>
+          <li>Passport status</li>
+          <li>Fees</li>
+        </ul>
+        <div class="btnRow">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://travel.state.gov/content/travel/en/passports.html">Passport Main</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://travel.state.gov/content/travel/en/passports/how-apply.html">Apply / Renew</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://passportstatus.state.gov/">Check Status</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://travel.state.gov/content/travel/en/passports/how-apply/fees.html">Fees</a>
+        </div>
+      </div>
+
+      <!-- FORMS LIBRARY -->
+      <div class="box card">
+        <h2>Forms Libraries (Official)</h2>
+        <ul>
+          <li>USCIS forms</li>
+          <li>IRS forms & publications</li>
+          <li>SSA forms</li>
+          <li>State Dept forms (travel)</li>
+        </ul>
+        <div class="btnRow">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://www.uscis.gov/forms">USCIS Forms</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/forms-pubs">IRS Forms</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.ssa.gov/forms/">SSA Forms</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://travel.state.gov/content/travel/en/passports/how-apply/forms.html">Passport Forms</a>
+        </div>
+      </div>
+
+      <!-- TAX / ITIN -->
+      <div class="box card" id="tax">
+        <h2>IRS • Tax & ITIN</h2>
+        <ul>
+          <li>ITIN info (W-7)</li>
+          <li>Forms & publications</li>
+          <li>Get transcript</li>
+          <li>Where’s my refund</li>
+        </ul>
+        <div class="btnRow">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://www.irs.gov/">IRS Home</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/individuals/individual-taxpayer-identification-number-itin">ITIN (W-7)</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/forms-pubs">Forms & Pubs</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/individuals/get-transcript">Get Transcript</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/refunds">Refund Status</a>
+        </div>
+      </div>
+
+      <!-- SSA -->
+      <div class="box card">
+        <h2>SSA • Social Security</h2>
+        <ul>
+          <li>Forms</li>
+          <li>My Social Security</li>
+          <li>Contact SSA</li>
+        </ul>
+        <div class="btnRow">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://www.ssa.gov/">SSA Home</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.ssa.gov/forms/">SSA Forms</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.ssa.gov/myaccount/">My SSA</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.ssa.gov/agency/contact/">Contact SSA</a>
+        </div>
+      </div>
+
+      <!-- BENEFITS -->
+      <div class="box card" id="benefits">
+        <h2>Benefits (Official)</h2>
+        <ul>
+          <li>SNAP</li>
+          <li>Medicaid</li>
+          <li>Medicare</li>
+          <li>General benefits guide</li>
+        </ul>
+        <div class="btnRow">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://www.usa.gov/benefits">USA.gov Benefits</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.fns.usda.gov/snap">SNAP</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.medicaid.gov/">Medicaid</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.medicare.gov/">Medicare</a>
+        </div>
+      </div>
+
+      <!-- FEDERAL REGISTER -->
+      <div class="box card" id="updates">
+        <h2>Federal Register • Official Updates</h2>
+        <ul>
+          <li>Search official rules & notices</li>
+          <li>USCIS agency page</li>
+          <li>Immigration-related updates</li>
+        </ul>
+        <div class="btnRow">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://www.federalregister.gov/">Federal Register</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.federalregister.gov/documents/search">Search</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.federalregister.gov/agencies/u-s-citizenship-and-immigration-services">USCIS on FR</a>
+        </div>
+      </div>
+
+      <!-- US VISAS / TRAVEL -->
+      <div class="box card">
+        <h2>US Visas • Travel (Official)</h2>
+        <ul>
+          <li>Visa information</li>
+          <li>Travel advisories</li>
+          <li>Embassies/consulates</li>
+        </ul>
+        <div class="btnRow">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://travel.state.gov/content/travel/en/us-visas.html">US Visas</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/">Travel Advisories</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.usembassy.gov/">US Embassies</a>
+        </div>
+      </div>
+
+      <!-- HAITI (OFFICIAL LINKS) -->
+      <div class="box card" id="haiti">
+        <h2>Haiti • Official (Directory)</h2>
+        <ul>
+          <li>Official Haiti government directory</li>
+          <li>Haiti embassy/consulate (US directory)</li>
+          <li>Travel advisory (US)</li>
+        </ul>
+        <div class="btnRow">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://www.gov.ht/">Gouvènman Ayiti (gov.ht)</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.usembassy.gov/haiti/">US Embassy Haiti (Directory)</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/haiti-travel-advisory.html">Haiti Travel Advisory</a>
+        </div>
+        <div class="note">
+          Remak: Sit Ayiti yo ka chanje. gov.ht se pwen depa ofisyèl pou jwenn tout ministè yo.
+        </div>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="box card" id="contact">
+        <h2>Contact MAXIMAX</h2>
+        <ul>
+          <li><b>Phone / WhatsApp:</b> (317) 538-1150</li>
+          <li><b>Email:</b> maximaxmultiservices@gmail.com</li>
+          <li><b>Office:</b> Orlando, FL 32818</li>
+        </ul>
+        <div class="btnRow">
+          <a class="btn primary" href="tel:+13175381150">Call Now</a>
+          <a class="btn" href="mailto:maximaxmultiservices@gmail.com">Email</a>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="footer">
+      © 2025 MAXIMAX Multi Services — “MAXIMAX ALWAYS MAXIMIZED”.<br/>
+      This site uses direct links to official government websites. No JS. No extra pages.
+    </div>
+  </div>
+</body>
+</html>
