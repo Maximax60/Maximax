@@ -1,222 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forms Library | MAXIMAX Multi Services</title>
-    <style>
-        /* Styling for forms and links */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #222;
-            color: #fff;
-        }
 
-        h1, h2 {
-            color: #f09d22;
-            text-align: center;
-        }
-
-        .form-section {
-            margin-bottom: 20px;
-            padding: 20px;
-            background-color: #333;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        a {
-            display: block;
-            padding: 10px;
-            color: #fff;
-            text-decoration: none;
-            background-color: #007bff;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-
-        a:hover {
-            background-color: #0056b3;
-        }
-
-        .federal-register-section {
-            margin-bottom: 20px;
-            padding: 20px;
-            background-color: #333;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-</head>
-<body>
-
-    <h1>MAXIMAX Multi Services</h1>
-    <h2>Forms Library</h2>
-
-    <!-- IRS Forms Section -->
-    <div class="form-section">
-        <h3>IRS – Tax (Official)</h3>
-        <a href="https://www.irs.gov/forms-instructions" target="_blank">IRS Forms & Instructions</a>
-        <a href="https://www.irs.gov/forms-pubs/about-form-1040" target="_blank">Form 1040 - Individual Tax Return</a>
-        <a href="https://www.irs.gov/payments" target="_blank">IRS Payments (Official)</a>
-        <a href="https://www.irs.gov/individuals/get-transcript" target="_blank">Get IRS Transcript</a>
-    </div>
-
-    <!-- Benefits Finder Section -->
-    <div class="form-section">
-        <h3>Benefits – SNAP / Medicaid / SSA</h3>
-        <a href="https://www.benefits.gov" target="_blank">Benefits Finder (USA.gov)</a>
-        <a href="https://www.ssa.gov/forms" target="_blank">SSA Forms (Official)</a>
-        <a href="https://www.medicaid.gov" target="_blank">Medicaid (Official)</a>
-        <a href="https://www.snap.gov" target="_blank">SNAP (USDA Official)</a>
-    </div>
-
-    <!-- Housing / Unemployment / Child Support Section -->
-    <div class="form-section">
-        <h3>Housing / Unemployment / Child Support</h3>
-        <a href="https://www.hud.gov" target="_blank">Housing (HUD Official)</a>
-        <a href="https://www.dol.gov/ui" target="_blank">Unemployment (DOL Official)</a>
-        <a href="https://www.childsupport.gov" target="_blank">Child Support (USA.gov)</a>
-    </div>
-
-    <!-- Federal Register Section (New Section) -->
-    <div class="federal-register-section">
-        <h3>Federal Register (Official U.S. Government Publication)</h3>
-        <a href="https://www.federalregister.gov/" target="_blank">Federal Register - Search & Daily Content</a>
-        <a href="https://www.govinfo.gov/app/collection/fr/" target="_blank">Federal Register Archive (govinfo.gov)</a>
-    </div>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Federal Register - MAXIMAX</title>
-</head>
-<body>
-  <h1>Federal Register Updates</h1>
-
-  <p>
-    On this page, MAXIMAX will post important updates from the Federal Register:
-    TPS renewals, immigration rules, and benefits changes.
-  </p>
-
-  <ul>
-    <li>TPS & immigration announcements</li>
-    <li>New rules that affect immigrants</li>
-    <li>Deadlines and important dates</li>
-  </ul>
-
-  <p>
-    For help understanding any update, contact MAXIMAX MULTI SERVICES.
-  </p>
-</body>
-</html>
-<script>
-/* MAXIMAX - FORCE BLACK/ORANGE + SAME LOGO HEADER (PASTE AT BOTTOM OF EVERY PAGE) */
-(function () {
-  var SLOGAN = "YES WE CAN.";
-  var LOGO_CANDIDATES = ["logo.png", "images/logo.png", "assets/logo.png"];
-
-  function injectCSS(){
-    var css = `
-      :root{ --mm-bg:#050505; --mm-card:#0b0b0b; --mm-orange:#ff8c00; --mm-text:#f2f2f2; }
-      html,body{margin:0;padding:0;background:var(--mm-bg) !important;color:var(--mm-text) !important;font-family:Arial,Helvetica,sans-serif}
-      body *{box-sizing:border-box}
-
-      /* KILL WHITE BACKGROUNDS EVERYWHERE */
-      body, main, section, header, footer, nav, article, aside, .container, .wrapper, .content, .page, .panel, .card, .box {
-        background: transparent !important;
-      }
-      /* Force dark surface on big blocks */
-      .container, .wrapper, .content, .page, .panel, .card, .box, .section, .block, .module {
-        background: rgba(10,10,10,.88) !important;
-        border: 1px solid rgba(255,140,0,.35) !important;
-        border-radius: 18px !important;
-      }
-
-      /* Inputs (to avoid white fields) */
-      input, textarea, select, option {
-        background: #0a0a0a !important;
-        color: var(--mm-text) !important;
-        border: 1px solid rgba(255,140,0,.55) !important;
-        border-radius: 12px !important;
-        outline: none !important;
-      }
-
-      a{color:inherit;text-decoration:none}
-      .mm-topbar{
-        display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
-        padding:14px 16px;margin:14px;
-        border:1px solid rgba(255,140,0,.45);border-radius:18px;
-        background:linear-gradient(180deg, rgba(20,20,20,.92), rgba(8,8,8,.82)) !important;
-        box-shadow:0 10px 30px rgba(0,0,0,.45);
-        position:sticky;top:10px;z-index:9999;backdrop-filter:blur(7px);
-      }
-      .mm-brand{display:flex;align-items:center;gap:12px}
-      .mm-logo{width:54px;height:54px;border-radius:12px;object-fit:cover;border:1px solid rgba(255,140,0,.45);background:#000}
-      .mm-logoText{
-        width:54px;height:54px;border-radius:12px;border:1px solid rgba(255,140,0,.45);
-        display:flex;align-items:center;justify-content:center;background:#000;
-        color:#ffb347;font-weight:1000;letter-spacing:.5px;
-      }
-      .mm-title{font-weight:1000;letter-spacing:.4px;text-transform:uppercase;color:#ffb347;font-size:16px;line-height:1.1}
-      .mm-slogan{font-weight:1000;color:var(--mm-orange);margin-top:4px;font-size:12px;letter-spacing:.2px}
-      .mm-nav{display:flex;gap:10px;flex-wrap:wrap}
-      .mm-nav a{
-        padding:8px 12px;border-radius:999px;border:1px solid rgba(255,140,0,.45);
-        background:rgba(0,0,0,.28);font-weight:1000;font-size:12px;letter-spacing:.35px;text-transform:uppercase
-      }
-      .mm-nav a:hover{background:rgba(255,140,0,.12)}
-    `;
-    var styleTag = document.createElement("style");
-    styleTag.textContent = css;
-    document.head.appendChild(styleTag);
-    document.body.style.background = "#050505";
-    document.documentElement.style.background = "#050505";
-  }
-
-  function buildHeader(logoHTML){
-    if (document.getElementById("mmTopbar")) return;
-
-    var topbar = document.createElement("div");
-    topbar.id = "mmTopbar";
-    topbar.className = "mm-topbar";
-
-    topbar.innerHTML = `
-      <div class="mm-brand">
-        ${logoHTML}
-        <div>
-          <div class="mm-title">MAXIMAX Multi Services</div>
-          <div class="mm-slogan">${SLOGAN}</div>
-        </div>
-      </div>
-      <div class="mm-nav">
-        <a href="index.html">HOME</a>
-        <a href="services.html">SERVICES</a>
-        <a href="forms.html">FORMS</a>
-        <a href="alerts.html">ALERTS</a>
-        <a href="contact.html">CONTACT</a>
-      </div>
-    `;
-    document.body.insertBefore(topbar, document.body.firstChild);
-  }
-
-  function tryLogo(paths, i){
-    if(i >= paths.length){
-      buildHeader(`<div class="mm-logoText">MAX</div>`);
-      return;
-    }
-    var img = new Image();
-    img.onload = function(){
-      buildHeader(`<img class="mm-logo" src="${paths[i]}" alt="MAXIMAX Logo">`);
-    };
-    img.onerror = function(){ tryLogo(paths, i+1); };
-    img.src = paths[i] + "?v=" + Date.now();
-  }
-
-  injectCSS();
-  tryLogo(LOGO_CANDIDATES, 0);
-})();
-</script>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Federal Register — MAXIMAX</title>
+<style>
+body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:#070b14;color:#eaf0ff}
+.wrap{max-width:980px;margin:0 auto;padding:18px 16px 50px}
+h1{margin:0 0 8px} p{color:#aeb9da;line-height:1.55;margin:0 0 14px}
+a{display:inline-flex;align-items:center;justify-content:center;margin:6px 8px 0 0;
+padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.16);
+background:rgba(255,255,255,.05);color:#eaf0ff;text-decoration:none;font-weight:800}
+a:hover{border-color:rgba(244,162,97,.75)}
+.top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;
+padding:14px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(0,0,0,.18)}
+.small{font-size:12.5px;color:rgba(255,255,255,.6)}
+</style></head><body>
+<div class="wrap">
+  <div class="top">
+    <div><h1>Federal Register (Official Updates)</h1><div class="small">Official links</div></div>
+    <a href="index.html">← Back Home</a>
+  </div>
+  <p>All buttons open official Federal Register pages directly.</p>
+  <a target="_blank" rel="noopener" href="https://www.federalregister.gov/">Federal Register Home</a>
+  <a target="_blank" rel="noopener" href="https://www.federalregister.gov/documents/search">Search Documents</a>
+  <a target="_blank" rel="noopener" href="https://www.federalregister.gov/agencies/u-s-citizenship-and-immigration-services">USCIS Agency Page</a>
+  <a target="_blank" rel="noopener" href="https://www.federalregister.gov/agencies/internal-revenue-service">IRS Agency Page</a>
+</div></body></html>
