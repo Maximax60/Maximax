@@ -1,203 +1,210 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MAXIMAX Multi Services — Services</title>
-<style>
-:root{--bg:#070a10;--bg2:#0b0f16;--p:#0f172a;--p2:#111827;--t:#e5e7eb;--m:#94a3b8;--a:#f59e0b;--line:rgba(245,158,11,.35);--r:18px;--sh:0 18px 60px rgba(0,0,0,.45)}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--t);
-background:radial-gradient(1200px 600px at 20% 15%, rgba(245,158,11,.18), transparent 55%),
-linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1100px;margin:0 auto;padding:18px 16px 44px}
-.top{display:flex;align-items:center;justify-content:space-between;gap:14px;background:linear-gradient(90deg, rgba(245,158,11,.22), rgba(17,24,39,.75));
-border:1px solid var(--line);border-radius:var(--r);padding:14px;box-shadow:var(--sh);position:sticky;top:12px;z-index:10;backdrop-filter:blur(10px)}
-.brand{display:flex;align-items:center;gap:12px;min-width:240px}
-.brand img{width:42px;height:42px;object-fit:contain;border-radius:10px;background:rgba(0,0,0,.25);border:1px solid var(--line);padding:4px}
-.b1{font-weight:900;letter-spacing:.6px;color:var(--a);font-size:16px;line-height:1.1}
-.b2{font-weight:800;color:var(--m);font-size:12px;margin-top:2px}
-.nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.pill{padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(15,23,42,.7);font-weight:900;letter-spacing:.4px;font-size:12px}
-.pill.active{background:rgba(245,158,11,.18);border-color:rgba(245,158,11,.6)}
-.langs{display:flex;gap:8px;align-items:center}
-.lang{width:44px;text-align:center;padding:10px 0;border-radius:999px;border:1px solid var(--line);background:rgba(15,23,42,.7);font-weight:900;font-size:12px}
-.lang.active{background:rgba(245,158,11,.22)}
-.card{margin-top:18px;background:linear-gradient(180deg, rgba(17,24,39,.92), rgba(15,23,42,.92));border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:18px}
-h1{margin:0;color:var(--a)}p{color:var(--m);line-height:1.6}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-@media(max-width:900px){.grid{grid-template-columns:1fr}.brand{min-width:auto}}
-.box{border:1px solid var(--line);border-radius:16px;padding:14px;background:rgba(0,0,0,.18)}
-.box h3{margin:0 0 8px}
-.box ul{margin:0;padding-left:18px}
-.box li{margin:6px 0;color:var(--m)}
-</style></head><body><div class="wrap">
-<header class="top">
-  <div class="brand"><img src="assets/maximax-owner.png" alt="MAXIMAX logo"><div><div class="b1">MAXIMAX MULTI SERVICES</div><div class="b2">MAXIMAX ALWAYS MAXIMIZED • YES WE CAN.</div></div></div>
-  <nav class="nav">
-    <a class="pill" href="index.html">HOME</a><a class="pill active" href="services.html">SERVICES</a><a class="pill" href="forms.html">FORMS</a><a class="pill" href="alerts.html">ALERTS</a><a class="pill" href="contact.html">CONTACT</a>
-  </nav>
-  <div class="langs"><a class="lang active" href="services.html">EN</a><a class="lang" href="services-kr.html">KR</a><a class="lang" href="services-es.html">ES</a></div>
-</header>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Services • MAXIMAX Multi Services</title>
+  <style>
+    :root{
+      --bg:#070b14; --text:#eaf0ff; --muted:#aeb9da;
+      --line:rgba(255,255,255,.14);
+      --accent:#f4a261; --accent2:#ffcc80;
+      --shadow: 0 14px 34px rgba(0,0,0,.45);
+      --r:22px; --max:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(1100px 650px at 15% 0%, rgba(244,162,97,.22), transparent 60%),
+        radial-gradient(900px 600px at 85% 20%, rgba(255,204,128,.12), transparent 60%),
+        linear-gradient(180deg,#050812,var(--bg));
+    }
+    .wrap{max-width:var(--max); margin:0 auto; padding:18px 16px 50px;}
+    .top{
+      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      padding:14px; border-radius:var(--r);
+      border:1px solid var(--line); background:rgba(255,255,255,.05);
+      box-shadow: var(--shadow);
+    }
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{
+      width:60px; height:60px; border-radius:18px; overflow:hidden;
+      border:1px solid rgba(244,162,97,.45); background:rgba(244,162,97,.12);
+    }
+    .logo img{width:100%; height:100%; object-fit:cover}
+    h1{margin:0; font-size:16px; letter-spacing:.3px}
+    .tag{margin-top:2px; color:var(--muted); font-size:12px}
+    .btn{
+      text-decoration:none; color:var(--text);
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 14px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.05);
+      font-weight:900;
+    }
+    .btn:hover{border-color: rgba(244,162,97,.75)}
+    .btn.primary{
+      border-color: rgba(244,162,97,.75);
+      background: rgba(244,162,97,.14);
+    }
+    .hero{
+      margin-top:14px;
+      padding:16px; border-radius:var(--r);
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+    }
+    .hero h2{margin:0; font-size:22px}
+    .hero p{margin:8px 0 0; color:var(--muted); line-height:1.55}
+    .section{
+      margin-top:14px;
+      padding:16px; border-radius:var(--r);
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.18);
+    }
+    .sectionTitle{
+      margin:0 0 10px; font-size:14px; letter-spacing:.6px;
+      color:var(--accent2); text-transform:uppercase;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    @media(max-width:860px){ .grid{grid-template-columns:1fr} }
+    .note{
+      margin-top:12px; color:rgba(255,255,255,.58);
+      font-size:12.5px; line-height:1.55;
+    }
+    .footer{
+      margin-top:16px;
+      text-align:center;
+      color:rgba(255,255,255,.55);
+      font-size:12.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
 
-<section class="card">
-  <h1>Our Services</h1>
-  <p>We help you navigate immigration paperwork, government forms, and programs with clear guidance and organized support.</p>
-  <div class="grid">
-    <div <!-- ✅ WHATSAPP FLOATING BUTTON (MAXIMAX) -->
-<a href="https://wa.me/13175381150?text=Hello%20MAXIMAX%2C%20I%20need%20assistance.%20Please%20help%20me."
-   target="_blank" rel="noopener"
-   style="position:fixed;right:18px;bottom:18px;z-index:99999;
-          display:flex;align-items:center;gap:10px;
-          padding:12px 14px;border-radius:999px;
-          background:#25D366;color:#fff;text-decoration:none;
-          font-weight:900;font-family:Arial, sans-serif;
-          box-shadow:0 8px 18px rgba(0,0,0,.25);">
-  <span style="font-size:18px;">💬</span>
-  <span>WhatsApp</span>
-  </a> Assistance</h3><ul><li>Guidance & checklists</li><li>Document preparation support</li><li>Help organizing evidence packets</li></ul></div>
-    <div class="box"><h3>Tax Support</h3><ul><li>IRS forms guidance</li><li>Help preparing files</li><li>Deadlines reminders</li></ul></div>
-    <div class="box"><h3>Benefits Help</h3><ul><li>SNAP / Medicaid / SSA assistance</li><li>Help understanding requirements</li><li>Support organizing documents</li></ul></div>
-    <div class="box"><h3>Housing (HUD / Section 8)</h3><ul><li>Application support</li><li>Document organization</li><li>Program guidance</li></ul></div>
-    <div class="box"><h3>Translation Assistance</h3><ul><li>Kreyòl ↔ English (official format)</li><li>Certificates & official formats</li><li>Professional layout</li></ul></div>
-    <div class="box"><h3>Power of Attorney</h3><ul><li>POA preparation support</li><li>Checklist & required info guidance</li><li>Next steps explained</li></ul></div>
+    <div class="top">
+      <div class="brand">
+        <div class="logo">
+          <img src="maximax-owner.png" alt="MAXIMAX logo"
+               onerror="this.style.display='none'; this.parentElement.textContent='MAX';" />
+        </div>
+        <div>
+          <h1>MAXIMAX Multi Services</h1>
+          <div class="tag">Services — Official Direct Links (No JS)</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn" href="index.html">← Home</a>
+        <a class="btn primary" href="forms.html">Forms Center →</a>
+        <a class="btn" href="contact.html">Contact →</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h2>Choose a category</h2>
+      <p>
+        Every button below opens the official government site directly.
+        MAXIMAX provides preparation assistance only (forms guidance, document organization, translation support).
+      </p>
+    </div>
+
+    <!-- IMMIGRATION / USCIS -->
+    <div class="section">
+      <div class="sectionTitle">Immigration (USCIS)</div>
+      <div class="grid">
+        <a class="btn" target="_blank" rel="noopener" href="https://www.uscis.gov/">USCIS Home →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.uscis.gov/forms">USCIS Forms →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://egov.uscis.gov/casestatus/landing.do">Case Status →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.uscis.gov/processing-times">Processing Times →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://my.uscis.gov/">myUSCIS Account →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.uscis.gov/newsroom">USCIS News →</a>
+      </div>
+    </div>
+
+    <!-- PASSPORTS -->
+    <div class="section">
+      <div class="sectionTitle">Passport Services (U.S.)</div>
+      <div class="grid">
+        <a class="btn" target="_blank" rel="noopener" href="https://travel.state.gov/content/travel/en/passports.html">Passport Home →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://travel.state.gov/content/travel/en/passports/how-apply.html">How to Apply →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://travel.state.gov/content/travel/en/passports/have-passport/renew.html">Renew Passport →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://travel.state.gov/content/travel/en/passports/have-passport/lost-stolen.html">Lost / Stolen →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://travel.state.gov/content/travel/en/passports/how-apply/forms.html">Passport Forms →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://passportstatus.state.gov/">Check Status →</a>
+      </div>
+    </div>
+
+    <!-- TAX / IRS -->
+    <div class="section">
+      <div class="sectionTitle">Tax (IRS)</div>
+      <div class="grid">
+        <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/">IRS Home →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/forms-pubs">Forms & Publications →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/refunds">Where’s My Refund →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/individuals/get-transcript">Get Transcript →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/individuals/international-taxpayers/individual-taxpayer-identification-number-itin">ITIN Info →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.irs.gov/payments">Payments →</a>
+      </div>
+    </div>
+
+    <!-- SOCIAL SECURITY -->
+    <div class="section">
+      <div class="sectionTitle">Social Security (SSA)</div>
+      <div class="grid">
+        <a class="btn" target="_blank" rel="noopener" href="https://www.ssa.gov/">SSA Home →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.ssa.gov/forms/">SSA Forms →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.ssa.gov/myaccount/">my Social Security →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.ssa.gov/agency/contact/">Contact SSA →</a>
+      </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="section">
+      <div class="sectionTitle">Benefits (SNAP / Medicaid / Medicare)</div>
+      <div class="grid">
+        <a class="btn" target="_blank" rel="noopener" href="https://www.usa.gov/benefits">USA.gov Benefits →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.usa.gov/food-stamps">SNAP (USA.gov) →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.fns.usda.gov/snap/supplemental-nutrition-assistance-program">SNAP (USDA) →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.medicaid.gov/">Medicaid.gov →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.medicare.gov/">Medicare.gov →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.healthcare.gov/">HealthCare.gov →</a>
+      </div>
+    </div>
+
+    <!-- HOUSING -->
+    <div class="section">
+      <div class="sectionTitle">Housing (HUD / Section 8)</div>
+      <div class="grid">
+        <a class="btn" target="_blank" rel="noopener" href="https://www.hud.gov/">HUD Home →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.hud.gov/topics/housing_choice_voucher_program_section_8">Section 8 Info →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.usa.gov/housing-assistance">Housing Assistance (USA.gov) →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.hud.gov/topics/rental_assistance">Rental Assistance →</a>
+      </div>
+    </div>
+
+    <!-- FEDERAL REGISTER -->
+    <div class="section">
+      <div class="sectionTitle">Federal Register (Official Updates)</div>
+      <div class="grid">
+        <a class="btn" target="_blank" rel="noopener" href="https://www.federalregister.gov/">Federal Register Home →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.federalregister.gov/documents/search">Search Documents →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.federalregister.gov/agencies/u-s-citizenship-and-immigration-services">USCIS Agency Page →</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.federalregister.gov/agencies/department-of-state">Department of State →</a>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>Disclaimer:</b> MAXIMAX Multi Services provides preparation assistance only. Official issuance and decisions are handled by government agencies.
+    </div>
+
+    <div class="footer">© 2025 MAXIMAX Multi Services</div>
   </div>
-</section>
-<!-- ===================== MAXIMAX LANGUAGE TOGGLE (NO 404) ===================== -->
-<style>
-  /* Hide any old language toggles that might still exist */
-  .lang-toggle, .language-toggle, #languageToggle, #langToggle { display: none !important; }
-
-  /* New fixed language toggle */
-  .mm-lang {
-    position: fixed;
-    top: 18px;
-    right: 18px;
-    z-index: 9999;
-    display: flex;
-    gap: 10px;
-    padding: 10px 12px;
-    border-radius: 14px;
-    background: rgba(0,0,0,0.70);
-    border: 1px solid rgba(255, 170, 60, 0.55);
-    backdrop-filter: blur(6px);
-  }
-  .mm-lang button{
-    cursor: pointer;
-    border: 1px solid rgba(255,170,60,0.55);
-    background: transparent;
-    color: #ffb24a;
-    font-weight: 700;
-    border-radius: 12px;
-    padding: 8px 12px;
-    line-height: 1;
-  }
-  .mm-lang button.active{
-    background: #ffb24a;
-    color: #000;
-    border-color: #ffb24a;
-  }
-</style>
-
-<div class="mm-lang" id="mmLang">
-  <button type="button" data-lang="en">EN</button>
-  <button type="button" data-lang="kr">KR</button>
-  <button type="button" data-lang="es">ES</button>
-</div>
-
-<script>
-  (function () {
-    // --- 1) Remove/disable old broken links that caused 404 (kreyol/espanol pages) ---
-    document.querySelectorAll('a[href]').forEach(a => {
-      const href = (a.getAttribute('href') || '').toLowerCase();
-      if (href.includes('kreyol') || href.includes('espanol') || href.includes('spanish')) {
-        // Keep the text but stop navigation to missing pages
-        a.setAttribute('href', '#');
-        a.addEventListener('click', (e) => e.preventDefault());
-      }
-    });
-
-    // --- 2) Simple language state via URL param: ?lang=en|kr|es ---
-    const params = new URLSearchParams(window.location.search);
-    const allowed = new Set(['en','kr','es']);
-    let lang = (params.get('lang') || 'en').toLowerCase();
-    if (!allowed.has(lang)) lang = 'en';
-
-    const toggle = document.getElementById('mmLang');
-    const btns = toggle.querySelectorAll('button[data-lang]');
-
-    function setActive(lang) {
-      btns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-    }
-
-    // --- 3) Optional: translate ONLY labels that have data-i18n attributes (safe; won’t break layout) ---
-    // If your page has no data-i18n, nothing breaks — it still fixes the 404 language buttons.
-    const dict = {
-      en: {
-        nav_home: "HOME",
-        nav_services: "SERVICES",
-        nav_forms: "FORMS",
-        nav_alerts: "ALERTS",
-        nav_contact: "CONTACT",
-        quick_actions: "Quick Actions",
-      },
-      kr: {
-        nav_home: "AKÈY",
-        nav_services: "SÈVIS",
-        nav_forms: "FÒM",
-        nav_alerts: "ALÈT",
-        nav_contact: "KONTAK",
-        quick_actions: "Aksyon Rapid",
-      },
-      es: {
-        nav_home: "INICIO",
-        nav_services: "SERVICIOS",
-        nav_forms: "FORMULARIOS",
-        nav_alerts: "ALERTAS",
-        nav_contact: "CONTACTO",
-        quick_actions: "Acciones Rápidas",
-      }
-    };
-
-    function applyLang(lang) {
-      setActive(lang);
-
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        const val = dict[lang] && dict[lang][key];
-        if (val) el.textContent = val;
-      });
-    }
-
-    // Click handlers
-    btns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const next = btn.dataset.lang;
-        const url = new URL(window.location.href);
-        url.searchParams.set('lang', next);
-        // Stay on same page file (NO new pages, NO 404)
-        window.location.href = url.toString();
-      });
-    });
-
-    // Run
-    applyLang(lang);
-  })();
-</script>
-<!-- ===================== /MAXIMAX LANGUAGE TOGGLE (NO 404) ===================== --></div></body></html>
-<!-- ✅ TRANSLATION SERVICES (MAXIMAX) -->
-<section style="max-width:1100px;margin:30px auto;padding:22px;border-radius:18px;
-                border:1px solid rgba(255,177,0,.35);background:rgba(0,0,0,.25);color:#fff;
-                font-family:Arial, sans-serif;">
-  <h2 style="margin:0 0 10px;color:#ffb100;">Translation & Document Assistance</h2>
-  <p style="margin:0 0 12px;opacity:.9;">
-    We provide professional assistance with document translation and preparation:
-  </p>
-  <ul style="margin:0;padding-left:18px;line-height:1.7;opacity:.95;">
-    <li>Haitian Creole ⇄ English</li>
-    <li>Spanish ⇄ English</li>
-    <li>Birth Certificates • Marriage Certificates • Divorce Decrees</li>
-    <li>Affidavits & Immigration-related documents</li>
-    <li>Formatting for official submission (USCIS, IRS, SSA)</li>
-  </ul>
-  <p style="margin:14px 0 0;opacity:.85;font-style:italic;">
-    Translation assistance is provided for preparation purposes. Certified translations available upon request.
-  </p>
-  </section>
+</body>
+</html>
