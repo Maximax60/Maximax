@@ -1,66 +1,350 @@
-<!doctype html>
-<html lang="ht">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MAXIMAX Multi Services</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSS1815 • MAXIMAX MULTI SERVICES</title>
+
+<style>
+    :root {
+        --orange: #ff7a00;
+        --black: #000000;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, var(--black), var(--orange));
+        color: white;
+        min-height: 100vh;
+    }
+
+    header {
+        background: rgba(0,0,0,0.85);
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .logo {
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .slogan-top {
+        font-size: 12px;
+        opacity: 0.8;
+    }
+
+    nav a {
+        color: var(--orange);
+        text-decoration: none;
+        margin-left: 18px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    .hero {
+        text-align: center;
+        padding: 60px 20px 30px;
+    }
+
+    .hero-title {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .hero-sub {
+        font-size: 16px;
+        opacity: 0.9;
+        margin-bottom: 20px;
+    }
+
+    .cta-row {
+        margin-top: 10px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 22px;
+        margin: 5px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background: var(--orange);
+        color: #000;
+    }
+
+    .btn-outline {
+        border: 2px solid var(--orange);
+        color: var(--orange);
+        background: transparent;
+    }
+
+    .section {
+        padding: 30px 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .badge-container {
+        width: 340px;
+        max-width: 100%;
+        margin: 20px auto 30px;
+        padding: 18px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 16px;
+        text-align: center;
+        box-shadow: 0 0 25px rgba(255,122,0,0.6);
+    }
+
+    .badge-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .badge-img {
+        width: 100%;
+        border-radius: 12px;
+        margin-bottom: 10px;
+    }
+
+    .badge-slogan {
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .two-col {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 10px;
+    }
+
+    .col {
+        flex: 1 1 280px;
+        background: rgba(0,0,0,0.35);
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .service-box {
+        background: rgba(255,255,255,0.08);
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+    .service-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: var(--orange);
+    }
+
+    .contact-box {
+        width: 100%;
+        background: rgba(0,0,0,0.55);
+        padding: 18px;
+        border-radius: 12px;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .contact-box a {
+        color: var(--orange);
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .contact-box a:hover {
+        text-decoration: underline;
+    }
+
+    footer {
+        text-align: center;
+        padding: 18px;
+        margin-top: 30px;
+        background: rgba(0,0,0,0.85);
+        font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+        .hero-title {
+            font-size: 26px;
+        }
+    }
+</style>
 </head>
+
 <body>
-  <header class="top">
-    <div class="brand">
-      <img src="logo.png" alt="MAXIMAX" class="logo" onerror="this.style.display='none'">
-      <div>
-        <h1>MAXIMAX Multi Services</h1>
-        <p class="tagline">MAXIMAX ALWAY MAXIMIZED</p>
-      </div>
+
+<header>
+    <div>
+        <div class="logo">MAXIMAX MULTI SERVICES</div>
+        <div class="slogan-top">ALWAYS MAXIMIZE • BSS1815</div>
+    </div>
+    <nav>
+        <a href="#services">SERVICES</a>
+        <a href="#about">ABOUT</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-title">PRO‑MAX MULTI SERVICES • ORLANDO, FL</div>
+    <div class="hero-sub">
+        Travay pwòp, serye, garanti. Chak entèvansyon fèt PRO‑MAX, san presyon, san pèdi tan.
+    </div>
+    <div class="cta-row">
+        <a href="tel:+13175381150" class="btn btn-primary">CALL NOW • (317) 538‑1150</a>
+        <a href="#contact" class="btn btn-outline">VIEW FULL CONTACT</a>
+    </div>
+</section>
+
+<section class="section" id="badge">
+    <div class="section-title">SUPER ADMIN BADGE • BSS1815</div>
+
+    <div class="badge-container">
+        <div class="badge-title">SUPER ADMIN BADGE</div>
+        <img src="super-admin-badge.jpeg" class="badge-img" alt="SUPER ADMIN BADGE">
+        <div class="badge-slogan">ALWAYS MAXIMIZE</div>
     </div>
 
-    <nav class="nav">
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+    <div class="two-col">
+        <div class="col">
+            <strong>BSS1815 SYSTEM:</strong><br>
+            • Shield style, PRO‑MAX badge<br>
+            • Orange + Black fade only<br>
+            • MAXIMAX MULTI SERVICES nan sant<br>
+            • Slogan “ALWAYS MAXIMIZE” byen vizib<br>
+            • Glossy / 3D presence pou enpak vizyèl
+        </div>
+        <div class="col">
+            <strong>IDENTITE OFISYÈL:</strong><br>
+            • Prezidan: MAX (TEAM SAN PRESYON)<br>
+            • Founder & Lead: MAXIMAX MULTI SERVICES<br>
+            • Sole Architect & Super Admin: BSS1815<br>
+            • Disiplin, presizyon, ekzekisyon rapid
+        </div>
+    </div>
+</section>
 
-  <main class="wrap">
-    <section class="hero">
-      <h2>Immigration • Taxes • Forms</h2>
-      <p>Nou ede w ranpli fòm yo, prepare dokiman yo, epi mete tout bagay an òd.</p>
-      <div class="cta">
-        <a class="btn" href="#contact">Book / Contact</a>
-        <a class="btn outline" href="#services">View Services</a>
-      </div>
-    </section>
+<section class="section" id="services">
+    <div class="section-title">SERVICES • PRO‑MAX</div>
 
-    <section id="services" class="card">
-      <h3>Services</h3>
-      <ul>
-        <li>Immigration Services</li>
-        <li>Tax Preparation</li>
-        <li>Form Assistance (SNAP, SSA, DMV, elatriye)</li>
-        <li>Document Upload & Receipts (pita)</li>
-      </ul>
-    </section>
+    <div class="services-grid">
+        <div class="service-box">
+            <div class="service-title">General Services</div>
+            Travay jeneral, ti misyon rapid, entèvansyon presi pou rezoud pwoblèm san pran tan.
+        </div>
+        <div class="service-box">
+            <div class="service-title">Home Repair & Maintenance</div>
+            Ti reparasyon, antretyen kay, ajisteman, koreksyon, tout sa pou kay la rete fonksyonèl.
+        </div>
+        <div class="service-box">
+            <div class="service-title">Cleaning & Organization</div>
+            Netwayaj, òganizasyon espas, mete lòd, retire dezòd, pou espas la respire PRO‑MAX.
+        </div>
+        <div class="service-box">
+            <div class="service-title">Moving Assistance</div>
+            Ede deplase, pote, ranje, chaje / dechaje, san presyon, san dezòd.
+        </div>
+        <div class="service-box">
+            <div class="service-title">Installation & Setup</div>
+            Enstalasyon ekipman, aparèy, mèb, sistèm, ak presizyon ak disiplin.
+        </div>
+        <div class="service-box">
+            <div class="service-title">Guaranteed Results</div>
+            Chak misyon antre ak yon sèl prensip: ALWAYS MAXIMIZE — pa gen mwens.
+        </div>
+    </div>
+</section>
 
-    <section id="about" class="card">
-      <h3>About</h3>
-      <p>MAXIMAX Multi Services — sèvis rapid, pwòp, e serye.</p>
-    </section>
+<section class="section" id="about">
+    <div class="section-title">ABOUT • MAXIMAX MULTI SERVICES</div>
 
-    <section id="contact" class="card">
-      <h3>Contact</h3>
-      <p>Email: <a href="mailto:maximaxmultiservices@gmail.com">maximaxmultiservices@gmail.com</a></p>
-      <p>Phone: <a href="tel:+13175381150">(317) 538-1150</a></p>
-    </section>
-  </main>
+    <div class="two-col">
+        <div class="col">
+            <strong>KI SA NOU YE:</strong><br>
+            MAXIMAX MULTI SERVICES se yon platfòm sèvis PRO‑MAX ki bati sou disiplin, presizyon, ak rezilta.
+            Chak entèvansyon fèt ak menm nivo serye ak menm estanda BSS1815 la.
+        </div>
+        <div class="col">
+            <strong>FILOSOFI “ALWAYS MAXIMIZE”:</strong><br>
+            • Pa gen travay “ti bagay” — tout bagay fèt PRO‑MAX<br>
+            • Pa gen pèdi tan — ekzekisyon dwat, vit, klè<br>
+            • Pa gen dezòd — tout bagay òganize, estriktire, net
+        </div>
+    </div>
+</section>
 
-  <footer class="footer">
-    <p>© <span id="y"></span> MAXIMAX Multi Services</p>
-  </footer>
+<section class="section" id="contact">
+    <div class="section-title">CONTACT • BSS1815 / MAXIMAX</div>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+    <div class="contact-box">
+        📍 <strong>Adrès:</strong><br>
+        6934 Coral Cove Drive, Orlando FL 32818<br><br>
+
+        📞 <strong>Telefòn:</strong><br>
+        <a href="tel:+13175381150">(317) 538‑1150</a><br>
+        <a href="tel:+15162168494">(516) 216‑8494</a><br><br>
+
+        📧 <strong>Email:</strong><br>
+        <a href="mailto:briyantsoleysigno1815@gmail.com">briyantsoleysigno1815@gmail.com</a><br><br>
+
+        🌐 <strong>Website:</strong><br>
+        <a href="https://www.briyantsoleysigno.com" target="_blank">www.briyantsoleysigno.com</a><br><br>
+
+        📘 <strong>Facebook:</strong><br>
+        Briyant Soley Signo 1815<br><br>
+
+        🎵 <strong>TikTok:</strong><br>
+        Briyant Soley Signo 1815
+    </div>
+</section>
+
+<footer>
+    BSS1815 • MAXIMAX MULTI SERVICES • ALWAYS MAXIMIZE • Orlando, FL
+</footer>
+
 </body>
 </html>
