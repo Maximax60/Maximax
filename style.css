@@ -1,0 +1,16 @@
+button, .btn, .service-btn {
+    background: linear-gradient(90deg, #FF8C42 0%, #000000 100%);
+    color: white;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.2s ease-in-out;
+}
+
+button:hover, .btn:hover, .service-btn:hover {
+    opacity: 0.85;
+    transform: scale(1.03);
+}
