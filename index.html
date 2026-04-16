@@ -5,15 +5,32 @@
   <title>MAXIMAX MULTI SERVICES</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- BASIC META -->
+  <meta name="description" content="MAXIMAX MULTI SERVICES – Lean, high-impact digital service platforms, branding, deployment, and creative workflows." />
+  <meta name="author" content="MAXIMAX MULTI SERVICES" />
+
   <style>
     :root {
       --bg: #050816;
-      --card: #0f172a;
-      --accent: #22c55e;
-      --accent-soft: rgba(34, 197, 94, 0.12);
+      --bg-soft: #020617;
+      --card: #0b1220;
+      --card-soft: #020617;
+      --accent: #f97316;      /* ORANGE APRICOT */
+      --accent-soft: rgba(249, 115, 22, 0.12);
+      --accent-strong: #ea580c;
       --text: #e5e7eb;
       --text-muted: #9ca3af;
       --border-subtle: #1f2937;
+      --border-strong: #111827;
+      --danger: #ef4444;
+      --success: #22c55e;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.85);
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --radius-pill: 999px;
+      --nav-h: 70px;
+      --transition-fast: 160ms ease-out;
+      --transition-med: 220ms ease-out;
     }
 
     * {
@@ -22,467 +39,1051 @@
       padding: 0;
     }
 
+    html, body {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      background:
+        radial-gradient(circle at top, #1f2937 0, #020617 55%),
+        radial-gradient(circle at bottom, #020617 0, #000 65%);
       color: var(--text);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px 16px 40px;
-      flex: 1;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    header {
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+      background: none;
+    }
+
+    /* LAYOUT WRAPPER */
+    .page-shell {
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
+    }
+
+    .max-width {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* NAVBAR */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.82), transparent);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .nav-inner {
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: flex-start;
       gap: 16px;
-      margin-bottom: 24px;
     }
 
-    h1 {
-      font-size: 26px;
-      letter-spacing: 0.08em;
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    #subtitle {
-      font-size: 13px;
+    .logo-wrap {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      background: radial-gradient(circle at 20% 0, #f97316 0, #ea580c 32%, #020617 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75);
+      overflow: hidden;
+    }
+
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-size: 0.98rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
+      color: #f9fafb;
+    }
+
+    .brand-sub {
+      font-size: 0.78rem;
       color: var(--text-muted);
-      margin-top: 4px;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .lang-toggle {
       display: inline-flex;
-      gap: 6px;
+      align-items: center;
+      gap: 4px;
       padding: 4px;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.9);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid rgba(31, 41, 55, 0.9);
     }
 
-    .lang-toggle span {
-      font-size: 11px;
+    .lang-btn {
       padding: 4px 10px;
       border-radius: 999px;
-      cursor: pointer;
-      color: var(--text-muted);
-      user-select: none;
-      transition: all 0.15s ease;
-    }
-
-    .lang-toggle span:hover {
-      background: rgba(148, 163, 184, 0.12);
-      color: var(--text);
-    }
-
-    .lang-toggle span.active {
-      background: var(--accent-soft);
-      color: #bbf7d0;
-      border: 1px solid rgba(34, 197, 94, 0.6);
-    }
-
-    main {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    .card {
-      background: rgba(15, 23, 42, 0.96);
-      border-radius: 18px;
-      border: 1px solid var(--border-subtle);
-      padding: 16px 16px 18px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
-    }
-
-    h2 {
-      font-size: 15px;
-      letter-spacing: 0.12em;
+      font-size: 0.72rem;
       text-transform: uppercase;
+      letter-spacing: 0.08em;
       color: var(--text-muted);
-      margin-bottom: 10px;
+      background: transparent;
+      transition: background var(--transition-fast), color var(--transition-fast);
     }
 
-    .services-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
-    }
-
-    .service {
-      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), transparent 55%);
-      border-radius: 14px;
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 10px 11px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .service-title {
-      font-size: 13px;
+    .lang-btn.active {
+      background: var(--accent);
+      color: #0b1120;
       font-weight: 600;
     }
 
-    .service-desc {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .meta {
-      color: var(--text-muted);
-      font-size: 12px;
-    }
-
-    .uploads-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-      gap: 8px;
-    }
-
-    .status-btn {
-      font-size: 11px;
-      padding: 5px 10px;
+    .nav-cta {
+      padding: 7px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-muted);
-      cursor: pointer;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #0b1120;
+      border: 1px solid rgba(248, 250, 252, 0.08);
+      box-shadow: 0 10px 25px rgba(249, 115, 22, 0.45);
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: all 0.15s ease;
+      white-space: nowrap;
     }
 
-    .status-btn:hover {
-      border-color: var(--accent);
-      color: #bbf7d0;
-      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.4);
+    .nav-cta span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #0b1120;
     }
 
-    .uploads-list {
+    /* HERO */
+    .hero {
+      padding: 32px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 26px;
+      align-items: center;
+    }
+
+    @media (max-width: 880px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.35);
+    }
+
+    .hero-title {
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      line-height: 1.18;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero-title span.accent {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .badge {
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .btn-primary {
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #0b1120;
+      border: 1px solid rgba(248, 250, 252, 0.08);
+      box-shadow: 0 14px 30px rgba(249, 115, 22, 0.55);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .btn-primary span.pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #0b1120;
+    }
+
+    .btn-ghost {
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .btn-ghost span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .hero-card {
+      width: 100%;
+      max-width: 380px;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top left, rgba(249, 115, 22, 0.18), transparent 55%),
+                  radial-gradient(circle at bottom, rgba(15, 23, 42, 0.95), #020617 80%);
+      border: 1px solid rgba(15, 23, 42, 0.95);
+      box-shadow: var(--shadow-soft);
+      padding: 14px;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-top: 6px;
-      max-height: 260px;
-      overflow: auto;
     }
 
-    .upload-item {
-      display: grid;
-      grid-template-columns: 70px minmax(0, 1fr);
-      gap: 10px;
-      padding: 8px;
-      border-radius: 12px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-    }
-
-    .upload-media {
-      width: 70px;
-      height: 50px;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #020617;
+    .hero-card-inner {
+      border-radius: calc(var(--radius-xl) - 6px);
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #000 100%);
+      border: 1px solid rgba(15, 23, 42, 0.95);
+      padding: 14px;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .upload-media img,
-    .upload-media video {
+    .hero-photo-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: #020617;
+      max-height: 260px;
+    }
+
+    .hero-photo-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
 
-    .upload-body {
+    .hero-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta-left {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
     }
 
-    .upload-title {
-      font-size: 12px;
-      font-weight: 600;
+    .hero-meta-title {
+      font-size: 0.8rem;
+      color: #f9fafb;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
     }
 
-    .upload-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-top: 2px;
+    .hero-meta-tagline {
+      font-size: 0.75rem;
+      color: var(--text-muted);
     }
 
-    .upload-badge {
-      font-size: 10px;
-      padding: 2px 6px;
+    .hero-meta-pill {
+      padding: 4px 10px;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(55, 65, 81, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
 
-    .upload-badge img {
-      width: 12px;
-      height: 12px;
+    .hero-meta-pill span.dot {
+      width: 6px;
+      height: 6px;
       border-radius: 999px;
-      object-fit: cover;
+      background: var(--accent);
     }
 
-    footer {
-      text-align: center;
-      font-size: 11px;
+    /* SECTIONS */
+    .section {
+      padding: 10px 0 26px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
       color: var(--text-muted);
-      padding: 10px 0 16px;
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
-      margin-top: 18px;
     }
 
-    @media (max-width: 800px) {
-      main {
+    .section-kicker {
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    @media (max-width: 880px) {
+      .section-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section-grid {
         grid-template-columns: minmax(0, 1fr);
       }
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), #020617 80%);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 12px 12px 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .card-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      color: #f9fafb;
+    }
+
+    .card-body {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .card-footer {
+      margin-top: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .card-pill {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-pill span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .card-cta {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-cta span.chevron {
+      font-size: 0.8rem;
+    }
+
+    /* CONTACT / CTA STRIP */
+    .cta-strip {
+      margin-top: 8px;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top left, rgba(249, 115, 22, 0.18), transparent 55%),
+                  radial-gradient(circle at bottom, #020617, #000 80%);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 14px 14px 13px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cta-strip-left {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .cta-strip-left strong {
+      color: #f9fafb;
+      font-size: 0.86rem;
+    }
+
+    .cta-strip-right {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cta-chip {
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .cta-chip span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .cta-chip.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #0b1120;
+      border-color: rgba(248, 250, 252, 0.08);
+      box-shadow: 0 12px 26px rgba(249, 115, 22, 0.55);
+    }
+
+    .cta-chip.primary span.dot {
+      background: #0b1120;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: auto;
+      padding: 18px 0 20px;
+      border-top: 1px solid rgba(15, 23, 42, 0.95);
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), #020617 70%);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-pill span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    /* SIMPLE HOVER (NO ANIMATION LIB) */
+    .btn-primary:hover,
+    .nav-cta:hover,
+    .cta-chip.primary:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn-ghost:hover,
+    .cta-chip:hover,
+    .card:hover,
+    .hero-card:hover {
+      border-color: rgba(55, 65, 81, 0.95);
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div>
-        <h1 id="title">MAXIMAX MULTI SERVICES</h1>
-        <p id="subtitle">ALWAYS MAXIMIZE — PRO-MAX SERVICES FOR EVERY COMMUNITY</p>
-      </div>
+  <div class="page-shell">
+    <!-- NAVBAR -->
+    <header class="nav">
+      <div class="max-width nav-inner">
+        <div class="nav-left">
+          <div class="logo-wrap">
+            <!-- LOGO IMAGE: PLACE maximax_multi.jpeg IN SAME FOLDER -->
+            <img src="maximax_multi.jpeg" alt="MAXIMAX MULTI SERVICES Logo" />
+          </div>
+          <div class="brand-text">
+            <div class="brand-title" data-i18n="brandTitle">
+              MAXIMAX MULTI SERVICES
+            </div>
+            <div class="brand-sub" data-i18n="brandSub">
+              Lean, high-impact digital service platforms.
+            </div>
+          </div>
+        </div>
 
-      <div>
-        <div class="lang-toggle" id="lang-toggle">
-          <span data-lang="eng" class="active" onclick="setLang('eng')">ENG</span>
-          <span data-lang="esp" onclick="setLang('esp')">ESP</span>
-          <span data-lang="fra" onclick="setLang('fra')">FRA</span>
+        <div class="nav-right">
+          <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="ht">HT</button>
+          </div>
+          <button class="nav-cta" data-scroll="#contact">
+            <span class="dot"></span>
+            <span data-i18n="navCta">BOOK A SESSION</span>
+          </button>
         </div>
       </div>
     </header>
 
+    <!-- MAIN -->
     <main>
-      <!-- SERVICES -->
-      <section class="card">
-        <h2 id="services-title">OUR SERVICES</h2>
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div class="max-width hero-grid">
+          <div class="hero-left">
+            <div class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              <span data-i18n="eyebrow">
+                ORLANDO • DIGITAL • MULTI SERVICES
+              </span>
+            </div>
 
-        <div class="services-list">
-          <div class="service">
-            <div class="service-title">Community Logistics & Support</div>
-            <div class="service-desc">
-              Coordinated transport, delivery, and on-the-ground support for local and diaspora communities.
+            <h1 class="hero-title">
+              <span data-i18n="heroTitleLine1">LEAN, HIGH-IMPACT</span><br />
+              <span class="accent" data-i18n="heroTitleLine2">DIGITAL SERVICE PLATFORMS</span><br />
+              <span data-i18n="heroTitleLine3">BUILT AROUND YOUR REALITY.</span>
+            </h1>
+
+            <p class="hero-sub" data-i18n="heroSub">
+              From branding and deployment to creative workflows and client-ready experiences, MAXIMAX MULTI SERVICES
+              builds systems that actually move your work forward—without noise, without clutter, without wasted motion.
+            </p>
+
+            <div class="hero-badges">
+              <div class="badge">
+                <span class="badge-dot"></span>
+                <span data-i18n="badge1">Single-owner, high-discipline execution</span>
+              </div>
+              <div class="badge">
+                <span class="badge-dot"></span>
+                <span data-i18n="badge2">Branding • Deployment • Creative Systems</span>
+              </div>
+              <div class="badge">
+                <span class="badge-dot"></span>
+                <span data-i18n="badge3">Orlando • Remote-friendly</span>
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <button class="btn-primary" data-scroll="#services">
+                <span class="pulse"></span>
+                <span data-i18n="primaryHeroCta">VIEW CORE SERVICES</span>
+              </button>
+              <button class="btn-ghost" data-scroll="#contact">
+                <span class="dot"></span>
+                <span data-i18n="secondaryHeroCta">REQUEST A CALL BACK</span>
+              </button>
             </div>
           </div>
 
-          <div class="service">
-            <div class="service-title">Event & Rara Operations</div>
-            <div class="service-desc">
-              Structured planning, team coordination, and operational support for cultural and community events.
-            </div>
-          </div>
-
-          <div class="service">
-            <div class="service-title">Digital Admin Systems</div>
-            <div class="service-desc">
-              Role-based access, secure workflows, and multi-team dashboards tailored to your organization.
-            </div>
-          </div>
-
-          <div class="service">
-            <div class="service-title">Media & Content Handling</div>
-            <div class="service-desc">
-              Centralized upload, review, and distribution of photos, videos, and promotional assets.
+          <div class="hero-right">
+            <div class="hero-card">
+              <div class="hero-card-inner">
+                <div class="hero-photo-wrap">
+                  <!-- OWNER / BRAND PHOTO: PLACE bawon_an.jpeg IN SAME FOLDER -->
+                  <img src="bawon_an.jpeg" alt="MAX – Founder of MAXIMAX MULTI SERVICES" />
+                </div>
+                <div class="hero-meta">
+                  <div class="hero-meta-left">
+                    <div class="hero-meta-title" data-i18n="heroMetaTitle">
+                      MAX • FOUNDER & LEAD
+                    </div>
+                    <div class="hero-meta-tagline" data-i18n="heroMetaTagline">
+                      Direct, precise, no-friction digital execution.
+                    </div>
+                  </div>
+                  <div class="hero-meta-pill">
+                    <span class="dot"></span>
+                    <span data-i18n="heroMetaPill">
+                      ORLANDO • FL
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- UPLOADS / MEDIA PANEL -->
-      <section class="card">
-        <div class="uploads-header">
-          <div>
-            <h2>MEDIA UPLOADS</h2>
-            <span id="uploads-summary" class="meta">Loading uploads…</span>
+      <!-- CORE SERVICES -->
+      <section class="section" id="services">
+        <div class="max-width">
+          <div class="section-header">
+            <div class="section-title" data-i18n="servicesTitle">
+              CORE SERVICE LINES
+            </div>
+            <div class="section-kicker" data-i18n="servicesKicker">
+              BUILT TO DEPLOY, NOT JUST “DESIGN”
+            </div>
           </div>
-          <button class="status-btn" type="button" onclick="handleStatusClick()">
-            <span>Update status</span>
-          </button>
-        </div>
 
-        <div id="uploads-list" class="uploads-list">
-          <!-- Filled by JS -->
+          <div class="section-grid">
+            <!-- SERVICE 1 -->
+            <article class="card">
+              <div class="card-label" data-i18n="service1Label">
+                BRANDING & VISUAL SYSTEMS
+              </div>
+              <div class="card-title" data-i18n="service1Title">
+                Identity that actually holds under pressure.
+              </div>
+              <div class="card-body" data-i18n="service1Body">
+                From logo and color systems to layout logic and usage rules, we build brands that stay consistent across
+                social, web, and print—without you having to micromanage every file.
+              </div>
+              <div class="card-footer">
+                <div class="card-pill">
+                  <span class="dot"></span>
+                  <span data-i18n="service1Pill">
+                    Logo • Color • Layout • Usage
+                  </span>
+                </div>
+                <button class="card-cta" data-scroll="#contact">
+                  <span data-i18n="service1Cta">BOOK BRANDING SLOT</span>
+                  <span class="chevron">↗</span>
+                </button>
+              </div>
+            </article>
+
+            <!-- SERVICE 2 -->
+            <article class="card">
+              <div class="card-label" data-i18n="service2Label">
+                DEPLOYMENT & INFRASTRUCTURE
+              </div>
+              <div class="card-title" data-i18n="service2Title">
+                From local idea to live, stable platform.
+              </div>
+              <div class="card-body" data-i18n="service2Body">
+                Clean, single-owner deployment flows: GitHub, Netlify, domains, routing, and structure. No mystery,
+                no clutter—just a clear path from “ready” to “live”.
+              </div>
+              <div class="card-footer">
+                <div class="card-pill">
+                  <span class="dot"></span>
+                  <span data-i18n="service2Pill">
+                    GitHub • Netlify • Domains
+                  </span>
+                </div>
+                <button class="card-cta" data-scroll="#contact">
+                  <span data-i18n="service2Cta">REQUEST DEPLOY SESSION</span>
+                  <span class="chevron">↗</span>
+                </button>
+              </div>
+            </article>
+
+            <!-- SERVICE 3 -->
+            <article class="card">
+              <div class="card-label" data-i18n="service3Label">
+                CREATIVE WORKFLOWS & SYSTEMS
+              </div>
+              <div class="card-title" data-i18n="service3Title">
+                Repeatable flows, not one-off “projects”.
+              </div>
+              <div class="card-body" data-i18n="service3Body">
+                We design how content, requests, approvals, and publishing move through your world—so you stop
+                firefighting and start operating from a stable, predictable system.
+              </div>
+              <div class="card-footer">
+                <div class="card-pill">
+                  <span class="dot"></span>
+                  <span data-i18n="service3Pill">
+                    Content • Requests • Approvals
+                  </span>
+                </div>
+                <button class="card-cta" data-scroll="#contact">
+                  <span data-i18n="service3Cta">MAP YOUR FLOW</span>
+                  <span class="chevron">↗</span>
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT / BOOKING -->
+      <section class="section" id="contact">
+        <div class="max-width">
+          <div class="section-header">
+            <div class="section-title" data-i18n="contactTitle">
+              CONTACT & BOOKING
+            </div>
+            <div class="section-kicker" data-i18n="contactKicker">
+              ONE OWNER. ONE DECISION-MAKER. DIRECT LINE.
+            </div>
+          </div>
+
+          <div class="cta-strip">
+            <div class="cta-strip-left">
+              <strong data-i18n="contactLead">
+                Ready to move from “ideas” to a live, disciplined platform?
+              </strong>
+              <span data-i18n="contactSub">
+                Send a direct message with your context, timeline, and what “done” looks like for you. You’ll get a
+                clear yes/no and a concrete next step—no fluff.
+              </span>
+            </div>
+            <div class="cta-strip-right">
+              <a
+                class="cta-chip primary"
+                href="https://wa.me/14000000000"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="dot"></span>
+                <span data-i18n="contactWhatsApp">WHATSAPP DIRECT</span>
+              </a>
+              <a
+                class="cta-chip"
+                href="mailto:briyantsigno@gmail.com?subject=MAXIMAX%20MULTI%20SERVICES%20INQUIRY"
+              >
+                <span class="dot"></span>
+                <span data-i18n="contactEmail">EMAIL BRIEF</span>
+              </a>
+              <button class="cta-chip" data-scroll="#top">
+                <span class="dot"></span>
+                <span data-i18n="contactBackToTop">BACK TO TOP</span>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="max-width footer-inner">
+        <div>
+          <span data-i18n="footerCopy">
+            © MAXIMAX MULTI SERVICES • Orlando, FL • All rights reserved.
+          </span>
+        </div>
+        <div class="footer-links">
+          <div class="footer-pill">
+            <span class="dot"></span>
+            <span data-i18n="footerSocial">
+              FACEBOOK • WHATSAPP • TIKTOK • YOUTUBE: MAX LOUIS
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    © 2026 MAXIMAX MULTI SERVICES — ALWAYS MAXIMIZE
-  </footer>
-
   <script>
-    function setLang(lang) {
-      const title = document.getElementById("title");
-      const subtitle = document.getElementById("subtitle");
-      const servicesTitle = document.getElementById("services-title");
+    // SIMPLE LANGUAGE PACK
+    const translations = {
+      en: {
+        brandTitle: "MAXIMAX MULTI SERVICES",
+        brandSub: "Lean, high-impact digital service platforms.",
+        navCta: "BOOK A SESSION",
+        eyebrow: "ORLANDO • DIGITAL • MULTI SERVICES",
+        heroTitleLine1: "LEAN, HIGH-IMPACT",
+        heroTitleLine2: "DIGITAL SERVICE PLATFORMS",
+        heroTitleLine3: "BUILT AROUND YOUR REALITY.",
+        heroSub:
+          "From branding and deployment to creative workflows and client-ready experiences, MAXIMAX MULTI SERVICES builds systems that actually move your work forward—without noise, without clutter, without wasted motion.",
+        badge1: "Single-owner, high-discipline execution",
+        badge2: "Branding • Deployment • Creative Systems",
+        badge3: "Orlando • Remote-friendly",
+        primaryHeroCta: "VIEW CORE SERVICES",
+        secondaryHeroCta: "REQUEST A CALL BACK",
+        heroMetaTitle: "MAX • FOUNDER & LEAD",
+        heroMetaTagline: "Direct, precise, no-friction digital execution.",
+        heroMetaPill: "ORLANDO • FL",
+        servicesTitle: "CORE SERVICE LINES",
+        servicesKicker: "BUILT TO DEPLOY, NOT JUST “DESIGN”",
+        service1Label: "BRANDING & VISUAL SYSTEMS",
+        service1Title: "Identity that actually holds under pressure.",
+        service1Body:
+          "From logo and color systems to layout logic and usage rules, we build brands that stay consistent across social, web, and print—without you having to micromanage every file.",
+        service1Pill: "Logo • Color • Layout • Usage",
+        service1Cta: "BOOK BRANDING SLOT",
+        service2Label: "DEPLOYMENT & INFRASTRUCTURE",
+        service2Title: "From local idea to live, stable platform.",
+        service2Body:
+          "Clean, single-owner deployment flows: GitHub, Netlify, domains, routing, and structure. No mystery, no clutter—just a clear path from “ready” to “live”.",
+        service2Pill: "GitHub • Netlify • Domains",
+        service2Cta: "REQUEST DEPLOY SESSION",
+        service3Label: "CREATIVE WORKFLOWS & SYSTEMS",
+        service3Title: "Repeatable flows, not one-off “projects”.",
+        service3Body:
+          "We design how content, requests, approvals, and publishing move through your world—so you stop firefighting and start operating from a stable, predictable system.",
+        service3Pill: "Content • Requests • Approvals",
+        service3Cta: "MAP YOUR FLOW",
+        contactTitle: "CONTACT & BOOKING",
+        contactKicker: "ONE OWNER. ONE DECISION-MAKER. DIRECT LINE.",
+        contactLead:
+          "Ready to move from “ideas” to a live, disciplined platform?",
+        contactSub:
+          "Send a direct message with your context, timeline, and what “done” looks like for you. You’ll get a clear yes/no and a concrete next step—no fluff.",
+        contactWhatsApp: "WHATSAPP DIRECT",
+        contactEmail: "EMAIL BRIEF",
+        contactBackToTop: "BACK TO TOP",
+        footerCopy:
+          "© MAXIMAX MULTI SERVICES • Orlando, FL • All rights reserved.",
+        footerSocial:
+          "FACEBOOK • WHATSAPP • TIKTOK • YOUTUBE: MAX LOUIS",
+      },
+      ht: {
+        brandTitle: "MAXIMAX MULTI SERVICES",
+        brandSub: "Platfòm dijital ki efikas, san gaspiye mouvman.",
+        navCta: "REZÈVE SESYON",
+        eyebrow: "ORLANDO • DIJITAL • MULTI SÈVIS",
+        heroTitleLine1: "SÈVIS KI EFIKAS",
+        heroTitleLine2: "PLATFÒM DIJITAL KI PA JWE",
+        heroTitleLine3: "ADAPTE AK REYALITE PA W.",
+        heroSub:
+          "Depi nan mak, deplwaman, rive nan workflow kreyatif ak eksperyans pou kliyan, MAXIMAX MULTI SERVICES bati sistèm ki pouse travay ou pi devan—san bri, san dezòd, san pèdi tan.",
+        badge1: "Yon sèl responsab, egzekisyon disipline",
+        badge2: "Branding • Deplwaman • Sistèm Kreyatif",
+        badge3: "Orlando • Travay a distans posib",
+        primaryHeroCta: "GADE SÈVIS PRINSIPAL YO",
+        secondaryHeroCta: "MANDE YON RAPÈL",
+        heroMetaTitle: "MAX • FONDATÈ & LEAD",
+        heroMetaTagline: "Egzekisyon dirèk, presi, san friksyon.",
+        heroMetaPill: "ORLANDO • FL",
+        servicesTitle: "LIG SÈVIS PRINSIPAL",
+        servicesKicker: "PA SELMAN “DESIGN”, MEN DEPLWAMAN",
+        service1Label: "BRANDING & SISTÈM VIZYÈL",
+        service1Title: "Idantite ki kenbe lè presyon monte.",
+        service1Body:
+          "Depi nan logo, koulè, layout, rive nan règ itilizasyon, nou bati mak ki rete menm jan sou rezo sosyal, sit, ak enprime—san ou pa bezwen kontwole chak fichye.",
+        service1Pill: "Logo • Koulè • Layout • Règ",
+        service1Cta: "REZÈVE SESYON BRANDING",
+        service2Label: "DEPLWAMAN & ENFRASTRIKTI",
+        service2Title: "Soti nan lide lokal rive platfòm ki estab.",
+        service2Body:
+          "Flow deplwaman ki pwòp: GitHub, Netlify, domèn, estrikti. Pa gen mistè, pa gen dezòd—se yon chemen klè soti nan “pare” rive “an liy”.",
+        service2Pill: "GitHub • Netlify • Domèn",
+        service2Cta: "MANDE SESYON DEPLWAMAN",
+        service3Label: "WORKFLOW & SISTÈM KREYATIF",
+        service3Title: "Flow ki repete, pa pwojè izole.",
+        service3Body:
+          "Nou desine kijan kontni, demann, apwobasyon, ak piblikasyon sikile nan mond pa w—konsa ou sispann kouri dè dife epi ou fonksyone sou yon sistèm ki estab.",
+        service3Pill: "Kontni • Demann • Apwobasyon",
+        service3Cta: "TRASE FLOW PA W",
+        contactTitle: "KONTAK & REZÈVASYON",
+        contactKicker: "YON SÈL MOUN. YON SÈL DESIZYON. LIG DIRÈK.",
+        contactLead:
+          "Pare pou soti nan “lide” pou rive sou yon platfòm ki disipline, an liy?",
+        contactSub:
+          "Voye yon mesaj dirèk ak kontèks ou, delè ou, ak fason ou vle “fini” a parèt. W ap resevwa yon wi/non klè ak pwochen etap konkrè—san pale anpil.",
+        contactWhatsApp: "WHATSAPP DIRÈK",
+        contactEmail: "IMÈL BRÈF",
+        contactBackToTop: "RETOUR ANWO",
+        footerCopy:
+          "© MAXIMAX MULTI SERVICES • Orlando, FL • Tout dwa rezève.",
+        footerSocial:
+          "FACEBOOK • WHATSAPP • TIKTOK • YOUTUBE: MAX LOUIS",
+      },
+    };
 
-      if (lang === "eng") {
-        title.innerText = "MAXIMAX MULTI SERVICES";
-        subtitle.innerText = "ALWAYS MAXIMIZE — PRO-MAX SERVICES FOR EVERY COMMUNITY";
-        servicesTitle.innerText = "OUR SERVICES";
-      }
-
-      if (lang === "esp") {
-        title.innerText = "MAXIMAX MULTI SERVICIOS";
-        subtitle.innerText = "SIEMPRE MAXIMIZAR — SERVICIOS PRO-MAX PARA TODOS";
-        servicesTitle.innerText = "NUESTROS SERVICIOS";
-      }
-
-      if (lang === "fra") {
-        title.innerText = "MAXIMAX MULTI SERVICES";
-        subtitle.innerText = "TOUJOURS MAXIMISER — SERVICES PRO-MAX POUR TOUS";
-        servicesTitle.innerText = "NOS SERVICES";
-      }
-
-      const toggle = document.getElementById("lang-toggle");
-      if (toggle) {
-        toggle.querySelectorAll("span").forEach(function (el) {
-          el.classList.toggle("active", el.getAttribute("data-lang") === lang);
-        });
-      }
-    }
-
-    function handleStatusClick() {
-      alert("Status updated");
-    }
-
-    async function loadUploads() {
-      const summaryEl = document.getElementById("uploads-summary");
-      const listEl = document.getElementById("uploads-list");
-
-      try {
-        const res = await fetch("/api/uploads");
-        let uploads;
-
-        if (!res.ok) {
-          // fallback demo data if API fails
-          uploads = [
-            {
-              id: 1,
-              title: "Miami An Aksyon – Promo Clip",
-              type: "video",
-              thumb: "https://via.placeholder.com/160x110.png?text=Video",
-              badgeSrc: "https://yourdomain.com/badge-miami.png",
-              team: "Miami An Aksyon",
-              uploadedAt: "Just now"
-            },
-            {
-              id: 2,
-              title: "Team San Presyon – Banner",
-              type: "image",
-              thumb: "https://via.placeholder.com/160x110.png?text=Image",
-              badgeSrc: "https://yourdomain.com/badge-san-presyon.png",
-              team: "Team San Presyon",
-              uploadedAt: "5 min ago"
-            }
-          ];
-        } else {
-          uploads = await res.json();
+    function applyLanguage(lang) {
+      const dict = translations[lang] || translations.en;
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) {
+          el.textContent = dict[key];
         }
+      });
 
-        if (!Array.isArray(uploads) || uploads.length === 0) {
-          summaryEl.textContent = "No uploads yet.";
-          listEl.innerHTML = "";
-          return;
-        }
-
-        summaryEl.textContent = uploads.length + " upload(s) available";
-
-        listEl.innerHTML = "";
-        uploads.forEach(function (u) {
-          const item = document.createElement("div");
-          item.className = "upload-item";
-
-          const media = document.createElement("div");
-          media.className = "upload-media";
-
-          if (u.type === "video") {
-            const video = document.createElement("video");
-            video.src = u.thumb;
-            video.controls = true;
-            media.appendChild(video);
-          } else {
-            const img = document.createElement("img");
-            img.src = u.thumb;
-            media.appendChild(img);
-          }
-
-          const body = document.createElement("div");
-          body.className = "upload-body";
-
-          const title = document.createElement("div");
-          title.className = "upload-title";
-          title.textContent = u.title || "Untitled upload";
-
-          const meta = document.createElement("div");
-          meta.className = "meta";
-          meta.textContent = (u.team || "Unassigned team") + " • " + (u.uploadedAt || "");
-
-          const badges = document.createElement("div");
-          badges.className = "upload-badges";
-
-          if (u.badgeSrc) {
-            const badge = document.createElement("span");
-            badge.className = "upload-badge";
-
-            const badgeImg = document.createElement("img");
-            badgeImg.src = u.badgeSrc;
-
-            const badgeText = document.createElement("span");
-            badgeText.textContent = u.team || "Team";
-
-            badge.appendChild(badgeImg);
-            badge.appendChild(badgeText);
-            badges.appendChild(badge);
-          }
-
-          body.appendChild(title);
-          body.appendChild(meta);
-          body.appendChild(badges);
-
-          item.appendChild(media);
-          item.appendChild(body);
-
-          listEl.appendChild(item);
-        });
-      } catch (e) {
-        summaryEl.textContent = "Error loading uploads.";
-        listEl.innerHTML = "";
-      }
+      document
+        .querySelectorAll(".lang-btn")
+        .forEach((btn) =>
+          btn.classList.toggle("active", btn.getAttribute("data-lang") === lang)
+        );
     }
 
-    loadUploads();
+    document.addEventListener("click", (e) => {
+      const langBtn = e.target.closest(".lang-btn");
+      if (langBtn && langBtn.hasAttribute("data-lang")) {
+        const lang = langBtn.getAttribute("data-lang");
+        applyLanguage(lang);
+      }
+
+      const scrollBtn = e.target.closest("[data-scroll]");
+      if (scrollBtn) {
+        const target = scrollBtn.getAttribute("data-scroll");
+        if (target && document.querySelector(target)) {
+          document.querySelector(target).scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    });
+
+    // INITIAL LANGUAGE
+    applyLanguage("en");
   </script>
 </body>
-<div style="text-align:center; padding:20px 0;">                                                                                                 
-l  <img src="maximax_multi.jpeg" alt="Maximax Logo" style="width:150px; border-radius:12px;">
-logo maximax_multi.jpeg pic bawon_an.jpeg
-
+              </html>
