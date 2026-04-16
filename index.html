@@ -1,40 +1,145 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>MAXIMAX MULTI SERVICES</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>
+  const translations = {
+    en: {
+      brandTitle: "MAXIMAX MULTI SERVICES",
+      brandSub: "Lean, high-impact digital service platforms.",
+      navCta: "BOOK A SESSION",
+      eyebrow: "ORLANDO • DIGITAL • MULTI SERVICES",
+      heroTitleLine1: "LEAN, HIGH-IMPACT",
+      heroTitleLine2: "DIGITAL SERVICE PLATFORMS",
+      heroTitleLine3: "BUILT AROUND YOUR REALITY.",
+      heroSub:
+        "From branding and deployment to creative workflows and client-ready experiences, MAXIMAX MULTI SERVICES builds systems that actually move your work forward—without noise, without clutter, without wasted motion.",
+      badge1: "Single-owner, high-discipline execution",
+      badge2: "Branding • Deployment • Creative Systems",
+      badge3: "Orlando • Remote-friendly",
+      primaryHeroCta: "VIEW CORE SERVICES",
+      secondaryHeroCta: "REQUEST A CALL BACK",
+      heroMetaTitle: "MAX • FOUNDER & LEAD",
+      heroMetaTagline: "Direct, precise, no-friction digital execution.",
+      heroMetaPill: "ORLANDO • FL",
+      servicesTitle: "CORE SERVICE LINES",
+      servicesKicker: "BUILT TO DEPLOY, NOT JUST \"DESIGN\"",
+      service1Label: "BRANDING & VISUAL SYSTEMS",
+      service1Title: "Identity that actually holds under pressure.",
+      service1Body:
+        "From logo and color systems to layout logic and usage rules, we build brands that stay consistent across social, web, and print—without you having to micromanage every file.",
+      service1Pill: "Logo • Color • Layout • Usage",
+      service1Cta: "BOOK BRANDING SLOT",
+      service2Label: "DEPLOYMENT & INFRASTRUCTURE",
+      service2Title: "From local idea to live, stable platform.",
+      service2Body:
+        "Clean, single-owner deployment flows: GitHub, Netlify, domains, routing, and structure. No mystery, no clutter—just a clear path from \"ready\" to \"live\".",
+      service2Pill: "GitHub • Netlify • Domains",
+      service2Cta: "REQUEST DEPLOY SESSION",
+      service3Label: "CREATIVE WORKFLOWS & SYSTEMS",
+      service3Title: "Repeatable flows, not one-off \"projects\".",
+      service3Body:
+        "We design how content, requests, approvals, and publishing move through your world—so you stop firefighting and start operating from a stable, predictable system.",
+      service3Pill: "Content • Requests • Approvals",
+      service3Cta: "MAP YOUR FLOW",
+      contactTitle: "CONTACT & BOOKING",
+      contactKicker: "ONE OWNER. ONE DECISION-MAKER. DIRECT LINE.",
+      contactLead:
+        "Ready to move from \"ideas\" to a live, disciplined platform?",
+      contactSub:
+        "Send a direct message with your context, timeline, and what \"done\" looks like for you. You’ll get a clear yes/no and a concrete next step—no fluff.",
+      contactWhatsApp: "WHATSAPP DIRECT",
+      contactEmail: "EMAIL BRIEF",
+      contactBackToTop: "BACK TO TOP",
+      footerCopy:
+        "© MAXIMAX MULTI SERVICES • Orlando, FL • All rights reserved.",
+      footerSocial:
+        "FACEBOOK • WHATSAPP • TIKTOK • YOUTUBE: MAX LOUIS",
+    },
+    ht: {
+      brandTitle: "MAXIMAX MULTI SERVICES",
+      brandSub: "Platfòm dijital ki efikas, san gaspiye mouvman.",
+      navCta: "REZÈVE SESYON",
+      eyebrow: "ORLANDO • DIJITAL • MULTI SÈVIS",
+      heroTitleLine1: "SÈVIS KI EFIKAS",
+      heroTitleLine2: "PLATFÒM DIJITAL KI PA JWE",
+      heroTitleLine3: "ADAPTE AK REYALITE PA W.",
+      heroSub:
+        "Depi nan mak, deplwaman, rive nan workflow kreyatif ak eksperyans pou kliyan, MAXIMAX MULTI SERVICES bati sistèm ki pouse travay ou pi devan—san bri, san dezòd, san pèdi tan.",
+      badge1: "Yon sèl responsab, egzekisyon disipline",
+      badge2: "Branding • Deplwaman • Sistèm Kreyatif",
+      badge3: "Orlando • Travay a distans posib",
+      primaryHeroCta: "GADE SÈVIS PRINSIPAL YO",
+      secondaryHeroCta: "MANDE YON RAPÈL",
+      heroMetaTitle: "MAX • FONDATÈ & LEAD",
+      heroMetaTagline: "Egzekisyon dirèk, presi, san friksyon.",
+      heroMetaPill: "ORLANDO • FL",
+      servicesTitle: "LIG SÈVIS PRINSIPAL",
+      servicesKicker: "PA SELMAN \"DESIGN\", MEN DEPLWAMAN",
+      service1Label: "BRANDING & SISTÈM VIZYÈL",
+      service1Title: "Idantite ki kenbe lè presyon monte.",
+      service1Body:
+        "Depi nan logo, koulè, layout, rive nan règ itilizasyon, nou bati mak ki rete menm jan sou rezo sosyal, sit, ak enprime—san ou pa bezwen kontwole chak fichye.",
+      service1Pill: "Logo • Koulè • Layout • Règ",
+      service1Cta: "REZÈVE SESYON BRANDING",
+      service2Label: "DEPLWAMAN & ENFRASTRIKTI",
+      service2Title: "Soti nan lide lokal rive platfòm ki estab.",
+      service2Body:
+        "Flow deplwaman ki pwòp: GitHub, Netlify, domèn, estrikti. Pa gen mistè, pa gen dezòd—se yon chemen klè soti nan \"pare\" rive \"an liy\".",
+      service2Pill: "GitHub • Netlify • Domèn",
+      service2Cta: "MANDE SESYON DEPLWAMAN",
+      service3Label: "WORKFLOW & SISTÈM KREYATIF",
+      service3Title: "Flow ki repete, pa pwojè izole.",
+      service3Body:
+        "Nou desine kijan kontni, demann, apwobasyon, ak piblikasyon sikile nan mond pa w—konsa ou sispann kouri dè dife epi ou fonksyone sou yon sistèm ki estab.",
+      service3Pill: "Kontni • Demann • Apwobasyon",
+      service3Cta: "TRASE FLOW PA W",
+      contactTitle: "KONTAK & REZÈVASYON",
+      contactKicker: "YON SÈL MOUN. YON SÈL DESIZYON. LIG DIRÈK.",
+      contactLead:
+        "Pare pou soti nan \"lide\" pou rive sou yon platfòm ki disipline, an liy?",
+      contactSub:
+        "Voye yon mesaj dirèk ak kontèks ou, delè ou, ak fason ou vle \"fini\" a parèt. W ap resevwa yon wi/non klè ak pwochen etap konkrè—san pale anpil.",
+      contactWhatsApp: "WHATSAPP DIRÈK",
+      contactEmail: "IMÈL BRÈF",
+      contactBackToTop: "RETOUR ANWO",
+      footerCopy:
+        "© MAXIMAX MULTI SERVICES • Orlando, FL • Tout dwa rezève.",
+      footerSocial:
+        "FACEBOOK • WHATSAPP • TIKTOK • YOUTUBE: MAX LOUIS",
+    },
+  };
 
-  <style>
-    :root {
-      --bg: #050816;
-      --card: #0f172a;
-      --accent: #22c55e;
-      --accent-soft: rgba(34, 197, 94, 0.12);
-      --text: #e5e7eb;
-      --text-muted: #9ca3af;
-      --border-subtle: #1f2937;
+  function applyLanguage(lang) {
+    const dict = translations[lang] || translations.en;
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      if (dict[key]) {
+        el.textContent = dict[key];
+      }
+    });
+
+    document
+      .querySelectorAll(".lang-btn")
+      .forEach((btn) =>
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang)
+      );
+  }
+
+  document.addEventListener("click", (e) => {
+    const langBtn = e.target.closest(".lang-btn");
+    if (langBtn && langBtn.hasAttribute("data-lang")) {
+      const lang = langBtn.getAttribute("data-lang");
+      applyLanguage(lang);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    const scrollBtn = e.target.closest("[data-scroll]");
+    if (scrollBtn) {
+      const target = scrollBtn.getAttribute("data-scroll");
+      if (target && document.querySelector(target)) {
+        document.querySelector(target).scrollIntoView({ behavior: "smooth" });
+      }
     }
+  });
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px 16px 40px;
+  applyLanguage("en");
+</script>      padding: 24px 16px 40px;
       flex: 1;
     }
 
