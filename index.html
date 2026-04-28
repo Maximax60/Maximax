@@ -1,488 +1,508 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="ht">
 <head>
   <meta charset="UTF-8" />
-  <title>MAXIMAX MULTI SERVICES</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <style>
-    :root {
-      --bg: #050816;
-      --card: #0f172a;
-      --accent: #22c55e;
-      --accent-soft: rgba(34, 197, 94, 0.12);
-      --text: #e5e7eb;
-      --text-muted: #9ca3af;
-      --border-subtle: #1f2937;
-    }
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAXIMAX Multi Services</title>
+  <meta name="description" content="MAXIMAX Multi Services - Immigration, Tax, Forms, Translation, Resume, Appointment, Document Services." />  <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #050505;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px 16px 40px;
-      flex: 1;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top right, rgba(255, 140, 0, 0.42), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(255, 102, 0, 0.28), transparent 35%),
+        linear-gradient(135deg, #000000 0%, #111111 45%, #f28c28 140%);
     }
 
     header {
+      width: 100%;
+      padding: 22px 7%;
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    h1 {
-      font-size: 26px;
-      letter-spacing: 0.08em;
-    }
-
-    #subtitle {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .lang-toggle {
-      display: inline-flex;
-      gap: 6px;
-      padding: 4px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid var(--border-subtle);
-    }
-
-    .lang-toggle span {
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      cursor: pointer;
-      color: var(--text-muted);
-      user-select: none;
-      transition: all 0.15s ease;
-    }
-
-    .lang-toggle span:hover {
-      background: rgba(148, 163, 184, 0.12);
-      color: var(--text);
-    }
-
-    .lang-toggle span.active {
-      background: var(--accent-soft);
-      color: #bbf7d0;
-      border: 1px solid rgba(34, 197, 94, 0.6);
-    }
-
-    main {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    .card {
-      background: rgba(15, 23, 42, 0.96);
-      border-radius: 18px;
-      border: 1px solid var(--border-subtle);
-      padding: 16px 16px 18px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
-    }
-
-    h2 {
-      font-size: 15px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .services-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
-    }
-
-    .service {
-      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), transparent 55%);
-      border-radius: 14px;
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 10px 11px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .service-title {
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .service-desc {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .meta {
-      color: var(--text-muted);
-      font-size: 12px;
-    }
-
-    .uploads-header {
-      display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
-      gap: 8px;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(0, 0, 0, 0.76);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 140, 0, 0.35);
     }
 
-    .status-btn {
-      font-size: 11px;
-      padding: 5px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-muted);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.15s ease;
-    }
-
-    .status-btn:hover {
-      border-color: var(--accent);
-      color: #bbf7d0;
-      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.4);
-    }
-
-    .uploads-list {
+    .logo-box {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 6px;
-      max-height: 260px;
-      overflow: auto;
+      align-items: center;
+      gap: 12px;
     }
 
-    .upload-item {
-      display: grid;
-      grid-template-columns: 70px minmax(0, 1fr);
-      gap: 10px;
-      padding: 8px;
-      border-radius: 12px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-    }
-
-    .upload-media {
-      width: 70px;
-      height: 50px;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #020617;
+    .logo-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff9b2f, #000000);
+      border: 2px solid #ff9b2f;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-weight: 900;
+      color: #fff;
+      box-shadow: 0 0 25px rgba(255, 139, 37, 0.55);
     }
 
-    .upload-media img,
-    .upload-media video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    .brand h1 {
+      font-size: 1.15rem;
+      letter-spacing: 1px;
+      color: #ff9b2f;
+      text-transform: uppercase;
     }
 
-    .upload-body {
+    .brand p {
+      font-size: 0.75rem;
+      color: #ddd;
+      letter-spacing: 1px;
+    }
+
+    nav {
       display: flex;
-      flex-direction: column;
-      gap: 3px;
+      gap: 24px;
+      font-size: 0.95rem;
+      color: #f2f2f2;
     }
 
-    .upload-title {
-      font-size: 12px;
-      font-weight: 600;
+    nav a:hover {
+      color: #ff9b2f;
     }
 
-    .upload-badges {
+    .hero {
+      padding: 90px 7% 70px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border: 1px solid rgba(255, 155, 47, 0.75);
+      border-radius: 999px;
+      background: rgba(255, 155, 47, 0.12);
+      color: #ffb15c;
+      font-weight: 700;
+      margin-bottom: 22px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h2 {
+      font-size: clamp(2.4rem, 6vw, 5.4rem);
+      line-height: 0.98;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero h2 span {
+      color: #ff9b2f;
+      text-shadow: 0 0 22px rgba(255, 139, 37, 0.55);
+    }
+
+    .hero p {
+      max-width: 660px;
+      font-size: 1.12rem;
+      color: #e9e9e9;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
       display: flex;
       flex-wrap: wrap;
-      gap: 4px;
-      margin-top: 2px;
+      gap: 14px;
     }
 
-    .upload-badge {
-      font-size: 10px;
-      padding: 2px 6px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(55, 65, 81, 0.9);
+    .btn {
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 800;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      justify-content: center;
+      transition: 0.25s ease;
     }
 
-    .upload-badge img {
-      width: 12px;
-      height: 12px;
-      border-radius: 999px;
-      object-fit: cover;
+    .btn-primary {
+      background: linear-gradient(135deg, #ff9b2f, #ff6b00);
+      color: #000;
+      box-shadow: 0 14px 34px rgba(255, 116, 0, 0.35);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255, 155, 47, 0.7);
+      color: #ffb15c;
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero-card {
+      position: relative;
+      padding: 34px;
+      border-radius: 28px;
+      background: rgba(10, 10, 10, 0.78);
+      border: 1px solid rgba(255, 155, 47, 0.45);
+      box-shadow: 0 0 45px rgba(255, 123, 0, 0.22);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -80px -70px auto auto;
+      width: 190px;
+      height: 190px;
+      background: #ff9b2f;
+      filter: blur(80px);
+      opacity: 0.5;
+    }
+
+    .hero-card h3 {
+      color: #ff9b2f;
+      font-size: 1.7rem;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+      position: relative;
+    }
+
+    .hero-card li {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #f6f6f6;
+    }
+
+    section {
+      padding: 70px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      text-transform: uppercase;
+      color: #ff9b2f;
+    }
+
+    .section-title p {
+      color: #d9d9d9;
+      max-width: 720px;
+      margin: 10px auto 0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      padding: 28px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255, 155, 47, 0.13), rgba(0, 0, 0, 0.72));
+      border: 1px solid rgba(255, 155, 47, 0.32);
+      min-height: 210px;
+      transition: 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 45px rgba(255, 123, 0, 0.2);
+    }
+
+    .service-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: #ff9b2f;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .service-card h3 {
+      margin-bottom: 10px;
+      color: #fff;
+      font-size: 1.25rem;
+    }
+
+    .service-card p {
+      color: #d8d8d8;
+    }
+
+    .why {
+      background: rgba(0, 0, 0, 0.5);
+      border-top: 1px solid rgba(255, 155, 47, 0.22);
+      border-bottom: 1px solid rgba(255, 155, 47, 0.22);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      text-align: center;
+    }
+
+    .why-box {
+      padding: 26px 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .why-box strong {
+      display: block;
+      color: #ff9b2f;
+      font-size: 2rem;
+      margin-bottom: 6px;
+    }
+
+    .contact-panel {
+      max-width: 1000px;
+      margin: auto;
+      padding: 42px;
+      border-radius: 30px;
+      background:
+        linear-gradient(135deg, rgba(255, 155, 47, 0.24), rgba(0, 0, 0, 0.78)),
+        #101010;
+      border: 1px solid rgba(255, 155, 47, 0.45);
+      text-align: center;
+      box-shadow: 0 0 50px rgba(255, 116, 0, 0.18);
+    }
+
+    .contact-panel h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #ff9b2f;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .contact-panel p {
+      color: #f1f1f1;
+      margin-bottom: 24px;
     }
 
     footer {
+      padding: 28px 7%;
       text-align: center;
-      font-size: 11px;
-      color: var(--text-muted);
-      padding: 10px 0 16px;
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
-      margin-top: 18px;
+      border-top: 1px solid rgba(255, 155, 47, 0.25);
+      background: #000;
+      color: #cfcfcf;
     }
 
-    @media (max-width: 800px) {
-      main {
-        grid-template-columns: minmax(0, 1fr);
+    footer span {
+      color: #ff9b2f;
+      font-weight: 900;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        align-items: flex-start;
+        gap: 16px;
+        flex-direction: column;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 60px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
-  </style>
-</head>
-<body>
+
+    @media (max-width: 520px) {
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .contact-panel {
+        padding: 26px 20px;
+      }
+    }
+  </style></head><body>
   <div class="page">
     <header>
-      <div>
-        <h1 id="title">MAXIMAX MULTI SERVICES</h1>
-        <p id="subtitle">ALWAYS MAXIMIZE — PRO-MAX SERVICES FOR EVERY COMMUNITY</p>
+      <div class="logo-box">
+        <div class="logo-mark">MM</div>
+        <div class="brand">
+          <h1>MAXIMAX Multi Services</h1>
+          <p>MAXIMAX ALWAY MAXIMIZED</p>
+        </div>
+      </div><nav>
+    <a href="#services">Services</a>
+    <a href="#why">Why Us</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <span class="hero-badge">Official Client Support Center</span>
+      <h2>We Help You <span>Move Forward</span></h2>
+      <p>
+        MAXIMAX Multi Services ede kliyan ak immigration, taxes, forms, translation,
+        resume, appointments, document preparation, and professional support. Nou travay
+        ak konfyans, disiplin, respè, epi rapidite.
+      </p>
+
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="#contact">Book Appointment</a>
+        <a class="btn btn-secondary" href="#services">View Services</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <h3>Fast Help. Clear Direction.</h3>
+      <ul>
+        <li>✅ Immigration form assistance</li>
+        <li>✅ Tax preparation support</li>
+        <li>✅ Translation & document services</li>
+        <li>✅ Resume builder & official letters</li>
+        <li>✅ Online appointments & file upload</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="section-title">
+      <h2>Our Services</h2>
+      <p>Tout sèvis yo prepare pou ede kominote a jwenn bon direksyon, bon dokiman, ak bon rezilta.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">I</div>
+        <h3>Immigration Services</h3>
+        <p>Assistance with common immigration forms, case organization, appointments, and document review.</p>
       </div>
 
-      <div>
-        <div class="lang-toggle" id="lang-toggle">
-          <span data-lang="eng" class="active" onclick="setLang('eng')">ENG</span>
-          <span data-lang="esp" onclick="setLang('esp')">ESP</span>
-          <span data-lang="fra" onclick="setLang('fra')">FRA</span>
-        </div>
+      <div class="service-card">
+        <div class="service-icon">T</div>
+        <h3>Tax Services</h3>
+        <p>Tax preparation support, filing organization, document checklist, and client intake assistance.</p>
       </div>
-    </header>
 
-    <main>
-      <!-- SERVICES -->
-      <section class="card">
-        <h2 id="services-title">OUR SERVICES</h2>
+      <div class="service-card">
+        <div class="service-icon">F</div>
+        <h3>Government Forms</h3>
+        <p>Support for forms like SNAP, Medicaid, Social Security, Housing, Child Support, and more.</p>
+      </div>
 
-        <div class="services-list">
-          <div class="service">
-            <div class="service-title">Community Logistics & Support</div>
-            <div class="service-desc">
-              Coordinated transport, delivery, and on-the-ground support for local and diaspora communities.
-            </div>
-          </div>
+      <div class="service-card">
+        <div class="service-icon">D</div>
+        <h3>Document Upload</h3>
+        <p>Clients can submit files securely for review, processing, and follow-up.</p>
+      </div>
 
-          <div class="service">
-            <div class="service-title">Event & Rara Operations</div>
-            <div class="service-desc">
-              Structured planning, team coordination, and operational support for cultural and community events.
-            </div>
-          </div>
+      <div class="service-card">
+        <div class="service-icon">R</div>
+        <h3>Resume Builder</h3>
+        <p>Professional resumes in English, Kreyòl, or Spanish with clean PDF-ready format.</p>
+      </div>
 
-          <div class="service">
-            <div class="service-title">Digital Admin Systems</div>
-            <div class="service-desc">
-              Role-based access, secure workflows, and multi-team dashboards tailored to your organization.
-            </div>
-          </div>
+      <div class="service-card">
+        <div class="service-icon">A</div>
+        <h3>Alerts & Updates</h3>
+        <p>Important alerts about immigration, policy updates, deadlines, and community services.</p>
+      </div>
+    </div>
+  </section>
 
-          <div class="service">
-            <div class="service-title">Media & Content Handling</div>
-            <div class="service-desc">
-              Centralized upload, review, and distribution of photos, videos, and promotional assets.
-            </div>
-          </div>
-        </div>
-      </section>
+  <section id="why" class="why">
+    <div class="section-title">
+      <h2>Why Choose MAXIMAX?</h2>
+      <p>Nou pa sèlman ranpli papye. Nou gide kliyan yo avèk respè, sekirite, ak bon kominikasyon.</p>
+    </div>
 
-      <!-- UPLOADS / MEDIA PANEL -->
-      <section class="card">
-        <div class="uploads-header">
-          <div>
-            <h2>MEDIA UPLOADS</h2>
-            <span id="uploads-summary" class="meta">Loading uploads…</span>
-          </div>
-          <button class="status-btn" type="button" onclick="handleStatusClick()">
-            <span>Update status</span>
-          </button>
-        </div>
+    <div class="why-grid">
+      <div class="why-box">
+        <strong>01</strong>
+        Professional Service
+      </div>
+      <div class="why-box">
+        <strong>02</strong>
+        Clear Communication
+      </div>
+      <div class="why-box">
+        <strong>03</strong>
+        Multilingual Support
+      </div>
+      <div class="why-box">
+        <strong>04</strong>
+        Community Focused
+      </div>
+    </div>
+  </section>
 
-        <div id="uploads-list" class="uploads-list">
-          <!-- Filled by JS -->
-        </div>
-      </section>
-    </main>
+  <section id="contact">
+    <div class="contact-panel">
+      <h2>Start Your Service Today</h2>
+      <p>
+        Contact MAXIMAX Multi Services pou appointment, kesyon, oubyen pou voye dokiman ou yo.
+      </p>
+      <div class="hero-buttons" style="justify-content:center;">
+        <a class="btn btn-primary" href="mailto:maximaxmultiservices@gmail.com">Email Us</a>
+        <a class="btn btn-secondary" href="tel:+13175381150">Call / Text</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 <span>MAXIMAX Multi Services</span>. MAXIMAX ALWAY MAXIMIZED.</p>
+</footer>
+
   </div>
-
-  <!-- FOOTER -->
-  <footer>
-    © 2026 MAXIMAX MULTI SERVICES — ALWAYS MAXIMIZE
-  </footer>
-
-  <script>
-    function setLang(lang) {
-      const title = document.getElementById("title");
-      const subtitle = document.getElementById("subtitle");
-      const servicesTitle = document.getElementById("services-title");
-
-      if (lang === "eng") {
-        title.innerText = "MAXIMAX MULTI SERVICES";
-        subtitle.innerText = "ALWAYS MAXIMIZE — PRO-MAX SERVICES FOR EVERY COMMUNITY";
-        servicesTitle.innerText = "OUR SERVICES";
-      }
-
-      if (lang === "esp") {
-        title.innerText = "MAXIMAX MULTI SERVICIOS";
-        subtitle.innerText = "SIEMPRE MAXIMIZAR — SERVICIOS PRO-MAX PARA TODOS";
-        servicesTitle.innerText = "NUESTROS SERVICIOS";
-      }
-
-      if (lang === "fra") {
-        title.innerText = "MAXIMAX MULTI SERVICES";
-        subtitle.innerText = "TOUJOURS MAXIMISER — SERVICES PRO-MAX POUR TOUS";
-        servicesTitle.innerText = "NOS SERVICES";
-      }
-
-      const toggle = document.getElementById("lang-toggle");
-      if (toggle) {
-        toggle.querySelectorAll("span").forEach(function (el) {
-          el.classList.toggle("active", el.getAttribute("data-lang") === lang);
-        });
-      }
-    }
-
-    function handleStatusClick() {
-      alert("Status updated");
-    }
-
-    async function loadUploads() {
-      const summaryEl = document.getElementById("uploads-summary");
-      const listEl = document.getElementById("uploads-list");
-
-      try {
-        const res = await fetch("/api/uploads");
-        let uploads;
-
-        if (!res.ok) {
-          // fallback demo data if API fails
-          uploads = [
-            {
-              id: 1,
-              title: "Miami An Aksyon – Promo Clip",
-              type: "video",
-              thumb: "https://via.placeholder.com/160x110.png?text=Video",
-              badgeSrc: "https://yourdomain.com/badge-miami.png",
-              team: "Miami An Aksyon",
-              uploadedAt: "Just now"
-            },
-            {
-              id: 2,
-              title: "Team San Presyon – Banner",
-              type: "image",
-              thumb: "https://via.placeholder.com/160x110.png?text=Image",
-              badgeSrc: "https://yourdomain.com/badge-san-presyon.png",
-              team: "Team San Presyon",
-              uploadedAt: "5 min ago"
-            }
-          ];
-        } else {
-          uploads = await res.json();
-        }
-
-        if (!Array.isArray(uploads) || uploads.length === 0) {
-          summaryEl.textContent = "No uploads yet.";
-          listEl.innerHTML = "";
-          return;
-        }
-
-        summaryEl.textContent = uploads.length + " upload(s) available";
-
-        listEl.innerHTML = "";
-        uploads.forEach(function (u) {
-          const item = document.createElement("div");
-          item.className = "upload-item";
-
-          const media = document.createElement("div");
-          media.className = "upload-media";
-
-          if (u.type === "video") {
-            const video = document.createElement("video");
-            video.src = u.thumb;
-            video.controls = true;
-            media.appendChild(video);
-          } else {
-            const img = document.createElement("img");
-            img.src = u.thumb;
-            media.appendChild(img);
-          }
-
-          const body = document.createElement("div");
-          body.className = "upload-body";
-
-          const title = document.createElement("div");
-          title.className = "upload-title";
-          title.textContent = u.title || "Untitled upload";
-
-          const meta = document.createElement("div");
-          meta.className = "meta";
-          meta.textContent = (u.team || "Unassigned team") + " • " + (u.uploadedAt || "");
-
-          const badges = document.createElement("div");
-          badges.className = "upload-badges";
-
-          if (u.badgeSrc) {
-            const badge = document.createElement("span");
-            badge.className = "upload-badge";
-
-            const badgeImg = document.createElement("img");
-            badgeImg.src = u.badgeSrc;
-
-            const badgeText = document.createElement("span");
-            badgeText.textContent = u.team || "Team";
-
-            badge.appendChild(badgeImg);
-            badge.appendChild(badgeText);
-            badges.appendChild(badge);
-          }
-
-          body.appendChild(title);
-          body.appendChild(meta);
-          body.appendChild(badges);
-
-          item.appendChild(media);
-          item.appendChild(body);
-
-          listEl.appendChild(item);
-        });
-      } catch (e) {
-        summaryEl.textContent = "Error loading uploads.";
-        listEl.innerHTML = "";
-      }
-    }
-
-    loadUploads();
-  </script>
 </body>
-<div style="text-align:center; padding:20px 0;">                                                                                                 
-l  <img src="maximax_multi.jpeg" alt="Maximax Logo" style="width:150px; border-radius:12px;">
-logo maximax_multi.jpeg pic bawon_an.jpeg
-
+</html>
