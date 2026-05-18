@@ -21,6 +21,8 @@
       padding:20px 40px;
       background:linear-gradient(90deg,#000,#ff7a00,#000);
       border-bottom:3px solid #ff7a00;
+      flex-wrap:wrap;
+      gap:20px;
     }
 
     .brand{
@@ -45,29 +47,33 @@
       letter-spacing:1px;
     }
 
-    nav a{
-<nav class="main-nav">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="services.html">Services</a>
-  <a href="immigration.html">Immigration</a>
-  <a href="passport.html">Passport</a>
-  <a href="tax.html">Tax</a>
-  <a href="benefits.html">Benefits</a>
-  <a href="dmv.html">DMV</a>
-  <a href="unemployment.html">Unemployment</a>
-  <a href="child_support.html">Child Support</a>
-  <a href="divorce.html">Divorce</a>
-  <a href="alerts.html">Alerts</a>
-  <a href="upload.html">Upload Documents</a>
-  <a href="contact.html" class="btn">Contact</a>
-</nav>      
+    .main-nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:12px;
+    }
+
+    .main-nav a{
+      color:#ff7a00;
+      background:#000;
+      text-decoration:none;
+      font-weight:bold;
+      padding:10px 14px;
+      border:2px solid #ff7a00;
+      border-radius:10px;
+    }
+
+    .main-nav a:hover{
+      background:#ff7a00;
+      color:#000;
+    }
 
     .btn{
       display:inline-block;
       padding:12px 20px;
-      background:#ff7a00;
-      color:#000;
+      background:#ff7a00!important;
+      color:#000!important;
       border-radius:10px;
       text-decoration:none;
       font-weight:bold;
@@ -78,27 +84,7 @@
       padding:70px 40px;
       text-align:center;
       background:linear-gradient(135deg,#000,#1a0b00,#ff7a00,#000);
-    }<section class="quick-buttons">
-
-<a href="immigration.html">Immigration</a>
-
-<a href="passport.html">Passport</a>
-
-<a href="tax.html">Tax Services</a>
-
-<a href="benefits.html">SNAP / Benefits</a>
-
-<a href="dmv.html">DMV</a>
-
-<a href="unemployment.html">Unemployment</a>
-
-<a href="child_support.html">Child Support</a>
-
-<a href="divorce.html">Divorce</a>
-
-<a href="upload.html">Upload Documents</a>
-
-</section>
+    }
 
     .hero h2{
       font-size:44px;
@@ -175,8 +161,8 @@
     }
 
     .btn-secondary{
-      background:#000;
-      color:#ff7a00;
+      background:#000!important;
+      color:#ff7a00!important;
     }
 
     .upload-section,
@@ -230,17 +216,15 @@
     @media(max-width:800px){
       header{
         flex-direction:column;
-        gap:20px;
         text-align:center;
-      }
-
-      nav a{
-        display:inline-block;
-        margin:8px;
       }
 
       .brand{
         flex-direction:column;
+      }
+
+      .brand h1{
+        font-size:28px;
       }
 
       .hero h2{
@@ -261,12 +245,21 @@
     </div>
   </div>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#upload">Upload Documents</a>
-    <a href="#contact">Contact</a>
-    <a href="#contact" class="btn">Get Started</a>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="immigration.html">Immigration</a>
+    <a href="passport.html">Passport</a>
+    <a href="tax.html">Tax</a>
+    <a href="benefits.html">Benefits</a>
+    <a href="dmv.html">DMV</a>
+    <a href="unemployment.html">Unemployment</a>
+    <a href="child_support.html">Child Support</a>
+    <a href="divorce.html">Divorce</a>
+    <a href="alerts.html">Alerts</a>
+    <a href="upload.html">Upload Documents</a>
+    <a href="contact.html" class="btn">Contact</a>
   </nav>
 </header>
 
@@ -303,8 +296,8 @@
         <li>Immigration Document Upload Center</li>
       </ul>
       <div class="service-buttons">
-        <a href="#contact" class="btn">START IMMIGRATION REQUEST</a>
-        <a href="#upload" class="btn btn-secondary">UPLOAD DOCUMENTS</a>
+        <a href="immigration.html" class="btn">START IMMIGRATION REQUEST</a>
+        <a href="upload.html" class="btn btn-secondary">UPLOAD DOCUMENTS</a>
       </div>
     </div>
 
@@ -321,197 +314,3 @@
         <li>Emergency Travel Help</li>
         <li>Minor Passport Assistance</li>
         <li>New Haitian Passport Assistance</li>
-        <li>Haitian Passport Renewal</li>
-        <li>CIN & Identification Support</li>
-        <li>Travel Authorization Guidance</li>
-      </ul>
-      <div class="service-buttons">
-        <a href="#contact" class="btn">START PASSPORT REQUEST</a>
-        <a href="#upload" class="btn btn-secondary">UPLOAD DOCUMENTS</a>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <h3>SNAP / Benefits</h3>
-      <p class="service-intro">Public benefits applications, renewals, status checks, and document submission help.</p>
-      <ul>
-        <li>SNAP / Food Stamp Applications</li>
-        <li>SNAP Renewal Assistance</li>
-        <li>Medicaid Applications</li>
-        <li>Medicare Assistance</li>
-        <li>Cash Assistance Support</li>
-        <li>Benefit Status Checks</li>
-        <li>Document Submission Help</li>
-        <li>Account Setup Assistance</li>
-        <li>Address / Information Updates</li>
-        <li>Benefit Interview Preparation</li>
-        <li>Family Assistance Programs</li>
-        <li>Case Follow-Up Support</li>
-      </ul>
-      <div class="service-buttons">
-        <a href="#contact" class="btn">START BENEFITS REQUEST</a>
-        <a href="#upload" class="btn btn-secondary">UPLOAD DOCUMENTS</a>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <h3>DMV Services</h3>
-      <p class="service-intro">DMV forms, renewals, registrations, ID support, and appointment guidance.</p>
-      <ul>
-        <li>Driver License Renewal</li>
-        <li>Permit Test Assistance</li>
-        <li>Vehicle Registration</li>
-        <li>Title Transfer Assistance</li>
-        <li>Address Change Updates</li>
-        <li>State ID Applications</li>
-        <li>License Replacement Support</li>
-        <li>Knowledge Test Preparation</li>
-        <li>Road Test Appointment Help</li>
-        <li>Registration Renewal</li>
-        <li>Driving Record Requests</li>
-        <li>General DMV Form Assistance</li>
-      </ul>
-      <div class="service-buttons">
-        <a href="#contact" class="btn">START DMV REQUEST</a>
-        <a href="#upload" class="btn btn-secondary">UPLOAD DOCUMENTS</a>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <h3>Unemployment Services</h3>
-      <p class="service-intro">Unemployment applications, weekly claims, account help, appeals, and support.</p>
-      <ul>
-        <li>New Unemployment Applications</li>
-        <li>Weekly Claim Filing Assistance</li>
-        <li>Benefit Payment Support</li>
-        <li>Account Registration Assistance</li>
-        <li>Password Reset Help</li>
-        <li>Appeal Assistance</li>
-        <li>Claim Status Checks</li>
-        <li>Identity Verification Support</li>
-        <li>Document Upload Assistance</li>
-        <li>Employment History Review</li>
-        <li>Interview & Eligibility Guidance</li>
-        <li>General Unemployment Support</li>
-      </ul>
-      <div class="service-buttons">
-        <a href="#contact" class="btn">START UNEMPLOYMENT REQUEST</a>
-        <a href="#upload" class="btn btn-secondary">UPLOAD DOCUMENTS</a>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <h3>Child Support Services</h3>
-      <p class="service-intro">Child support applications, updates, payments, family support, and court documents.</p>
-      <ul>
-        <li>New Child Support Applications</li>
-        <li>Child Support Case Assistance</li>
-        <li>Payment Status Support</li>
-        <li>Modification Request Assistance</li>
-        <li>Address & Information Updates</li>
-        <li>Account Setup Assistance</li>
-        <li>Case Review Support</li>
-        <li>Paternity Documentation Guidance</li>
-        <li>Court Document Assistance</li>
-        <li>Document Upload Assistance</li>
-        <li>Family Support Services</li>
-        <li>General Child Support Help</li>
-      </ul>
-      <div class="service-buttons">
-        <a href="#contact" class="btn">START CHILD SUPPORT REQUEST</a>
-        <a href="#upload" class="btn btn-secondary">UPLOAD DOCUMENTS</a>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <h3>Tax Services</h3>
-      <p class="service-intro">Tax preparation, filings, ITIN support, IRS forms, corrections, and refund help.</p>
-      <ul>
-        <li>Personal Tax Filing</li>
-        <li>Business Tax Filing</li>
-        <li>IRS Form Assistance</li>
-        <li>W-2 & 1099 Support</li>
-        <li>ITIN Application / Renewal</li>
-        <li>Tax Amendments</li>
-        <li>Tax Transcript Requests</li>
-        <li>Refund Status Checks</li>
-        <li>Tax Credit Assistance</li>
-        <li>Self-Employed Tax Support</li>
-        <li>Dependents & Filing Guidance</li>
-        <li>General Tax Support</li>
-      </ul>
-      <div class="service-buttons">
-        <a href="#contact" class="btn">START TAX REQUEST</a>
-        <a href="#upload" class="btn btn-secondary">UPLOAD DOCUMENTS</a>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <h3>Divorce Non-Contested</h3>
-      <p class="service-intro">Non-contested divorce paperwork, filing support, and related family documents.</p>
-      <ul>
-        <li>Non-Contested Divorce Forms</li>
-        <li>Divorce Document Preparation</li>
-        <li>Filing Assistance</li>
-        <li>Marriage Information Review</li>
-        <li>Name Change Guidance</li>
-        <li>Separation Agreement Assistance</li>
-        <li>Court Document Support</li>
-        <li>Affidavit Preparation</li>
-        <li>Document Upload Assistance</li>
-        <li>General Divorce Support</li>
-      </ul>
-      <div class="service-buttons">
-        <a href="#contact" class="btn">START DIVORCE REQUEST</a>
-        <a href="#upload" class="btn btn-secondary">UPLOAD DOCUMENTS</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="upload" class="upload-section">
-  <h2 class="section-title">UPLOAD DOCUMENT CENTER</h2>
-
-  <form>
-    <input type="text" placeholder="Full Name" required>
-    <input type="email" placeholder="Email Address" required>
-    <input type="tel" placeholder="Phone Number">
-
-    <select required>
-      <option>Select Service</option>
-      <option>Immigration Assistance</option>
-      <option>Passport & Travel</option>
-      <option>SNAP / Benefits</option>
-      <option>DMV Services</option>
-      <option>Unemployment Services</option>
-      <option>Child Support Services</option>
-      <option>Tax Services</option>
-      <option>Divorce Non-Contested</option>
-    </select>
-
-    <textarea placeholder="Additional Notes"></textarea>
-    <input type="file" multiple>
-
-    <button type="submit">UPLOAD DOCUMENTS</button>
-  </form>
-</section>
-
-<section id="contact" class="contact-section">
-  <h2 class="section-title">CONTACT MAXIMAX</h2>
-
-  <form>
-    <input type="text" placeholder="Full Name" required>
-    <input type="email" placeholder="Email Address" required>
-    <input type="tel" placeholder="Phone Number">
-    <textarea placeholder="How can Maximax Multi Services LLC help you?"></textarea>
-    <button type="submit">SEND REQUEST</button>
-  </form>
-</section>
-
-<footer>
-  Maximax Multi Services LLC • MAXIMAX ALWAYS MAXIMIZED
-</footer>
-
-</body>
-</html>
