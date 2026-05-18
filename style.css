@@ -1,0 +1,29 @@
+.quick-buttons{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+padding:35px;
+background:linear-gradient(
+90deg,
+black,
+#ff7a00,
+black
+);
+}
+
+.quick-buttons a{
+padding:14px 20px;
+background:black;
+color:#ff7a00;
+text-decoration:none;
+border:2px solid #ff7a00;
+border-radius:14px;
+font-weight:bold;
+}
+
+.quick-buttons a:hover{
+background:#ff7a00;
+color:black;
+transform:scale(1.05);
+}
