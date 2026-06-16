@@ -1,316 +1,481 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ht">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Maximax Multi Services LLC</title>
+
+  <title>MAXIMAX Multi Services</title>
 
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
     body{
-      font-family:Arial, sans-serif;
-      background:linear-gradient(135deg,#000,#1a0b00,#ff7a00,#000);
-      color:#ff7a00;
+      font-family:Arial, Helvetica, sans-serif;
+      background:#000;
+      color:#fff;
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
     }
 
     header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:20px 40px;
-      background:linear-gradient(90deg,#000,#ff7a00,#000);
-      border-bottom:3px solid #ff7a00;
-      flex-wrap:wrap;
-      gap:20px;
+      background:linear-gradient(135deg,#ff7a00,#000);
+      color:#000;
+      padding:22px;
+      text-align:center;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      box-shadow:0 4px 18px rgba(255,122,0,.35);
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:18px;
+    header h1{
+      font-size:34px;
+      font-weight:900;
+      color:#000;
     }
 
-    .brand img{
-      width:120px;
-      height:auto;
-    }
-
-    .brand h1{
-      font-size:36px;
-      color:#ff7a00;
-    }
-
-    .brand p{
-      color:#ff7a00;
+    header p{
+      font-size:17px;
+      color:#111;
       font-weight:bold;
-      letter-spacing:1px;
     }
 
-    .main-nav{
+    nav{
+      margin-top:18px;
       display:flex;
-      flex-wrap:wrap;
       justify-content:center;
+      flex-wrap:wrap;
       gap:12px;
     }
 
-    .main-nav a{
-      color:#ff7a00;
-      background:#000;
-      text-decoration:none;
-      font-weight:bold;
-      padding:10px 14px;
-      border:2px solid #ff7a00;
-      border-radius:10px;
+    nav a{
+      color:#000;
+      font-weight:900;
+      padding:8px 12px;
     }
 
-    .main-nav a:hover{
-      background:#ff7a00;
-      color:#000;
+    .hero{
+      min-height:78vh;
+      background:
+        radial-gradient(circle at top,#ff7a00 0%,transparent 30%),
+        linear-gradient(135deg,#000,#130800,#ff7a00,#000);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:70px 22px;
+    }
+
+    .hero-box{
+      max-width:1000px;
+      border:2px solid #ff7a00;
+      border-radius:28px;
+      padding:45px 25px;
+      background:rgba(0,0,0,.78);
+      box-shadow:0 0 45px rgba(255,122,0,.6);
+    }
+
+    .hero h2{
+      font-size:48px;
+      color:#ff7a00;
+      margin-bottom:12px;
+      text-transform:uppercase;
+    }
+
+    .hero h3{
+      font-size:24px;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .hero p{
+      font-size:20px;
+      max-width:760px;
+      margin:0 auto 30px;
+    }
+
+    .btn-row{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:15px;
     }
 
     .btn{
       display:inline-block;
-      padding:12px 20px;
-      background:#ff7a00!important;
-      color:#000!important;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:bold;
+      background:#ff7a00;
+      color:#000;
+      padding:15px 24px;
+      border-radius:14px;
+      font-weight:900;
       border:2px solid #ff7a00;
     }
 
-    .hero{
-      padding:70px 40px;
-      text-align:center;
-      background:linear-gradient(135deg,#000,#1a0b00,#ff7a00,#000);
-    }
-
-    .hero h2{
-      font-size:44px;
+    .btn.dark{
+      background:#000;
       color:#ff7a00;
-      margin-bottom:10px;
-    }
-
-    .hero h3{
-      font-size:28px;
-      color:#ff7a00;
-      margin-bottom:15px;
-    }
-
-    .hero p{
-      max-width:850px;
-      margin:0 auto 25px;
-      color:#ff7a00;
-      font-size:18px;
-      line-height:1.6;
     }
 
     section{
-      padding:50px 40px;
+      padding:75px 24px;
     }
 
     .section-title{
       text-align:center;
-      font-size:38px;
-      margin-bottom:35px;
       color:#ff7a00;
+      font-size:36px;
+      margin-bottom:15px;
+      text-transform:uppercase;
     }
 
-    .services-grid{
+    .section-subtitle{
+      text-align:center;
+      max-width:750px;
+      margin:0 auto 45px;
+      font-size:18px;
+      color:#ddd;
+    }
+
+    .grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:25px;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:22px;
+      max-width:1150px;
+      margin:auto;
     }
 
-    .service-card{
-      background:linear-gradient(145deg,#000,#130700,#000);
+    .card{
+      background:linear-gradient(180deg,#111,#1a0b00);
       border:2px solid #ff7a00;
-      border-radius:18px;
-      padding:25px;
+      border-radius:22px;
+      padding:28px;
       box-shadow:0 0 20px rgba(255,122,0,.35);
+      transition:.3s;
     }
 
-    .service-card h3{
+    .card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 0 35px rgba(255,122,0,.7);
+    }
+
+    .card h3{
       color:#ff7a00;
       font-size:24px;
       margin-bottom:12px;
     }
 
-    .service-intro{
-      color:#ff7a00;
-      margin-bottom:15px;
-      line-height:1.5;
+    .card p{
+      color:#eee;
+      font-size:16px;
     }
 
-    ul{
-      padding-left:20px;
+    .forms,
+    .resume,
+    .translation,
+    .alerts{
+      background:#0d0d0d;
+    }
+
+    .feature-box{
+      max-width:1100px;
+      margin:auto;
+      background:linear-gradient(135deg,#000,#1a0b00,#000);
+      border:2px solid #ff7a00;
+      border-radius:28px;
+      padding:40px;
+      box-shadow:0 0 35px rgba(255,122,0,.45);
+    }
+
+    .feature-box h2{
+      color:#ff7a00;
+      font-size:34px;
+      margin-bottom:15px;
+      text-align:center;
+    }
+
+    .feature-box p{
+      text-align:center;
+      color:#eee;
+      font-size:18px;
+      margin-bottom:25px;
+    }
+
+    .mini-list{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:15px;
+      margin-top:25px;
+    }
+
+    .mini-item{
+      background:#000;
+      border:1px solid #ff7a00;
+      color:#fff;
+      padding:18px;
+      border-radius:16px;
+      text-align:center;
+      font-weight:bold;
+    }
+
+    .alert-card.urgent{
+      animation:pulse 2s infinite;
+    }
+
+    @keyframes pulse{
+      0%{transform:scale(1)}
+      50%{transform:scale(1.04)}
+      100%{transform:scale(1)}
+    }
+
+    .contact{
+      background:linear-gradient(135deg,#000,#1a0b00,#ff7a00,#000);
+      text-align:center;
+    }
+
+    .contact-box{
+      max-width:850px;
+      margin:auto;
+      background:rgba(0,0,0,.82);
+      border:2px solid #ff7a00;
+      border-radius:28px;
+      padding:40px;
+    }
+
+    .contact h2{
+      color:#ff7a00;
+      font-size:36px;
       margin-bottom:20px;
     }
 
-    li{
-      margin-bottom:8px;
-      color:#ff7a00;
-    }
-
-    .service-buttons{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:15px;
-    }
-
-    .btn-secondary{
-      background:#000!important;
-      color:#ff7a00!important;
-    }
-
-    .upload-section,
-    .contact-section{
-      background:linear-gradient(135deg,#000,#ff7a00,#000);
-      border-top:3px solid #ff7a00;
-      border-bottom:3px solid #ff7a00;
-    }
-
-    form{
-      max-width:750px;
-      margin:auto;
-      display:flex;
-      flex-direction:column;
-      gap:15px;
-    }
-
-    input,select,textarea{
-      padding:14px;
-      border-radius:10px;
-      border:2px solid #ff7a00;
-      background:#000;
-      color:#ff7a00;
-      font-size:16px;
-    }
-
-    textarea{
-      min-height:120px;
-    }
-
-    button{
-      padding:15px;
-      border-radius:12px;
-      border:2px solid #ff7a00;
-      background:#ff7a00;
-      color:#000;
-      font-weight:bold;
-      cursor:pointer;
-      font-size:16px;
+    .contact p{
+      font-size:19px;
+      margin:12px 0;
     }
 
     footer{
-      text-align:center;
-      padding:25px;
       background:#000;
       color:#ff7a00;
-      border-top:3px solid #ff7a00;
+      text-align:center;
+      padding:25px;
+      border-top:2px solid #ff7a00;
       font-weight:bold;
     }
 
-    @media(max-width:800px){
-      header{
-        flex-direction:column;
-        text-align:center;
-      }
-
-      .brand{
-        flex-direction:column;
-      }
-
-      .brand h1{
-        font-size:28px;
-      }
-
-      .hero h2{
-        font-size:32px;
-      }
+    @media(max-width:700px){
+      header h1{font-size:27px;}
+      .hero h2{font-size:34px;}
+      .hero h3{font-size:20px;}
+      .hero p{font-size:17px;}
+      section{padding:55px 18px;}
+      .feature-box{padding:28px 18px;}
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <div class="brand">
-    <img src="maximax-logo.png" alt="Maximax Multi Services LLC Logo">
-    <div>
-      <h1>Maximax Multi Services LLC</h1>
-      <p>MAXIMAX ALWAYS MAXIMIZED</p>
-    </div>
-  </div>
+  <header>
+    <h1>MAXIMAX Multi Services</h1>
+    <p>MAXIMAX ALWAYS MAXIMIZED</p>
 
-  <nav class="main-nav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="immigration.html">Immigration</a>
-    <a href="passport.html">Passport</a>
-    <a href="tax.html">Tax</a>
-    <a href="benefits.html">Benefits</a>
-    <a href="dmv.html">DMV</a>
-    <a href="unemployment.html">Unemployment</a>
-    <a href="child_support.html">Child Support</a>
-    <a href="divorce.html">Divorce</a>
-    <a href="alerts.html">Alerts</a>
-    <a href="upload.html">Upload Documents</a>
-    <a href="contact.html" class="btn">Contact</a>
-  </nav>
-</header>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#forms">Forms</a>
+      <a href="#resume">Resume</a>
+      <a href="#translation">Translation</a>
+      <a href="#upload">Upload</a>
+      <a href="#alerts">Alerts</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<section id="home" class="hero">
-  <h2>WE SIMPLIFY YOUR LIFE</h2>
-  <h3>Immigration • Taxes • Passport • Benefits • DMV • Forms</h3>
-  <p>
-    Maximax Multi Services LLC helps clients with professional document preparation,
-    application assistance, form support, upload guidance, and reliable service.
-  </p>
-  <a href="#services" class="btn">VIEW SERVICES</a>
-</section>
+  <section class="hero">
+    <div class="hero-box">
+      <h2>MAXIMAX Multi Services</h2>
+      <h3>Immigration • Taxes • Forms • Resume • Translation</h3>
+      <p>
+        Nou ede kliyan ranpli fòm, prepare dokiman, tradui dokiman,
+        kreye resume pwofesyonèl, epi òganize sèvis yo rapid, pwòp, e serye.
+      </p>
 
-<section id="services">
-  <h2 class="section-title">SERVICES NOU YO</h2>
-
-  <div class="services-grid">
-
-    <div class="service-card">
-      <h3>Immigration Assistance</h3>
-      <p class="service-intro">USCIS forms, immigration document preparation, case support, and upload guidance.</p>
-      <ul>
-        <li>I-130 – Family Petition</li>
-        <li>I-485 – Adjustment of Status</li>
-        <li>I-864 – Affidavit of Support</li>
-        <li>I-765 – Work Permit</li>
-        <li>I-131 – Travel Document / Advance Parole</li>
-        <li>I-90 – Green Card Renewal / Replacement</li>
-        <li>N-400 – Citizenship Application</li>
-        <li>TPS Assistance</li>
-        <li>Asylum Form Assistance</li>
-        <li>USCIS Account & Case Status Help</li>
-        <li>Document Translation</li>
-        <li>Immigration Document Upload Center</li>
-      </ul>
-      <div class="service-buttons">
-        <a href="immigration.html" class="btn">START IMMIGRATION REQUEST</a>
-        <a href="upload.html" class="btn btn-secondary">UPLOAD DOCUMENTS</a>
+      <div class="btn-row">
+        <a class="btn" href="#upload">Upload Documents</a>
+        <a class="btn dark" href="#forms">View Forms</a>
+        <a class="btn" href="#contact">Book / Contact</a>
       </div>
     </div>
+  </section>
 
-    <div class="service-card">
-      <h3>Passport & Travel</h3>
-      <p class="service-intro">U.S. passport, Haitian passport, travel forms, renewals, and document support.</p>
-      <ul>
-        <li>DS-11 – New U.S. Passport Application</li>
-        <li>DS-82 – U.S. Passport Renewal</li>
-        <li>DS-64 – Lost / Stolen Passport</li>
-        <li>Passport Status Assistance</li>
-        <li>Travel Document Support</li>
-        <li>Passport Photo Guidance</li>
-        <li>Emergency Travel Help</li>
-        <li>Minor Passport Assistance</li>
-        <li>New Haitian Passport Assistance</li>
+  <section id="services">
+    <h2 class="section-title">Quick Services</h2>
+    <p class="section-subtitle">
+      Chwazi sèvis ou bezwen an. MAXIMAX mete tout bagay an òd pou kliyan yo.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>🛂 Immigration</h3>
+        <p>USCIS forms, TPS, work permit, affidavit, family petition, case support.</p>
+      </div>
+
+      <div class="card">
+        <h3>💰 Tax Preparation</h3>
+        <p>Tax filing, tax documents, ITIN support, yearly tax assistance.</p>
+      </div>
+
+      <div class="card">
+        <h3>📄 Government Forms</h3>
+        <p>SNAP, Medicaid, Medicare, SSA, unemployment, housing, child support.</p>
+      </div>
+
+      <div class="card">
+        <h3>📤 Document Upload</h3>
+        <p>Clients can upload birth certificates, letters, IDs, USCIS notices and more.</p>
+      </div>
+
+      <div class="card">
+        <h3>📋 Resume Builder</h3>
+        <p>Professional resume creation in English, Kreyòl, or Spanish.</p>
+      </div>
+
+      <div class="card">
+        <h3>🌎 Translation</h3>
+        <p>Document translation for birth, marriage, divorce and immigration papers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="forms" class="forms">
+    <h2 class="section-title">Forms Center</h2>
+    <p class="section-subtitle">
+      Tout fòm prensipal yo dwe parèt klè sou homepage la.
+    </p>
+
+    <div class="grid">
+      <div class="card"><h3>USCIS Forms</h3><p>Immigration applications and support forms.</p></div>
+      <div class="card"><h3>SNAP / Food Stamp</h3><p>Food assistance form support.</p></div>
+      <div class="card"><h3>Social Security</h3><p>SSA forms and document assistance.</p></div>
+      <div class="card"><h3>Housing / Section 8</h3><p>Housing application and update support.</p></div>
+      <div class="card"><h3>Medicaid / Medicare</h3><p>Health benefit form support.</p></div>
+      <div class="card"><h3>Child Support</h3><p>Child support document assistance.</p></div>
+      <div class="card"><h3>Unemployment</h3><p>Unemployment form assistance.</p></div>
+      <div class="card"><h3>Tax Forms</h3><p>Tax preparation and yearly filing documents.</p></div>
+    </div>
+  </section>
+
+  <section id="resume" class="resume">
+    <div class="feature-box">
+      <h2>📋 AI Resume Builder</h2>
+      <p>
+        Kreye resume pwofesyonèl pou travay, imigrasyon, lekòl, oswa biznis.
+        Disponib an English, Kreyòl, ak Español.
+      </p>
+
+      <div class="mini-list">
+        <div class="mini-item">Resume in English</div>
+        <div class="mini-item">Resume an Kreyòl</div>
+        <div class="mini-item">Resume en Español</div>
+        <div class="mini-item">Download PDF</div>
+      </div>
+
+      <br>
+      <div class="btn-row">
+        <a class="btn" href="#contact">Build My Resume</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="translation" class="translation">
+    <div class="feature-box">
+      <h2>🌎 Translation Center</h2>
+      <p>
+        Tradiksyon dokiman enpòtan pou imigrasyon, lekòl, travay, ak sèvis ofisyèl.
+      </p>
+
+      <div class="mini-list">
+        <div class="mini-item">Birth Certificate</div>
+        <div class="mini-item">Marriage Certificate</div>
+        <div class="mini-item">Divorce Certificate</div>
+        <div class="mini-item">Immigration Documents</div>
+      </div>
+
+      <br>
+      <div class="btn-row">
+        <a class="btn" href="#upload">Translate Document</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="upload">
+    <div class="feature-box">
+      <h2>📤 Upload Documents</h2>
+      <p>
+        Voye dokiman ou yo pou MAXIMAX ka verifye, prepare, tradui, oswa itilize yo pou sèvis ou bezwen an.
+      </p>
+
+      <div class="mini-list">
+        <div class="mini-item">Upload ID</div>
+        <div class="mini-item">Upload USCIS Letter</div>
+        <div class="mini-item">Upload Certificate</div>
+        <div class="mini-item">Automatic Receipt</div>
+      </div>
+
+      <br>
+      <div class="btn-row">
+        <a class="btn" href="#contact">Send Documents</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="alerts" class="alerts">
+    <h2 class="section-title">🚨 Alerts • Notes • Mizajou</h2>
+    <p class="section-subtitle">
+      MAXIMAX ap mete kliyan yo okouran de nouvo enfòmasyon, lwa, fòm, ak chanjman enpòtan.
+    </p>
+
+    <div class="grid">
+      <div class="card alert-card urgent">
+        <h3>ALÈT IMIGRASYON</h3>
+        <p>Nouvo lwa, TPS, USCIS, pwosedi ak chanjman enpòtan.</p>
+      </div>
+
+      <div class="card alert-card">
+        <h3>NOTES ENPÒTAN</h3>
+        <p>Dokiman kliyan dwe verifye anvan upload oswa soumèt.</p>
+      </div>
+
+      <div class="card alert-card">
+        <h3>MIZAJOU SISTÈM</h3>
+        <p>Nouvo sèvis, nouvo fòm ak nouvo opsyon MAXIMAX.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="contact-box">
+      <h2>Contact MAXIMAX</h2>
+      <p><strong>Email:</strong> maximaxmultiservices@gmail.com</p>
+      <p><strong>Phone:</strong> (317) 538-1150</p>
+
+      <br>
+
+      <div class="btn-row">
+        <a class="btn" href="mailto:maximaxmultiservices@gmail.com">Email Us</a>
+        <a class="btn dark" href="tel:3175381150">Call Now</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 MAXIMAX Multi Services — MAXIMAX ALWAYS MAXIMIZED
+  </footer>
+
+</body>
+</html>
