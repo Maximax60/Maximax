@@ -48,3 +48,45 @@ body {
     font-weight: bold;
     border-radius: 8px;
 }
+/* ===== MAXIMAX HOMEPAGE FORMS SECTION ===== */
+
+.forms-section {
+  padding: 70px 20px;
+  background: linear-gradient(135deg,#000,#1a0b00,#ff7a00,#000);
+  color:#ff7a00;
+  text-align:center;
+}
+
+.forms-section h2{
+   font-size:36px;
+   margin-bottom:10px;
+}
+
+.forms-section p{
+   margin-bottom:30px;
+}
+
+.forms-grid{
+   display:grid;
+   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+   gap:20px;
+   margin-top:35px;
+}
+
+.form-card{
+   background:#000;
+   border:2px solid #ff7a00;
+   border-radius:18px;
+   padding:25px;
+   color:#ff7a00;
+   text-decoration:none;
+   font-weight:bold;
+   transition:.4s;
+   box-shadow:0 0 18px rgba(255,122,0,.45);
+}
+
+.form-card:hover{
+   transform:translateY(-8px);
+   background:#ff7a00;
+   color:#000;
+}
