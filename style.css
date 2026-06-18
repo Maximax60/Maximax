@@ -48,3 +48,58 @@ body {
     font-weight: bold;
     border-radius: 8px;
 }
+/* ===== MAXIMAX ALERT CENTER ===== */
+
+.alerts-center{
+padding:80px 25px;
+background:#000;
+color:#ff7a00;
+text-align:center;
+}
+
+.alerts-center h2{
+font-size:38px;
+margin-bottom:40px;
+}
+
+.alert-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.alert-card{
+background:linear-gradient(180deg,#111,#1a0b00);
+border:2px solid #ff7a00;
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(255,122,0,.4);
+}
+
+.alert-card h3{
+margin-bottom:15px;
+}
+
+.alert-card button{
+margin-top:20px;
+background:#ff7a00;
+border:none;
+padding:12px 25px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.urgent{
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+
+0%{transform:scale(1)}
+
+50%{transform:scale(1.05)}
+
+100%{transform:scale(1)}
+
+}
